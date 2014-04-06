@@ -1,4 +1,5 @@
 package model;
+import java.util.ArrayList;
 
 public class Pengguna {
 
@@ -9,13 +10,15 @@ public class Pengguna {
 	private int tinggi;
 	private int target;
 	private char gender;
+	private int gayaHidup; //1 - ringan, 2 - sedang, dst
+	private ArrayList<String> aktivitas; //misalkan ["10-jogging", "60-renang"] di mana angka menunjukkan durasi per minggu, diikuti nama aktivtas
 	private boolean isAlergiKacang;
 	private boolean isAlergiTelur;
 	private boolean isAlergiSeafood;
 	private boolean isVegetarian;
 	
 	public Pengguna(int id, String nama, int umur, int berat, int tinggi,
-			int target, char gender, boolean isAlergiKacang,
+			int target, char gender, int gayaHidup, ArrayList<String> aktivitas, boolean isAlergiKacang,
 			boolean isAlergiTelur, boolean isAlergiSeafood, boolean isVegetarian) {
 		super();
 		this.id = id;
@@ -25,10 +28,13 @@ public class Pengguna {
 		this.tinggi = tinggi;
 		this.target = target;
 		this.gender = gender;
+		this.gayaHidup = gayaHidup;
+		this.aktivitas = aktivitas;
 		this.isAlergiKacang = isAlergiKacang;
 		this.isAlergiTelur = isAlergiTelur;
 		this.isAlergiSeafood = isAlergiSeafood;
 		this.isVegetarian = isVegetarian;
+
 	}
 
 	public int getId() {
@@ -85,6 +91,22 @@ public class Pengguna {
 
 	public void setGender(char gender) {
 		this.gender = gender;
+	}
+
+	public int getGayaHidup() {
+		return gayaHidup;
+	}
+
+	public void setGayaHidup(int gayaHidup) {
+		this.gayaHidup = gayaHidup;
+	}
+
+	public ArrayList<String> getAktivitas() {
+		return aktivitas;
+	}
+
+	public void setAktivitas(ArrayList<String> aktivitas) {
+		this.aktivitas = aktivitas;
 	}
 
 	public boolean isAlergiKacang() {
