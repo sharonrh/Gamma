@@ -11,6 +11,14 @@
             backward-compatibility can go here.
         -->
     </style>
+    
+    <style name="HoloLightTheme" parent="@android:style/Theme.Holo.Light">
+    </style>
+
+    <style name="HoloBlackTheme" parent="@android:style/Theme.Holo">
+    </style>    
+    
+    
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">

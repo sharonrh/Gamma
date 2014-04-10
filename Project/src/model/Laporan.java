@@ -1,39 +1,25 @@
 package model;
 
 public class Laporan {
-	private int id;
-	private long waktu;
-	private String input;
 	
-	public Laporan(int id, long waktu, String input) {
-		super();
-		this.id = id;
-		this.waktu = waktu;
-		this.input = input;
+	private String tinggiBadan;
+	private String beratBadan;
+	
+	public Laporan(String tinggiBadan, String beratBadan) {
+		this.tinggiBadan = tinggiBadan;
+		this.beratBadan = beratBadan;
 	}
-	
-	public int getId() {
-		return id;
+	public String getTinggiBadan() {
+		return tinggiBadan;
 	}
-	
-	public void setId(int id) {
-		this.id = id;
+	public void setTinggiBadan(String tinggiBadan) {
+		this.tinggiBadan = tinggiBadan;
 	}
-	
-	public long getWaktu() {
-		return waktu;
+	public String getBeratBadan() {
+		return beratBadan;
 	}
-	
-	public void setWaktu(long waktu) {
-		this.waktu = waktu;
-	}
-	
-	public String getInput() {
-		return input;
-	}
-	
-	public void setInput(String input) {
-		this.input = input;
+	public void setBeratBadan(String beratBadan) {
+		this.beratBadan = beratBadan;
 	}
 	
 }

@@ -6,15 +6,18 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.gamma.LaporanFragment;
 import com.example.gamma.ProfilFragment;
 import com.example.gamma.R;
 import com.example.gamma.RekomendasiFragment;
+import com.example.gamma.SettingFragment;
 import com.example.gamma.StatistikFragment;
 
 public class MainActivity extends Activity {
@@ -80,6 +83,26 @@ public class MainActivity extends Activity {
 		inflater.inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	
+	/**
+     * Event Handling for Individual menu item selected
+     * Identify single menu item by it's id
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+         
+        switch (item.getItemId())
+        {
+        case R.id.action_settings:
+        	Intent i = new Intent(this, SettingFragment.class);
+        	startActivity(i);
+        	
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }    
 
 	// onSaveInstanceState() is used to "remember" the current state when a
 	// configuration change occurs such screen orientation change. This

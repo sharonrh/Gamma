@@ -26,5 +26,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.gamma.SettingFragment"
+            android:label="@string/title_activity_setting_fragment" >
+        </activity>
+        
+        <activity
+            android:name="com.example.gamma.NotifikasiActivity"
+            android:label="@string/title_activity_notifikasi" >
+        </activity>
+        <activity
+            android:name="com.example.gamma.TemaActivity"
+            android:label="@string/title_activity_tema" >
+        </activity>
+        <activity
+            android:name="com.example.gamma.TentangActivity"
+            android:label="@string/title_activity_tentang" >
+        </activity>
     </application>
+
 </manifest>
