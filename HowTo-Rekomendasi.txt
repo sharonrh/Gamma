@@ -1,0 +1,26 @@
+Cara Menghitung Kalori yang Dibutuhkan :
+
+1. Ambil data berikut :
+	(a) Jenis Kelamin
+	(b)	Umur
+	(c) Berat, dalam kg
+	(d) Tinggi, dalam cm
+	(e) Gaya Hidup, dalam pilihan { 1 : ringan, 2 : sedang, 3 : tinggi, 4 : sangat tinggi }
+	(f) Aktivitas, dalam kombinasi { waktu melakukan aktivitas per minggu dalam menit, nama aktivitas }
+	(g) Alergi dan semacamnya
+2. Kalkulasikan dengan rumus Harris Benedict : (didapat data BMR atau Basal Metabolic Rate)
+	(i) 	Jika (a) = pria, maka :
+			BMR = 66 + ( 13.7 x (c) ) + ( 5 x (d) ) - ( 6.8 x (b) )
+	(ii) 	Jika (a) = wanita, maka :
+			BMR = 655 + ( 9.6 x (c) ) + ( 1.8 x (d) ) - ( 4.7 x (b) )
+3. Kalikan BMR dengan isian gaya hidup, sehingga didapat kalori :
+	(i)  	Jika pilihannya 1 : ringan, kalikan dengan 1.2
+	(ii) 	Jika pilihannya 2 : sedang, kalikan dengan 1.375
+	(iii)	Jika pilihannya 3 : tinggi, kalikan dengan 1.55
+	(iv)	Jika pilihannya 4 : sangat tinggi, kalikan dengan 1.725
+4. Jika ada isian (f), maka tambahkan ke kalori.
+5. Didapat kalori total, cari kombinasi makanan berdasarkan nilainya.
+6. Untuk semua makanan dari kombinasi yang telah dibuat, cek apakah menyalahi constraint pada poin (g)
+7. Jika tidak ada, return kombinasi.
+8. Jika ada, gantikan makanan dengan yang lain. Lalu, kembali ke tahap nomor 6.
+	
