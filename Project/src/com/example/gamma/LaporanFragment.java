@@ -1,4 +1,5 @@
-package com.example.gamma;
+package  com.example.gamma;
+
 
 import controller.LaporanController;
 import android.app.AlertDialog;
@@ -10,96 +11,104 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class LaporanFragment extends Fragment {
-
+	
+	
 	EditText beratField;
 	EditText tinggiField;
 	Button simpanBtn;
 
 	boolean cek = false;
-	LaporanController kontrol = new LaporanController(this.getActivity());
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-
-		View v = inflater.inflate(R.layout.fragment_laporan, container, false);
-
-		beratField = (EditText) v.findViewById(R.id.berat);
-		tinggiField = (EditText) v.findViewById(R.id.tinggi);
-		simpanBtn = (Button) v.findViewById(R.id.button1);
-
-		simpanBtn.setOnClickListener(new View.OnClickListener() {
-
+	LaporanController kontrol;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+    	
+    	View v = inflater.inflate(R.layout.fragment_laporan, container, false);
+    	kontrol = new LaporanController(getActivity().getApplicationContext());
+    	beratField = (EditText) v.findViewById(R.id.berat);
+        tinggiField = (EditText) v.findViewById(R.id.tinggi);
+        simpanBtn = (Button) v.findViewById(R.id.button1);
+        
+simpanBtn.setOnClickListener(new View.OnClickListener() {
+			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				String berat = beratField.getText().toString();
-				String tinggi = tinggiField.getText().toString();
+		        String tinggi = tinggiField.getText().toString();
+		        
+		        cek = false;
+		        
+		        if( berat.length() !=0 && tinggi.length() != 0){
+		        	cek = kontrol.addLaporan(berat, tinggi);
+		        }
+		        
+		        
+		        if(cek){
+		        	System.out.println(kontrol.getListLaporan().toString());
+		            
+		            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
 
-				cek = kontrol.addLaporan(berat, tinggi);
+		    		// Setting Dialog Title
+		    		alertDialog.setTitle("Sukses");
 
-				if (cek && berat.length() != 0 && tinggi.length() != 0) {
+		    		// Setting Dialog Message
+		    		alertDialog
+		    				.setMessage("Laporan berhasil disimpan :) ");
 
-					AlertDialog alertDialog = new AlertDialog.Builder(
-							getActivity()).create();
+		    		// Setting Icon to Dialog
+		    		alertDialog.setIcon(R.drawable.ic_launcher);
 
-					// Setting Dialog Title
-					alertDialog.setTitle("Sukses");
+		    		// Setting OK Button
+		    		alertDialog.setButton("OK",
+		    				new DialogInterface.OnClickListener() {
+		    					public void onClick(DialogInterface dialog,
+		    							int which) {
+		    					}
+		    				});
+		    		// Showing Alert Message
+		    		alertDialog.show();
+		        }
+		        else {
+		        	AlertDialog alertDialog = new AlertDialog.Builder(
+		    				getActivity()).create();
 
-					// Setting Dialog Message
-					alertDialog.setMessage("Laporan berhasil disimpan :) ");
+		    		// Setting Dialog Title
+		    		alertDialog.setTitle("Gagal");
 
-					// Setting Icon to Dialog
-					alertDialog.setIcon(R.drawable.ic_launcher);
+		    		// Setting Dialog Message
+		    		alertDialog
+		    				.setMessage("Laporan gagal disimpan :(");
 
-					// Setting OK Button
-					alertDialog.setButton("OK",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int which) {
-								}
-							});
-					// Showing Alert Message
-					alertDialog.show();
-				} else {
-					AlertDialog alertDialog = new AlertDialog.Builder(
-							getActivity()).create();
+		    		// Setting Icon to Dialog
+		    		alertDialog.setIcon(R.drawable.ic_launcher);
 
-					// Setting Dialog Title
-					alertDialog.setTitle("Gagal");
-
-					// Setting Dialog Message
-					alertDialog.setMessage("Laporan gagal disimpan :(");
-
-					// Setting Icon to Dialog
-					alertDialog.setIcon(R.drawable.ic_launcher);
-
-					// Setting OK Button
-					alertDialog.setButton("OK",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int which) {
-								}
-							});
-					// Showing Alert Message
-					alertDialog.show();
-				}
-
-				// tv.setText(kontrol.getListLaporan().toString());
+		    		// Setting OK Button
+		    		alertDialog.setButton("OK",
+		    				new DialogInterface.OnClickListener() {
+		    					public void onClick(DialogInterface dialog,
+		    							int which) {
+		    					}
+		    				});
+		    		// Showing Alert Message
+		    		alertDialog.show();
+		        }
+		        
+		        //tv.setText(kontrol.getListLaporan().toString());
 			}
 		});
+        
+		
+        return v;
 
-		return v;
-
-	}
-
-	public void onActivityCreated(Bundle savedInstanceState) {
+    }   
+    
+    public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
+		
+		
 	}
 
 }

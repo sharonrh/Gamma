@@ -22,4 +22,8 @@ public class Laporan {
 		this.beratBadan = beratBadan;
 	}
 	
+	public String toString(){
+		return tinggiBadan;
+	}
+	
 }
