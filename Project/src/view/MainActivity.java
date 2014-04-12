@@ -50,10 +50,27 @@ public class MainActivity extends Activity {
 		statTab.setTabListener(new MyTabsListener(statFragment));
 		
 		// add the tabs to the action bar
-		actionbar.addTab(rekTab);
-		actionbar.addTab(statTab);
-		actionbar.addTab(laporanTab);
-		actionbar.addTab(profilTab);	
+		Intent i = getIntent();
+		int x = i.getIntExtra("nomorFragment", 0);
+		
+		if(x==1){
+			actionbar.addTab(profilTab);
+			actionbar.addTab(rekTab);
+			actionbar.addTab(statTab);
+			actionbar.addTab(laporanTab);	
+		}
+		else if(x==2){
+			actionbar.addTab(rekTab);
+			actionbar.addTab(statTab);
+			actionbar.addTab(laporanTab);
+			actionbar.addTab(profilTab);
+		}
+		else {
+			actionbar.addTab(statTab);
+			actionbar.addTab(rekTab);
+			actionbar.addTab(laporanTab);
+			actionbar.addTab(profilTab);
+		}	
 
 		// Crash the program -- example of debugging
 

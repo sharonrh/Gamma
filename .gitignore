@@ -26,3 +26,6 @@ proguard/
 *.ipr
 *.iws
 .idea/
+Project/project.properties
+Project/gen/com/example/gamma/BuildConfig.java
+Project/project.properties
