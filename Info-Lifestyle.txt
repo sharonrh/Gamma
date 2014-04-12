@@ -1,0 +1,17 @@
+Keterangan mengenai gaya hidup :
+
+Menurut informasi yang didapat di [1], ada 4 tipe gaya hidup : (a) sedentary, (b) somewhat active, (c) active, dan (d) very active. Ukuran keempatnya dinyatakan dalam banyaknya langkah kaki atau jarak tempuh ketika berjalan kaki, keduanya dalam satu hari.
+
+Untuk (a), tepat dipilih oleh orang yang melakukan sedikit sekali pergerakan, yaitu terbatas hanya kepada yang esensial untuk mendukung hidupnya. Bagian (b) adalah tipikal orang-orang pekerja kantoran. Berikut ini data selengkapnya.
+			
+			Lifestyle				Miles Walked		Pedometer Steps
+			================		=============		================
+			sedentary				0					-
+			somewhat active			up to 4	  			up to 9,400
+			active					4 to 10				9,400 to 23,500
+			very active	 			more than 10	 	more than 23,500
+
+Adapun data pada aktivitas berbeda dengan gaya hidup. Sehingga, jika dalam seminggu seseorang bersepeda selama 180 menit, namun selain itu jarang bergerak, maka dalam isian harusnya memilih gaya hidup "sedentary", dan isian berkuda dalam daftar aktivitasnya
+
+Catatan :
+[1] http://nutritiondata.self.com/tools/calories-burned
