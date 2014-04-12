@@ -21,7 +21,7 @@ public class HalamanUtama extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_halaman_utama);
+		setContentView(R.layout.fragment_halaman_utama);
 
 	}
 

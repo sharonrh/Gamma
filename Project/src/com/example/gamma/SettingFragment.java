@@ -6,7 +6,9 @@ import java.util.List;
 import controller.SettingController;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 //import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,7 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /**
@@ -27,6 +32,7 @@ public class SettingFragment extends Activity {
 	TextView tv;
 	SettingArrayAdapter adapter;
 	SettingController kontrol;
+	private PopupWindow popUpTema;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,7 +56,13 @@ public class SettingFragment extends Activity {
 	      @Override
 	      public void onItemClick( AdapterView<?> parent, View item, 
 	                               int position, long id) {  
-	    	  kontrol.gantiHalaman(position);
+	    	  if(position != 1){
+	    		  kontrol.gantiHalaman(position);
+	    	  }
+	    	  else {
+	    		  inisialPopupWindow();
+	    	  }
+	    	  
 	      }
 	    });
 		
@@ -167,5 +179,55 @@ public class SettingFragment extends Activity {
 		    return convertView;
 		  }
 		}
+	
+	
+	
+	RadioGroup rg;
+	public void inisialPopupWindow() {
+		
+		
+
+			LayoutInflater inflater = (LayoutInflater) SettingFragment.this
+					.getSystemService(getApplicationContext().LAYOUT_INFLATER_SERVICE);
+			View layout = inflater.inflate(R.layout.popup_tema_style,
+					(ViewGroup) findViewById(R.id.popup_element));
+			popUpTema = new PopupWindow(layout, 250, 250, true);
+			popUpTema.showAtLocation(layout, Gravity.CENTER, 0, 0);
+			
+			rg = (RadioGroup) layout.findViewById(R.id.tema);
+			Button simpanBtn = (Button) layout.findViewById(R.id.yes_button);
+			Button batalBtn = (Button) layout.findViewById(R.id.cancel_button);
+			System.out.println(rg);
+			System.out.println(simpanBtn);
+			simpanBtn.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					switch (rg.getCheckedRadioButtonId()) {
+					case R.id.holoDark:
+						getApplication().setTheme(R.style.HoloBlackTheme);
+						break;
+					case R.id.holoLight:
+						getApplication().setTheme(R.style.HoloLightTheme);
+						break;
+					default :
+						getApplication().setTheme(R.style.AppBaseTheme);
+						break;
+					}
+				}
+			});
+			
+			batalBtn.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					Intent i = new Intent(getApplicationContext(), SettingFragment.class);
+					startActivity(i);
+				}
+			});
+			
+	}
 
 }

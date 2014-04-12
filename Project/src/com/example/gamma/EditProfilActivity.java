@@ -3,6 +3,7 @@ package com.example.gamma;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -56,7 +57,7 @@ public class EditProfilActivity extends Activity {
 	 
 	
 	
-	/**@Override
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profil);
@@ -71,7 +72,7 @@ public class EditProfilActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.edit_profil, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
@@ -80,17 +81,30 @@ public class EditProfilActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
+<<<<<<< HEAD
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}*/
+	}
+=======
+		 switch (item.getItemId())
+	        {
+	        case R.id.action_settings:
+	        	Intent i = new Intent(this, SettingFragment.class);
+	        	startActivity(i);
+	        	
+	        default:
+	            return super.onOptionsItemSelected(item);
+	        }
+	}
+>>>>>>> e18207d845dfc1d93c5a8ddc840ba5424a8ded82
 
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	/**public static class PlaceholderFragment extends Fragment {
+	public static class PlaceholderFragment extends Fragment {
 
 		public PlaceholderFragment() {
 		}
@@ -102,6 +116,6 @@ public class EditProfilActivity extends Activity {
 					container, false);
 			return rootView;
 		}
-	}*/
+	}
 
 }

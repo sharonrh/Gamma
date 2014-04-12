@@ -53,7 +53,7 @@ public class ProfilFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(getActivity().getApplicationContext(), SettingFragment.class);
+				Intent i = new Intent(getActivity().getApplicationContext(), EditProfilActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				getActivity().startActivity(i);
 			}

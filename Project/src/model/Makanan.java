@@ -12,6 +12,9 @@ public class Makanan {
 	private int rating;
 	private String jenisMakanan;
 	
+	
+	public Makanan(){
+	}
 	public Makanan(String nama, double kalori, double protein, double karbohidrat,
 			double lemak, double kalsium, int persentase, int rating, String jenisMakanan) {
 		super();
