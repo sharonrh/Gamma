@@ -78,9 +78,9 @@ public final class R {
         public static final int TextView02=0x7f0a0011;
         public static final int TextView03=0x7f0a0031;
         public static final int TextView04=0x7f0a0032;
-        public static final int Title=0x7f0a004d;
+        public static final int Title=0x7f0a0050;
         public static final int achievement=0x7f0a0022;
-        public static final int action_settings=0x7f0a004f;
+        public static final int action_settings=0x7f0a0052;
         public static final int aplikasi=0x7f0a002f;
         public static final int batalProfilBtn=0x7f0a001c;
         public static final int berat=0x7f0a0033;
@@ -117,13 +117,15 @@ public final class R {
         public static final int profil=0x7f0a001e;
         public static final int rekomendasi=0x7f0a001f;
         public static final int scrollView1=0x7f0a001d;
+        public static final int separator=0x7f0a004d;
         public static final int simpanProfilBtn=0x7f0a001b;
         public static final int spinnerAktivitas1=0x7f0a0018;
         public static final int spinnerAktivitas2=0x7f0a0019;
         public static final int spinnerAktivitas3=0x7f0a001a;
         public static final int spinnerGayaHidup=0x7f0a0017;
         public static final int statistik=0x7f0a0020;
-        public static final int subTitle=0x7f0a004e;
+        public static final int subTitle=0x7f0a0051;
+        public static final int subtitle=0x7f0a004f;
         public static final int tableRow1=0x7f0a0004;
         public static final int tableRow9=0x7f0a004a;
         public static final int tahunProfilTv=0x7f0a0037;
@@ -135,6 +137,7 @@ public final class R {
         public static final int textView2=0x7f0a0016;
         public static final int tinggi=0x7f0a0034;
         public static final int tinggiProfilTv=0x7f0a0039;
+        public static final int title=0x7f0a004e;
         public static final int titlePilihTemaView=0x7f0a002b;
         public static final int titleProfilView=0x7f0a0002;
         public static final int titleSetNotifikasiView=0x7f0a0025;
@@ -158,7 +161,8 @@ public final class R {
         public static final int fragment_setting=0x7f03000b;
         public static final int fragment_statistik=0x7f03000c;
         public static final int popup_tema_style=0x7f03000d;
-        public static final int simplerow=0x7f03000e;
+        public static final int sectioned_list_item=0x7f03000e;
+        public static final int simplerow=0x7f03000f;
     }
     public static final class menu {
         public static final int buatdibuang=0x7f090000;

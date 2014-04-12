@@ -11,12 +11,12 @@ public class Makanan {
 	private int persentase;
 	private int rating;
 	private String jenisMakanan;
+	private int berat;
 	
+	public Makanan(){}
 	
-	public Makanan(){
-	}
 	public Makanan(String nama, double kalori, double protein, double karbohidrat,
-			double lemak, double kalsium, int persentase, int rating, String jenisMakanan) {
+			double lemak, double kalsium, int persentase, int rating, String jenisMakanan, int berat) {
 		super();
 		this.nama = nama;
 		this.kalori = kalori;
@@ -27,6 +27,7 @@ public class Makanan {
 		this.persentase = persentase;
 		this.rating = rating;
 		this.jenisMakanan = jenisMakanan;
+		this.berat = berat;
 	}
 
 	public String getNama() {
@@ -99,6 +100,14 @@ public class Makanan {
 
 	public void setJenisMakanan(String jenisMakanan) {
 		this.jenisMakanan = jenisMakanan;
+	}
+
+	public int getBerat() {
+		return berat;
+	}
+
+	public void setBerat(int berat) {
+		this.berat = berat;
 	}
 
 	

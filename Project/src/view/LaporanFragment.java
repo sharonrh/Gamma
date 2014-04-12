@@ -20,8 +20,8 @@ public class LaporanFragment extends Fragment {
 	EditText tinggiField;
 	Button simpanBtn;
 	Button batalBtn;
-
 	boolean cek = false;
+
 	LaporanController kontrol;
 
 	@Override
