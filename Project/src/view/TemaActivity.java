@@ -1,9 +1,11 @@
-package com.example.gamma;
+package view;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.widget.RadioGroup;
+
+import com.example.gamma.R;
 
 public class TemaActivity extends Activity {
 

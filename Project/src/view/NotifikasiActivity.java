@@ -1,8 +1,10 @@
-package com.example.gamma;
+package view;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+
+import com.example.gamma.R;
 
 public class NotifikasiActivity extends Activity {
 

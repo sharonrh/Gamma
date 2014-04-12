@@ -25,7 +25,6 @@
         <activity
             android:name="view.MainActivity"
             android:label="@string/app_name" >
-            
         </activity>
         <activity
             android:name="com.example.gamma.SettingFragment"
@@ -46,6 +45,10 @@
         <activity
             android:name="com.example.gamma.EditProfilActivity"
             android:label="@string/title_activity_edit_profil" >
+        </activity>
+        <activity
+            android:name="com.example.gamma.Buatdibuang"
+            android:label="@string/title_activity_buatdibuang" >
         </activity>
     </application>
 

@@ -13,12 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.gamma.LaporanFragment;
-import com.example.gamma.ProfilFragment;
 import com.example.gamma.R;
-import com.example.gamma.RekomendasiFragment;
-import com.example.gamma.SettingFragment;
-import com.example.gamma.StatistikFragment;
 
 public class MainActivity extends Activity {
 

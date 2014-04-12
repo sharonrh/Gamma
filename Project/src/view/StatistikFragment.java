@@ -1,4 +1,4 @@
-package com.example.gamma;
+package view;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -19,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.example.gamma.R;
 
 public class StatistikFragment extends Fragment {
 	

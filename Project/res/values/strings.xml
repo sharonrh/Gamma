@@ -12,26 +12,26 @@
     <string name="ui_tabname_artikel">Artikel</string>
     <string name="NS">http://schemas.android.com/apk/res/com.example.gamma</string>
     <string name="title_activity_setting_fragment">SettingFragment</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_notifikasi">NotifikasiActivity</string>
     <string name="title_activity_tema">TemaActivity</string>
     <string name="title_activity_tentang">TentangActivity</string>
+    <string name="title_activity_edit_profil">EditProfilActivity</string>
     <string name="display_spinner">-pilih satu-</string>
     <string name="spinnerGayaHidup">Pilih Gaya Hidup</string>
     <string name="spinnerAktivitas1">Pilih Aktivitas 1</string>
     <string name="spinnerAktivitas2">Pilih Aktivitas 2</string>
     <string name="spinnerAktivitas3">Pilih Aktivitas 3</string>
+
     <string-array name="isi_gayaHidup">
-    	<item>Ringan</item>
-    	<item>Sedang</item>
-    	<item>Berat</item>
-	</string-array>
-	<string-array name="isi_aktivitas">
-    	<item>Jogging</item>
-    	<item>Belajar</item>
-	</string-array>
+        <item>Ringan</item>
+        <item>Sedang</item>
+        <item>Berat</item>
+    </string-array>
+    <string-array name="isi_aktivitas">
+        <item>Jogging</item>
+        <item>Belajar</item>
+    </string-array>
 
-
+    <string name="title_activity_buatdibuang">Buatdibuang</string>
 
 </resources>

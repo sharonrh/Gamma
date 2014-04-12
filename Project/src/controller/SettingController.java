@@ -1,10 +1,7 @@
 package controller;
 
-import com.example.gamma.NotifikasiActivity;
-import com.example.gamma.SettingFragment;
-import com.example.gamma.TemaActivity;
-import com.example.gamma.TentangActivity;
-
+import view.NotifikasiActivity;
+import view.TentangActivity;
 import android.content.Context;
 import android.content.Intent;
 

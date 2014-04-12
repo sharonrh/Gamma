@@ -1,16 +1,6 @@
 package view;
 
-import com.example.gamma.ProfilFragment;
-import com.example.gamma.R;
-import com.example.gamma.R.id;
-import com.example.gamma.R.layout;
-import com.example.gamma.R.menu;
-import com.example.gamma.RekomendasiFragment;
-import com.example.gamma.SettingFragment;
-import com.example.gamma.StatistikFragment;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.os.Build;
+
+import com.example.gamma.R;
 
 public class HalamanUtama extends Activity {
 	ImageButton profil;
@@ -29,60 +20,62 @@ public class HalamanUtama extends Activity {
 	ImageButton katalog;
 	ImageButton achievement;
 	ImageButton pengaturan;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_halaman_utama);
-		
+		setContentView(R.layout.activity_halaman_utama);
+
 		profil = (ImageButton) findViewById(R.id.profil);
 		rekomendasi = (ImageButton) findViewById(R.id.rekomendasi);
 		statistik = (ImageButton) findViewById(R.id.statistik);
 		katalog = (ImageButton) findViewById(R.id.katalog);
 		achievement = (ImageButton) findViewById(R.id.achievement);
 		pengaturan = (ImageButton) findViewById(R.id.pengaturan);
-		
+
 		profil.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(), MainActivity.class);
+				Intent i = new Intent(getApplicationContext(),
+						MainActivity.class);
 				startActivity(i);
 			}
 		});
-		
+
 		rekomendasi.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(), RekomendasiFragment.class);
+				Intent i = new Intent(getApplicationContext(),
+						RekomendasiFragment.class);
 				startActivity(i);
 			}
 		});
-		
+
 		statistik.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(), StatistikFragment.class);
+				Intent i = new Intent(getApplicationContext(),
+						StatistikFragment.class);
 				startActivity(i);
 			}
 		});
 
 		pengaturan.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(), SettingFragment.class);
+				Intent i = new Intent(getApplicationContext(),
+						SettingFragment.class);
 				startActivity(i);
 			}
 		});
-		
 
 	}
 
@@ -105,7 +98,5 @@ public class HalamanUtama extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	
 
 }

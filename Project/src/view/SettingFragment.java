@@ -1,15 +1,13 @@
-package com.example.gamma;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.SettingController;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-//import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -21,6 +19,11 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.example.gamma.R;
+
+import controller.SettingController;
+//import android.support.v4.app.Fragment;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.

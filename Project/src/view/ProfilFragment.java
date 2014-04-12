@@ -1,4 +1,4 @@
-package com.example.gamma;
+package view;
 
 
 import android.app.Fragment;
@@ -12,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.example.gamma.R;
 
 public class ProfilFragment extends Fragment {
 	
