@@ -65,12 +65,19 @@ public class MainActivity extends Activity {
 			actionbar.addTab(laporanTab);
 			actionbar.addTab(profilTab);
 		}
-		else {
+		else if(x==3) {
 			actionbar.addTab(statTab);
 			actionbar.addTab(rekTab);
 			actionbar.addTab(laporanTab);
 			actionbar.addTab(profilTab);
-		}	
+		}
+		else {
+			actionbar.addTab(laporanTab);
+			actionbar.addTab(profilTab);
+			actionbar.addTab(rekTab);
+			actionbar.addTab(statTab);
+				
+		}
 
 		// Crash the program -- example of debugging
 

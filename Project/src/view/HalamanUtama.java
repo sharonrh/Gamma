@@ -68,6 +68,17 @@ public class HalamanUtama extends Activity {
 				startActivity(i);
 			}
 		});
+		
+		katalog.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(), MainActivity.class);
+				i.putExtra("nomorFragment", 4);
+				startActivity(i);
+			}
+		});
 
 		pengaturan.setOnClickListener(new View.OnClickListener() {
 

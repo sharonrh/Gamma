@@ -34,6 +34,7 @@ public class LaporanFragment extends Fragment {
 		beratField = (EditText) v.findViewById(R.id.berat);
 		tinggiField = (EditText) v.findViewById(R.id.tinggi);
 		simpanBtn = (Button) v.findViewById(R.id.button1);
+		batalBtn = (Button) v.findViewById(R.id.button2);
 
 		simpanBtn.setOnClickListener(new View.OnClickListener() {
 
