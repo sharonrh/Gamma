@@ -36,15 +36,29 @@
         </activity>
         <activity
             android:name="view.NotifikasiActivity"
-            android:label="@string/title_activity_notifikasi" >
+            android:label="@string/title_activity_notifikasi"
+            android:parentActivityName="view.SettingFragment" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="view.SettingFragment" />
         </activity>
         <activity
             android:name="view.TemaActivity"
-            android:label="@string/title_activity_tema" >
+            android:label="@string/title_activity_tema" 
+            android:parentActivityName="view.SettingFragment" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="view.SettingFragment" />
+            
         </activity>
         <activity
             android:name="view.TentangActivity"
-            android:label="@string/title_activity_tentang" >
+            android:label="@string/title_activity_tentang"
+            android:parentActivityName="view.SettingFragment" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="view.SettingFragment" />
+            
         </activity>
         <activity
             android:name="view.EditProfilActivity"

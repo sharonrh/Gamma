@@ -127,7 +127,7 @@ class MyPerformanceArrayAdapter extends ArrayAdapter<Makanan> {
 
 		Makanan m = rekList.get(position);
 		holder.text.setText(m.getNama() + " (" + m.getBerat() + " mg)");
-		holder.subtitle.setText("" + m.getKalori());
+		holder.subtitle.setText("" + m.getKalori() + " kkal");
 
 		if (count[position]) {
 			holder.section.setText(headers[position]);
