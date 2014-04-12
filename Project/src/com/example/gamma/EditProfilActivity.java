@@ -52,82 +52,8 @@ public class EditProfilActivity extends Activity {
 	     
 	   }
 	        });
-	 }
-	 
+	}}
 	 
 	
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_profil);
-
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-<<<<<<< HEAD
-<<<<<<< HEAD
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-=======
-		 switch (item.getItemId())
-	        {
-	        case R.id.action_settings:
-	        	Intent i = new Intent(this, SettingFragment.class);
-	        	startActivity(i);
-	        	
-	        default:
-	            return super.onOptionsItemSelected(item);
-	        }
->>>>>>> e18207d845dfc1d93c5a8ddc840ba5424a8ded82
-	}
-=======
-		 switch (item.getItemId())
-	        {
-	        case R.id.action_settings:
-	        	Intent i = new Intent(this, SettingFragment.class);
-	        	startActivity(i);
-	        	
-	        default:
-	            return super.onOptionsItemSelected(item);
-	        }
-	}
->>>>>>> e18207d845dfc1d93c5a8ddc840ba5424a8ded82
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_edit_profil,
-					container, false);
-			return rootView;
-		}
-	}
-
-}
+	

@@ -17,8 +17,6 @@
     <string name="title_activity_notifikasi">NotifikasiActivity</string>
     <string name="title_activity_tema">TemaActivity</string>
     <string name="title_activity_tentang">TentangActivity</string>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <string name="display_spinner">-pilih satu-</string>
     <string name="spinnerGayaHidup">Pilih Gaya Hidup</string>
     <string name="spinnerAktivitas1">Pilih Aktivitas 1</string>
@@ -33,11 +31,7 @@
     	<item>Jogging</item>
     	<item>Belajar</item>
 	</string-array>
-=======
-    <string name="title_activity_edit_profil">EditProfilActivity</string>
->>>>>>> e18207d845dfc1d93c5a8ddc840ba5424a8ded82
-=======
-    <string name="title_activity_edit_profil">EditProfilActivity</string>
->>>>>>> e18207d845dfc1d93c5a8ddc840ba5424a8ded82
+
+
 
 </resources>
