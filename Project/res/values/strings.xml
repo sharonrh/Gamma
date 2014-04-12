@@ -17,5 +17,6 @@
     <string name="title_activity_notifikasi">NotifikasiActivity</string>
     <string name="title_activity_tema">TemaActivity</string>
     <string name="title_activity_tentang">TentangActivity</string>
+    <string name="title_activity_edit_profil">EditProfilActivity</string>
 
 </resources>
