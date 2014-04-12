@@ -82,11 +82,23 @@ public class EditProfilActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+=======
+		 switch (item.getItemId())
+	        {
+	        case R.id.action_settings:
+	        	Intent i = new Intent(this, SettingFragment.class);
+	        	startActivity(i);
+	        	
+	        default:
+	            return super.onOptionsItemSelected(item);
+	        }
+>>>>>>> e18207d845dfc1d93c5a8ddc840ba5424a8ded82
 	}
 =======
 		 switch (item.getItemId())
