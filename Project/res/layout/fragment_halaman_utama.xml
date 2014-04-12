@@ -8,13 +8,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-<<<<<<< HEAD
             android:orientation="vertical"
             android:background="@drawable/lg" >
-=======
-            android:background="#ffffff"
-            android:orientation="vertical" >
->>>>>>> f64a83cffd1d1bdd01b9cc73bf0fd06f59f0e127
 
             <TextView
                 android:id="@+id/textView1"
@@ -42,83 +37,66 @@
                         android:orientation="horizontal" >
 
                         <ImageButton
-                            android:id="@+id/profil"
+                            android:id="@+id/imageButton1"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_column="0"
                             android:layout_gravity="left"
                             android:layout_row="1"
-<<<<<<< HEAD
                             android:scaleType="centerInside"
                             android:src="@drawable/profile" />
-=======
-                            android:background="#ffffff"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/profil" />
->>>>>>> f64a83cffd1d1bdd01b9cc73bf0fd06f59f0e127
 
                         <ImageButton
-                            android:id="@+id/rekomendasi"
+                            android:id="@+id/imageButton2"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_column="1"
                             android:layout_gravity="left"
                             android:layout_row="1"
-                            android:background="#ffffff"
                             android:scaleType="centerInside"
                             android:src="@drawable/food" />
 
                         <ImageButton
-                            android:id="@+id/statistik"
+                            android:id="@+id/imageButton3"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_column="0"
                             android:layout_gravity="left"
                             android:layout_row="2"
-                            android:background="#ffffff"
                             android:scaleType="centerInside"
                             android:src="@drawable/graph" />
 
+                        
+
                         <ImageButton
-                            android:id="@+id/katalog"
+                            android:id="@+id/imageButton2"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_column="1"
                             android:layout_gravity="left"
                             android:layout_row="2"
                             android:scaleType="centerInside"
-                            android:background="#ffffff"
                             android:src="@drawable/katalog" />
 
                         <ImageButton
-                            android:id="@+id/achievement"
+                            android:id="@+id/imageButton3"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_column="0"
                             android:layout_gravity="left"
                             android:layout_row="3"
                             android:scaleType="centerInside"
-<<<<<<< HEAD
                             android:src="@drawable/achivement" />
-=======
-                            android:background="#ffffff"
-                            android:src="@drawable/achievement" />
->>>>>>> f64a83cffd1d1bdd01b9cc73bf0fd06f59f0e127
 
                         <ImageButton
-                            android:id="@+id/pengaturan"
+                            android:id="@+id/imageButton1"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_column="1"
                             android:layout_gravity="left"
                             android:layout_row="3"
                             android:scaleType="centerInside"
-<<<<<<< HEAD
                             android:src="@drawable/configuration" />
-=======
-                            android:background="#ffffff"
-                            android:src="@drawable/pengaturan" />
->>>>>>> f64a83cffd1d1bdd01b9cc73bf0fd06f59f0e127
                     </GridLayout>
 
                 </LinearLayout>
