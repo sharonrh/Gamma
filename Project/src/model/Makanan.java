@@ -15,6 +15,7 @@ public class Makanan {
 	private boolean isHewani;
 	private boolean isSeafood;
 	private boolean isKacang;
+	private int terakhirDipilih;
 	
 	public Makanan(){}
 	
@@ -34,6 +35,7 @@ public class Makanan {
 		this.isHewani = false;
 		this.isSeafood = false;
 		this.isKacang = false;
+		this.terakhirDipilih = 0;
 	}
 
 	public String getNama() {
@@ -138,6 +140,14 @@ public class Makanan {
 
 	public void setSeafood(boolean isSeafood) {
 		this.isSeafood = isSeafood;
+	}
+
+	public int getTerakhir() {
+		return terakhirDipilih;
 	}	
+
+	public void setTerakhir(int terakhirDipilih) {
+		this.terakhirDipilih = terakhirDipilih;
+	}
 	
 }

@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
 import com.example.gamma.R;
 
 public class NotifikasiActivity extends Activity {
 	
-	
+	String str;
 	Button tambahNotifikasiBtn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +40,30 @@ public class NotifikasiActivity extends Activity {
 
 				    // Inflate and set the layout for the dialog
 				    // Pass null as the parent view because its going in the dialog layout
-				 alertDialog.setView(inflater.inflate(R.layout.atur_notifikasi_layout, null));
+				 View v = inflater.inflate(R.layout.atur_notifikasi_layout, null);
+				 alertDialog.setView(v);
 
 				// Setting Icon to Dialog
 			//	alertDialog.setIcon(R.drawable.ic_launcher);
-
+				 
+				 final EditText tv = (EditText) v.findViewById(R.id.namaNotifikasiFields);
+				 
+				 
 				// Setting OK Button
-				alertDialog.setButton("OK",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-							}
-						});
+				 alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "batal", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int which) {
+							System.out.println(tv.getText().toString());
+							System.out.println("fifun ganteng");
+						}
+					});
+				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "simpan", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int which) {
+						
+					}
+				});
+				
 				// Showing Alert Message
 				alertDialog.show();
 			
