@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Laporan;
 import android.content.ContentValues;
@@ -12,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 //code source from here : http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
 
 public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
-
+	private static DatabaseHandlerLaporan sInstance;
 	// All Static variables
 	// Database Version
 	private static final int versiDB = 1;
@@ -20,7 +21,7 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 	// Database Name
 	private static final String namaDB = "gamma.db";
 	private static final String KEY_ID = "id";
-	
+
 	// Nama tabel yang akan dibuat
 	private static final String tabelLaporan = "laporan";
 
@@ -30,18 +31,26 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 	private static final String berat = "berat";
 	private static final String tinggi = "tinggi";
 
+	public static DatabaseHandlerLaporan getInstance(Context context) {
+		if (sInstance == null) {
+			sInstance = new DatabaseHandlerLaporan(context);
+		}
+		return sInstance;
+	}
 
-	public DatabaseHandlerLaporan(Context context) {
+	private DatabaseHandlerLaporan(Context context) {
 		super(context, namaDB, null, versiDB);
+		System.out.println("constructor called");
 	}
 
 	// Creating Tables
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String buatTabelLaporan = "CREATE TABLE " + tabelLaporan + "("
-				+ id + " INTEGER PRIMARY KEY AUTOINCREMENT," + waktu + " INTEGER,"
+		String buatTabelLaporan = "CREATE TABLE " + tabelLaporan + "(" + id
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT," + waktu + " INTEGER,"
 				+ berat + " REAL," + tinggi + " REAL" + ")";
 		db.execSQL(buatTabelLaporan);
+		System.out.println("database created");
 	}
 
 	// Upgrading database
@@ -56,36 +65,37 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 
 	/**
 	 * All CRUD(Create, Read, Update, Delete) Operations
+	 * 
+	 * @return
 	 */
 
-	// Adding new laporan
-	void tambahLaporan(Laporan laporan) {
+	public boolean tambahLaporan(long waktuInput, String beratInput,
+			String tinggiInput) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		
-		ContentValues values = new ContentValues();
-		values.put(waktu, laporan.getWaktu());
-		values.put(berat, laporan.getBeratBadan());
-		values.put(tinggi, laporan.getTinggiBadan());
 
-		// Inserting Row
-		db.insert(tabelLaporan, null, values);
-		db.close(); // Closing database connection
+		ContentValues values = new ContentValues();
+		values.put(waktu, waktuInput);
+		values.put(berat, beratInput);
+		values.put(tinggi, tinggiInput);
+
+		return getWritableDatabase().insert(tabelLaporan, null, values) > 0;
 	}
 
 	// Getting single laporan
-	Laporan getLaporan(String nama) {
+	public Laporan getLaporan(String nama) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(tabelLaporan, new String[] { id, waktu, berat, tinggi }, KEY_ID + "=?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
+		Cursor cursor = db.query(tabelLaporan, new String[] { id, waktu, berat,
+				tinggi }, KEY_ID + "=?", new String[] { String.valueOf(id) },
+				null, null, null, null);
+
 		if (cursor != null)
 			cursor.moveToFirst();
 
 		Laporan laporan = new Laporan(Long.parseLong(cursor.getString(1)),
 				Double.parseDouble(cursor.getString(2)),
-				Double.parseDouble(cursor.getString(3));
+				Double.parseDouble(cursor.getString(3)));
 
-		// return laporan
 		return laporan;
 	}
 
@@ -95,16 +105,16 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 		// Select All Query
 		String selectQuery = "SELECT  * FROM " + tabelLaporan;
 
-		SQLiteDatabase db = this.getWritableDatabase();
+		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
 				Laporan laporan = new Laporan();
-				laporan.setWaktu(Long.parseLong(cursor.getString(1));
+				laporan.setWaktu(Long.parseLong(cursor.getString(1)));
 				laporan.setBeratBadan(Double.parseDouble(cursor.getString(2)));
-				laporan.setTinggiBadan(Double.parseDouble(cursor.getString(3);
+				laporan.setTinggiBadan(Double.parseDouble(cursor.getString(3)));
 
 				// Adding laporan to list
 				laporanList.add(laporan);
@@ -115,37 +125,21 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 		return laporanList;
 	}
 
-	// Updating single laporan
-	public int updateContact(Laporan laporan) {
-		SQLiteDatabase db = this.getWritableDatabase();
-
-		ContentValues values = new ContentValues();
-		values.put(waktu, laporan.getWaktu());
-		values.put(berat, laporan.getBeratBadan());
-		values.put(tinggi, laporan.getTinggiBadan());
-		
-		// updating row
-		return db.update(tabelLaporan, values, KEY_ID + " = ?",
-				new String[] { String.valueOf(id) });
-	}
-
 	// Deleting single laporan
-	public void deleteContact(Laporan laporan) {
+	public void deleteLaporan(Laporan laporan) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.delete(tabelLaporan, KEY_ID + " = ?",
 				new String[] { String.valueOf(id) });
-		db.close();
 	}
 
-	// Getting laporans Count
-	public int getContactsCount() {
+	// Getting laporan count
+	public int getLaporanCount() {
 		String countQuery = "SELECT  * FROM " + tabelLaporan;
-		SQLiteDatabase db = this.getReadableDatabase();
+		SQLiteDatabase db = getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
-		cursor.close();
+		// cursor.close();
 
 		// return count
 		return cursor.getCount();
 	}
-
 }

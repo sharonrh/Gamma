@@ -1,27 +1,28 @@
 package controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import android.content.Context;
-import dao.DatabaseHelper;
 import model.Laporan;
+import android.content.Context;
+import android.text.format.Time;
+import dao.DatabaseHandlerLaporan;
 
 public class LaporanController {
-	
-	private DatabaseHelper helper;
-	
-	public LaporanController(Context c) {
 
-		helper = new DatabaseHelper(c);
+	private DatabaseHandlerLaporan db;
+
+	public LaporanController(Context c) {
+		db = DatabaseHandlerLaporan.getInstance(c);
 	}
-	
-	public boolean addLaporan(String berat, String tinggi){
-		boolean cek = helper.insertLaporan(berat, tinggi);
-			
-		return cek;
+
+	public boolean addLaporan(String berat, String tinggi) {
+		Time t = new Time();
+		t.setToNow();
+		long l = t.toMillis(false);
+		return db.tambahLaporan(l, berat, tinggi);
 	}
-	
-	public ArrayList<Laporan> getListLaporan(){
-		return helper.getDataLaporan();
+
+	public List<Laporan> getListLaporan() {
+		return db.getAllLaporan();
 	}
 }

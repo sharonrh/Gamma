@@ -6,8 +6,10 @@ public class Laporan {
 	private double beratBadan;
 	private long waktu;
 
+	public Laporan() {
+	}
+
 	public Laporan(long waktu, double beratBadan, double tinggiBadan) {
-		super();
 		this.tinggiBadan = tinggiBadan;
 		this.beratBadan = beratBadan;
 		this.waktu = waktu;
