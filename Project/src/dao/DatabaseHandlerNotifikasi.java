@@ -21,7 +21,7 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 	// Database Name
 	private static final String namaDB = "gamma.db";
 	private static final String KEY_ID = "id";
-	
+
 	// Nama tabel yang akan dibuat
 	private static final String tabelNotifikasi = "notifikasi";
 
@@ -30,7 +30,6 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 	private static final String nama = "nama";
 	private static final String waktu = "waktu";
 	private static final String pesan = "pesan";
-
 
 	public DatabaseHandlerNotifikasi(Context context) {
 		super(context, namaDB, null, versiDB);
@@ -62,7 +61,7 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 	// Adding new notifikasi
 	void tambahNotifikasi(Notifikasi notifikasi) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		
+
 		ContentValues values = new ContentValues();
 		values.put(nama, notifikasi.getNama());
 		values.put(waktu, notifikasi.getWaktu());
@@ -77,14 +76,14 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 	Notifikasi getNotifikasi(String nama) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(tabelNotifikasi, new String[] { id, nama, waktu, pesan }, KEY_ID + "=?",
+		Cursor cursor = db.query(tabelNotifikasi, new String[] { id, nama,
+				waktu, pesan }, KEY_ID + "=?",
 				new String[] { String.valueOf(nama) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
 		Notifikasi notifikasi = new Notifikasi(cursor.getString(1),
-				Long.parseLong(cursor.getString(2)),
-				cursor.getString(3));
+				Long.parseLong(cursor.getString(2)), cursor.getString(3));
 
 		// return notifikasi
 		return notifikasi;
@@ -115,7 +114,6 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 		// return notifikasi list
 		return notifikasiList;
 	}
-
 
 	// Deleting single notifikasi
 	public void deleteContact(Notifikasi notifikasi) {
