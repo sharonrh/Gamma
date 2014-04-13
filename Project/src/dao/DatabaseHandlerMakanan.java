@@ -1,6 +1,8 @@
 package dao;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	// Database Name
 	private static final String namaDB = "gamma.db";
 	private static final String KEY_ID = "id";
-	
+
 	// Nama tabel yang akan dibuat
 	private static final String tabelMakanan = "makanan";
 
@@ -42,9 +44,10 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	private static final String seafood = "seafood";
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
-	
+
 	public DatabaseHandlerMakanan(Context context) {
 		super(context, namaDB, null, versiDB);
+		bacaFile(context);
 	}
 
 	// Creating Tables
@@ -54,7 +57,9 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 				+ namaMakanan + " TEXT PRIMARY KEY," + jlhKalori + " INTEGER,"
 				+ jlhProtein + " REAL," + jlhLemak + " REAL," + jlhKarbo
 				+ " REAL," + jlhKalsium + " REAL," + rating + " INTEGER,"
-				+ persentase + " REAL," + jenis + " TEXT" + hewani + " INTEGER," + seafood + " INTEGER," + kacang + " INTEGER," + terakhir + " INTEGER" + ")";
+				+ persentase + " REAL," + jenis + " TEXT" + hewani
+				+ " INTEGER," + seafood + " INTEGER," + kacang + " INTEGER,"
+				+ terakhir + " INTEGER" + ");";
 		db.execSQL(buatTabelMakanan);
 	}
 
@@ -88,17 +93,17 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 		values.put(jenis, makanan.getJenisMakanan());
 		if (makanan.isHewani()) {
 			h = 1;
-		} 
+		}
 		values.put(hewani, h);
 
 		if (makanan.isSeafood()) {
 			s = 1;
-		} 
+		}
 		values.put(seafood, s);
-		
+
 		if (makanan.isKacang()) {
 			k = 1;
-		} 
+		}
 		values.put(kacang, k);
 		values.put(terakhir, makanan.getTerakhir());
 
@@ -113,8 +118,9 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 
 		Cursor cursor = db.query(tabelMakanan, new String[] { namaMakanan,
 				jlhKalori, jlhProtein, jlhLemak, jlhKarbo, jlhKalsium, rating,
-				persentase, jenis, hewani, seafood, kacang, terakhir }, namaMakanan + "=?",
-				new String[] { String.valueOf(nama) }, null, null, null, null);
+				persentase, jenis, hewani, seafood, kacang, terakhir },
+				namaMakanan + "=?", new String[] { String.valueOf(nama) },
+				null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
@@ -124,13 +130,14 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 				Double.parseDouble(cursor.getString(3)),
 				Double.parseDouble(cursor.getString(4)),
 				Double.parseDouble(cursor.getString(5)),
-				Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor.getString(7)), cursor.getString(8), 100);
+				Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor
+						.getString(7)), cursor.getString(8), 100);
 
 		// retrieve data alegi
 		int h = Integer.parseInt(cursor.getString(9));
 		int s = Integer.parseInt(cursor.getString(10));
 		int k = Integer.parseInt(cursor.getString(11));
-		
+
 		if (h == 1) {
 			makanan.setHewani(true);
 		}
@@ -173,7 +180,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 				int h = Integer.parseInt(cursor.getString(9));
 				int s = Integer.parseInt(cursor.getString(10));
 				int k = Integer.parseInt(cursor.getString(11));
-				
+
 				if (h == 1) {
 					makanan.setHewani(true);
 				}
@@ -210,20 +217,20 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 		values.put(jenis, makanan.getJenisMakanan());
 		if (makanan.isHewani()) {
 			h = 1;
-		} 
+		}
 		values.put(hewani, h);
 
 		if (makanan.isSeafood()) {
 			s = 1;
-		} 
+		}
 		values.put(seafood, s);
-		
+
 		if (makanan.isKacang()) {
 			k = 1;
-		} 
+		}
 		values.put(kacang, k);
 		values.put(terakhir, makanan.getTerakhir());
-		
+
 		// updating row
 		return db.update(tabelMakanan, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(makanan.getNama()) });
@@ -249,41 +256,44 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	}
 
 	// Baca data dari csv
-	public ArrayList<Makanan> bacaFile() {
-<<<<<<< HEAD
+	public ArrayList<Makanan> bacaFile(Context context) {
 		ArrayList<Makanan> mk = new ArrayList<Makanan>();
-		AssetManager am = getAssets();
-		InputStreamReader is = new InputStreamReader(am.open("data_makanan.csv"));
-=======
-		ArrayList<Makanan> mk = new ArrayList<>();
-		
 		AssetManager am = context.getAssets();
-		InputStream is = am.open("data_makanan.csv");
+		InputStream is;
+		try {
+			is = am.open("data_makanan.csv");
 
-		//InputStreamReader is = new InputStreamReader(getAssets().open("data_makanan.csv"));
->>>>>>> c45da8e41716348016aabe59b2e54f7c98328a4b
+			InputStreamReader isr = new InputStreamReader(is);
 
-        BufferedReader reader = new BufferedReader(is);
-        reader.readLine(); //baca header
-        String line;
-        
-        while ((line = reader.readLine()) != null) {
-        	String[] temp = line.split(",");
-        	boolean isHewani = false, isSeafood = false, isKacang = false;
-        	if (temp[9].charAt(0) == 'Y') {
-        		isHewani = true;
-        	}
-        	if (temp[10].charAt(0) == 'Y') {
-        		isSeafood = true;
-        	}
-        	if (temp[11].charAt(0) == 'Y') {
-        		isKacang = true;
-        	}
-        	Makanan ma = new Makanan(temp[0], Integer.parseInt(temp[1]), Double.parseDouble(temp[2]), Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Double.parseDouble(temp[5]), Integer.parseInt(temp[6]), Integer.parseInt(temp[7]), temp[8], isHewani, isSeafood, isKacang, Integer.parseInt(temp[12]));
-        	mk.add(ma);
-        }
+			BufferedReader reader = new BufferedReader(isr);
+			reader.readLine(); // baca header
+			String line;
 
-        return mk;
+			while ((line = reader.readLine()) != null) {
+				String[] temp = line.split(",");
+				boolean isHewani = false, isSeafood = false, isKacang = false;
+				if (temp[9].charAt(0) == 'Y') {
+					isHewani = true;
+				}
+				if (temp[10].charAt(0) == 'Y') {
+					isSeafood = true;
+				}
+				if (temp[11].charAt(0) == 'Y') {
+					isKacang = true;
+				}
+				Makanan ma = new Makanan(temp[0], Integer.parseInt(temp[1]),
+						Double.parseDouble(temp[2]),
+						Double.parseDouble(temp[3]),
+						Double.parseDouble(temp[4]),
+						Double.parseDouble(temp[5]), Integer.parseInt(temp[6]),
+						Integer.parseInt(temp[7]), temp[8],
+						Integer.parseInt(temp[12]));
+				mk.add(ma);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mk;
 	}
-
 }

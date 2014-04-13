@@ -30,7 +30,7 @@ public class LaporanFragment extends Fragment {
 		// Inflate the layout for this fragment
 
 		View v = inflater.inflate(R.layout.fragment_laporan, container, false);
-		
+
 		kontrol = new LaporanController(getActivity().getApplicationContext());
 		beratField = (EditText) v.findViewById(R.id.berat);
 		tinggiField = (EditText) v.findViewById(R.id.tinggi);
@@ -69,9 +69,7 @@ public class LaporanFragment extends Fragment {
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int which) {
-									
 									getActivity().finish();
-									
 								}
 							});
 					// Showing Alert Message
@@ -94,9 +92,6 @@ public class LaporanFragment extends Fragment {
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int which) {
-									
-									
-									
 								}
 							});
 					// Showing Alert Message

@@ -16,12 +16,13 @@ public class Makanan {
 	private boolean isSeafood;
 	private boolean isKacang;
 	private int terakhirDipilih;
-	
-	public Makanan(){}
-	
-	public Makanan(String nama, double kalori, double protein, double karbohidrat,
-			double lemak, double kalsium, int persentase, int rating, String jenisMakanan, int berat) {
-		super();
+
+	public Makanan() {
+	}
+
+	public Makanan(String nama, int kalori, double protein, double karbohidrat,
+			double lemak, double kalsium, int persentase, int rating,
+			String jenisMakanan, int berat) {
 		this.nama = nama;
 		this.kalori = kalori;
 		this.protein = protein;
@@ -50,7 +51,7 @@ public class Makanan {
 		return kalori;
 	}
 
-	public void setKalori(double kalori) {
+	public void setKalori(int kalori) {
 		this.kalori = kalori;
 	}
 
@@ -144,10 +145,10 @@ public class Makanan {
 
 	public int getTerakhir() {
 		return terakhirDipilih;
-	}	
+	}
 
 	public void setTerakhir(int terakhirDipilih) {
 		this.terakhirDipilih = terakhirDipilih;
 	}
-	
+
 }
