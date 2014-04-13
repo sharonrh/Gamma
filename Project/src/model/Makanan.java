@@ -146,8 +146,8 @@ public class Makanan {
 		return terakhirDipilih;
 	}	
 
-	public void setTerakhir() {
-		this.terakhirDipilih++;
+	public void setTerakhir(int terakhirDipilih) {
+		this.terakhirDipilih = terakhirDipilih;
 	}
 	
 }

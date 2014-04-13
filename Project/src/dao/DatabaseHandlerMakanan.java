@@ -38,6 +38,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	private static final String hewani = "hewani";
 	private static final String seafood = "seafood";
 	private static final String kacang = "kacang";
+	private static final String terakhir = "terakhirDipilih"
 	
 
 	public DatabaseHandlerMakanan(Context context) {
@@ -48,10 +49,10 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String buatTabelMakanan = "CREATE TABLE " + tabelMakanan + "("
-				+ namaMakanan + " TEXT PRIMARY KEY," + jlhKalori + " REAL,"
+				+ namaMakanan + " TEXT PRIMARY KEY," + jlhKalori + " INTEGER,"
 				+ jlhProtein + " REAL," + jlhLemak + " REAL," + jlhKarbo
 				+ " REAL," + jlhKalsium + " REAL," + rating + " INTEGER,"
-				+ persentase + " REAL," + jenis + " TEXT" + hewani + " INTEGER," + seafood + " INTEGER," + kacang + " INTEGER" + ")";
+				+ persentase + " REAL," + jenis + " TEXT" + hewani + " INTEGER," + seafood + " INTEGER," + kacang + " INTEGER," + terakhir + " INTEGER" + ")";
 		db.execSQL(buatTabelMakanan);
 	}
 
@@ -97,7 +98,8 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 			k = 1;
 		} 
 		values.put(kacang, k);
-		
+		values.put(terakhir, makanan.getTerakhir());
+
 		// Inserting Row
 		db.insert(tabelMakanan, null, values);
 		db.close(); // Closing database connection
@@ -115,7 +117,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 			cursor.moveToFirst();
 
 		Makanan makanan = new Makanan(cursor.getString(0),
-				Double.parseDouble(cursor.getString(1)),
+				Integer.parseInt(cursor.getString(1)),
 				Double.parseDouble(cursor.getString(2)),
 				Double.parseDouble(cursor.getString(3)),
 				Double.parseDouble(cursor.getString(4)),
@@ -136,6 +138,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 		if (k == 1) {
 			makanan.setKacang(true);
 		}
+		makanan.setTerakhir(Integer.parseInt(cursor.getString(12)));
 
 		// return makanan
 		return makanan;
@@ -155,7 +158,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(Double.parseDouble(cursor.getString(1)));
+				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
 				makanan.setProtein(Double.parseDouble(cursor.getString(2)));
 				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(3)));
 				makanan.setLemak(Double.parseDouble(cursor.getString(4)));
@@ -178,6 +181,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 				if (k == 1) {
 					makanan.setKacang(true);
 				}
+				makanan.setTerakhir(Integer.parseInt(cursor.getString(12)));
 
 				// Adding makanan to list
 				makananList.add(makanan);
@@ -216,6 +220,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 			k = 1;
 		} 
 		values.put(kacang, k);
+		values.put(terakhir, makanan.getTerakhir());
 		
 		// updating row
 		return db.update(tabelMakanan, values, KEY_ID + " = ?",
