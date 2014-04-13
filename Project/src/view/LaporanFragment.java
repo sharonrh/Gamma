@@ -70,6 +70,9 @@ public class LaporanFragment extends Fragment {
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int which) {
+									
+									getActivity().finish();
+									
 								}
 							});
 					// Showing Alert Message
@@ -92,6 +95,9 @@ public class LaporanFragment extends Fragment {
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int which) {
+									
+									
+									
 								}
 							});
 					// Showing Alert Message
@@ -107,7 +113,7 @@ public class LaporanFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				getActivity().finish();
 			}
 		});
 
