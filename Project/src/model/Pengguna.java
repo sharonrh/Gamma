@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Pengguna {
 
-	private int id;
 	private String nama;
 	private int umur;
 	private double berat;
@@ -15,11 +14,9 @@ public class Pengguna {
 	private boolean isAlergiSeafood;
 	private boolean isVegetarian;
 	
-	public Pengguna(int id, String nama, int umur, double berat, double tinggi,
+	public Pengguna(String nama, int umur, double berat, double tinggi,
 			double target, char gender, int gayaHidup, boolean isAlergiKacang,
 			boolean isAlergiSeafood, boolean isVegetarian) {
-		super();
-		this.id = id;
 		this.nama = nama;
 		this.umur = umur;
 		this.berat = berat;
@@ -30,15 +27,6 @@ public class Pengguna {
 		this.isAlergiKacang = isAlergiKacang;
 		this.isAlergiSeafood = isAlergiSeafood;
 		this.isVegetarian = isVegetarian;
-
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNama() {

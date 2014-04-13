@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Laporan;
@@ -40,7 +41,6 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 
 	private DatabaseHandlerLaporan(Context context) {
 		super(context, namaDB, null, versiDB);
-		System.out.println("constructor called");
 	}
 
 	// Creating Tables
@@ -72,18 +72,30 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 	public boolean tambahLaporan(long waktuInput, String beratInput,
 			String tinggiInput) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		SQLiteDatabase db2 = this.getReadableDatabase();
 
-		Cursor cursor = db.rawQuery("SELECT  * FROM " + tabelLaporan, null);
-		cursor.moveToLast();
-		
-		
+		System.out.println("size: " + getLaporanCount());
 		ContentValues values = new ContentValues();
 		values.put(waktu, waktuInput);
 		values.put(berat, beratInput);
 		values.put(tinggi, tinggiInput);
 
-		return getWritableDatabase().insert(tabelLaporan, null, values) > 0;
+		Cursor cursor = db.rawQuery("SELECT waktu  FROM " + tabelLaporan, null);
+
+		// pastiin dia ga kosong
+		if (cursor.moveToLast()) {
+			Calendar c = Calendar.getInstance();
+			c.setTimeInMillis(waktuInput);
+			Calendar cl = Calendar.getInstance();
+			c.setTimeInMillis(Long.parseLong(cursor.getString(0)));
+			// kalo tanggalnya sama, update data yang lama
+			if (c.get(Calendar.YEAR) == cl.get(Calendar.YEAR)
+					&& c.get(Calendar.MONTH) == cl.get(Calendar.MONTH)
+					&& c.get(Calendar.DATE) == cl.get(Calendar.DATE)) {
+				return db.update(tabelLaporan, values, KEY_ID + " = ?",
+						new String[] { String.valueOf(cursor.getCount()) }) > 0;
+			}
+		}
+		return db.insert(tabelLaporan, null, values) > 0;
 	}
 
 	// Getting single laporan
@@ -131,7 +143,7 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 	}
 
 	// Deleting single laporan
-	public void deleteLaporan(Laporan laporan) {
+	public void deleteLaporan(int id) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.delete(tabelLaporan, KEY_ID + " = ?",
 				new String[] { String.valueOf(id) });

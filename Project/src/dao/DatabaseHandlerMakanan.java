@@ -1,11 +1,14 @@
 package dao;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Makanan;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -144,7 +147,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	}
 
 	// Getting All Contacts
-	public ArrayList<Makanan> getAllMakanan() {
+	public List<Makanan> getAllMakanan() {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// Select All Query
 		String selectQuery = "SELECT  * FROM " + tabelMakanan;
@@ -247,8 +250,9 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 
 	// Baca data dari csv
 	public ArrayList<Makanan> bacaFile() {
-		ArrayList<Makanan> mk = new ArrayList<>();
-		InputStreamReader is = new InputStreamReader(getAssets().open("data_makanan.csv"));
+		ArrayList<Makanan> mk = new ArrayList<Makanan>();
+		AssetManager am = getAssets();
+		InputStreamReader is = new InputStreamReader(am.open("data_makanan.csv"));
 
         BufferedReader reader = new BufferedReader(is);
         reader.readLine(); //baca header
