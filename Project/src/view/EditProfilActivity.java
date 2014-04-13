@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gamma.R;
@@ -74,6 +76,10 @@ public class EditProfilActivity extends Activity {
 		spinTransport.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View view,
 					int position, long id) {
+				
+				//ganti warna text
+				//TextView oTextView = (TextView)spinTransport.getChildAt(0);
+				//oTextView.setTextColor(Color.RED);
 
 				// On selecting a spinner item
 				String item = parent.getItemAtPosition(position).toString();
