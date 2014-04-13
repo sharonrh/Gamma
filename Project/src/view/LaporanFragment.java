@@ -30,6 +30,7 @@ public class LaporanFragment extends Fragment {
 		// Inflate the layout for this fragment
 
 		View v = inflater.inflate(R.layout.fragment_laporan, container, false);
+		
 		kontrol = new LaporanController(getActivity().getApplicationContext());
 		beratField = (EditText) v.findViewById(R.id.berat);
 		tinggiField = (EditText) v.findViewById(R.id.tinggi);
@@ -51,8 +52,6 @@ public class LaporanFragment extends Fragment {
 				}
 
 				if (cek) {
-					System.out.println(kontrol.getListLaporan().toString());
-
 					AlertDialog alertDialog = new AlertDialog.Builder(
 							getActivity()).create();
 

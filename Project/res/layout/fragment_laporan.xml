@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="Tinggi Badan Sekarang (cm)" />
 
         <EditText
@@ -56,21 +56,23 @@
 
             <Button
                 android:id="@+id/button1"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/button_style"
                 android:layout_marginRight="10dp"
-                android:text="Simpan" />
+                android:background="@drawable/button_style"
+                android:text="Simpan"
+                android:textSize="14dp" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_style"
                 android:layout_gravity="right"
                 android:layout_marginLeft="10dp"
-                android:text="Batal" />
+                android:background="@drawable/button_style"
+                android:text="Batal"
+                android:textSize="14dp" />
 
         </LinearLayout>
     

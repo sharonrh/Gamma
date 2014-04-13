@@ -1,8 +1,8 @@
 package view;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import model.Laporan;
 
@@ -29,8 +29,6 @@ import controller.LaporanController;
 
 public class StatistikFragment extends Fragment {
 
-	LaporanController con = new LaporanController(getActivity());
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -47,29 +45,30 @@ public class StatistikFragment extends Fragment {
 	}
 
 	private void drawChart() {
-		int count = 5;
-		Date[] x = new Date[count];
-		for (int i = 0; i < count; i++) {
-			GregorianCalendar gc = new GregorianCalendar(2012, 8, (1 + i) * 7);
-			x[i] = gc.getTime();
-		}
-		int[] target = { 40, 41, 42, 43, 44 };
-		ArrayList<Laporan> list = con.getListLaporan();
+		LaporanController con = new LaporanController(getActivity()
+				.getApplicationContext());
+		List<Laporan> list = con.getListLaporan();
+
 		// Creating an XYSeries for Income
 		TimeSeries targetSeries = new TimeSeries("Target");
 		// Creating an XYSeries for Income
 		TimeSeries realSeries = new TimeSeries("Realized");
-		// Adding data to Income and Expense Series
-		for (int i = 0; i < x.length; i++) {
+
+		int count = list.size();
+		Date[] x = new Date[count];
+		for (int i = 0; i < count; i++) {
 			Laporan l = list.get(i);
-			targetSeries.add(x[i], target[i]);
-			realSeries.add(x[i], l.getBeratBadan()); // masih null gara2 database kosong
+			// targetSeries.add(x[i], target[i]);
+			GregorianCalendar gc = new GregorianCalendar();
+			gc.setTimeInMillis(l.getWaktu());
+			x[i] = gc.getTime();
+			realSeries.add(x[i], l.getBeratBadan());
 		}
 
 		// Creating a dataset to hold each series
 		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
 		// Adding Income Series to the dataset
-		dataset.addSeries(targetSeries);
+		// dataset.addSeries(targetSeries);
 		// Adding Expense Series to dataset
 		dataset.addSeries(realSeries);
 
@@ -99,7 +98,8 @@ public class StatistikFragment extends Fragment {
 		// Note: The order of adding dataseries to dataset and renderers to
 		// multipleRenderer
 		// should be same
-		multiRenderer.addSeriesRenderer(incomeRenderer);
+
+		// multiRenderer.addSeriesRenderer(incomeRenderer);
 		multiRenderer.addSeriesRenderer(expenseRenderer);
 		multiRenderer.setApplyBackgroundColor(true);
 		multiRenderer.setBackgroundColor(Color.BLACK);
