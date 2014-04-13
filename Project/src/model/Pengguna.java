@@ -15,9 +15,9 @@ public class Pengguna {
 	private boolean isAlergiSeafood;
 	private boolean isVegetarian;
 	
-	public Pengguna(int id, String nama, int umur, int berat, int tinggi,
-			int target, char gender, int gayaHidup, boolean isAlergiKacang,
-			boolean isAlergiTelur, boolean isAlergiSeafood, boolean isVegetarian) {
+	public Pengguna(int id, String nama, int umur, double berat, double tinggi,
+			double target, char gender, int gayaHidup, boolean isAlergiKacang,
+			boolean isAlergiSeafood, boolean isVegetarian) {
 		super();
 		this.id = id;
 		this.nama = nama;
@@ -28,7 +28,6 @@ public class Pengguna {
 		this.gender = gender;
 		this.gayaHidup = gayaHidup;
 		this.isAlergiKacang = isAlergiKacang;
-		this.isAlergiTelur = isAlergiTelur;
 		this.isAlergiSeafood = isAlergiSeafood;
 		this.isVegetarian = isVegetarian;
 
@@ -58,7 +57,7 @@ public class Pengguna {
 		this.umur = umur;
 	}
 
-	public int getBerat() {
+	public double getBerat() {
 		return berat;
 	}
 
@@ -66,7 +65,7 @@ public class Pengguna {
 		this.berat = berat;
 	}
 
-	public int getTinggi() {
+	public double getTinggi() {
 		return tinggi;
 	}
 
@@ -74,7 +73,7 @@ public class Pengguna {
 		this.tinggi = tinggi;
 	}
 
-	public int getTarget() {
+	public double getTarget() {
 		return target;
 	}
 

@@ -31,6 +31,10 @@
             android:layout_width="match_parent"
             android:layout_height="211dp"
             android:layout_weight="0.60" 
+            android:clickable="false"
+        	android:dividerHeight="3dp"
+        	android:drawSelectorOnTop="false"
+        	android:listSelector="@drawable/list_selector" 
             >
 
         </ListView>

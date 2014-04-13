@@ -68,7 +68,7 @@ public class DatabaseHandlerProfil extends SQLiteOpenHelper {
 	 */
 
 	// Adding new profil
-	void tambahProfil(Profil profil) {
+	void tambahProfil(Pengguna profil) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		int h = 0, s = 0, k = 0, g = 0;
 		ContentValues values = new ContentValues();
@@ -83,17 +83,17 @@ public class DatabaseHandlerProfil extends SQLiteOpenHelper {
 		}
 		values.put(gender, g);
 		values.put(gayaHidup, profil.getGayaHidup());
-		if (profil.isKacang()) {
+		if (profil.isAlergiKacang()) {
 			k = 1;
 		} 
 		values.put(kacang, k);
 
-		if (profil.isSeafood()) {
+		if (profil.isAlergiSeafood()) {
 			s = 1;
 		} 
 		values.put(seafood, s);
 
-		if (profil.isHewani()) {
+		if (profil.isVegetarian()) {
 			h = 1;
 		} 
 		values.put(hewani, h);
@@ -104,11 +104,11 @@ public class DatabaseHandlerProfil extends SQLiteOpenHelper {
 	}
 
 	// Getting single profil
-	Profil getProfil(int id) {
+	Pengguna getProfil(int ID) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(tabelProfil, new String[] { id, nama, umur, berat, tinggi, target, gender, gayaHidup, kacang, seafood, hewani }, namaProfil + "=?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
+		Cursor cursor = db.query(tabelProfil, new String[] {id, nama, umur, berat, tinggi, target, gender, gayaHidup, kacang, seafood, hewani }, id + "=?",
+				new String[] { String.valueOf(ID) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
@@ -118,7 +118,7 @@ public class DatabaseHandlerProfil extends SQLiteOpenHelper {
 				Double.parseDouble(cursor.getString(3)),
 				Double.parseDouble(cursor.getString(4)),
 				Double.parseDouble(cursor.getString(5)),
-				'', Integer.parseInt(cursor.getString(7)), false, false, false);
+				cursor.getString(6).charAt(0), Integer.parseInt(cursor.getString(7)), false, false, false);
 
 		// retrieve data alegi
 		int h = Integer.parseInt(cursor.getString(9));
@@ -126,13 +126,13 @@ public class DatabaseHandlerProfil extends SQLiteOpenHelper {
 		int k = Integer.parseInt(cursor.getString(11));
 		
 		if (h == 1) {
-			profil.setHewani(true);
+			profil.setVegetarian(false);
 		}
 		if (s == 1) {
-			profil.setSeafood(true);
+			profil.setAlergiSeafood(true);
 		}
 		if (k == 1) {
-			profil.setKacang(true);
+			profil.setAlergiKacang(true);
 		}
 
 		// return profil
@@ -155,17 +155,17 @@ public class DatabaseHandlerProfil extends SQLiteOpenHelper {
 		}
 		values.put(gender, g);
 		values.put(gayaHidup, profil.getGayaHidup());
-		if (profil.isKacang()) {
+		if (profil.isAlergiKacang()) {
 			k = 1;
 		} 
 		values.put(kacang, k);
 
-		if (profil.isSeafood()) {
+		if (profil.isAlergiSeafood()) {
 			s = 1;
 		} 
 		values.put(seafood, s);
 
-		if (profil.isHewani()) {
+		if (profil.isVegetarian()) {
 			h = 1;
 		} 
 		values.put(hewani, h);
