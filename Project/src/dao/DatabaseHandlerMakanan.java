@@ -1,18 +1,16 @@
 package dao;
 
-<<<<<<< HEAD
-=======
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
->>>>>>> b3ce443ec4d43ee2057eb3910f21b913d41951db
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Makanan;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -46,10 +44,6 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	private static final String seafood = "seafood";
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
-<<<<<<< HEAD
-	
-=======
->>>>>>> b3ce443ec4d43ee2057eb3910f21b913d41951db
 
 	public DatabaseHandlerMakanan(Context context) {
 		super(context, namaDB, null, versiDB);
@@ -261,8 +255,6 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 		return cursor.getCount();
 	}
 
-<<<<<<< HEAD
-=======
 	// Baca data dari csv
 	public ArrayList<Makanan> bacaFile(Context context) {
 		ArrayList<Makanan> mk = new ArrayList<Makanan>();
@@ -304,5 +296,4 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 		}
 		return mk;
 	}
->>>>>>> b3ce443ec4d43ee2057eb3910f21b913d41951db
 }
