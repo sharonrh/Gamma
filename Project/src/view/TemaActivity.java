@@ -14,7 +14,7 @@ public class TemaActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_tema);
 		
-		RadioGroup rg = (RadioGroup) findViewById(R.id.jenisKelamin);
+		RadioGroup rg = (RadioGroup) findViewById(R.id.pilihTema);
 		
 		switch (rg.getCheckedRadioButtonId()) {
 		case R.id.holoDark:
