@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gamma.R;
@@ -31,8 +29,7 @@ public class EditProfilActivity extends Activity {
 	private RadioGroup genderPick;
 	private RadioButton pria, wanita;
 	private CheckBox telur, vegetarian, kacang, seafood;
-	private Spinner spinTransport, spinTransport2, spinTransport3,
-			spinTransport4, spinTransport5;
+	private Spinner spinTransport;
 	private Button batal, simpan;
 	private ImageView fotoProfil;
 	private String gaya, akv1, akv2, akv3, akv4;
@@ -43,10 +40,6 @@ public class EditProfilActivity extends Activity {
 		setContentView(R.layout.activity_edit_profil);
 
 		spinTransport = (Spinner) findViewById(R.id.spinnerGayaHidup);
-		spinTransport2 = (Spinner) findViewById(R.id.spinnerAktivitas1);
-		spinTransport3 = (Spinner) findViewById(R.id.spinnerAktivitas2);
-		spinTransport4 = (Spinner) findViewById(R.id.spinnerAktivitas3);
-		spinTransport5 = (Spinner) findViewById(R.id.spinnerAktivitas4);
 
 		namaField = (EditText) findViewById(R.id.editNama);
 		umurField = (EditText) findViewById(R.id.editUmur);
@@ -94,11 +87,7 @@ public class EditProfilActivity extends Activity {
 
 		// The Adapter is used to provide the data which backs this Spinner.
 		spinTransport.setAdapter(adapter);
-		spinTransport2.setAdapter(adapter2);
-		spinTransport3.setAdapter(adapter2);
-		spinTransport4.setAdapter(adapter2);
-		spinTransport5.setAdapter(adapter2);
-
+		
 		spinTransport.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View view,
 					int position, long id) {
@@ -116,94 +105,6 @@ public class EditProfilActivity extends Activity {
 
 				// simpan item yang dipilih
 				gaya = item;
-
-			}
-
-			public void onNothingSelected(AdapterView arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		spinTransport2.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView parent, View view,
-					int position, long id) {
-
-				// On selecting a spinner item
-				String item = parent.getItemAtPosition(position).toString();
-
-				// showing a toast on selecting an item
-				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
-						.show();
-
-				// simpan item yang dipilih
-				akv1 = item;
-
-			}
-
-			public void onNothingSelected(AdapterView arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		spinTransport3.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView parent, View view,
-					int position, long id) {
-
-				// On selecting a spinner item
-				String item = parent.getItemAtPosition(position).toString();
-
-				// showing a toast on selecting an item
-				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
-						.show();
-
-				// simpan item yang dipilih
-				akv2 = item;
-
-			}
-
-			public void onNothingSelected(AdapterView arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		spinTransport4.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView parent, View view,
-					int position, long id) {
-
-				// On selecting a spinner item
-				String item = parent.getItemAtPosition(position).toString();
-
-				// showing a toast on selecting an item
-				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
-						.show();
-
-				// simpan item yang dipilih
-				akv3 = item;
-
-			}
-
-			public void onNothingSelected(AdapterView arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		spinTransport5.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView parent, View view,
-					int position, long id) {
-
-				// On selecting a spinner item
-				String item = parent.getItemAtPosition(position).toString();
-
-				// showing a toast on selecting an item
-				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
-						.show();
-
-				// simpan item yang dipilih
-				akv4 = item;
 
 			}
 
@@ -231,12 +132,11 @@ public class EditProfilActivity extends Activity {
 				String umur = umurField.getText().toString();
 				String berat = beratField.getText().toString();
 				String tinggi = tinggiField.getText().toString();
-
-				
+				int gender = genderPick.getCheckedRadioButtonId();
 				
 				if (nama.length() != 0 && umur.length() != 0
 						&& berat.length() != 0 && tinggi.length() != 0) {
-				//	cek = kontrol.addLaporan(berat, tinggi);
+					// cek = kontrol.addLaporan(berat, tinggi);
 				}
 
 			}
