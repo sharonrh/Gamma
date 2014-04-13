@@ -248,7 +248,11 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	// Baca data dari csv
 	public ArrayList<Makanan> bacaFile() {
 		ArrayList<Makanan> mk = new ArrayList<>();
-		InputStreamReader is = new InputStreamReader(getAssets().open("data_makanan.csv"));
+		
+		AssetManager am = context.getAssets();
+		InputStream is = am.open("data_makanan.csv");
+
+		//InputStreamReader is = new InputStreamReader(getAssets().open("data_makanan.csv"));
 
         BufferedReader reader = new BufferedReader(is);
         reader.readLine(); //baca header
