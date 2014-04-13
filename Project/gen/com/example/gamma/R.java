@@ -56,29 +56,30 @@ public final class R {
         public static final int list_selector=0x7f020014;
         public static final int listview_shape=0x7f020015;
         public static final int male=0x7f020016;
-        public static final int peanut=0x7f020017;
-        public static final int pengaturan=0x7f020018;
-        public static final int profil=0x7f020019;
-        public static final int profile=0x7f02001a;
-        public static final int rekomendasi=0x7f02001b;
-        public static final int run=0x7f02001c;
-        public static final int setting_list_divider=0x7f02001d;
-        public static final int spinner=0x7f02001e;
-        public static final int sports=0x7f02001f;
-        public static final int statistik=0x7f020020;
-        public static final int stroganoff=0x7f020021;
-        public static final int study=0x7f020022;
-        public static final int style=0x7f020023;
-        public static final int trifle=0x7f020024;
-        public static final int vegetable=0x7f020025;
-        public static final int voilet=0x7f020026;
+        public static final int notifikasi_list_selector=0x7f020017;
+        public static final int peanut=0x7f020018;
+        public static final int pengaturan=0x7f020019;
+        public static final int profil=0x7f02001a;
+        public static final int profile=0x7f02001b;
+        public static final int rekomendasi=0x7f02001c;
+        public static final int run=0x7f02001d;
+        public static final int setting_list_divider=0x7f02001e;
+        public static final int spinner=0x7f02001f;
+        public static final int sports=0x7f020020;
+        public static final int statistik=0x7f020021;
+        public static final int stroganoff=0x7f020022;
+        public static final int study=0x7f020023;
+        public static final int style=0x7f020024;
+        public static final int trifle=0x7f020025;
+        public static final int vegetable=0x7f020026;
+        public static final int voilet=0x7f020027;
     }
     public static final class id {
         public static final int TextView01=0x7f0a000d;
         public static final int TextView02=0x7f0a0011;
         public static final int TextView03=0x7f0a002b;
         public static final int TextView04=0x7f0a002c;
-        public static final int Title=0x7f0a005f;
+        public static final int Title=0x7f0a0056;
         public static final int achievement=0x7f0a0023;
         public static final int action_settings=0x7f0a0061;
         public static final int aplikasi=0x7f0a0029;
@@ -87,7 +88,7 @@ public final class R {
         public static final int beratProfilTv=0x7f0a0037;
         public static final int button1=0x7f0a0032;
         public static final int button2=0x7f0a0033;
-        public static final int cancel_button=0x7f0a005b;
+        public static final int cancel_button=0x7f0a005d;
         public static final int chart_layout=0x7f0a0051;
         public static final int container=0x7f0a0000;
         public static final int deFault=0x7f0a0055;
@@ -132,12 +133,12 @@ public final class R {
         public static final int pengaturan=0x7f0a0024;
         public static final int pengembang=0x7f0a002a;
         public static final int pilihTema=0x7f0a0052;
-        public static final int pilihTemaTV=0x7f0a0057;
-        public static final int popup_element=0x7f0a0056;
+        public static final int pilihTemaTV=0x7f0a0059;
+        public static final int popup_element=0x7f0a0058;
         public static final int profil=0x7f0a001f;
         public static final int rekomendasi=0x7f0a0020;
         public static final int scrollView1=0x7f0a001e;
-        public static final int separator=0x7f0a005c;
+        public static final int separator=0x7f0a005e;
         public static final int simpanProfilBtn=0x7f0a001c;
         public static final int spinnerAktivitas1=0x7f0a0018;
         public static final int spinnerAktivitas2=0x7f0a0019;
@@ -145,12 +146,12 @@ public final class R {
         public static final int spinnerAktivitas4=0x7f0a001b;
         public static final int spinnerGayaHidup=0x7f0a0017;
         public static final int statistik=0x7f0a0021;
-        public static final int subTitle=0x7f0a0060;
-        public static final int subtitle=0x7f0a005e;
+        public static final int subTitle=0x7f0a0057;
+        public static final int subtitle=0x7f0a0060;
         public static final int tableRow1=0x7f0a0004;
-        public static final int tableRow9=0x7f0a0059;
+        public static final int tableRow9=0x7f0a005b;
         public static final int tahunProfilTv=0x7f0a0036;
-        public static final int tema=0x7f0a0058;
+        public static final int tema=0x7f0a005a;
         public static final int textAktivitas1=0x7f0a004b;
         public static final int textAktivitas2=0x7f0a004d;
         public static final int textAktivitas3=0x7f0a004f;
@@ -167,11 +168,11 @@ public final class R {
         public static final int timePicker1=0x7f0a002f;
         public static final int tinggi=0x7f0a0031;
         public static final int tinggiProfilTv=0x7f0a0038;
-        public static final int title=0x7f0a005d;
+        public static final int title=0x7f0a005f;
         public static final int titleProfilView=0x7f0a0002;
         public static final int titleSetNotifikasiView=0x7f0a0026;
         public static final int tmbhNtfkasiBtn=0x7f0a0028;
-        public static final int yes_button=0x7f0a005a;
+        public static final int yes_button=0x7f0a005c;
     }
     public static final class layout {
         public static final int activity_buatdibuang=0x7f030000;
@@ -188,10 +189,11 @@ public final class R {
         public static final int fragment_setting=0x7f03000b;
         public static final int fragment_statistik=0x7f03000c;
         public static final int layout_tema=0x7f03000d;
-        public static final int popup_tema_style=0x7f03000e;
-        public static final int sectioned_list_item=0x7f03000f;
-        public static final int simplerow=0x7f030010;
-        public static final int spinner_item=0x7f030011;
+        public static final int notifikasi_simplerow=0x7f03000e;
+        public static final int popup_tema_style=0x7f03000f;
+        public static final int sectioned_list_item=0x7f030010;
+        public static final int simplerow=0x7f030011;
+        public static final int spinner_item=0x7f030012;
     }
     public static final class menu {
         public static final int buatdibuang=0x7f090000;

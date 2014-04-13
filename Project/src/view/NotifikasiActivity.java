@@ -175,7 +175,7 @@ public class NotifikasiActivity extends Activity {
 		private LayoutInflater inflater;
 
 		public ListNotifikasiArrayAdapter(Context context, List<ListNotifikasi> ListNotifikasiList) {
-			super(context, R.layout.simplerow, R.id.Title, ListNotifikasiList);
+			super(context, R.layout.notifikasi_simplerow, R.id.Title, ListNotifikasiList);
 			// Cache the LayoutInflate to avoid asking for a new one each time.
 			inflater = LayoutInflater.from(context);
 		}
@@ -191,7 +191,7 @@ public class NotifikasiActivity extends Activity {
 
 			// Create a new row view
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.simplerow, null);
+				convertView = inflater.inflate(R.layout.notifikasi_simplerow, null);
 
 				// Find the child views.
 				tv1 = (TextView) convertView.findViewById(R.id.Title);

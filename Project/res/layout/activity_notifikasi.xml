@@ -30,12 +30,12 @@
             android:id="@+id/listViewNotifikasi"
             android:layout_width="match_parent"
             android:layout_height="211dp"
-            android:layout_weight="0.60" 
+            android:layout_weight="0.60"
             android:clickable="false"
-        	android:dividerHeight="3dp"
-        	android:drawSelectorOnTop="false"
-        	android:listSelector="@drawable/list_selector" 
-            >
+            android:divider="@drawable/list_divider"
+            android:dividerHeight="3dp"
+            android:drawSelectorOnTop="false"
+            android:listSelector="@drawable/notifikasi_list_selector" >
 
         </ListView>
         
