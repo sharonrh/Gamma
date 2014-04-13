@@ -1,11 +1,13 @@
 package view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ public class EditProfilActivity extends Activity {
 	Spinner spinTransport2;
 	Spinner spinTransport3;
 	Spinner spinTransport4;
+	Button batal;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,8 @@ public class EditProfilActivity extends Activity {
 		spinTransport3 = (Spinner) findViewById(R.id.spinnerAktivitas2);
 		spinTransport4 = (Spinner) findViewById(R.id.spinnerAktivitas3);
 
+		batal = (Button) findViewById(R.id.batalProfilBtn);
+		
 		// Adapter for spinner
 		ArrayAdapter adapter = ArrayAdapter.createFromResource(
 				getApplicationContext(), R.array.isi_gayaHidup,
@@ -118,6 +123,18 @@ public class EditProfilActivity extends Activity {
 			public void onNothingSelected(AdapterView arg0) {
 				// TODO Auto-generated method stub
 
+			}
+		});
+		
+		batal.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(), MainActivity.class);
+				i.putExtra("nomorFragment", 1);
+
+				startActivity(i);
 			}
 		});
 

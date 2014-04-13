@@ -8,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.gamma.R;
@@ -18,16 +16,11 @@ import com.example.gamma.R;
 public class ProfilFragment extends Fragment {
 	
 	Button editProfil;
-	TextView nama;
-	TextView umur;
-	TextView berat;
-	TextView tinggi;
-	ImageView foto;
-	RadioGroup jekel;
-	CheckBox vegetarian;
-	CheckBox alergiTelur;
-	CheckBox alergiMakananLaut;
-	CheckBox alergiKacangKacangan;
+	TextView nama, umur, berat, tinggi, telurTxt, ikanTxt, kacangTxt, 
+	         sayurTxt, gayaTxt, akv1Txt, akv2Txt, akv3Txt;
+	ImageView foto, genderImg, telurImg, ikanImg, kacangImg, 
+			  sayurImg, gaya1Img, gaya2Img, gaya3Img, akv1Img, 
+			  akv2Img, akv3Img;
 	
 	
     @Override
@@ -41,15 +34,33 @@ public class ProfilFragment extends Fragment {
         berat = (TextView) v.findViewById(R.id.beratProfilTv);
         tinggi = (TextView) v.findViewById(R.id.tinggiProfilTv);
         
-        foto = (ImageView) v.findViewById(R.id.imageView1);
+        foto = (ImageView) v.findViewById(R.id.fotoProfilTv);
         
-        jekel = (RadioGroup) v.findViewById(R.id.jenisKelamin);
+        genderImg = (ImageView) v.findViewById(R.id.imageGender);
         
-        vegetarian = (CheckBox) v.findViewById(R.id.checkBox1);
-        alergiTelur = (CheckBox) v.findViewById(R.id.checkBox2);
-        alergiMakananLaut = (CheckBox) v.findViewById(R.id.checkBox3);
-        alergiKacangKacangan = (CheckBox) v.findViewById(R.id.checkBox4);
+        telurImg = (ImageView) v.findViewById(R.id.imageTelur);
+        telurTxt = (TextView) v.findViewById(R.id.textTelur);
+        ikanImg = (ImageView) v.findViewById(R.id.imageIkan);
+        ikanTxt = (TextView) v.findViewById(R.id.textIkan);
+        kacangImg = (ImageView) v.findViewById(R.id.imageKacang);
+        kacangTxt = (TextView) v.findViewById(R.id.textKacang);
         
+        sayurImg = (ImageView) v.findViewById(R.id.imageVegetarian);
+        sayurTxt = (TextView) v.findViewById(R.id.textVegetarian);
+        
+        gaya1Img = (ImageView) v.findViewById(R.id.imageGayaHidup1);
+        gaya2Img = (ImageView) v.findViewById(R.id.imageGayaHidup2);
+        gayaTxt = (TextView) v.findViewById(R.id.textGayaHidup);
+        gaya3Img = (ImageView) v.findViewById(R.id.imageGayaHidup3);
+        
+        akv1Img = (ImageView) v.findViewById(R.id.imageAktivitas1);
+        akv1Txt = (TextView) v.findViewById(R.id.textAktivitas1);
+        akv2Img = (ImageView) v.findViewById(R.id.imageAktivitas2);
+        akv2Txt = (TextView) v.findViewById(R.id.textAktivitas2);
+        akv3Img = (ImageView) v.findViewById(R.id.imageAktivitas3);
+        akv3Txt = (TextView) v.findViewById(R.id.textAktivitas3);
+        
+                
         editProfil.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

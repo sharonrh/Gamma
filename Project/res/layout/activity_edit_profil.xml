@@ -52,7 +52,7 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/editText1"
+                            android:id="@+id/editNama"
                             android:layout_width="109dp"
                             android:layout_height="20dp"
                             android:layout_gravity="top"
@@ -70,7 +70,7 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/EditText01"
+                            android:id="@+id/editUmur"
                             android:layout_width="109dp"
                             android:layout_height="20dp"
                             android:layout_marginBottom="5dp"
@@ -95,7 +95,7 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/EditText02"
+                            android:id="@+id/editBerat"
                             android:layout_width="109dp"
                             android:layout_height="20dp"
                             android:layout_marginBottom="5dp"
@@ -120,7 +120,7 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/EditText03"
+                            android:id="@+id/editTinggi"
                             android:layout_width="109dp"
                             android:layout_height="20dp"
                             android:layout_marginBottom="5dp"
@@ -140,7 +140,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/editFoto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|center_horizontal"
@@ -158,19 +158,19 @@
             android:text="Jenis Kelamin" />
 
         <RadioGroup
-            android:id="@+id/jenisKelamin"
+            android:id="@+id/editGender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
             <RadioButton
-                android:id="@+id/pria"
+                android:id="@+id/editPria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pria"
                 android:textSize="12dp" />
 
             <RadioButton
-                android:id="@+id/wanita"
+                android:id="@+id/editWanita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wanita"
@@ -185,28 +185,28 @@
             android:text="Data Tambahan (Opsional)" />
 
         <CheckBox
-            android:id="@+id/checkBox1"
+            android:id="@+id/editVegetarian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
             android:text="Vegetarian" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/editTelur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
             android:text="Alergi Telur" />
 
         <CheckBox
-            android:id="@+id/checkBox3"
+            android:id="@+id/editIkan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
             android:text="Alergi Makanan Laut" />
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/editKacang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"

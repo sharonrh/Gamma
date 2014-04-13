@@ -134,7 +134,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/fotoProfilTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|center_horizontal"
@@ -163,7 +163,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/iconKelamin"
+                android:id="@+id/imageGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -199,13 +199,13 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageTelur"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:src="@drawable/egg" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textTelur"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -221,17 +221,17 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/ImageView01"
+                    android:id="@+id/imageKacang"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
-                    android:src="@drawable/vegetable" />
+                    android:src="@drawable/peanut" />
 
                 <TextView
-                    android:id="@+id/TextView03"
+                    android:id="@+id/textKacang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Vegetable" />
+                    android:text="Kacang" />
             </LinearLayout>
 
             <LinearLayout
@@ -244,42 +244,59 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/ImageView01"
+                    android:id="@+id/imageIkan"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:src="@drawable/fish" />
 
                 <TextView
-                    android:id="@+id/TextView03"
+                    android:id="@+id/textIkan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Fish" />
+                    android:text="Seafood" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="right|top"
-                android:layout_row="0"
-                android:layout_weight="0.67"
-                android:orientation="vertical" >
+        </GridLayout>
+        
+       <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.67"
+            android:layout_marginTop="20dp"
+            android:columnCount="1" >
+            
+        	<TextView
+            	android:id="@+id/namaTv"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:text="Vegetarian"
+            	android:layout_gravity="center_vertical" 
+            	android:textStyle="bold"/>
+        	 
+        	 <LinearLayout
+        	     android:layout_width="70dp"
+        	     android:layout_height="wrap_content"
+        	     android:layout_column="0"
+        	     android:layout_row="0"
+        	     android:layout_weight="0.67"
+        	     android:orientation="vertical"
+        	     android:layout_marginLeft="100dp" >
 
-                <ImageView
-                    android:id="@+id/ImageView01"
-                    android:layout_width="match_parent"
-                    android:layout_height="47dp"
-                    android:src="@drawable/peanut" />
+        	     <ImageView
+        	         android:id="@+id/imageVegetarian"
+        	         android:layout_width="match_parent"
+        	         android:layout_height="47dp"
+        	         android:src="@drawable/vegetable" />
 
-                <TextView
-                    android:id="@+id/TextView03"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Peanut" />
-            </LinearLayout>
-
+        	     <TextView
+        	         android:id="@+id/textVegetarian"
+        	         android:layout_width="70dp"
+        	         android:layout_height="wrap_content"
+        	         android:gravity="center"
+        	         android:text="Vegetarian" />
+        	 </LinearLayout>
+        	
         </GridLayout>
         
         <GridLayout
@@ -290,7 +307,7 @@
             android:columnCount="1" >
             
         	<TextView
-            	android:id="@+id/namaProfilTv"
+            	android:id="@+id/namaPTv"
             	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
             	android:text="Gaya Hidup"
@@ -298,7 +315,7 @@
             	android:textStyle="bold"/>
 
         	 <ImageView
-        	     android:id="@+id/ImageGayaHidup1"
+        	     android:id="@+id/imageGayaHidup1"
         	     android:layout_width="wrap_content"
         	     android:layout_height="47dp"
         	     android:layout_column="0"
@@ -317,13 +334,13 @@
         	     android:layout_marginLeft="115dp" >
 
         	     <ImageView
-        	         android:id="@+id/ImageGayaHidup2"
+        	         android:id="@+id/imageGayaHidup2"
         	         android:layout_width="match_parent"
         	         android:layout_height="47dp"
         	         android:src="@drawable/sports" />
 
         	     <TextView
-        	         android:id="@+id/TextGayaHidup"
+        	         android:id="@+id/textGayaHidup"
         	         android:layout_width="70dp"
         	         android:layout_height="wrap_content"
         	         android:gravity="center"
@@ -331,7 +348,7 @@
         	 </LinearLayout>
         	 
         	 <ImageView
-        	     android:id="@+id/ImageGayaHidup1"
+        	     android:id="@+id/imageGayaHidup3"
         	     android:layout_width="wrap_content"
         	     android:layout_height="47dp"
         	     android:layout_column="0"
@@ -369,13 +386,13 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/ImageAktivitas1"
+                    android:id="@+id/imageAktivitas1"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:src="@drawable/ic_launcher" />
 
                 <TextView
-                    android:id="@+id/TextAktivitas1"
+                    android:id="@+id/textAktivitas1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -393,13 +410,13 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/ImageAktivitas1"
+                    android:id="@+id/imageAktivitas2"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:src="@drawable/ic_launcher" />
 
                 <TextView
-                    android:id="@+id/TextAktivitas2"
+                    android:id="@+id/textAktivitas2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -416,13 +433,13 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/ImageAktivitas3"
+                    android:id="@+id/imageAktivitas3"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:src="@drawable/ic_launcher" />
 
                 <TextView
-                    android:id="@+id/TextAktivitas3"
+                    android:id="@+id/textAktivitas3"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
