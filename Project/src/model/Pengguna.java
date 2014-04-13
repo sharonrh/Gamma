@@ -6,19 +6,17 @@ public class Pengguna {
 	private int id;
 	private String nama;
 	private int umur;
-	private int berat;
-	private int tinggi;
-	private int target;
+	private double berat;
+	private double tinggi;
+	private double target;
 	private char gender;
 	private int gayaHidup; //1 - ringan, 2 - sedang, dst
-	private ArrayList<String> aktivitas; //misalkan ["10-jogging", "60-renang"] di mana angka menunjukkan durasi per minggu, diikuti nama aktivtas
 	private boolean isAlergiKacang;
-	private boolean isAlergiTelur;
 	private boolean isAlergiSeafood;
 	private boolean isVegetarian;
 	
 	public Pengguna(int id, String nama, int umur, int berat, int tinggi,
-			int target, char gender, int gayaHidup, ArrayList<String> aktivitas, boolean isAlergiKacang,
+			int target, char gender, int gayaHidup, boolean isAlergiKacang,
 			boolean isAlergiTelur, boolean isAlergiSeafood, boolean isVegetarian) {
 		super();
 		this.id = id;
@@ -29,7 +27,6 @@ public class Pengguna {
 		this.target = target;
 		this.gender = gender;
 		this.gayaHidup = gayaHidup;
-		this.aktivitas = aktivitas;
 		this.isAlergiKacang = isAlergiKacang;
 		this.isAlergiTelur = isAlergiTelur;
 		this.isAlergiSeafood = isAlergiSeafood;
@@ -101,14 +98,6 @@ public class Pengguna {
 		this.gayaHidup = gayaHidup;
 	}
 
-	public ArrayList<String> getAktivitas() {
-		return aktivitas;
-	}
-
-	public void setAktivitas(ArrayList<String> aktivitas) {
-		this.aktivitas = aktivitas;
-	}
-
 	public boolean isAlergiKacang() {
 		return isAlergiKacang;
 	}
@@ -117,13 +106,6 @@ public class Pengguna {
 		this.isAlergiKacang = isAlergiKacang;
 	}
 
-	public boolean isAlergiTelur() {
-		return isAlergiTelur;
-	}
-
-	public void setAlergiTelur(boolean isAlergiTelur) {
-		this.isAlergiTelur = isAlergiTelur;
-	}
 
 	public boolean isAlergiSeafood() {
 		return isAlergiSeafood;

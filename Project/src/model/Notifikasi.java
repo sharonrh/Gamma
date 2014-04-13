@@ -5,6 +5,8 @@ public class Notifikasi {
 	private long waktu;
 	private String pesan;
 
+	public Notifikasi() {}
+
 	public Notifikasi(String nama, long waktu, String pesan) {
 		this.nama = nama;
 		this.waktu = waktu;
