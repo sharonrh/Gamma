@@ -190,6 +190,7 @@ public final class R {
         public static final int popup_tema_style=0x7f03000e;
         public static final int sectioned_list_item=0x7f03000f;
         public static final int simplerow=0x7f030010;
+        public static final int spinner_item=0x7f030011;
     }
     public static final class menu {
         public static final int buatdibuang=0x7f090000;
