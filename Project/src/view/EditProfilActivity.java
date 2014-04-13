@@ -13,7 +13,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +27,15 @@ import com.example.gamma.R;
 public class EditProfilActivity extends Activity {
 
 	protected static final int RESULT_LOAD_IMAGE = 1;
+	EditText nama, umur, berat, tinggi;
+	RadioGroup gender;
+	RadioButton pria, wanita;
+	CheckBox telur, vegetarian, kacang, seafood;
 	Spinner spinTransport, spinTransport2, spinTransport3, 
 		    spinTransport4, spinTransport5;
 	Button batal;
 	ImageView fotoProfil;
+	String gaya, akv1, akv2, akv3, akv4;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +47,24 @@ public class EditProfilActivity extends Activity {
 		spinTransport3 = (Spinner) findViewById(R.id.spinnerAktivitas2);
 		spinTransport4 = (Spinner) findViewById(R.id.spinnerAktivitas3);
 		spinTransport5 = (Spinner) findViewById(R.id.spinnerAktivitas4);
+		
+		nama = (EditText) findViewById(R.id.editNama);
+		umur = (EditText) findViewById(R.id.editUmur);
+		berat = (EditText) findViewById(R.id.editBerat);
+		tinggi = (EditText) findViewById(R.id.editTinggi);
+		
+		gender = (RadioGroup) findViewById(R.id.editGender);
+		
+		pria = (RadioButton) findViewById(R.id.editPria);
+		wanita = (RadioButton) findViewById(R.id.editWanita);
+		
+		telur = (CheckBox) findViewById(R.id.editTelur);
+		vegetarian = (CheckBox) findViewById(R.id.editVegetarian);
+		kacang = (CheckBox) findViewById(R.id.editKacang);
+		seafood = (CheckBox) findViewById(R.id.editIkan);
 
 		batal = (Button) findViewById(R.id.batalProfilBtn);
+		
 		fotoProfil = (ImageView) findViewById(R.id.editFoto);
 		
 		fotoProfil.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +112,9 @@ public class EditProfilActivity extends Activity {
 				// showing a toast on selecting an item
 				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
 						.show();
+				
+				//simpan item yang dipilih
+				gaya = item;
 
 			}
 
@@ -106,6 +134,9 @@ public class EditProfilActivity extends Activity {
 				// showing a toast on selecting an item
 				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
 						.show();
+				
+				//simpan item yang dipilih
+				akv1 = item;
 
 			}
 
@@ -125,6 +156,9 @@ public class EditProfilActivity extends Activity {
 				// showing a toast on selecting an item
 				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
 						.show();
+				
+				//simpan item yang dipilih
+				akv2 = item;
 
 			}
 
@@ -144,6 +178,9 @@ public class EditProfilActivity extends Activity {
 				// showing a toast on selecting an item
 				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
 						.show();
+				
+				//simpan item yang dipilih
+				akv3 = item;
 
 			}
 
@@ -163,6 +200,9 @@ public class EditProfilActivity extends Activity {
 				// showing a toast on selecting an item
 				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
 						.show();
+				
+				//simpan item yang dipilih
+				akv4 = item;
 
 			}
 
