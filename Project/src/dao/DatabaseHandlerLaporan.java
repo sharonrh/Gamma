@@ -72,7 +72,12 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 	public boolean tambahLaporan(long waktuInput, String beratInput,
 			String tinggiInput) {
 		SQLiteDatabase db = this.getWritableDatabase();
+		SQLiteDatabase db2 = this.getReadableDatabase();
 
+		Cursor cursor = db.rawQuery("SELECT  * FROM " + tabelLaporan, null);
+		cursor.moveToLast();
+		
+		
 		ContentValues values = new ContentValues();
 		values.put(waktu, waktuInput);
 		values.put(berat, beratInput);
