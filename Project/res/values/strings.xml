@@ -21,11 +21,13 @@
     <string name="spinnerAktivitas1">Pilih Aktivitas 1</string>
     <string name="spinnerAktivitas2">Pilih Aktivitas 2</string>
     <string name="spinnerAktivitas3">Pilih Aktivitas 3</string>
+    <string name="spinnerAktivitas4">Pilih Aktivitas 4</string>
 
     <string-array name="isi_gayaHidup">
-        <item>Ringan</item>
-        <item>Sedang</item>
-        <item>Berat</item>
+        <item>Jarang Sekali</item>
+        <item>Sedikit Aktif</item>
+        <item>Aktif</item>
+        <item>Sangat Aktif</item>
     </string-array>
     <string-array name="isi_aktivitas">
         <item>Jogging</item>

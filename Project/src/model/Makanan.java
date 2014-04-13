@@ -12,6 +12,10 @@ public class Makanan {
 	private int rating;
 	private String jenisMakanan;
 	private int berat;
+	private boolean isHewani;
+	private boolean isSeafood;
+	private boolean isKacang;
+	private int terakhirDipilih;
 	
 	public Makanan(){}
 	
@@ -28,6 +32,10 @@ public class Makanan {
 		this.rating = rating;
 		this.jenisMakanan = jenisMakanan;
 		this.berat = berat;
+		this.isHewani = false;
+		this.isSeafood = false;
+		this.isKacang = false;
+		this.terakhirDipilih = 0;
 	}
 
 	public String getNama() {
@@ -110,6 +118,36 @@ public class Makanan {
 		this.berat = berat;
 	}
 
-	
+	public boolean isHewani() {
+		return isHewani;
+	}
+
+	public void setHewani(boolean isHewani) {
+		this.isHewani = isHewani;
+	}
+
+	public boolean isKacang() {
+		return isKacang;
+	}
+
+	public void setKacang(boolean isKacang) {
+		this.isKacang = isKacang;
+	}
+
+	public boolean isSeafood() {
+		return isSeafood;
+	}
+
+	public void setSeafood(boolean isSeafood) {
+		this.isSeafood = isSeafood;
+	}
+
+	public int getTerakhir() {
+		return terakhirDipilih;
+	}	
+
+	public void setTerakhir(int terakhirDipilih) {
+		this.terakhirDipilih = terakhirDipilih;
+	}
 	
 }

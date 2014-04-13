@@ -23,10 +23,8 @@ import com.example.gamma.R;
 public class EditProfilActivity extends Activity {
 
 	protected static final int RESULT_LOAD_IMAGE = 1;
-	Spinner spinTransport;
-	Spinner spinTransport2;
-	Spinner spinTransport3;
-	Spinner spinTransport4;
+	Spinner spinTransport, spinTransport2, spinTransport3, 
+		    spinTransport4, spinTransport5;
 	Button batal;
 	ImageView fotoProfil;
 
@@ -39,6 +37,7 @@ public class EditProfilActivity extends Activity {
 		spinTransport2 = (Spinner) findViewById(R.id.spinnerAktivitas1);
 		spinTransport3 = (Spinner) findViewById(R.id.spinnerAktivitas2);
 		spinTransport4 = (Spinner) findViewById(R.id.spinnerAktivitas3);
+		spinTransport5 = (Spinner) findViewById(R.id.spinnerAktivitas4);
 
 		batal = (Button) findViewById(R.id.batalProfilBtn);
 		fotoProfil = (ImageView) findViewById(R.id.editFoto);
@@ -72,6 +71,7 @@ public class EditProfilActivity extends Activity {
 		spinTransport2.setAdapter(adapter2);
 		spinTransport3.setAdapter(adapter2);
 		spinTransport4.setAdapter(adapter2);
+		spinTransport5.setAdapter(adapter2);
 
 		spinTransport.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View view,
@@ -135,6 +135,25 @@ public class EditProfilActivity extends Activity {
 		});
 
 		spinTransport4.setOnItemSelectedListener(new OnItemSelectedListener() {
+			public void onItemSelected(AdapterView parent, View view,
+					int position, long id) {
+
+				// On selecting a spinner item
+				String item = parent.getItemAtPosition(position).toString();
+
+				// showing a toast on selecting an item
+				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
+						.show();
+
+			}
+
+			public void onNothingSelected(AdapterView arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
+		spinTransport5.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View view,
 					int position, long id) {
 

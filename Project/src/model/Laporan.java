@@ -1,29 +1,40 @@
 package model;
 
 public class Laporan {
-	
-	private String tinggiBadan;
-	private String beratBadan;
-	
-	public Laporan(String tinggiBadan, String beratBadan) {
+
+	private int tinggiBadan;
+	private int beratBadan;
+	private long waktu;
+
+	public Laporan(int tinggiBadan, int beratBadan, long waktu) {
+		super();
 		this.tinggiBadan = tinggiBadan;
 		this.beratBadan = beratBadan;
+		this.waktu = waktu;
 	}
-	public String getTinggiBadan() {
+
+	public int getTinggiBadan() {
 		return tinggiBadan;
 	}
-	public void setTinggiBadan(String tinggiBadan) {
+
+	public void setTinggiBadan(int tinggiBadan) {
 		this.tinggiBadan = tinggiBadan;
 	}
-	public String getBeratBadan() {
+
+	public int getBeratBadan() {
 		return beratBadan;
 	}
-	public void setBeratBadan(String beratBadan) {
+
+	public void setBeratBadan(int beratBadan) {
 		this.beratBadan = beratBadan;
 	}
-	
-	public String toString(){
-		return tinggiBadan;
+
+	public long getWaktu() {
+		return waktu;
 	}
-	
+
+	public void setWaktu(long waktu) {
+		this.waktu = waktu;
+	}
+
 }

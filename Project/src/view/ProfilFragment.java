@@ -19,8 +19,8 @@ public class ProfilFragment extends Fragment {
 	TextView nama, umur, berat, tinggi, telurTxt, ikanTxt, kacangTxt, 
 	         sayurTxt, gayaTxt, akv1Txt, akv2Txt, akv3Txt;
 	ImageView foto, genderImg, telurImg, ikanImg, kacangImg, 
-			  sayurImg, gaya1Img, gaya2Img, gaya3Img, akv1Img, 
-			  akv2Img, akv3Img;
+			  sayurImg, gaya1Img, gaya2Img, gaya3Img, gaya4Img, 
+			  akv1Img, akv2Img, akv3Img;
 	
 	
     @Override
@@ -52,6 +52,7 @@ public class ProfilFragment extends Fragment {
         gaya2Img = (ImageView) v.findViewById(R.id.imageGayaHidup2);
         gayaTxt = (TextView) v.findViewById(R.id.textGayaHidup);
         gaya3Img = (ImageView) v.findViewById(R.id.imageGayaHidup3);
+        gaya4Img = (ImageView) v.findViewById(R.id.imageGayaHidup4);
         
         akv1Img = (ImageView) v.findViewById(R.id.imageAktivitas1);
         akv1Txt = (TextView) v.findViewById(R.id.textAktivitas1);
