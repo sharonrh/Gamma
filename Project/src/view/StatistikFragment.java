@@ -1,7 +1,10 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import model.Laporan;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -22,20 +25,19 @@ import android.widget.LinearLayout;
 
 import com.example.gamma.R;
 
+import controller.LaporanController;
+
 public class StatistikFragment extends Fragment {
-	
-	
+
+	LaporanController con = new LaporanController(getActivity());
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// drawChart();
-		System.out.println("hohoho");
-		// Inflate the layout for this fragment
 		return inflater.inflate(R.layout.fragment_statistik, container, false);
 	}
 
 	public void onResume() {
-		System.out.println("yeyeye");
 		super.onResume();
 		drawChart();
 	}
@@ -51,18 +53,17 @@ public class StatistikFragment extends Fragment {
 			GregorianCalendar gc = new GregorianCalendar(2012, 8, (1 + i) * 7);
 			x[i] = gc.getTime();
 		}
-
 		int[] target = { 40, 41, 42, 43, 44 };
-		int[] realized = { 40, 40, 41, 40, 42 };
-
+		ArrayList<Laporan> list = con.getListLaporan();
 		// Creating an XYSeries for Income
 		TimeSeries targetSeries = new TimeSeries("Target");
 		// Creating an XYSeries for Income
 		TimeSeries realSeries = new TimeSeries("Realized");
 		// Adding data to Income and Expense Series
 		for (int i = 0; i < x.length; i++) {
+			Laporan l = list.get(i);
 			targetSeries.add(x[i], target[i]);
-			realSeries.add(x[i], realized[i]);
+			realSeries.add(x[i], l.getBeratBadan()); // masih null gara2 database kosong
 		}
 
 		// Creating a dataset to hold each series
@@ -95,7 +96,6 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.setXTitle("Waktu");
 		multiRenderer.setYTitle("Berat badan");
 
-		// Adding incomeRenderer and expenseRenderer to multipleRenderer
 		// Note: The order of adding dataseries to dataset and renderers to
 		// multipleRenderer
 		// should be same
@@ -114,5 +114,4 @@ public class StatistikFragment extends Fragment {
 		layout.addView(mChart);
 
 	}
-
 }
