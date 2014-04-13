@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
@@ -30,7 +31,7 @@ import controller.SettingController;
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * 
  */
-public class SettingFragment extends Activity {
+public class SettingActivity extends Activity {
 
 	ListView lv;
 	TextView tv;
@@ -61,11 +62,17 @@ public class SettingFragment extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View item,
 					int position, long id) {
-				if (position != 1) {
+				
+				if(position == 0){
 					kontrol.gantiHalaman(position);
-				} else {
-					inisialPopupWindow();
 				}
+				else if (position == 1) {
+					temaPopupWindow();
+				}
+				else {
+					tentangPopupWindow();
+				}
+					
 
 			}
 		});
@@ -192,50 +199,66 @@ public class SettingFragment extends Activity {
 
 	RadioGroup rg;
 
-	public void inisialPopupWindow() {
+	public void temaPopupWindow() {
 
-		LayoutInflater inflater = (LayoutInflater) SettingFragment.this
-				.getSystemService(getApplicationContext().LAYOUT_INFLATER_SERVICE);
-		View layout = inflater.inflate(R.layout.popup_tema_style,
-				(ViewGroup) findViewById(R.id.popup_element));
-		popUpTema = new PopupWindow(layout, 250, 250, true);
-		popUpTema.showAtLocation(layout, Gravity.CENTER, 0, 0);
+		AlertDialog alertDialog = new AlertDialog.Builder(
+				SettingActivity.this).create();
 
-		rg = (RadioGroup) layout.findViewById(R.id.tema);
-		Button simpanBtn = (Button) layout.findViewById(R.id.yes_button);
-		Button batalBtn = (Button) layout.findViewById(R.id.cancel_button);
-		System.out.println(rg);
-		System.out.println(simpanBtn);
-		simpanBtn.setOnClickListener(new View.OnClickListener() {
+		// Setting Dialog Title
+		alertDialog.setTitle("Pilih Tema");
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				switch (rg.getCheckedRadioButtonId()) {
-				case R.id.holoDark:
-					getApplication().setTheme(R.style.HoloBlackTheme);
-					break;
-				case R.id.holoLight:
-					getApplication().setTheme(R.style.HoloLightTheme);
-					break;
-				default:
-					getApplication().setTheme(R.style.AppBaseTheme);
-					break;
-				}
-			}
-		});
+		// Setting Dialog Message
+		 LayoutInflater inflater = getLayoutInflater();
 
-		batalBtn.setOnClickListener(new View.OnClickListener() {
+		    // Inflate and set the layout for the dialog
+		    // Pass null as the parent view because its going in the dialog layout
+		 alertDialog.setView(inflater.inflate(R.layout.layout_tema, null));
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(),
-						SettingFragment.class);
-				startActivity(i);
-			}
-		});
+		// Setting Icon to Dialog
+	//	alertDialog.setIcon(R.drawable.ic_launcher);
 
+		// Setting OK Button
+		alertDialog.setButton("OK",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int which) {
+
+					}
+				});
+		// Showing Alert Message
+		alertDialog.show();
+	
+	}
+	
+	public void tentangPopupWindow() {
+
+		AlertDialog alertDialog = new AlertDialog.Builder(
+				SettingActivity.this).create();
+
+		// Setting Dialog Title
+		alertDialog.setTitle("Tentang");
+
+		// Setting Dialog Message
+		 LayoutInflater inflater = getLayoutInflater();
+
+		    // Inflate and set the layout for the dialog
+		    // Pass null as the parent view because its going in the dialog layout
+		 alertDialog.setView(inflater.inflate(R.layout.activity_tentang, null));
+
+		// Setting Icon to Dialog
+	//	alertDialog.setIcon(R.drawable.ic_launcher);
+
+		// Setting OK Button
+		alertDialog.setButton("OK",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int which) {
+
+					}
+				});
+		// Showing Alert Message
+		alertDialog.show();
+	
 	}
 
 }

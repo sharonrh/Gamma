@@ -115,7 +115,7 @@ public class MainActivity extends Activity {
         switch (item.getItemId())
         {
         case R.id.action_settings:
-        	Intent i = new Intent(this, SettingFragment.class);
+        	Intent i = new Intent(this, SettingActivity.class);
         	startActivity(i);
         	
         default:

@@ -1,0 +1,21 @@
+Mengenai aktivitas :
+
+Data aktivitas didapat dari [1], dengan banyak entri 822 jenis aktivitas. Data yang dipakai merupakan data terbaru (2011). Satuan yang digunakan untuk tiap aktivitas adalah MET (Metabolic Equivalent of Task).
+
+1 MET setara dengan 1 kcal/(kg*jam). Misalkan, suatu kegiatan A memiliki indeks 10 MET. Kegiatan A dilakukan oleh si X yang memiliki berat badan 50 kg, selama 1 jam. Maka, untuk kegiatan A tersebut, si X telah menghabiskan total energi = 10 MET * 50 kg * 1 jam = (10 kcal/(kg*jam) * 50 kg * 1 jam = 500 kcal. Hasil ini, tentunya, tidak melihat aspek umur atau jenis kelamin.
+
+Dalam perhitungan berapa kalori per hari yang dibutuhkan, hasil dari perhitungan menggunakan persamaan Harris Benedict (lihat HowTo-Rekomendasi.txt) harus ditambahkan dengan total kalori yang dihabiskan untuk ativitas tambahan. Maka dari itu, ketika mengisi profil, pengguna juga diminta memasukkan aktivitas tambahan (jika ada) berupa nama aktivitas dan durasi per harinya dalam jam.
+
+Contoh kasus, si X, didapat dari rumus Harris Benedict, memiliki kebutuhan kalori per hari sebanyak 2000 kcal. Lalu, dia juga memiliki aktivitas tambahan yang dilakukan harian, dengan total 500 kcal. X ingin menaikkan berat badannya sebanyak 5 kg dalam 2 minggu (14 hari). Maka, total kalori yang harus didapat X (calorie intake) sebanyak :
+
+		Jumlah kalori 	= basis kalori harian + kalori aktivitas tambahan + (5 kg * 7000 cal / 14 hari)				
+						= 2000 kcal + 500 kcal + 2500 kcal
+						= 5000 kcal
+
+		(menurut [2], 1 pound berat tubuh setara dengan 3500 kcal. Pada contoh, 1 kg dibulatkan menjadi 2 pound)
+
+Hasil yang didapat melebihi 2 kali jumlah kalori rata-rata. Hal ini mengindikasikan durasi diet yang ditentukan terlalu singkat, sehingga cukup memberatkan bagi pengguna aplikasi. Menambah durasi diet menjadi 5 minggu akan membuat diet menjadi lebih ringan (sekitar 3500 kcal).
+
+Catatan :
+[1] https://sites.google.com/site/compendiumofphysicalactivities/home
+[2] http://www.bmi-calculator.net/bmr-calculator/harris-benedict-equation/calorie-intake-to-gain-weight.php

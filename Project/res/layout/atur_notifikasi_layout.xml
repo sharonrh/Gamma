@@ -22,17 +22,41 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_weight="0.76"
-            android:text="Notifikasi"
+            android:text="Set Notifikasi"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="35sp" />
 
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="match_parent"
-            android:layout_height="211dp"
-            android:layout_weight="0.60" >
+        <TextView
+            android:id="@+id/namaNotifikasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Nama Notifikasi :" />
 
-        </ListView>
+        <EditText
+            android:id="@+id/namaNotifikasiFields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/style"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/waktu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.76"
+            android:text="Waktu :" />
+
+        <TimePicker
+            android:id="@+id/timePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.76" />
         
         <LinearLayout
             android:layout_width="wrap_content"
@@ -41,13 +65,22 @@
             android:layout_marginTop="75dp" >
 
             <Button
-                android:id="@+id/tmbhNtfkasiBtn"
+                android:id="@+id/button1"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/button_style"
                 android:layout_marginRight="10dp"
-                android:text="Tambah Notifikasi" />
+                android:text="Simpan" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style"
+                android:layout_gravity="right"
+                android:layout_marginLeft="10dp"
+                android:text="Batal" />
 
         </LinearLayout>
 

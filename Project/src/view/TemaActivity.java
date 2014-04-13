@@ -12,7 +12,7 @@ public class TemaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tema);
+		setContentView(R.layout.layout_tema);
 		
 		RadioGroup rg = (RadioGroup) findViewById(R.id.jenisKelamin);
 		
