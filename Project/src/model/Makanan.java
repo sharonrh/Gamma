@@ -3,7 +3,7 @@ package model;
 public class Makanan {
 
 	private String nama;
-	private double kalori;
+	private int kalori;
 	private double protein;
 	private double karbohidrat;
 	private double lemak;

@@ -40,7 +40,6 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
 	
-
 	public DatabaseHandlerMakanan(Context context) {
 		super(context, namaDB, null, versiDB);
 	}
@@ -145,7 +144,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	}
 
 	// Getting All Contacts
-	public List<Makanan> getAllMakanan() {
+	public ArrayList<Makanan> getAllMakanan() {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// Select All Query
 		String selectQuery = "SELECT  * FROM " + tabelMakanan;
@@ -244,6 +243,34 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 
 		// return count
 		return cursor.getCount();
+	}
+
+	// Baca data dari csv
+	public ArrayList<Makanan> bacaFile() {
+		ArrayList<Makanan> mk = new ArrayList<>();
+		InputStreamReader is = new InputStreamReader(getAssets().open("data_makanan.csv"));
+
+        BufferedReader reader = new BufferedReader(is);
+        reader.readLine(); //baca header
+        String line;
+        
+        while ((line = reader.readLine()) != null) {
+        	String[] temp = line.split(",");
+        	boolean isHewani = false, isSeafood = false, isKacang = false;
+        	if (temp[9].charAt(0) == 'Y') {
+        		isHewani = true;
+        	}
+        	if (temp[10].charAt(0) == 'Y') {
+        		isSeafood = true;
+        	}
+        	if (temp[11].charAt(0) == 'Y') {
+        		isKacang = true;
+        	}
+        	Makanan ma = new Makanan(temp[0], Integer.parseInt(temp[1]), Double.parseDouble(temp[2]), Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Double.parseDouble(temp[5]), Integer.parseInt(temp[6]), Integer.parseInt(temp[7]), temp[8], isHewani, isSeafood, isKacang, Integer.parseInt(temp[12]));
+        	mk.add(ma);
+        }
+
+        return mk;
 	}
 
 }
