@@ -59,7 +59,7 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 	 */
 
 	// Adding new notifikasi
-	void tambahNotifikasi(Notifikasi notifikasi) {
+	public boolean tambahNotifikasi(Notifikasi notifikasi) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -68,8 +68,9 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 		values.put(pesan, notifikasi.getPesan());
 
 		// Inserting Row
-		db.insert(tabelNotifikasi, null, values);
+		boolean cek = db.insert(tabelNotifikasi, null, values) > 0;
 		db.close(); // Closing database connection
+		return cek;
 	}
 
 	// Getting single notifikasi
@@ -93,7 +94,7 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 	public List<Notifikasi> getAllNotifikasi() {
 		List<Notifikasi> notifikasiList = new ArrayList<Notifikasi>();
 		// Select All Query
-		String selectQuery = "SELECT  * FROM " + tabelNotifikasi;
+		String selectQuery = "SELECT * FROM " + tabelNotifikasi;
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);

@@ -19,7 +19,7 @@ public class Makanan {
 	
 	public Makanan(){}
 	
-	public Makanan(String nama, double kalori, double protein, double karbohidrat,
+	public Makanan(String nama, int kalori, double protein, double karbohidrat,
 			double lemak, double kalsium, int persentase, int rating, String jenisMakanan, int berat) {
 		super();
 		this.nama = nama;
@@ -50,7 +50,7 @@ public class Makanan {
 		return kalori;
 	}
 
-	public void setKalori(double kalori) {
+	public void setKalori(int kalori) {
 		this.kalori = kalori;
 	}
 

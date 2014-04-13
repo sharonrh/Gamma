@@ -1,14 +1,11 @@
 package dao;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Makanan;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -43,6 +40,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
 	
+
 	public DatabaseHandlerMakanan(Context context) {
 		super(context, namaDB, null, versiDB);
 	}
@@ -246,44 +244,6 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 
 		// return count
 		return cursor.getCount();
-	}
-
-	// Baca data dari csv
-	public ArrayList<Makanan> bacaFile() {
-<<<<<<< HEAD
-		ArrayList<Makanan> mk = new ArrayList<Makanan>();
-		AssetManager am = getAssets();
-		InputStreamReader is = new InputStreamReader(am.open("data_makanan.csv"));
-=======
-		ArrayList<Makanan> mk = new ArrayList<>();
-		
-		AssetManager am = context.getAssets();
-		InputStream is = am.open("data_makanan.csv");
-
-		//InputStreamReader is = new InputStreamReader(getAssets().open("data_makanan.csv"));
->>>>>>> c45da8e41716348016aabe59b2e54f7c98328a4b
-
-        BufferedReader reader = new BufferedReader(is);
-        reader.readLine(); //baca header
-        String line;
-        
-        while ((line = reader.readLine()) != null) {
-        	String[] temp = line.split(",");
-        	boolean isHewani = false, isSeafood = false, isKacang = false;
-        	if (temp[9].charAt(0) == 'Y') {
-        		isHewani = true;
-        	}
-        	if (temp[10].charAt(0) == 'Y') {
-        		isSeafood = true;
-        	}
-        	if (temp[11].charAt(0) == 'Y') {
-        		isKacang = true;
-        	}
-        	Makanan ma = new Makanan(temp[0], Integer.parseInt(temp[1]), Double.parseDouble(temp[2]), Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Double.parseDouble(temp[5]), Integer.parseInt(temp[6]), Integer.parseInt(temp[7]), temp[8], isHewani, isSeafood, isKacang, Integer.parseInt(temp[12]));
-        	mk.add(ma);
-        }
-
-        return mk;
 	}
 
 }
