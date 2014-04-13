@@ -35,6 +35,10 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	private static final String persentase = "persentase";
 	private static final String rating = "rating";
 	private static final String jenis = "jenis";
+	private static final String hewani = "hewani";
+	private static final String seafood = "seafood";
+	private static final String kacang = "kacang";
+	
 
 	public DatabaseHandlerMakanan(Context context) {
 		super(context, namaDB, null, versiDB);
@@ -47,7 +51,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 				+ namaMakanan + " TEXT PRIMARY KEY," + jlhKalori + " REAL,"
 				+ jlhProtein + " REAL," + jlhLemak + " REAL," + jlhKarbo
 				+ " REAL," + jlhKalsium + " REAL," + rating + " INTEGER,"
-				+ persentase + " REAL," + jenis + " TEXT" + ")";
+				+ persentase + " REAL," + jenis + " TEXT" + hewani + " INTEGER," + seafood + " INTEGER," + kacang + " INTEGER" + ")";
 		db.execSQL(buatTabelMakanan);
 	}
 
@@ -68,7 +72,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	// Adding new makanan
 	void tambahMakanan(Makanan makanan) {
 		SQLiteDatabase db = this.getWritableDatabase();
-
+		int h = 0, s = 0, k = 0;
 		ContentValues values = new ContentValues();
 		values.put(namaMakanan, makanan.getNama());
 		values.put(jlhKalori, makanan.getKalori());
@@ -79,7 +83,21 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 		values.put(rating, makanan.getRating());
 		values.put(persentase, makanan.getPersentase());
 		values.put(jenis, makanan.getJenisMakanan());
+		if (makanan.isHewani()) {
+			h = 1;
+		} 
+		values.put(hewani, h);
 
+		if (makanan.isSeafood()) {
+			s = 1;
+		} 
+		values.put(seafood, s);
+		
+		if (makanan.isKacang()) {
+			k = 1;
+		} 
+		values.put(kacang, k);
+		
 		// Inserting Row
 		db.insert(tabelMakanan, null, values);
 		db.close(); // Closing database connection
@@ -102,8 +120,23 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 				Double.parseDouble(cursor.getString(3)),
 				Double.parseDouble(cursor.getString(4)),
 				Double.parseDouble(cursor.getString(5)),
-				Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor
-						.getString(7)), cursor.getString(8), 0);
+				Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor.getString(7)), cursor.getString(8), 100);
+
+		// retrieve data alegi
+		int h = Integer.parseInt(cursor.getString(9));
+		int s = Integer.parseInt(cursor.getString(10));
+		int k = Integer.parseInt(cursor.getString(11));
+		
+		if (h == 1) {
+			makanan.setHewani(true);
+		}
+		if (s == 1) {
+			makanan.setSeafood(true);
+		}
+		if (k == 1) {
+			makanan.setKacang(true);
+		}
+
 		// return makanan
 		return makanan;
 	}
@@ -130,6 +163,22 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 				makanan.setPersentase(Integer.parseInt(cursor.getString(6)));
 				makanan.setRating(Integer.parseInt(cursor.getString(7)));
 				makanan.setJenisMakanan(cursor.getString(8));
+
+				// retrieve data alegi
+				int h = Integer.parseInt(cursor.getString(9));
+				int s = Integer.parseInt(cursor.getString(10));
+				int k = Integer.parseInt(cursor.getString(11));
+				
+				if (h == 1) {
+					makanan.setHewani(true);
+				}
+				if (s == 1) {
+					makanan.setSeafood(true);
+				}
+				if (k == 1) {
+					makanan.setKacang(true);
+				}
+
 				// Adding makanan to list
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
@@ -153,7 +202,21 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 		values.put(rating, makanan.getRating());
 		values.put(persentase, makanan.getPersentase());
 		values.put(jenis, makanan.getJenisMakanan());
+		if (makanan.isHewani()) {
+			h = 1;
+		} 
+		values.put(hewani, h);
 
+		if (makanan.isSeafood()) {
+			s = 1;
+		} 
+		values.put(seafood, s);
+		
+		if (makanan.isKacang()) {
+			k = 1;
+		} 
+		values.put(kacang, k);
+		
 		// updating row
 		return db.update(tabelMakanan, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(makanan.getNama()) });
