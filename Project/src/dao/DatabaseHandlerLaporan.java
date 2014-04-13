@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Laporan;
 import android.content.ContentValues;
@@ -83,7 +84,7 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 
 		Laporan laporan = new Laporan(Long.parseLong(cursor.getString(1)),
 				Double.parseDouble(cursor.getString(2)),
-				Double.parseDouble(cursor.getString(3));
+				Double.parseDouble(cursor.getString(3)));
 
 		// return laporan
 		return laporan;
@@ -102,9 +103,9 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 		if (cursor.moveToFirst()) {
 			do {
 				Laporan laporan = new Laporan();
-				laporan.setWaktu(Long.parseLong(cursor.getString(1));
+				laporan.setWaktu(Long.parseLong(cursor.getString(1)));
 				laporan.setBeratBadan(Double.parseDouble(cursor.getString(2)));
-				laporan.setTinggiBadan(Double.parseDouble(cursor.getString(3);
+				laporan.setTinggiBadan(Double.parseDouble(cursor.getString(3)));
 
 				// Adding laporan to list
 				laporanList.add(laporan);

@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Notifikasi;
 import android.content.ContentValues;
@@ -104,7 +105,7 @@ public class DatabaseHandlerNotifikasi extends SQLiteOpenHelper {
 				Notifikasi notifikasi = new Notifikasi();
 				notifikasi.setNama(cursor.getString(1));
 				notifikasi.setWaktu(Long.parseLong(cursor.getString(2)));
-				notifikasi.setPesan(cursor.getString(3);
+				notifikasi.setPesan(cursor.getString(3));
 
 				// Adding notifikasi to list
 				notifikasiList.add(notifikasi);
