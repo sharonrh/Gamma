@@ -11,7 +11,18 @@ Untuk (a), tepat dipilih oleh orang yang melakukan sedikit sekali pergerakan, ya
 			active					4 to 10				9,400 to 23,500
 			very active	 			more than 10	 	more than 23,500
 
+Penjelasan lebih lengkap mengenai setiap gaya hidup adalah sebagai berikut [2] : 
+
+	Jarang Sekali – Aktivitas hidup utama seperti istirahat, kerja kantoran atau menyetir. Kemungkinan melibatkan pekerjaan rumah moderat dan berdiri tetapi tidak ada latihan ringan yang dilakukan.
+
+	Sedikit Aktif – Disamping kegiatan sehari-hari, melakukan kegiatan yang lebih berat, seperti berdiri lebih lama atau pekerjaan rumah. Beberapa bentuk latihan dilakukan, seperti jalan pelan, bersepeda santai atau berkebun.
+
+	Aktif – Sedikit duduk / istirahat dan kemungkinan bekerja dilingkungan yang membutuhkan berdiri dan/atau sedikit kerja fisik. Secara teratur melakukan olahraga ringan, seperti menari, jalan cepat atau berenang.
+
+	Sangat Aktif – Lingkungan kerja fisik intensif seperti konstruksi dan / atau melakukan kegiatan yang berat banyak hari dalam seminggu, seperti jogging, menggunakan peralatan olahraga atau berpartisipasi dalam olahraga fisik.
+
 Adapun data pada aktivitas berbeda dengan gaya hidup. Sehingga, jika dalam seminggu seseorang bersepeda selama 180 menit, namun selain itu jarang bergerak, maka dalam isian harusnya memilih gaya hidup "sedentary", dan isian berkuda dalam daftar aktivitasnya
 
 Catatan :
 [1] http://nutritiondata.self.com/tools/calories-burned
+[2] http://www.fatsecret.co.id/Default.aspx?pa=rdic
