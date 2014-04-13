@@ -150,7 +150,7 @@ public class SettingActivity extends Activity {
 		private LayoutInflater inflater;
 
 		public SettingArrayAdapter(Context context, List<Setting> settingList) {
-			super(context, R.layout.simplerow, R.id.TextView01, settingList);
+			super(context, R.layout.simplerow, R.id.Title, settingList);
 			// Cache the LayoutInflate to avoid asking for a new one each time.
 			inflater = LayoutInflater.from(context);
 		}

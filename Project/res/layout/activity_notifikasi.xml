@@ -27,10 +27,11 @@
             android:textSize="35sp" />
 
         <ListView
-            android:id="@+id/listView1"
+            android:id="@+id/listViewNotifikasi"
             android:layout_width="match_parent"
             android:layout_height="211dp"
-            android:layout_weight="0.60" >
+            android:layout_weight="0.60" 
+            >
 
         </ListView>
         
