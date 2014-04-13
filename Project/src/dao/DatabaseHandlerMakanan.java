@@ -111,7 +111,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 
 		Cursor cursor = db.query(tabelMakanan, new String[] { namaMakanan,
 				jlhKalori, jlhProtein, jlhLemak, jlhKarbo, jlhKalsium, rating,
-				persentase, jenis }, namaMakanan + "=?",
+				persentase, jenis, hewani, seafood, kacang, terakhir }, namaMakanan + "=?",
 				new String[] { String.valueOf(nama) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
