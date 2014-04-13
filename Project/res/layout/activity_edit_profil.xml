@@ -237,7 +237,8 @@
                 android:layout_row="0"
                 android:layout_weight="0.67"
                 android:background="@color/hijau"
-                android:prompt="@string/spinnerGayaHidup" />
+                android:prompt="@string/spinnerGayaHidup"
+                android:popupBackground="@color/jeruk" />
 
         </GridLayout>
 
@@ -274,7 +275,8 @@
                 android:layout_row="0"
                 android:layout_weight="0.67"
                 android:background="@color/hijau"
-                android:prompt="@string/spinnerAktivitas1" />
+                android:prompt="@string/spinnerAktivitas1"
+                android:popupBackground="@color/jeruk" />
 
         </GridLayout>
 
@@ -305,7 +307,8 @@
                 android:layout_row="0"
                 android:layout_weight="0.67"
                 android:background="@color/hijau"
-                android:prompt="@string/spinnerAktivitas2" />
+                android:prompt="@string/spinnerAktivitas2"
+                android:popupBackground="@color/jeruk" />
 
         </GridLayout>
 
@@ -336,7 +339,8 @@
                 android:layout_row="0"
                 android:layout_weight="0.67"
                 android:background="@color/hijau"
-                android:prompt="@string/spinnerAktivitas3" />
+                android:prompt="@string/spinnerAktivitas3"
+                android:popupBackground="@color/jeruk" />
 
         </GridLayout>
 

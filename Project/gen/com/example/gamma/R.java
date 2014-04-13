@@ -17,6 +17,7 @@ public final class R {
     public static final class color {
         public static final int green=0x7f050001;
         public static final int hijau=0x7f050003;
+        public static final int jeruk=0x7f050004;
         public static final int my_blue=0x7f050000;
         public static final int my_red=0x7f050002;
     }
@@ -58,11 +59,12 @@ public final class R {
         public static final int profile=0x7f020017;
         public static final int rekomendasi=0x7f020018;
         public static final int run=0x7f020019;
-        public static final int sports=0x7f02001a;
-        public static final int statistik=0x7f02001b;
-        public static final int study=0x7f02001c;
-        public static final int style=0x7f02001d;
-        public static final int vegetable=0x7f02001e;
+        public static final int spinner=0x7f02001a;
+        public static final int sports=0x7f02001b;
+        public static final int statistik=0x7f02001c;
+        public static final int study=0x7f02001d;
+        public static final int style=0x7f02001e;
+        public static final int vegetable=0x7f02001f;
     }
     public static final class id {
         public static final int TextView01=0x7f0a000d;
