@@ -22,17 +22,20 @@ import android.widget.Toast;
 
 import com.example.gamma.R;
 
+import controller.ProfilController;
+
 public class EditProfilActivity extends Activity {
 
 	protected static final int RESULT_LOAD_IMAGE = 1;
 	private EditText namaField, umurField, beratField, tinggiField;
 	private RadioGroup genderPick;
-	private RadioButton pria, wanita;
+	private RadioButton selected;
 	private CheckBox telur, vegetarian, kacang, seafood;
 	private Spinner spinTransport;
 	private Button batal, simpan;
 	private ImageView fotoProfil;
 	private String gaya, akv1, akv2, akv3, akv4;
+	private ProfilController con;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,6 @@ public class EditProfilActivity extends Activity {
 		tinggiField = (EditText) findViewById(R.id.editTinggi);
 
 		genderPick = (RadioGroup) findViewById(R.id.editGender);
-
-		pria = (RadioButton) findViewById(R.id.editPria);
-		wanita = (RadioButton) findViewById(R.id.editWanita);
 
 		telur = (CheckBox) findViewById(R.id.editTelur);
 		vegetarian = (CheckBox) findViewById(R.id.editVegetarian);
@@ -87,7 +87,7 @@ public class EditProfilActivity extends Activity {
 
 		// The Adapter is used to provide the data which backs this Spinner.
 		spinTransport.setAdapter(adapter);
-		
+
 		spinTransport.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View view,
 					int position, long id) {
@@ -132,11 +132,17 @@ public class EditProfilActivity extends Activity {
 				String umur = umurField.getText().toString();
 				String berat = beratField.getText().toString();
 				String tinggi = tinggiField.getText().toString();
-				int gender = genderPick.getCheckedRadioButtonId();
-				
+				int selectedId = genderPick.getCheckedRadioButtonId();
+				if (selectedId != -1) {
+					selected = (RadioButton) findViewById(selectedId);
+					String gender = selected.getText().toString();
+				}
+
 				if (nama.length() != 0 && umur.length() != 0
-						&& berat.length() != 0 && tinggi.length() != 0) {
-					// cek = kontrol.addLaporan(berat, tinggi);
+						&& berat.length() != 0 && tinggi.length() != 0
+						&& selectedId != -1) {
+		//			con.updateProfil(nama, umur, berat, tinggi, target, gender, gayaHidup, kacang.isChecked(), 
+		//					seafood.isChecked(), vegetarian.isChecked());
 				}
 
 			}

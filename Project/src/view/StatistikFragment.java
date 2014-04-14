@@ -50,12 +50,14 @@ public class StatistikFragment extends Fragment {
 		List<Laporan> list = con.getListLaporan();
 
 		// Creating an XYSeries for Income
-		TimeSeries targetSeries = new TimeSeries("Target");
+		// TimeSeries targetSeries = new TimeSeries("Target");
 		// Creating an XYSeries for Income
 		TimeSeries realSeries = new TimeSeries("Realized");
 
 		int count = list.size();
 		Date[] x = new Date[count];
+		Date[] y = new Date[count];
+
 		for (int i = 0; i < count; i++) {
 			Laporan l = list.get(i);
 			// targetSeries.add(x[i], target[i]);
@@ -63,6 +65,8 @@ public class StatistikFragment extends Fragment {
 			gc.setTimeInMillis(l.getWaktu());
 			x[i] = gc.getTime();
 			realSeries.add(x[i], l.getBeratBadan());
+			// targetSeries.add(y[i], l.getBeratBadan());
+
 		}
 
 		// Creating a dataset to hold each series
@@ -90,7 +94,6 @@ public class StatistikFragment extends Fragment {
 
 		// Creating a XYMultipleSeriesRenderer to customize the whole chart
 		XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
-		multiRenderer.setTextTypeface(Typeface.SANS_SERIF);
 		multiRenderer.setChartTitle("Grafik berat badan");
 		multiRenderer.setXTitle("Waktu");
 		multiRenderer.setYTitle("Berat badan");
