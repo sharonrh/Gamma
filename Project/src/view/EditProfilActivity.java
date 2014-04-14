@@ -1,13 +1,9 @@
 package view;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -35,10 +31,11 @@ public class EditProfilActivity extends Activity {
 
 	protected static final int RESULT_LOAD_IMAGE = 1;
 
-	private EditText namaField, umurField, beratField, tinggiField;
+	private EditText namaField, umurField, beratField, tinggiField,
+			targetField;
 	private RadioGroup genderPick;
 	private RadioButton selected;
-	private CheckBox telur, vegetarian, kacang, seafood;
+	private CheckBox vegetarian, kacang, seafood;
 	private Spinner spinTransport;
 	private Button batal, simpan;
 	private ImageView fotoProfil;
@@ -59,10 +56,14 @@ public class EditProfilActivity extends Activity {
 
 		namaField = (EditText) findViewById(R.id.editNama);
 		umurField = (EditText) findViewById(R.id.editUmur);
-		// beratField = (EditText) findViewById(R.id.editBerat);
+		beratField = (EditText) findViewById(R.id.editBeratSekarang);
+		targetField = (EditText) findViewById(R.id.editBeratTarget);
 		tinggiField = (EditText) findViewById(R.id.editTinggi);
 
 		genderPick = (RadioGroup) findViewById(R.id.editGender);
+		vegetarian = (CheckBox) findViewById(R.id.editVegetarian);
+		kacang = (CheckBox) findViewById(R.id.editKacang);
+		seafood = (CheckBox) findViewById(R.id.editIkan);
 
 		penjelasan = (TextView) findViewById(R.id.textPenjelasanGaya);
 
@@ -71,7 +72,7 @@ public class EditProfilActivity extends Activity {
 
 		batal = (Button) findViewById(R.id.batalProfilBtn);
 		simpan = (Button) findViewById(R.id.simpanProfilBtn);
-		
+
 		fotoProfil = (ImageView) findViewById(R.id.editFoto);
 
 		fotoProfil.setOnClickListener(new View.OnClickListener() {
@@ -86,21 +87,8 @@ public class EditProfilActivity extends Activity {
 				startActivityForResult(i, RESULT_LOAD_IMAGE);
 			}
 		});
-
-		// Adapter for spinner
-		// ArrayAdapter adapter = ArrayAdapter.createFromResource(
-		// getApplicationContext(), R.array.isi_gayaHidup,
-		// android.R.layout.simple_spinner_dropdown_item);
-
 		CustomAdapter adapter = new CustomAdapter(this,
 				android.R.layout.simple_spinner_item, languages);
-
-		ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
-				getApplicationContext(), R.array.isi_aktivitas,
-				android.R.layout.simple_spinner_dropdown_item);
-		// Sets the layout resource to create the drop down views
-		// adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		// The Adapter is used to provide the data which backs this Spinner.
 		spinTransport.setAdapter(adapter);
@@ -158,19 +146,26 @@ public class EditProfilActivity extends Activity {
 				String nama = namaField.getText().toString();
 				String umur = umurField.getText().toString();
 				String berat = beratField.getText().toString();
+				String target = targetField.getText().toString();
 				String tinggi = tinggiField.getText().toString();
 				int selectedId = genderPick.getCheckedRadioButtonId();
+				int gayaHidup = spinTransport.getSelectedItemPosition();
+
 				if (selectedId != -1) {
 					selected = (RadioButton) findViewById(selectedId);
-					String gender = selected.getText().toString();
-				}
+					String gender = selected.getText().toString(); // P = pria,
+																	// W =
+																	// wanita
 
-				if (nama.length() != 0 && umur.length() != 0
-						&& berat.length() != 0 && tinggi.length() != 0
-						&& selectedId != -1) {
-					// con.updateProfil(nama, umur, berat, tinggi, target,
-					// gender, gayaHidup, kacang.isChecked(),
-					// seafood.isChecked(), vegetarian.isChecked());
+					if (nama.length() != 0 && umur.length() != 0
+							&& berat.length() != 0 && tinggi.length() != 0) {
+						con.updateProfil(nama, Integer.parseInt(umur),
+								Double.parseDouble(berat),
+								Double.parseDouble(tinggi),
+								Double.parseDouble(target), gender.charAt(0),
+								gayaHidup, kacang.isChecked(),
+								seafood.isChecked(), vegetarian.isChecked());
+					}
 				}
 			}
 		});
