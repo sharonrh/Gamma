@@ -97,7 +97,8 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.setChartTitle("Grafik berat badan");
 		multiRenderer.setXTitle("Waktu");
 		multiRenderer.setYTitle("Berat badan");
-
+		multiRenderer.setXRoundedLabels(false);
+		
 		// Note: The order of adding dataseries to dataset and renderers to
 		// multipleRenderer
 		// should be same

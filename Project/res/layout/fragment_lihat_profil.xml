@@ -83,13 +83,6 @@
                         android:layout_height="wrap_content"
                         android:text="Umur Anda" />
 							
-						<TextView
-						    android:id="@+id/textTahun"
-						    android:layout_width="wrap_content"
-						    android:layout_height="wrap_content"
-						    android:text=" tahun"
-						    android:textStyle="bold|italic" />
-
 					</LinearLayout>
 					
 					<LinearLayout
@@ -102,13 +95,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Berat Sekarang" />
-
-						<TextView
-						    android:id="@+id/textKg"
-						    android:layout_width="wrap_content"
-						    android:layout_height="wrap_content"
-						    android:text=" kg"
-						    android:textStyle="bold|italic" />
 
 					</LinearLayout>
 					
@@ -123,13 +109,6 @@
                         android:layout_height="wrap_content"
                         android:text="Berat Target" />
 
-						<TextView
-						    android:id="@+id/textKg"
-						    android:layout_width="wrap_content"
-						    android:layout_height="wrap_content"
-						    android:text=" kg"
-						    android:textStyle="bold|italic" />
-
 					</LinearLayout>
 					
 					<LinearLayout
@@ -143,13 +122,6 @@
                         android:layout_height="wrap_content"
                         android:text="Tinggi Anda" />
 							
-						<TextView
-						    android:id="@+id/textCm"
-						    android:layout_width="wrap_content"
-						    android:layout_height="wrap_content"
-						    android:text=" cm"
-						    android:textStyle="bold|italic" />
-
 					</LinearLayout>	
 
                 </LinearLayout>

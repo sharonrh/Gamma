@@ -60,11 +60,7 @@
         </activity>
         <activity
             android:name="view.EditProfilActivity"
-            android:label="@string/title_activity_edit_profil"
-            android:parentActivityName="view.ProfilFragment" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.ProfilFragment" />
+            android:label="@string/title_activity_edit_profil">           
         </activity>
     </application>
 

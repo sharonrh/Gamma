@@ -39,7 +39,7 @@ public class HalamanUtama extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(), MainActivity.class);
-				i.putExtra("nomorFragment", 1);
+				i.putExtra("nomorFragment", 3);
 
 				startActivity(i);
 			}
@@ -52,7 +52,7 @@ public class HalamanUtama extends Activity {
 				// TODO Auto-generated method stub
 
 				Intent i = new Intent(getApplicationContext(), MainActivity.class);
-				i.putExtra("nomorFragment", 2);
+				i.putExtra("nomorFragment", 0);
 
 				startActivity(i);
 			}
@@ -64,7 +64,7 @@ public class HalamanUtama extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(), MainActivity.class);
-				i.putExtra("nomorFragment", 3);
+				i.putExtra("nomorFragment", 2);
 				startActivity(i);
 			}
 		});
@@ -75,7 +75,7 @@ public class HalamanUtama extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(), MainActivity.class);
-				i.putExtra("nomorFragment", 4);
+				i.putExtra("nomorFragment", 1);
 				startActivity(i);
 			}
 		});

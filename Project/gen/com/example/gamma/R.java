@@ -202,12 +202,7 @@ public final class R {
         public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
         public static final int display_spinner=0x7f06000f;
-        public static final int spinnerAktivitas1=0x7f060011;
-        public static final int spinnerAktivitas2=0x7f060012;
-        public static final int spinnerAktivitas3=0x7f060013;
-        public static final int spinnerAktivitas4=0x7f060014;
         public static final int spinnerGayaHidup=0x7f060010;
-        public static final int title_activity_buatdibuang=0x7f060015;
         public static final int title_activity_edit_profil=0x7f06000e;
         public static final int title_activity_halaman_utama=0x7f060001;
         public static final int title_activity_notifikasi=0x7f06000b;

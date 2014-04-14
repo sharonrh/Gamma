@@ -48,11 +48,11 @@ public class HandlerProfil extends DatabaseHandler{
 		if (cursor != null)
 			cursor.moveToFirst();
 
-		Pengguna profil = new Pengguna(cursor.getString(0),
-				Integer.parseInt(cursor.getString(1)),
-				Double.parseDouble(cursor.getString(2)),
+		Pengguna profil = new Pengguna(cursor.getString(1),
+				Integer.parseInt(cursor.getString(2)),
 				Double.parseDouble(cursor.getString(3)),
-				Double.parseDouble(cursor.getString(4)), cursor.getString(5)
+				Double.parseDouble(cursor.getString(4)),
+				Double.parseDouble(cursor.getString(5)), cursor.getString(6)
 				.charAt(0), Integer.parseInt(cursor.getString(6)),
 				false, false, false);
 

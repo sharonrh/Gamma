@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -38,59 +37,29 @@ public class MainActivity extends Activity {
 				getString(R.string.ui_tabname_profil));
 		ActionBar.Tab statTab = actionbar.newTab().setText(
 				getString(R.string.ui_tabname_statistik));
-		
+
 		Fragment rekFragmen = new RekomendasiFragment();
 		Fragment laporanFragment = new LaporanFragment();
 		Fragment profilFragment = new ProfilFragment();
 		Fragment statFragment = new StatistikFragment();
-		
+
 		rekTab.setTabListener(new MyTabsListener(rekFragmen));
 		laporanTab.setTabListener(new MyTabsListener(laporanFragment));
 		profilTab.setTabListener(new MyTabsListener(profilFragment));
 		statTab.setTabListener(new MyTabsListener(statFragment));
-		
+
+		actionbar.addTab(rekTab);
+		actionbar.addTab(laporanTab);
+		actionbar.addTab(statTab);
+		actionbar.addTab(profilTab);
+
 		// add the tabs to the action bar
 		Intent i = getIntent();
 		int x = i.getIntExtra("nomorFragment", 0);
-		
-		if(x==1){
-			actionbar.addTab(profilTab);
-			actionbar.addTab(rekTab);
-			actionbar.addTab(statTab);
-			actionbar.addTab(laporanTab);	
-		}
-		else if(x==2){
-			actionbar.addTab(rekTab);
-			actionbar.addTab(statTab);
-			actionbar.addTab(laporanTab);
-			actionbar.addTab(profilTab);
-		}
-		else if(x==3) {
-			actionbar.addTab(statTab);
-			actionbar.addTab(rekTab);
-			actionbar.addTab(laporanTab);
-			actionbar.addTab(profilTab);
-		}
-		else {
-			actionbar.addTab(laporanTab);
-			actionbar.addTab(profilTab);
-			actionbar.addTab(rekTab);
-			actionbar.addTab(statTab);
-				
-		}
-
-		// Crash the program -- example of debugging
-
-		// Toast.makeText(getApplicationContext(),
-		// "tab is " + savedInstanceState.getInt(TAB_KEY_INDEX, 0),
-		// Toast.LENGTH_SHORT).show();
+		actionbar.setSelectedNavigationItem(x);
 
 		// restore to navigation
 		if (savedInstanceState != null) {
-			Toast.makeText(getApplicationContext(),
-					"tab is " + savedInstanceState.getInt(TAB_KEY_INDEX, 0),
-					Toast.LENGTH_SHORT).show();
-
 			actionbar.setSelectedNavigationItem(savedInstanceState.getInt(
 					TAB_KEY_INDEX, 0));
 		}
@@ -102,26 +71,23 @@ public class MainActivity extends Activity {
 		inflater.inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	
+
 	/**
-     * Event Handling for Individual menu item selected
-     * Identify single menu item by it's id
-     * */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-         
-        switch (item.getItemId())
-        {
-        case R.id.action_settings:
-        	Intent i = new Intent(this, SettingActivity.class);
-        	startActivity(i);
-        	
-        default:
-            return super.onOptionsItemSelected(item);
-        }
-    }    
+	 * Event Handling for Individual menu item selected Identify single menu
+	 * item by it's id
+	 * */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			Intent i = new Intent(this, SettingActivity.class);
+			startActivity(i);
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 
 	// onSaveInstanceState() is used to "remember" the current state when a
 	// configuration change occurs such screen orientation change. This
@@ -130,11 +96,6 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		Toast.makeText(
-				this,
-				"onSaveInstanceState: tab is"
-						+ getActionBar().getSelectedNavigationIndex(),
-				Toast.LENGTH_SHORT).show();
 		outState.putInt(TAB_KEY_INDEX, getActionBar()
 				.getSelectedNavigationIndex());
 	}

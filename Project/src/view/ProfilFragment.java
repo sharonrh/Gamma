@@ -18,12 +18,12 @@ import controller.ProfilController;
 public class ProfilFragment extends Fragment {
 
 	private Button editProfil;
-	private TextView nama, umur, beratSekarang, beratTarget, tinggi, telurTxt,
-			ikanTxt, kacangTxt, sayurTxt, gayaTxt, akv1Txt, akv2Txt, akv3Txt;
-	private ImageView foto, genderImg, telurImg, ikanImg, kacangImg, sayurImg,
-			gaya1Img, gaya2Img, gaya3Img, gaya4Img;
+	private TextView nama, umur, beratSekarang, beratTarget, tinggi, ikanTxt,
+			kacangTxt, sayurTxt, gayaTxt;
+	private ImageView foto, genderImg, ikanImg, kacangImg, sayurImg, gaya1Img,
+			gaya2Img, gaya3Img, gaya4Img;
 	private ProfilController con;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -33,27 +33,21 @@ public class ProfilFragment extends Fragment {
 
 		con = new ProfilController(getActivity().getApplicationContext());
 		Pengguna profil = con.getProfil();
-		
+
 		editProfil = (Button) v.findViewById(R.id.editProfilButton);
 		nama = (TextView) v.findViewById(R.id.namaProfilTv);
-		nama.setText(profil.getNama());
-		
-		
 		umur = (TextView) v.findViewById(R.id.tahunProfilTv);
 		beratSekarang = (TextView) v.findViewById(R.id.beratProfilSekarangTv);
 		beratTarget = (TextView) v.findViewById(R.id.beratProfilTargetTv);
 		tinggi = (TextView) v.findViewById(R.id.tinggiProfilTv);
-
 		foto = (ImageView) v.findViewById(R.id.fotoProfilTv);
 
 		genderImg = (ImageView) v.findViewById(R.id.imageGender);
-
 		ikanImg = (ImageView) v.findViewById(R.id.imageIkan);
-		ikanTxt = (TextView) v.findViewById(R.id.textIkan);
 		kacangImg = (ImageView) v.findViewById(R.id.imageKacang);
-		kacangTxt = (TextView) v.findViewById(R.id.textKacang);
-
 		sayurImg = (ImageView) v.findViewById(R.id.imageVegetarian);
+		kacangTxt = (TextView) v.findViewById(R.id.textKacang);
+		ikanTxt = (TextView) v.findViewById(R.id.textIkan);
 		sayurTxt = (TextView) v.findViewById(R.id.textVegetarian);
 
 		gaya1Img = (ImageView) v.findViewById(R.id.imageGayaHidup1);
@@ -62,8 +56,30 @@ public class ProfilFragment extends Fragment {
 		gaya3Img = (ImageView) v.findViewById(R.id.imageGayaHidup3);
 		gaya4Img = (ImageView) v.findViewById(R.id.imageGayaHidup4);
 
-		editProfil.setOnClickListener(new View.OnClickListener() {
+		nama.setText(profil.getNama());
+		umur.setText(profil.getUmur() + " tahun");
+		beratSekarang.setText(profil.getBerat() + " kg");
+		beratTarget.setText(profil.getTarget() + " kg");
+		tinggi.setText(profil.getTinggi() + " cm");
 
+		if (profil.getGender() == 'P')
+			genderImg.setBackgroundResource(R.drawable.male);
+		else
+			genderImg.setBackgroundResource(R.drawable.female);
+
+		if (!profil.isAlergiKacang()) {
+			kacangImg.setVisibility(View.GONE);
+			kacangTxt.setVisibility(View.GONE);
+		}
+		if (!profil.isAlergiSeafood()) {
+			ikanImg.setVisibility(View.GONE);
+			ikanTxt.setVisibility(View.GONE);
+		}
+		if (!profil.isVegetarian()) {
+			sayurImg.setVisibility(View.GONE);
+			sayurTxt.setVisibility(View.GONE);
+		}
+		editProfil.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View args0) {
 				// TODO Auto-generated method stub
