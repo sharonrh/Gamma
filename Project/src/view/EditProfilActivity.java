@@ -70,7 +70,8 @@ public class EditProfilActivity extends Activity {
 		// beratTarget = (EditText) findViewById(R.id.editBeratTarget);
 
 		batal = (Button) findViewById(R.id.batalProfilBtn);
-
+		simpan = (Button) findViewById(R.id.simpanProfilBtn);
+		
 		fotoProfil = (ImageView) findViewById(R.id.editFoto);
 
 		fotoProfil.setOnClickListener(new View.OnClickListener() {
