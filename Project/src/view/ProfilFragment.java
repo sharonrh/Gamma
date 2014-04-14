@@ -16,8 +16,9 @@ import com.example.gamma.R;
 public class ProfilFragment extends Fragment {
 	
 	Button editProfil;
-	TextView nama, umur, berat, tinggi, telurTxt, ikanTxt, kacangTxt, 
-	         sayurTxt, gayaTxt, akv1Txt, akv2Txt, akv3Txt;
+	TextView nama, umur, beratSekarang, beratTarget, tinggi, 
+		     telurTxt, ikanTxt, kacangTxt, sayurTxt, gayaTxt, 
+		     akv1Txt, akv2Txt, akv3Txt;
 	ImageView foto, genderImg, telurImg, ikanImg, kacangImg, 
 			  sayurImg, gaya1Img, gaya2Img, gaya3Img, gaya4Img, 
 			  akv1Img, akv2Img, akv3Img;
@@ -31,15 +32,16 @@ public class ProfilFragment extends Fragment {
         editProfil = (Button) v.findViewById(R.id.editProfilButton);
         nama = (TextView) v.findViewById(R.id.namaProfilTv);
         umur = (TextView) v.findViewById(R.id.tahunProfilTv);
-        berat = (TextView) v.findViewById(R.id.beratProfilTv);
+        beratSekarang = (TextView) v.findViewById(R.id.beratProfilSekarangTv);
+        beratTarget = (TextView) v.findViewById(R.id.beratProfilTargetTv);
         tinggi = (TextView) v.findViewById(R.id.tinggiProfilTv);
         
         foto = (ImageView) v.findViewById(R.id.fotoProfilTv);
         
         genderImg = (ImageView) v.findViewById(R.id.imageGender);
         
-        telurImg = (ImageView) v.findViewById(R.id.imageTelur);
-        telurTxt = (TextView) v.findViewById(R.id.textTelur);
+        //telurImg = (ImageView) v.findViewById(R.id.imageTelur);
+        //telurTxt = (TextView) v.findViewById(R.id.textTelur);
         ikanImg = (ImageView) v.findViewById(R.id.imageIkan);
         ikanTxt = (TextView) v.findViewById(R.id.textIkan);
         kacangImg = (ImageView) v.findViewById(R.id.imageKacang);
@@ -54,18 +56,18 @@ public class ProfilFragment extends Fragment {
         gaya3Img = (ImageView) v.findViewById(R.id.imageGayaHidup3);
         gaya4Img = (ImageView) v.findViewById(R.id.imageGayaHidup4);
         
-        akv1Img = (ImageView) v.findViewById(R.id.imageAktivitas1);
-        akv1Txt = (TextView) v.findViewById(R.id.textAktivitas1);
-        akv2Img = (ImageView) v.findViewById(R.id.imageAktivitas2);
-        akv2Txt = (TextView) v.findViewById(R.id.textAktivitas2);
-        akv3Img = (ImageView) v.findViewById(R.id.imageAktivitas3);
-        akv3Txt = (TextView) v.findViewById(R.id.textAktivitas3);
+        //akv1Img = (ImageView) v.findViewById(R.id.imageAktivitas1);
+        //akv1Txt = (TextView) v.findViewById(R.id.textAktivitas1);
+        //akv2Img = (ImageView) v.findViewById(R.id.imageAktivitas2);
+        //akv2Txt = (TextView) v.findViewById(R.id.textAktivitas2);
+        //akv3Img = (ImageView) v.findViewById(R.id.imageAktivitas3);
+        //akv3Txt = (TextView) v.findViewById(R.id.textAktivitas3);
         
                 
         editProfil.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
-			public void onClick(View v) {
+			public void onClick(View args0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getActivity().getApplicationContext(), EditProfilActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

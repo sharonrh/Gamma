@@ -29,3 +29,5 @@ proguard/
 Project/project.properties
 Project/gen/com/example/gamma/BuildConfig.java
 Project/project.properties
+Project/src/dao/DatabaseHandlerMakanan.java
+Project/src/model/Makanan.java

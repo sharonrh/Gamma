@@ -1,16 +1,23 @@
 package view;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Notifikasi;
 
 import view.SettingActivity.Setting;
 import view.SettingActivity.SettingArrayAdapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -24,13 +31,16 @@ import android.widget.TimePicker;
 
 import com.example.gamma.R;
 
+import controller.NotifikasiController;
+
 public class NotifikasiActivity extends Activity {
 	
 	String str;
 	Button tambahNotifikasiBtn;
 	ListNotifikasiArrayAdapter adapter;
+	NotifikasiController kontrol;
 	ListView lv;
-	ArrayList<ListNotifikasi> data = new ArrayList<ListNotifikasi>();
+	List<Notifikasi> data = new ArrayList<Notifikasi>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +49,9 @@ public class NotifikasiActivity extends Activity {
 		
 		tambahNotifikasiBtn = (Button) findViewById(R.id.tmbhNtfkasiBtn);
 		lv = (ListView) findViewById(R.id.listViewNotifikasi);
+		kontrol = new NotifikasiController(getApplicationContext());
 		
-		
-		
+		data = kontrol.getListLaporan();
 		adapter = new ListNotifikasiArrayAdapter(this, data);
 		lv.setAdapter(adapter);
 		
@@ -82,11 +92,17 @@ public class NotifikasiActivity extends Activity {
 				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "simpan", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,
 							int which) {
+						Time t = new Time();
+						t.setToNow();
+						System.out.println(t.hour);
+						System.out.println(t.minute);
 						
-						System.out.println("abc");
-						ListNotifikasi lnObj = new ListNotifikasi(tv.getText().toString(), tp.getCurrentHour() + " : " + tp.getCurrentMinute());
+						t.hour = tp.getCurrentHour();
+						t.minute = tp.getCurrentMinute();
+						
+						long l = t.toMillis(false)/1000;
 						System.out.println("abc2");
-						System.out.println(data.add(lnObj));
+						System.out.println(kontrol.addNotifikasi(tv.getText().toString(),l , tv.getText().toString()));
 						System.out.println(data);
 						
 						
@@ -170,20 +186,21 @@ public class NotifikasiActivity extends Activity {
 		}
 	}
 
-	class ListNotifikasiArrayAdapter extends ArrayAdapter<ListNotifikasi> {
+	class ListNotifikasiArrayAdapter extends ArrayAdapter<Notifikasi> {
 
 		private LayoutInflater inflater;
 
-		public ListNotifikasiArrayAdapter(Context context, List<ListNotifikasi> ListNotifikasiList) {
+		public ListNotifikasiArrayAdapter(Context context, List<Notifikasi> ListNotifikasiList) {
 			super(context, R.layout.notifikasi_simplerow, R.id.Title, ListNotifikasiList);
 			// Cache the LayoutInflate to avoid asking for a new one each time.
 			inflater = LayoutInflater.from(context);
 		}
 
+		@SuppressLint("SimpleDateFormat")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// Nasabah to display
-			ListNotifikasi set = (ListNotifikasi) this.getItem(position);
+			Notifikasi set = (Notifikasi) this.getItem(position);
 
 			// The child views in each row.
 			TextView tv1;
@@ -214,8 +231,12 @@ public class NotifikasiActivity extends Activity {
 			}
 
 			if (tv1 != null) {
-				tv1.setText(set.getTitle());
-				tv2.setText(set.getSubTitle());
+				
+				Date date = new Date(set.getWaktu());
+				SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+				String formatted = format.format(date);
+				tv1.setText(set.getNama());
+				tv2.setText(formatted);
 			}
 
 			return convertView;
