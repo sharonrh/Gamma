@@ -8,6 +8,7 @@ import model.Laporan;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -48,8 +49,13 @@ public class DatabaseHandlerLaporan extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		String buatTabelLaporan = "CREATE TABLE " + tabelLaporan + "(" + id
 				+ " INTEGER PRIMARY KEY AUTOINCREMENT," + waktu + " INTEGER,"
-				+ berat + " REAL," + tinggi + " REAL" + ")";
-		db.execSQL(buatTabelLaporan);
+				+ berat + " REAL," + tinggi + " REAL" + ");";
+		try {
+			db.execSQL(buatTabelLaporan);
+		} catch (SQLException e) {
+			System.out.println("salah query bikin database");
+		}
+
 		System.out.println("database created");
 	}
 
