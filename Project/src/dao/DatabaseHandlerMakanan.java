@@ -256,40 +256,7 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 	}
 
 	// Baca data dari csv
-<<<<<<< HEAD
-	public ArrayList<Makanan> bacaFile() {
-		ArrayList<Makanan> mk = new ArrayList<>();
-		try {
-			AssetManager am = getAssets();
-			InputStream is = am.open("data_makanan.csv");
 
-			//InputStreamReader is = new InputStreamReader(getAssets().open("data_makanan.csv"));
-
-	        BufferedReader reader = new BufferedReader(is);
-	        reader.readLine(); //baca header
-	        String line;
-	        
-	        while ((line = reader.readLine()) != null) {
-	        	String[] temp = line.split(",");
-	        	boolean isHewani = false, isSeafood = false, isKacang = false;
-	        	if (temp[9].charAt(0) == 'Y') {
-	        		isHewani = true;
-	        	}
-	        	if (temp[10].charAt(0) == 'Y') {
-	        		isSeafood = true;
-	        	}
-	        	if (temp[11].charAt(0) == 'Y') {
-	        		isKacang = true;
-	        	}
-	        	Makanan ma = new Makanan(temp[0], Integer.parseInt(temp[1]), Double.parseDouble(temp[2]), Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Double.parseDouble(temp[5]), Integer.parseInt(temp[6]), Integer.parseInt(temp[7]), temp[8], isHewani, isSeafood, isKacang, Integer.parseInt(temp[12]));
-	        	mk.add(ma);
-	        }
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    }
-        return mk;
-	}
-=======
 	public ArrayList<Makanan> bacaFile(Context context) {
 		ArrayList<Makanan> mk = new ArrayList<Makanan>();
 		AssetManager am = context.getAssets();
@@ -302,7 +269,6 @@ public class DatabaseHandlerMakanan extends SQLiteOpenHelper {
 			BufferedReader reader = new BufferedReader(isr);
 			reader.readLine(); // baca header
 			String line;
->>>>>>> a8e80925924e694fa10a169f690e5a94829d384d
 
 			while ((line = reader.readLine()) != null) {
 				String[] temp = line.split(",");
