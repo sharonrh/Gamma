@@ -31,7 +31,7 @@ public class HandlerLaporan extends DatabaseHandler{
 		return sInstance;
 	}
 
-	public HandlerLaporan(Context context) {
+	private HandlerLaporan(Context context) {
 		super(context);
 	}
 

@@ -3,17 +3,31 @@ package controller;
 import java.util.List;
 
 import model.Makanan;
+import android.content.Context;
+import dao.HandlerMakanan;
 
 public class RekomendasiController {
 
-	private List<Makanan> listMakanan;
-	private boolean[] count = { true, false, true, true, false, false, true,
-			false, false };
-	private String[] header = { "Sarapan", null, "Snack", "Makan siang", null,
-			null, "Makan Malam" };
+	private HandlerMakanan db;
+	private List<Makanan> rekomen;
+
+	private final boolean[] count = { true, false, true, true, false, false,
+			true, false, false };
+	private final String[] header = { "Sarapan", null, "Snack", "Makan siang",
+			null, null, "Makan Malam" };
+
+	public RekomendasiController(Context c) {
+		db = HandlerMakanan.getInstance(c);
+
+	}
 
 	public List<Makanan> getListMakanan() {
-		return listMakanan;
+		return db.getAllMakanan();
+	}
+
+	public List<Makanan> getRekomendasi() {
+		rekomen = db.getAllMakanan();
+		return rekomen;
 	}
 
 	public boolean[] getCount() {

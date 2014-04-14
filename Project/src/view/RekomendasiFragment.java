@@ -25,8 +25,8 @@ public class RekomendasiFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		RekomendasiController con = new RekomendasiController();
-		// List<Rekomendasi> values = con.getList();
+		RekomendasiController con = new RekomendasiController(getActivity().getApplicationContext());
+//		List<Makanan> values = con.getListMakanan();
 
 		// ------------------ dummy data --------------------
 

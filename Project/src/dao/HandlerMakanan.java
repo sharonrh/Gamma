@@ -14,9 +14,10 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class HandlerMakanan extends DatabaseHandler{
-	
+public class HandlerMakanan extends DatabaseHandler {
+
 	private static final String KEY_ID = "nama";
+	private static HandlerMakanan sInstance;
 
 	// Database Name
 	private static final String namaDB = "gamma.db";
@@ -39,14 +40,19 @@ public class HandlerMakanan extends DatabaseHandler{
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
 
-	public HandlerMakanan(Context context) {
+	public static HandlerMakanan getInstance(Context context) {
+		if (sInstance == null) {
+			sInstance = new HandlerMakanan(context);
+		}
+		return sInstance;
+	}
+
+	private HandlerMakanan(Context context) {
 		super(context);
-		bacaFile(context);
 	}
 
 	/**
-	 * All CRUD(Create, Read, Update, Delete) Operations
-	 * untuk tabel Makanan
+	 * All CRUD(Create, Read, Update, Delete) Operations untuk tabel Makanan
 	 */
 
 	// Adding new makanan
@@ -81,7 +87,6 @@ public class HandlerMakanan extends DatabaseHandler{
 
 		// Inserting Row
 		db.insert(tabelMakanan, null, values);
-		db.close(); // Closing database connection
 	}
 
 	// Getting single makanan
@@ -121,12 +126,58 @@ public class HandlerMakanan extends DatabaseHandler{
 		}
 		makanan.setTerakhir(Integer.parseInt(cursor.getString(12)));
 
-		// return makanan
 		return makanan;
 	}
 
 	// Getting All Makanan
 	public List<Makanan> getAllMakanan() {
+		List<Makanan> makananList = new ArrayList<Makanan>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + tabelMakanan;
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
+				makanan.setProtein(Double.parseDouble(cursor.getString(2)));
+				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(3)));
+				makanan.setLemak(Double.parseDouble(cursor.getString(4)));
+				makanan.setKalsium(Double.parseDouble(cursor.getString(5)));
+				makanan.setPersentase(Integer.parseInt(cursor.getString(6)));
+				makanan.setRating(Integer.parseInt(cursor.getString(7)));
+				makanan.setJenisMakanan(cursor.getString(8));
+
+				// retrieve data alegi
+				int h = Integer.parseInt(cursor.getString(9));
+				int s = Integer.parseInt(cursor.getString(10));
+				int k = Integer.parseInt(cursor.getString(11));
+
+				if (h == 1) {
+					makanan.setHewani(true);
+				}
+				if (s == 1) {
+					makanan.setSeafood(true);
+				}
+				if (k == 1) {
+					makanan.setKacang(true);
+				}
+				makanan.setTerakhir(Integer.parseInt(cursor.getString(12)));
+
+				// Adding makanan to list
+				makananList.add(makanan);
+			} while (cursor.moveToNext());
+		}
+
+		// return makanan list
+		return makananList;
+	}
+
+	public List<Makanan> getRekomendasi() {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// Select All Query
 		String selectQuery = "SELECT  * FROM " + tabelMakanan;
@@ -226,48 +277,4 @@ public class HandlerMakanan extends DatabaseHandler{
 		// return count
 		return cursor.getCount();
 	}
-
-	// Baca data dari csv
-
-	public ArrayList<Makanan> bacaFile(Context context) {
-		ArrayList<Makanan> mk = new ArrayList<Makanan>();
-		AssetManager am = context.getAssets();
-		InputStream is;
-		try {
-			is = am.open("data_makanan.csv");
-
-			InputStreamReader isr = new InputStreamReader(is);
-
-			BufferedReader reader = new BufferedReader(isr);
-			reader.readLine(); // baca header
-			String line;
-
-			while ((line = reader.readLine()) != null) {
-				String[] temp = line.split(",");
-				boolean isHewani = false, isSeafood = false, isKacang = false;
-				if (temp[9].charAt(0) == 'Y') {
-					isHewani = true;
-				}
-				if (temp[10].charAt(0) == 'Y') {
-					isSeafood = true;
-				}
-				if (temp[11].charAt(0) == 'Y') {
-					isKacang = true;
-				}
-				Makanan ma = new Makanan(temp[0], Integer.parseInt(temp[1]),
-						Double.parseDouble(temp[2]),
-						Double.parseDouble(temp[3]),
-						Double.parseDouble(temp[4]),
-						Double.parseDouble(temp[5]), Integer.parseInt(temp[6]),
-						Integer.parseInt(temp[7]), temp[8],
-						Integer.parseInt(temp[12]));
-				mk.add(ma);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return mk;
-	}
-
 }
