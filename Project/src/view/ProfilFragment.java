@@ -67,7 +67,7 @@ public class ProfilFragment extends Fragment {
         editProfil.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
-			public void onClick(View v) {
+			public void onClick(View args0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getActivity().getApplicationContext(), EditProfilActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

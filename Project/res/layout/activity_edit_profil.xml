@@ -96,7 +96,7 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/editBerat"
+                            android:id="@+id/editBeratSekarang"
                             android:layout_width="109dp"
                             android:layout_height="20dp"
                             android:layout_marginBottom="5dp"
@@ -104,7 +104,32 @@
                             android:layout_weight="1"
                             android:background="@drawable/style"
                             android:ems="10"
-                            android:hint="Berat Badan"
+                            android:hint="Berat Sekarang"
+                            android:paddingLeft="5dp"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/textKg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" kg" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/editBeratTarget"
+                            android:layout_width="109dp"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/style"
+                            android:ems="10"
+                            android:hint="Berat Target"
                             android:paddingLeft="5dp"
                             android:textSize="12sp" />
 
@@ -192,12 +217,12 @@
             android:layout_weight="0.67"
             android:text="Vegetarian" />
 
-        <CheckBox
+        <!--  <CheckBox
             android:id="@+id/editTelur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
-            android:text="Alergi Telur" />
+            android:text="Alergi Telur" /> -->
 
         <CheckBox
             android:id="@+id/editIkan"
@@ -249,9 +274,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/penjelasangaya"
             android:text="Aktivitas" />
 
-        <GridLayout
+        <!-- <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -376,7 +403,7 @@
                 android:prompt="@string/spinnerAktivitas4"
                 android:popupBackground="@color/hijau" />
 
-        </GridLayout>
+        </GridLayout>  -->
 
         <LinearLayout
             android:layout_width="wrap_content"
