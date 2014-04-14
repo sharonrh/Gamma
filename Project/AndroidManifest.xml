@@ -31,8 +31,8 @@
             android:label="@string/title_activity_setting_fragment"
             android:parentActivityName="view.MainActivity" >
             <meta-data
-                android:name = "android.support.PARENT_ACTIVITY"
-                android:value="view.MainActivity" />            
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="view.MainActivity" />
         </activity>
         <activity
             android:name="view.NotifikasiActivity"
@@ -40,16 +40,15 @@
             android:parentActivityName="view.SettingActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.SettingFragment" />
+                android:value="view.SettingActivity" />
         </activity>
         <activity
             android:name="view.TemaActivity"
-            android:label="@string/title_activity_tema" 
+            android:label="@string/title_activity_tema"
             android:parentActivityName="view.SettingActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.SettingFragment" />
-            
+                android:value="view.SettingActivity" />
         </activity>
         <activity
             android:name="view.TentangActivity"
@@ -57,14 +56,16 @@
             android:parentActivityName="view.SettingActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.SettingFragment" />
-            
+                android:value="view.SettingActivity" />
         </activity>
         <activity
             android:name="view.EditProfilActivity"
-            android:label="@string/title_activity_edit_profil" >
+            android:label="@string/title_activity_edit_profil"
+            android:parentActivityName="view.ProfilFragment" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="view.ProfilFragment" />
         </activity>
-       
     </application>
 
 </manifest>

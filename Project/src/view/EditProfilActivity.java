@@ -100,10 +100,6 @@ public class EditProfilActivity extends Activity {
 				// On selecting a spinner item
 				String item = parent.getItemAtPosition(position).toString();
 
-				// showing a toast on selecting an item
-				Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG)
-						.show();
-
 				// cek isi spinner dan ubah penjelasan
 				if (item.equalsIgnoreCase("jarang sekali"))
 					penjelasan
@@ -124,8 +120,6 @@ public class EditProfilActivity extends Activity {
 			}
 
 			public void onNothingSelected(AdapterView arg0) {
-				// TODO Auto-generated method stub
-
 			}
 		});
 
@@ -142,7 +136,6 @@ public class EditProfilActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
 				String nama = namaField.getText().toString();
 				String umur = umurField.getText().toString();
 				String berat = beratField.getText().toString();
@@ -153,18 +146,28 @@ public class EditProfilActivity extends Activity {
 
 				if (selectedId != -1) {
 					selected = (RadioButton) findViewById(selectedId);
-					String gender = selected.getText().toString(); // P = pria,
-																	// W =
-																	// wanita
+					String gender = selected.getText().toString();
+					// P =pria,W=wanita
 
 					if (nama.length() != 0 && umur.length() != 0
 							&& berat.length() != 0 && tinggi.length() != 0) {
-						con.updateProfil(nama, Integer.parseInt(umur),
+						con = new ProfilController(getApplicationContext());
+
+						if (con.updateProfil(nama, Integer.parseInt(umur),
 								Double.parseDouble(berat),
 								Double.parseDouble(tinggi),
 								Double.parseDouble(target), gender.charAt(0),
 								gayaHidup, kacang.isChecked(),
-								seafood.isChecked(), vegetarian.isChecked());
+								seafood.isChecked(), vegetarian.isChecked())) {
+
+							Toast.makeText(getApplicationContext(),
+									"Profil sudah diperbaharui",
+									Toast.LENGTH_LONG).show();
+						} else {
+							Toast.makeText(getApplicationContext(),
+									"Gagal. Cek ulang isian Anda",
+									Toast.LENGTH_LONG).show();
+						}
 					}
 				}
 			}

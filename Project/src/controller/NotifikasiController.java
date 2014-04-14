@@ -2,17 +2,15 @@ package controller;
 
 import java.util.List;
 
-import model.Laporan;
 import model.Notifikasi;
 import android.content.Context;
-import android.text.format.Time;
-import dao.DatabaseHandlerNotifikasi;
+import dao.HandlerNotifikasi;
 
 public class NotifikasiController {
-	private DatabaseHandlerNotifikasi db;
+	private HandlerNotifikasi db;
 
 	public NotifikasiController(Context c) {
-		db = new DatabaseHandlerNotifikasi(c);
+		db = new HandlerNotifikasi(c);
 	}
 
 	public boolean addNotifikasi(String nama, long waktu, String pesan) {

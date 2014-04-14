@@ -5,14 +5,14 @@ import java.util.List;
 import model.Laporan;
 import android.content.Context;
 import android.text.format.Time;
-import dao.DatabaseHandlerLaporan;
+import dao.HandlerLaporan;
 
 public class LaporanController {
 
-	private DatabaseHandlerLaporan db;
+	private HandlerLaporan db;
 
 	public LaporanController(Context c) {
-		db = DatabaseHandlerLaporan.getInstance(c);
+		db = HandlerLaporan.getInstance(c);
 	}
 
 	public boolean addLaporan(String berat, String tinggi) {

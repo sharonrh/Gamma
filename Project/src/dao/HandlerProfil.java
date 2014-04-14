@@ -37,47 +37,6 @@ public class HandlerProfil extends DatabaseHandler{
 		super(context);
 	}
 
-	/**
-	 * All CRUD(Create, Read, Update, Delete) Operations
-	 * untuk tabel Profil
-	 */
-	// Adding new profil
-	public boolean tambahProfil(String namaNew, int umurNew, double beratNew,
-			double tinggiNew, double targetNew, char genderNew,
-			int gayaHidupNew, boolean isAlergiKacang, boolean isAlergiSeafood,
-			boolean isVegetarian) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		int h = 0, s = 0, k = 0, g = 0;
-		ContentValues values = new ContentValues();
-		values.put(nama, namaNew);
-		values.put(umur, umurNew);
-		values.put(berat, beratNew);
-		values.put(tinggi, tinggiNew);
-		values.put(target, targetNew);
-		if (genderNew == 'l') {
-			g = 1;
-		}
-		values.put(gender, g);
-		values.put(gayaHidup, gayaHidupNew);
-		if (isAlergiKacang) {
-			k = 1;
-		}
-		values.put(kacang, k);
-
-		if (isAlergiSeafood) {
-			s = 1;
-		}
-		values.put(seafood, s);
-
-		if (isVegetarian) {
-			h = 1;
-		}
-		values.put(hewani, h);
-
-		// Inserting Row
-		return db.insert(tabelProfil, null, values) > 0;
-	}
-
 	// Getting single profil
 	public Pengguna getProfil() {
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -97,7 +56,7 @@ public class HandlerProfil extends DatabaseHandler{
 				.charAt(0), Integer.parseInt(cursor.getString(6)),
 				false, false, false);
 
-		// retrieve data alegi
+		// retrieve data alergi
 		int h = Integer.parseInt(cursor.getString(8));
 		int s = Integer.parseInt(cursor.getString(9));
 		int k = Integer.parseInt(cursor.getString(10));
@@ -128,7 +87,9 @@ public class HandlerProfil extends DatabaseHandler{
 		values.put(berat, beratNew);
 		values.put(tinggi, tinggiNew);
 		values.put(target, targetNew);
-		if (genderNew == 'l') {
+		System.out.println("Gender = "+genderNew);
+		// pria = 0, wanita = 1
+		if (genderNew == 'W') {
 			g = 1;
 		}
 		values.put(gender, g);

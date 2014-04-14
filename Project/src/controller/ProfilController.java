@@ -2,13 +2,13 @@ package controller;
 
 import model.Pengguna;
 import android.content.Context;
-import dao.DatabaseHandlerProfil;
+import dao.HandlerProfil;
 
 public class ProfilController {
-	private DatabaseHandlerProfil db;
+	private HandlerProfil db;
 
 	public ProfilController(Context c) {
-		db = DatabaseHandlerProfil.getInstance(c);
+		db = HandlerProfil.getInstance(c);
 	}
 
 	public boolean updateProfil(String nama, int umur, double berat,
