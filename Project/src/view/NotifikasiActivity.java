@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.text.format.Time;
@@ -97,16 +98,21 @@ public class NotifikasiActivity extends Activity {
 						System.out.println(t.hour);
 						System.out.println(t.minute);
 						
-						t.hour = tp.getCurrentHour();
-						t.minute = tp.getCurrentMinute();
+						int jamSekarang = tp.getCurrentHour();
+						int menitSekarang = tp.getCurrentMinute();
 						
-						long l = t.toMillis(false)/1000;
+						Time nt = new Time();
+						
+						nt.set(0, menitSekarang, jamSekarang, t.monthDay, t.month, t.year);
+						
+						long l = nt.toMillis(false);
 						System.out.println("abc2");
 						System.out.println(kontrol.addNotifikasi(tv.getText().toString(),l , tv.getText().toString()));
 						System.out.println(data);
 						
 						
 						lv.setAdapter(adapter);
+						recreate();
 					}
 				});
 				
@@ -242,7 +248,6 @@ public class NotifikasiActivity extends Activity {
 			return convertView;
 		}
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
