@@ -1,10 +1,12 @@
 package view;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import model.Laporan;
+import model.Pengguna;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -16,7 +18,6 @@ import org.achartengine.renderer.XYSeriesRenderer;
 
 import android.app.Fragment;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.LinearLayout;
 import com.example.gamma.R;
 
 import controller.LaporanController;
+import controller.ProfilController;
 
 public class StatistikFragment extends Fragment {
 
@@ -48,6 +50,14 @@ public class StatistikFragment extends Fragment {
 		LaporanController con = new LaporanController(getActivity()
 				.getApplicationContext());
 		List<Laporan> list = con.getListLaporan();
+
+		ProfilController profilCon = new ProfilController(getActivity()
+				.getApplicationContext());
+
+		Pengguna p = profilCon.getProfil();
+
+		GregorianCalendar start = new GregorianCalendar();
+		start.setTimeInMillis(p.getStartTime());
 
 		// Creating an XYSeries for Income
 		// TimeSeries targetSeries = new TimeSeries("Target");
@@ -98,7 +108,7 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.setXTitle("Waktu");
 		multiRenderer.setYTitle("Berat badan");
 		multiRenderer.setXRoundedLabels(false);
-		
+
 		// Note: The order of adding dataseries to dataset and renderers to
 		// multipleRenderer
 		// should be same

@@ -90,11 +90,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 			while ((line = reader.readLine()) != null) {
 				String[] temp = line.split(",");
-				/*
-				 * boolean isHewani = temp[9].charAt(0) == 'Y'; boolean
-				 * isSeafood = temp[10].charAt(0) == 'Y'; boolean isKacang =
-				 * temp[11].charAt(0) == 'Y';
-				 */
+
+				int isHewani = temp[9].charAt(0) == 'Y' ? 1 : 0;
+				int isSeafood = temp[10].charAt(0) == 'Y' ? 1 : 0;
+				int isKacang = temp[11].charAt(0) == 'Y' ? 1 : 0;
+
 				ContentValues values = new ContentValues();
 				values.put("nama", temp[0]);
 				values.put("kalori", Integer.parseInt(temp[1]));
@@ -105,9 +105,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				values.put("rating", Integer.parseInt(temp[6]));
 				values.put("persentase", Integer.parseInt(temp[7]));
 				values.put("jenis", temp[8]);
-				values.put("hewani", 0);
-				values.put("seafood", 0);
-				values.put("kacang", 0);
+				values.put("hewani", isHewani);
+				values.put("seafood", isSeafood);
+				values.put("kacang", isKacang);
 				values.put("terakhirDipilih", Integer.parseInt(temp[12]));
 
 				db.insert("makanan", null, values);

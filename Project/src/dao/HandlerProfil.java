@@ -26,7 +26,9 @@ public class HandlerProfil extends DatabaseHandler {
 	private static final String seafood = "seafood";
 	private static final String hewani = "hewani";
 	private static final String foto = "foto";
-	
+	private static final String startTime = "startTime";
+	private static final String endTime = "endTime";
+
 	public static HandlerProfil getInstance(Context context) {
 		if (sInstance == null) {
 			sInstance = new HandlerProfil(context);
@@ -44,8 +46,8 @@ public class HandlerProfil extends DatabaseHandler {
 
 		Cursor cursor = db.query(tabelProfil, new String[] { id, nama, umur,
 				berat, tinggi, target, gender, gayaHidup, kacang, seafood,
-				hewani, foto }, id + "=?", new String[] { String.valueOf(1) }, null,
-				null, null, null);
+				hewani, foto }, id + "=?", new String[] { String.valueOf(1) },
+				null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
@@ -59,7 +61,9 @@ public class HandlerProfil extends DatabaseHandler {
 				Double.parseDouble(cursor.getString(3)),
 				Double.parseDouble(cursor.getString(4)),
 				Double.parseDouble(cursor.getString(5)), g,
-				Integer.parseInt(cursor.getString(7)), false, false, false, cursor.getString(11));
+				Integer.parseInt(cursor.getString(7)), false, false, false,
+				cursor.getString(11), Long.parseLong(cursor.getString(12)),
+				Long.parseLong(cursor.getString(13)));
 
 		// retrieve data alergi
 		int h = Integer.parseInt(cursor.getString(8));
@@ -83,7 +87,7 @@ public class HandlerProfil extends DatabaseHandler {
 	public boolean updateProfil(String namaNew, int umurNew, double beratNew,
 			double tinggiNew, double targetNew, char genderNew,
 			int gayaHidupNew, boolean isAlergiKacang, boolean isAlergiSeafood,
-			boolean isVegetarian, String fotoNew) {
+			boolean isVegetarian, String fotoNew, long startTime, long endTime) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		int h = 0, s = 0, k = 0, g = 0;
 		ContentValues values = new ContentValues();
@@ -114,6 +118,9 @@ public class HandlerProfil extends DatabaseHandler {
 		}
 		values.put(hewani, h);
 		values.put(foto, fotoNew);
+		values.put(this.startTime, startTime);
+		values.put(this.endTime, endTime);
+
 		// updating row
 		return db.update(tabelProfil, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(1) }) > 0;

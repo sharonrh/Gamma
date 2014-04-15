@@ -14,10 +14,11 @@ public class ProfilController {
 	public boolean updateProfil(String nama, int umur, double berat,
 			double tinggi, double target, char gender, int gayaHidup,
 			boolean isAlergiKacang, boolean isAlergiSeafood,
-			boolean isVegetarian, String foto) {
+			boolean isVegetarian, String foto, long start, long end) {
 
 		return db.updateProfil(nama, umur, berat, tinggi, target, gender,
-				gayaHidup, isAlergiKacang, isAlergiSeafood, isVegetarian, foto);
+				gayaHidup, isAlergiKacang, isAlergiSeafood, isVegetarian, foto,
+				start, end);
 	}
 
 	public Pengguna getProfil() {

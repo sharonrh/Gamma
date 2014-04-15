@@ -1,4 +1,5 @@
 package model;
+
 import java.util.ArrayList;
 
 public class Pengguna {
@@ -9,15 +10,19 @@ public class Pengguna {
 	private double tinggi;
 	private double target;
 	private char gender;
-	private int gayaHidup; //1 - ringan, 2 - sedang, dst
+	private int gayaHidup; // 1 - ringan, 2 - sedang, dst
 	private boolean isAlergiKacang;
 	private boolean isAlergiSeafood;
 	private boolean isVegetarian;
 	private String foto;
-	
+	private long startTime;
+	private long endTime;
+
+
 	public Pengguna(String nama, int umur, double berat, double tinggi,
 			double target, char gender, int gayaHidup, boolean isAlergiKacang,
-			boolean isAlergiSeafood, boolean isVegetarian, String foto) {
+			boolean isAlergiSeafood, boolean isVegetarian, String foto,
+			long startTime, long endTime) {
 		this.nama = nama;
 		this.umur = umur;
 		this.berat = berat;
@@ -29,6 +34,8 @@ public class Pengguna {
 		this.isAlergiSeafood = isAlergiSeafood;
 		this.isVegetarian = isVegetarian;
 		this.foto = foto;
+		this.startTime = startTime;
+		this.endTime = endTime;
 	}
 
 	public String getNama() {
@@ -95,7 +102,6 @@ public class Pengguna {
 		this.isAlergiKacang = isAlergiKacang;
 	}
 
-
 	public boolean isAlergiSeafood() {
 		return isAlergiSeafood;
 	}
@@ -130,6 +136,22 @@ public class Pengguna {
 
 	public void setTarget(double target) {
 		this.target = target;
+	}
+
+	public long getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(long startTime) {
+		this.startTime = startTime;
+	}
+
+	public long getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(long endTime) {
+		this.endTime = endTime;
 	}
 
 }
