@@ -199,6 +199,7 @@ public class SettingActivity extends Activity {
 
 	RadioGroup rg;
 
+	@SuppressWarnings("deprecation")
 	public void temaPopupWindow() {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(
@@ -212,17 +213,37 @@ public class SettingActivity extends Activity {
 
 		    // Inflate and set the layout for the dialog
 		    // Pass null as the parent view because its going in the dialog layout
-		 alertDialog.setView(inflater.inflate(R.layout.layout_tema, null));
+		 
+		 
+		 View v = inflater.inflate(R.layout.layout_tema, null);
+		 alertDialog.setView(v);
 
 		// Setting Icon to Dialog
-	//	alertDialog.setIcon(R.drawable.ic_launcher);
+		 
+		 final RadioGroup rg = (RadioGroup) findViewById(R.id.pilihTema);
+			
+			
 
 		// Setting OK Button
 		alertDialog.setButton("OK",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,
 							int which) {
-
+						
+						
+						switch (rg.getCheckedRadioButtonId()) {
+						case R.id.holoDark:
+							getApplication().setTheme(R.style.HoloBlackTheme);
+							break;
+						case R.id.holoLight:
+							getApplication().setTheme(R.style.HoloLightTheme);
+							break;
+						default :
+							getApplication().setTheme(R.style.AppBaseTheme);
+							break;
+							
+							
+						}
 					}
 				});
 		// Showing Alert Message
