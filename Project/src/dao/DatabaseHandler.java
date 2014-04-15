@@ -103,7 +103,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				values.put("kalsium", Double.parseDouble(temp[5]));
 				values.put("rating", Integer.parseInt(temp[6]));
 				values.put("persentase", Integer.parseInt(temp[7]));
-				values.put("jenis", Integer.parseInt(temp[8]));
+				values.put("jenis", temp[8]);
 				values.put("hewani", 0);
 				values.put("seafood", 0);
 				values.put("kacang", 0);
