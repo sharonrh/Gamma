@@ -1,0 +1,27 @@
+Flow dari app Gamma :
+
+(1) Pengguna menginstal Gamma.
+(2) Pengguna menjalankan Gamma. Di belakang, Gamma inisialisasi semua tabel yang dibutuhkan. Gamma memunculkan prompt (lihat ilustrasi di prompt_awal.png) agar
+    pengguna mengisi profil.
+    [1] Jika pengguna tekan OK, Gamma memunculkan halaman "Edit Profil". Pengguna tinggal mengisi dan menyimpan. 
+        -> Jika pengguna tekan Batal, Gamma beri toast message "Silahkan lengkapi profil terlebih dulu.".
+    [2] Jika pengguna tekan Batal, Gamma keluar.
+(3) Selesai isi profil, Gamma melakukan kalkulasi di belakang, meliputi :
+    - Data kalori harian yang harus dipenuhi
+    - Grafik expected result sesuai masukan
+    - Daftar rekomendasi untuk hari H dan H+1
+(4) Pengguna dapat melihat daftar rekomendasi.
+    [1] Jika ada makanan yang tidak disukai, dapat menghapusnya dari daftar agar diganti oleh Gamma dengan yang sepadan (kadar kalorinya).
+(4) Pengguna dapat melihat profil, dan mengeditnya jika perlu. Yang dapat berubah hanya item selain nama dan jenis kelamin.
+(5) Pengguna dapat mengatur preferensi dan notifikasi di Setting / Pengaturan.
+    [1] Setelah membuat notifikasi baru, Gamma munculkan pesan sukses dan menampilkan daftar notifikasi yang telah dibuat (data retrieve dari DB).
+(6) Gamma memberi notifikasi sesuai yang dibuat pengguna.
+    [1] Jika pengguna menekan notifikasi, Gamma akan menampilkan daftar rekomendasi.
+    [2] Jika tidak, Gamma tidak melakukan apa-apa.
+(7) Beberapa hari kemudian (min. 1 hari, maksimal 7 hari / 1 minggu), pengguna dapat mengisi laporan. Gamma akan menyediakan dua spinner untuk mengakomodasi
+    masukan pengguna untuk berat dan tinggi badan. Retrieve dari DB mengenai kedua data ini sebelumnya, lalu buat spinner dengan range (previous_weight - 5) 
+    s.d. (previous_weight + 5) untuk berat badan, dan range (previous_height) s.d. (previous_height + 5) untuk tinggi badan.
+(8) Setelah menyimpan laporan, pengguna dapat melihat progres dalam bentuk grafik, yang terdiri dari grafik expected value dan sesuai laporan pengguna.
+
+Info tambahan :
+Untuk warna background, sepertinya baiknya ini aja : rgb(52, 152, 219)
