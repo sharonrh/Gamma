@@ -60,8 +60,14 @@
         </activity>
         <activity
             android:name="view.EditProfilActivity"
-            android:label="@string/title_activity_edit_profil">           
+            android:label="@string/title_activity_edit_profil" >
         </activity>
+
+        <service
+            android:name="service.NotifikasiService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

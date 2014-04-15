@@ -18,7 +18,7 @@ public class NotifikasiController {
 		return db.tambahNotifikasi(notifObj);
 	}
 
-	public List<Notifikasi> getListLaporan() {
+	public List<Notifikasi> getListNotifikasi() {
 		return db.getAllNotifikasi();
 	}
 }

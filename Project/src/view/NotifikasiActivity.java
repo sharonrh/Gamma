@@ -3,21 +3,22 @@ package view;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Notifikasi;
 
-import view.SettingActivity.Setting;
-import view.SettingActivity.SettingArrayAdapter;
+import service.NotifikasiService;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,6 +35,7 @@ import com.example.gamma.R;
 
 import controller.NotifikasiController;
 
+@SuppressLint("SimpleDateFormat")
 public class NotifikasiActivity extends Activity {
 	
 	String str;
@@ -48,11 +50,12 @@ public class NotifikasiActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_notifikasi);
 		
+		
 		tambahNotifikasiBtn = (Button) findViewById(R.id.tmbhNtfkasiBtn);
 		lv = (ListView) findViewById(R.id.listViewNotifikasi);
 		kontrol = new NotifikasiController(getApplicationContext());
 		
-		data = kontrol.getListLaporan();
+		data = kontrol.getListNotifikasi();
 		adapter = new ListNotifikasiArrayAdapter(this, data);
 		lv.setAdapter(adapter);
 		
@@ -103,12 +106,17 @@ public class NotifikasiActivity extends Activity {
 						
 						Time nt = new Time();
 						
+						//nyimpen waktu sekarang
 						nt.set(0, menitSekarang, jamSekarang, t.monthDay, t.month, t.year);
 						
 						long l = nt.toMillis(false);
 						System.out.println("abc2");
+						
+						//nyimpen ke database
 						System.out.println(kontrol.addNotifikasi(tv.getText().toString(),l , tv.getText().toString()));
 						System.out.println(data);
+						
+						
 						
 						
 						lv.setAdapter(adapter);
@@ -122,6 +130,21 @@ public class NotifikasiActivity extends Activity {
 			}
 			
 		});
+		
+		if(!data.isEmpty()){
+			long l = data.get(data.size()-1).getWaktu();
+			
+			
+			Date date = new Date(l);
+			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+			String formatted = format.format(date);
+			String[] str = formatted.split(":");
+			
+			int jam = Integer.parseInt(str[0]);
+			int menit = Integer.parseInt(str[1]);
+			startAlarm(jam, menit);
+		}
+		
 		
 		System.out.println("123" + data);
 		
@@ -249,6 +272,17 @@ public class NotifikasiActivity extends Activity {
 		}
 	}
 
+	private void startAlarm(int jam, int menit) {
+	    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+	    Time t = new Time();
+	    t.setToNow();
+	    Time nt = new Time();
+	    nt.set(0, menit, jam, t.month, t.monthDay, t.year);
+	    long when = nt.toMillis(false);         // notification time
+	            Intent intent = new Intent(getApplicationContext(), NotifikasiService.class);
+	            PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
+	            alarmManager.setExact(AlarmManager.RTC, when, pendingIntent);
+	        }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
