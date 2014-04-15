@@ -16,7 +16,6 @@
         android:layout_marginLeft="14dp"
         android:orientation="vertical" >
 
-        
         <TextView
             android:id="@+id/titleProfilView"
             android:layout_width="188dp"
@@ -40,9 +39,9 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Info Personal" 
-            android:textStyle="bold"
-            android:textSize="18sp" />
+            android:text="Info Personal"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:layout_width="fill_parent"
@@ -64,66 +63,60 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama Anda" />
-					
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
-						
-					</LinearLayout>
-                    
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
 
-						<TextView
-                        android:id="@+id/tahunProfilTv"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Umur Anda" />
-							
-					</LinearLayout>
-					
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
+                        android:orientation="horizontal" >
+                    </LinearLayout>
 
-						<TextView
-                        android:id="@+id/beratProfilSekarangTv"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Berat Sekarang" />
+                        android:orientation="horizontal" >
 
-					</LinearLayout>
-					
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tahunProfilTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Umur Anda" />
+                    </LinearLayout>
 
-						<TextView
-                        android:id="@+id/beratProfilTargetTv"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Berat Target" />
+                        android:orientation="horizontal" >
 
-					</LinearLayout>
-					
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/beratProfilSekarangTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Berat Sekarang" />
+                    </LinearLayout>
 
-						<TextView
-                        android:id="@+id/tinggiProfilTv"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tinggi Anda" />
-							
-					</LinearLayout>	
+                        android:orientation="horizontal" >
 
+                        <TextView
+                            android:id="@+id/beratProfilTargetTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Berat Target" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/tinggiProfilTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tinggi Anda" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <ImageView
@@ -133,17 +126,15 @@
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="0.67"
                     android:src="@drawable/ic_launcher" />
-
             </TableRow>
-
         </TableLayout>
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_weight="0.67"
-            android:columnCount="1"
-            android:layout_marginTop="5dp" >
+            android:columnCount="1" >
 
             <TextView
                 android:id="@+id/TextView01"
@@ -163,48 +154,24 @@
                 android:layout_column="0"
                 android:layout_marginLeft="60dp"
                 android:layout_row="0"
-                android:layout_weight="0.67"
-                android:src="@drawable/ic_launcher" />
-
+                android:layout_weight="0.67" />
         </GridLayout>
-             
+
         <TextView
             android:id="@+id/TextView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="2.56"
             android:text="Alergi"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
             android:columnCount="1" >
-
-            <!-- <LinearLayout
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="left|top"
-                android:layout_row="0"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:id="@+id/imageTelur"
-                    android:layout_width="match_parent"
-                    android:layout_height="47dp"
-                    android:src="@drawable/egg" />
-
-                <TextView
-                    android:id="@+id/textTelur"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Telur" />
-            </LinearLayout>  -->
 
             <LinearLayout
                 android:layout_width="66dp"
@@ -250,123 +217,122 @@
                     android:gravity="center"
                     android:text="Seafood" />
             </LinearLayout>
-
         </GridLayout>
-        
-       <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.67"
-            android:layout_marginTop="20dp"
-            android:columnCount="1" >
-            
-        	<TextView
-            	android:id="@+id/namaTv"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:text="Vegetarian"
-            	android:layout_gravity="center_vertical" 
-            	android:textStyle="bold"/>
-        	 
-        	 <LinearLayout
-        	     android:layout_width="70dp"
-        	     android:layout_height="wrap_content"
-        	     android:layout_column="0"
-        	     android:layout_row="0"
-        	     android:layout_weight="0.67"
-        	     android:orientation="vertical"
-        	     android:layout_marginLeft="100dp" >
 
-        	     <ImageView
-        	         android:id="@+id/imageVegetarian"
-        	         android:layout_width="match_parent"
-        	         android:layout_height="47dp"
-        	         android:src="@drawable/vegetable" />
-
-        	     <TextView
-        	         android:id="@+id/textVegetarian"
-        	         android:layout_width="70dp"
-        	         android:layout_height="wrap_content"
-        	         android:gravity="center"
-        	         android:text="Vegetarian" />
-        	 </LinearLayout>
-        	
-        </GridLayout>
-        
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.67"
             android:layout_marginTop="20dp"
+            android:layout_weight="0.67"
             android:columnCount="1" >
-            
-        	<TextView
-            	android:id="@+id/namaPTv"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:text="Gaya Hidup"
-            	android:layout_gravity="center_vertical" 
-            	android:textStyle="bold"/>
 
-        	 <ImageView
-        	     android:id="@+id/imageGayaHidup1"
-        	     android:layout_width="wrap_content"
-        	     android:layout_height="47dp"
-        	     android:layout_column="0"
-        	     android:layout_gravity="left"
-        	     android:layout_marginLeft="60dp"
-        	     android:layout_row="0"
-        	     android:src="@drawable/sports" />
-        	 
-        	 <ImageView
-        	     android:id="@+id/imageGayaHidup4"
-        	     android:layout_width="wrap_content"
-        	     android:layout_height="47dp"
-        	     android:layout_column="0"
-        	     android:layout_gravity="left"
-        	     android:layout_marginLeft="189dp"
-        	     android:layout_row="0"
-        	     android:src="@drawable/sports" />
+            <TextView
+                android:id="@+id/namaTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Vegetarian"
+                android:textStyle="bold" />
 
-        	 <GridLayout
-        	     android:layout_width="wrap_content"
-        	     android:layout_height="wrap_content"
-        	     android:layout_column="0"
-        	     android:layout_gravity="top"
-        	     android:layout_marginLeft="103dp"
-        	     android:layout_row="0"
-        	     android:columnCount="1" >
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="100dp"
+                android:layout_row="0"
+                android:layout_weight="0.67"
+                android:orientation="vertical" >
 
-        	     <ImageView
-        	         android:id="@+id/imageGayaHidup2"
-        	         android:layout_width="wrap_content"
-        	         android:layout_height="47dp"
-        	         android:layout_column="0"
-        	         android:layout_gravity="left"
-        	         android:layout_row="0"
-        	         android:src="@drawable/sports" />
+                <ImageView
+                    android:id="@+id/imageVegetarian"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:src="@drawable/vegetable" />
 
-        	     <ImageView
-        	         android:id="@+id/imageGayaHidup3"
-        	         android:layout_width="wrap_content"
-        	         android:layout_height="47dp"
-        	         android:layout_column="0"
-        	         android:layout_gravity="left"
-        	         android:layout_marginLeft="43dp"
-        	         android:layout_row="0"
-        	         android:src="@drawable/sports" />
-
-        	     <TextView
-        	         android:id="@+id/textGayaHidup"
-        	         android:layout_width="wrap_content"
-        	         android:layout_height="wrap_content"
-        	         android:layout_gravity="center_horizontal"
-        	         android:text="Aktivitas" />
-        	 </GridLayout>
-        	
+                <TextView
+                    android:id="@+id/textVegetarian"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Vegetarian" />
+            </LinearLayout>
         </GridLayout>
 
-        <!-- <GridLayout
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.67"
+            android:columnCount="1" >
+
+            <TextView
+                android:id="@+id/namaPTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Gaya Hidup"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageGayaHidup1"
+                android:layout_width="wrap_content"
+                android:layout_height="47dp"
+                android:layout_column="0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="60dp"
+                android:layout_row="0"
+                android:src="@drawable/sports" />
+
+            <ImageView
+                android:id="@+id/imageGayaHidup4"
+                android:layout_width="wrap_content"
+                android:layout_height="47dp"
+                android:layout_column="0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="189dp"
+                android:layout_row="0"
+                android:src="@drawable/sports" />
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="top"
+                android:layout_marginLeft="103dp"
+                android:layout_row="0"
+                android:columnCount="1"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/imageGayaHidup2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="47dp"
+                    android:layout_column="0"
+                    android:layout_gravity="left"
+                    android:layout_row="0"
+                    android:src="@drawable/sports" />
+
+                <ImageView
+                    android:id="@+id/imageGayaHidup3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="47dp"
+                    android:layout_column="0"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="43dp"
+                    android:layout_row="0"
+                    android:src="@drawable/sports" />
+
+                <TextView
+                    android:id="@+id/textGayaHidup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/sangat_aktif" />
+            </GridLayout>
+        </GridLayout>
+
+        <!--
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
@@ -453,7 +419,8 @@
                     android:text="Aktivitas3" />
             </LinearLayout>
 
-        </GridLayout> -->
+        </GridLayout>
+        -->
 
     </LinearLayout>
 

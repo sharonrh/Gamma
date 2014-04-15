@@ -1,12 +1,17 @@
 package view;
 
+import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +47,7 @@ public class EditProfilActivity extends Activity {
 	private String gaya, akv1, akv2, akv3, akv4;
 	private TextView penjelasan;
 	private ProfilController con;
+	private String str="";
 
 	// Declaring the String Array with the Text Data for the Spinners
 	private String[] languages = { "Jarang Sekali", "Sedikit Aktif", "Aktif",
@@ -51,7 +57,7 @@ public class EditProfilActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profil);
-
+		Utils.setThemeToActivity(this);
 		spinTransport = (Spinner) findViewById(R.id.spinnerGayaHidup);
 
 		namaField = (EditText) findViewById(R.id.editNama);
@@ -129,6 +135,10 @@ public class EditProfilActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				finish();
+				Intent i = new Intent(getApplicationContext(),
+						MainActivity.class);
+				i.putExtra("nomorFragment", 3);
+				startActivity(i);
 			}
 		});
 
@@ -158,17 +168,33 @@ public class EditProfilActivity extends Activity {
 								Double.parseDouble(tinggi),
 								Double.parseDouble(target), gender.charAt(0),
 								gayaHidup, kacang.isChecked(),
-								seafood.isChecked(), vegetarian.isChecked())) {
+								seafood.isChecked(), vegetarian.isChecked(), str)) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
 									Toast.LENGTH_LONG).show();
+							finish();
+							Intent i = new Intent(getApplicationContext(),
+									MainActivity.class);
+							i.putExtra("nomorFragment", 3);
+
+							startActivity(i);
 						} else {
 							Toast.makeText(getApplicationContext(),
 									"Gagal. Cek ulang isian Anda",
 									Toast.LENGTH_LONG).show();
 						}
 					}
+
+					else {
+						Toast.makeText(getApplicationContext(),
+								"Ada field yang masih kosong",
+								Toast.LENGTH_LONG).show();
+					}
+				} else {
+					Toast.makeText(getApplicationContext(),
+							"Ada field yang masih kosong", Toast.LENGTH_LONG)
+							.show();
 				}
 			}
 		});
@@ -238,9 +264,25 @@ public class EditProfilActivity extends Activity {
 			String picturePath = cursor.getString(columnIndex);
 			cursor.close();
 
-			fotoProfil.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-		}
+			Bitmap b = BitmapFactory.decodeFile(picturePath);
+			fotoProfil.setImageBitmap(b);
+						
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+			
+			byte[] a = baos.toByteArray();
+			byte[] c = Base64.encode(a, Base64.DEFAULT);
+			
+			try {
+				
+				//string gambar
+				str = new String(c, "UTF-8");
+				
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+}
 
 	}
 }

@@ -217,13 +217,12 @@ public class SettingActivity extends Activity {
 		    // Pass null as the parent view because its going in the dialog layout
 		 
 		 
-		 View v = inflater.inflate(R.layout.layout_tema, null);
+		 final View v = inflater.inflate(R.layout.layout_tema, null);
 		 alertDialog.setView(v);
 
 		// Setting Icon to Dialog
 		 
-		 final RadioGroup rg = (RadioGroup) findViewById(R.id.pilihTema);
-			
+		 	
 			
 
 		// Setting OK Button
@@ -231,26 +230,28 @@ public class SettingActivity extends Activity {
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,
 							int which) {
+						RadioGroup rg = (RadioGroup) v.findViewById(R.id.pilihTema);
 						
 						//setContentView(popUpTema.getContentView());
-						switch (rg.getId())
+						System.out.println("---------------id="+rg.getCheckedRadioButtonId());
+						switch (rg.getCheckedRadioButtonId())
 						//switch (popUpTema.getContentView().getId()) 
 						{
 							
 						case R.id.holoDark:
 							Utils.THEME="defaultTheme";
 						    Utils.settingChanged=true;
-						    startActivity(new Intent(SettingActivity.this,  LaporanFragment.class));
+						    startActivity(new Intent(SettingActivity.this,  MainActivity.class));
 							break;
 						case R.id.holoLight:
 							Utils.THEME="Gray";
 						    Utils.settingChanged=true;;
-						    startActivity(new Intent(SettingActivity.this,  LaporanFragment.class));
+						    startActivity(new Intent(SettingActivity.this,  MainActivity.class));
 							break;
 						case R.id.deFault :
 							Utils.THEME="Radial";
 						    Utils.settingChanged=true;
-						    startActivity(new Intent(SettingActivity.this,  LaporanFragment.class)); 
+						    startActivity(new Intent(SettingActivity.this,  MainActivity.class)); 
 							break;
 						default :
 							  break;

@@ -42,7 +42,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(buatTabelNotifikasi);
 		// tabel profil
 		String buatTabelProfil = "CREATE TABLE profil (id INTEGER PRIMARY KEY, nama TEXT, umur INTEGER, berat REAL, tinggi REAL, target REAL, gender INTEGER, "
-				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, hewani INTEGER);";
+				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, hewani INTEGER, foto TEXT);";
 		db.execSQL(buatTabelProfil);
 
 		// isi tabel profil dengan data awal
@@ -57,6 +57,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put("kacang", 0);
 		values.put("seafood", 0);
 		values.put("hewani", 0);
+		values.put("foto", "");
 		// Inserting Row
 		db.insert("profil", null, values);
 

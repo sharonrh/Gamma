@@ -18,7 +18,8 @@
     <string name="title_activity_edit_profil">Edit profil</string>
     <string name="display_spinner">-pilih satu-</string>
     <string name="spinnerGayaHidup">Pilih gaya hidup</string>
-
+    
+    <string name="sangat_aktif">Sangat Aktif</string>
     <string-array name="isi_gayaHidup">
         <item>Jarang Sekali</item>
         <item>Sedikit Aktif</item>

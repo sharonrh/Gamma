@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class HandlerProfil extends DatabaseHandler{
+public class HandlerProfil extends DatabaseHandler {
 	private static HandlerProfil sInstance;
 	private static final String KEY_ID = "id";
 
@@ -25,14 +25,15 @@ public class HandlerProfil extends DatabaseHandler{
 	private static final String kacang = "kacang";
 	private static final String seafood = "seafood";
 	private static final String hewani = "hewani";
-
+	private static final String foto = "foto";
+	
 	public static HandlerProfil getInstance(Context context) {
 		if (sInstance == null) {
 			sInstance = new HandlerProfil(context);
 		}
 		return sInstance;
 	}
-	
+
 	public HandlerProfil(Context context) {
 		super(context);
 	}
@@ -43,18 +44,22 @@ public class HandlerProfil extends DatabaseHandler{
 
 		Cursor cursor = db.query(tabelProfil, new String[] { id, nama, umur,
 				berat, tinggi, target, gender, gayaHidup, kacang, seafood,
-				hewani }, id + "=?", new String[] { String.valueOf(1) }, null,
+				hewani, foto }, id + "=?", new String[] { String.valueOf(1) }, null,
 				null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
+
+		int i = Integer.parseInt(cursor.getString(6));
+		char g = 'P';
+		if (i == 1)
+			g = 'W';
 
 		Pengguna profil = new Pengguna(cursor.getString(1),
 				Integer.parseInt(cursor.getString(2)),
 				Double.parseDouble(cursor.getString(3)),
 				Double.parseDouble(cursor.getString(4)),
-				Double.parseDouble(cursor.getString(5)), cursor.getString(6)
-				.charAt(0), Integer.parseInt(cursor.getString(6)),
-				false, false, false);
+				Double.parseDouble(cursor.getString(5)), g,
+				Integer.parseInt(cursor.getString(7)), false, false, false, cursor.getString(11));
 
 		// retrieve data alergi
 		int h = Integer.parseInt(cursor.getString(8));
@@ -78,7 +83,7 @@ public class HandlerProfil extends DatabaseHandler{
 	public boolean updateProfil(String namaNew, int umurNew, double beratNew,
 			double tinggiNew, double targetNew, char genderNew,
 			int gayaHidupNew, boolean isAlergiKacang, boolean isAlergiSeafood,
-			boolean isVegetarian) {
+			boolean isVegetarian, String fotoNew) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		int h = 0, s = 0, k = 0, g = 0;
 		ContentValues values = new ContentValues();
@@ -87,7 +92,7 @@ public class HandlerProfil extends DatabaseHandler{
 		values.put(berat, beratNew);
 		values.put(tinggi, tinggiNew);
 		values.put(target, targetNew);
-		System.out.println("Gender = "+genderNew);
+		System.out.println("Gender = " + genderNew);
 		// pria = 0, wanita = 1
 		if (genderNew == 'W') {
 			g = 1;
@@ -108,7 +113,7 @@ public class HandlerProfil extends DatabaseHandler{
 			h = 1;
 		}
 		values.put(hewani, h);
-
+		values.put(foto, fotoNew);
 		// updating row
 		return db.update(tabelProfil, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(1) }) > 0;

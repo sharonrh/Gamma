@@ -13,10 +13,11 @@ public class Pengguna {
 	private boolean isAlergiKacang;
 	private boolean isAlergiSeafood;
 	private boolean isVegetarian;
+	private String foto;
 	
 	public Pengguna(String nama, int umur, double berat, double tinggi,
 			double target, char gender, int gayaHidup, boolean isAlergiKacang,
-			boolean isAlergiSeafood, boolean isVegetarian) {
+			boolean isAlergiSeafood, boolean isVegetarian, String foto) {
 		this.nama = nama;
 		this.umur = umur;
 		this.berat = berat;
@@ -27,6 +28,7 @@ public class Pengguna {
 		this.isAlergiKacang = isAlergiKacang;
 		this.isAlergiSeafood = isAlergiSeafood;
 		this.isVegetarian = isVegetarian;
+		this.foto = foto;
 	}
 
 	public String getNama() {
@@ -108,6 +110,26 @@ public class Pengguna {
 
 	public void setVegetarian(boolean isVegetarian) {
 		this.isVegetarian = isVegetarian;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public void setBerat(double berat) {
+		this.berat = berat;
+	}
+
+	public void setTinggi(double tinggi) {
+		this.tinggi = tinggi;
+	}
+
+	public void setTarget(double target) {
+		this.target = target;
 	}
 
 }

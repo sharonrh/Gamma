@@ -3,7 +3,10 @@ package view;
 import model.Pengguna;
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +65,12 @@ public class ProfilFragment extends Fragment {
 		beratTarget.setText(profil.getTarget() + " kg");
 		tinggi.setText(profil.getTinggi() + " cm");
 
+		byte[] decodedString = Base64.decode(profil.getFoto(), Base64.DEFAULT);
+		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
+				decodedString.length);
+
+		foto.setImageBitmap(decodedByte);
+
 		if (profil.getGender() == 'P')
 			genderImg.setBackgroundResource(R.drawable.male);
 		else
@@ -76,13 +85,28 @@ public class ProfilFragment extends Fragment {
 			ikanTxt.setVisibility(View.GONE);
 		}
 		if (!profil.isVegetarian()) {
-			sayurImg.setVisibility(View.GONE);
-			sayurTxt.setVisibility(View.GONE);
+			sayurImg.setImageResource(R.drawable.burger);;
+			sayurTxt.setText("Non Vegetarian");
 		}
+
+		if (profil.getGayaHidup() < 3){
+			gaya4Img.setVisibility(View.GONE);
+			gayaTxt.setText("Aktif");
+		}
+		if (profil.getGayaHidup() < 2){
+			gaya3Img.setVisibility(View.GONE);
+			gayaTxt.setText("Sedikit Aktif");
+		}
+		if (profil.getGayaHidup() < 1){
+			gaya2Img.setVisibility(View.GONE);
+			gayaTxt.setText("Jarang Sekali");
+		}
+
 		editProfil.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View args0) {
 				// TODO Auto-generated method stub
+				getActivity().finish();
 				Intent i = new Intent(getActivity().getApplicationContext(),
 						EditProfilActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
