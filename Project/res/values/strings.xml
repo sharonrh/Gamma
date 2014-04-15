@@ -29,5 +29,14 @@
         <item>Jogging</item>
         <item>Belajar</item>
     </string-array>
+    <string name="edit_profil">Edit Profil</string>
+    <string name="info_personal">Info Personal</string>
+    <string name="nama_anda">Nama Anda</string>
+    <string name="umur_anda">Umur Anda</string>
+    <string name="tahun">tahun</string>
+    <string name="berat_sekarang">Berat Sekarang</string>
+    <string name="kg">kg</string>
+    <string name="berat_target">Berat Target</string>
+    <string name="tinggi_badan">Tinggi Badan</string>
 
 </resources>

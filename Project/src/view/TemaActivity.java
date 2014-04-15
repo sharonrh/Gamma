@@ -1,16 +1,22 @@
 package view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.RadioGroup;
 
+//import com.example.com.exampe.changetheme.CustomThemeActivity;
+import view.SettingActivity;
+import view.Utils;
 import com.example.gamma.R;
 
 public class TemaActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_tema);
 		
@@ -18,13 +24,19 @@ public class TemaActivity extends Activity {
 		
 		switch (rg.getCheckedRadioButtonId()) {
 		case R.id.holoDark:
-			getApplication().setTheme(R.style.HoloBlackTheme);
+			Utils.THEME="DEFAULT";
+		    Utils.settingChanged=true;
+		    startActivity(new Intent(this,  SettingActivity.class));
 			break;
 		case R.id.holoLight:
-			getApplication().setTheme(R.style.HoloLightTheme);
+			Utils.THEME="Gray";
+		    Utils.settingChanged=true;;
+		    startActivity(new Intent( this,  SettingActivity.class));
 			break;
 		default :
-			getApplication().setTheme(R.style.AppBaseTheme);
+			Utils.THEME="Radial";
+		    Utils.settingChanged=true;
+		    startActivity(new Intent( this,  SettingActivity.class)); 
 			break;
 			
 		}

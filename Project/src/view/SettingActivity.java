@@ -21,6 +21,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import view.Utils;
 import com.example.gamma.R;
 
 import controller.SettingController;
@@ -42,6 +43,7 @@ public class SettingActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Utils.setThemeToActivity(this);
 		setContentView(R.layout.fragment_setting);
 
 		ArrayList<Setting> set = new ArrayList<Setting>();
@@ -230,19 +232,28 @@ public class SettingActivity extends Activity {
 					public void onClick(DialogInterface dialog,
 							int which) {
 						
-						
-						switch (rg.getCheckedRadioButtonId()) {
+						//setContentView(popUpTema.getContentView());
+						switch (rg.getId())
+						//switch (popUpTema.getContentView().getId()) 
+						{
+							
 						case R.id.holoDark:
-							getApplication().setTheme(R.style.HoloBlackTheme);
+							Utils.THEME="defaultTheme";
+						    Utils.settingChanged=true;
+						    startActivity(new Intent(SettingActivity.this,  LaporanFragment.class));
 							break;
 						case R.id.holoLight:
-							getApplication().setTheme(R.style.HoloLightTheme);
+							Utils.THEME="Gray";
+						    Utils.settingChanged=true;;
+						    startActivity(new Intent(SettingActivity.this,  LaporanFragment.class));
+							break;
+						case R.id.deFault :
+							Utils.THEME="Radial";
+						    Utils.settingChanged=true;
+						    startActivity(new Intent(SettingActivity.this,  LaporanFragment.class)); 
 							break;
 						default :
-							getApplication().setTheme(R.style.AppBaseTheme);
-							break;
-							
-							
+							  break;
 						}
 					}
 				});
