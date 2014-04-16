@@ -24,4 +24,5 @@ Flow dari app Gamma :
 (8) Setelah menyimpan laporan, pengguna dapat melihat progres dalam bentuk grafik, yang terdiri dari grafik expected value dan sesuai laporan pengguna.
 
 Info tambahan :
-Untuk warna background, sepertinya baiknya ini aja : rgb(52, 152, 219)
+Untuk warna background, sepertinya baiknya ini aja (Peter River) : rgb(52, 152, 219) atau dalam hex : #3498db
+Sedangkan untuk tema kedua, background-nya warna Clouds : hex : #ecf0f1
