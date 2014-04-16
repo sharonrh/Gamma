@@ -26,6 +26,8 @@ public class ProfilFragment extends Fragment {
 	private ImageView foto, genderImg, ikanImg, kacangImg, sayurImg, gaya1Img,
 			gaya2Img, gaya3Img, gaya4Img, mulaiImg, akhirImg;
 	private ProfilController con;
+	
+	Pengguna profil;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,7 +37,7 @@ public class ProfilFragment extends Fragment {
 				false);
 
 		con = new ProfilController(getActivity().getApplicationContext());
-		Pengguna profil = con.getProfil();
+		profil = con.getProfil();
 
 		editProfil = (Button) v.findViewById(R.id.editProfilButton);
 		nama = (TextView) v.findViewById(R.id.namaProfilTv);
@@ -110,6 +112,19 @@ public class ProfilFragment extends Fragment {
 				Intent i = new Intent(getActivity().getApplicationContext(),
 						EditProfilActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				
+				i.putExtra("nama", nama.getText());
+				i.putExtra("umur", umur.getText());
+				i.putExtra("beratSkrg", beratSekarang.getText());
+				i.putExtra("beratTarget", beratTarget.getText());
+				i.putExtra("tinggi", tinggi.getText());
+				i.putExtra("jeKel", profil.getGender());
+				i.putExtra("foto", profil.getFoto());
+				i.putExtra("sayur", profil.isVegetarian());
+				i.putExtra("gayaHidup", profil.getGayaHidup());
+				i.putExtra("ikan", profil.isAlergiSeafood());
+				i.putExtra("kacang", profil.isAlergiKacang());
+				
 				getActivity().startActivity(i);
 			}
 		});

@@ -60,6 +60,8 @@ public class EditProfilActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profil);
 		Utils.setThemeToActivity(this);
+		
+		Intent i = getIntent();
 		spinTransport = (Spinner) findViewById(R.id.spinnerGayaHidup);
 		spinTransport2 = (Spinner) findViewById(R.id.spinnerLamaDiet);
 
@@ -73,7 +75,70 @@ public class EditProfilActivity extends Activity {
 		vegetarian = (CheckBox) findViewById(R.id.editVegetarian);
 		kacang = (CheckBox) findViewById(R.id.editKacang);
 		seafood = (CheckBox) findViewById(R.id.editIkan);
+		fotoProfil = (ImageView) findViewById(R.id.editFoto);
+//		i.putExtra("nama", nama.getText());
+//		i.putExtra("umur", umur.getText());
+//		i.putExtra("beratSkrg", beratSekarang.getText());
+//		i.putExtra("beratTarget", beratTarget.getText());
+//		i.putExtra("tinggi", tinggi.getText());
+//		i.putExtra("jeKel", profil.getGender());
+//		i.putExtra("foto", profil.getFoto());
+//		i.putExtra("sayur", profil.isVegetarian());
+//		i.putExtra("gayaHidup", profil.getGayaHidup());
+//		i.putExtra("ikan", profil.isAlergiSeafood());
+//		i.putExtra("kacang", profil.isAlergiKacang());
+		
+		if(i.getStringExtra("nama").length()!=0){
+			namaField.setText(i.getStringExtra("nama"));
+			umurField.setText(i.getStringExtra("umur"));
+			beratField.setText(i.getStringExtra("beratSkrg"));
+			targetField.setText(i.getStringExtra("beratTarget"));
+			tinggiField.setText(i.getStringExtra("tinggi"));
+			
+			
+			byte[] decodedString = Base64.decode(i.getStringExtra("foto"), Base64.DEFAULT);
+			Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
+					decodedString.length);
 
+			fotoProfil.setImageBitmap(decodedByte);
+			
+			
+			String gender = i.getStringExtra("jeKel");
+			
+			if(gender.equalsIgnoreCase("P")){
+				genderPick.check(R.id.editPria);
+			}
+			else if(gender.equalsIgnoreCase("L")){
+				genderPick.check(R.id.editWanita);
+			}
+			else {
+				
+			}
+			
+			//genderPick = (RadioGroup) findViewById(R.id.editGender);
+			
+			String isVege = i.getStringExtra("sayur");
+			if(isVege.equalsIgnoreCase("true")){
+				vegetarian.setChecked(true);
+			}
+			else {
+			}
+			
+			String isKacang = i.getStringExtra("sayur");
+			if(isKacang.equalsIgnoreCase("true")){
+				kacang.setChecked(true);
+			}
+			else {
+			}
+			
+			String isSea = i.getStringExtra("sayur");
+			if(isSea.equalsIgnoreCase("true")){
+				seafood.setChecked(true);
+			}
+			else {
+			}
+		}
+			
 		penjelasan = (TextView) findViewById(R.id.textPenjelasanGaya);
 
 		// beratSekarang = (EditText) findViewById(R.id.editBeratSekarang);
@@ -82,7 +147,7 @@ public class EditProfilActivity extends Activity {
 		batal = (Button) findViewById(R.id.batalProfilBtn);
 		simpan = (Button) findViewById(R.id.simpanProfilBtn);
 
-		fotoProfil = (ImageView) findViewById(R.id.editFoto);
+		
 
 		fotoProfil.setOnClickListener(new View.OnClickListener() {
 
