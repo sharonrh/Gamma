@@ -1,13 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
      <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <item android:state_pressed="true" >
+         <item android:state_focused="true" 
+    	  android:state_pressed="false">
 
             <shape>
 
                 <solid
 
-                    android:color="@color/hijau_pencet" />
+                    android:drawable="@drawable/myspinner_select">
+
+                </solid>
+
+                <padding
+
+                    android:left="0dp"
+
+                    android:top="4dp"
+
+                    android:right="0dp"
+
+                    android:bottom="4dp" />
+
+            </shape>
+
+        </item>
+         
+        <item android:state_focused="true" 
+    	  android:state_pressed="true"  >
+
+            <shape>
+
+                <solid
+
+                    android:drawable="@drawable/myspinner_press" />
+
+              <padding
+
+                    android:left="4dp"
+
+                    android:top="4dp"
+
+                    android:right="4dp"
+
+                    android:bottom="4dp" />
+
+            </shape>
+
+        </item>
+        
+        <item android:state_focused="false" 
+    	  android:state_pressed="true"  >
+
+            <shape>
+
+                <solid
+
+                    android:drawable="@drawable/myspinner_press" />
 
               <padding
 
@@ -29,7 +78,7 @@
 
                 <solid
 
-                    android:color="@color/hijau">
+                    android:drawable="@drawable/myspinner_normal">
 
                 </solid>
 
@@ -46,5 +95,7 @@
             </shape>
 
         </item>
+        
+        
 
     </selector>
