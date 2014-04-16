@@ -77,7 +77,7 @@ public class NotifikasiService extends Service {
 	public void onStart(Intent intent, int startId) {
 		Toast.makeText(this, "My Service Started", Toast.LENGTH_LONG).show();
 		Log.d(TAG, "onStart");	
-		System.out.println("afifun ganteng");
+		System.out.println("afifun");
 	}
 	
 	@Override

@@ -131,10 +131,10 @@ public class NotifikasiActivity extends Activity {
 			
 		});
 		
-		if(!data.isEmpty()){
-			long l = data.get(data.size()-1).getWaktu();
-			
-			
+		int ii=0;
+		while(!data.isEmpty() && ii < data.size()){
+			long l = data.get(ii).getWaktu();
+			ii++;
 			Date date = new Date(l);
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 			String formatted = format.format(date);
@@ -274,11 +274,11 @@ public class NotifikasiActivity extends Activity {
 
 	private void startAlarm(int jam, int menit) {
 	    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-	    Time t = new Time();
-	    t.setToNow();
-	    Time nt = new Time();
-	    nt.set(0, menit, jam, t.month, t.monthDay, t.year);
-	    long when = nt.toMillis(false);         // notification time
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.setTimeInMillis(System.currentTimeMillis());
+	    calendar.set(calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH, jam, menit);
+
+	    long when = calendar.getTimeInMillis();         // notification time
 	            Intent intent = new Intent(getApplicationContext(), NotifikasiService.class);
 	            PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
 	            alarmManager.setExact(AlarmManager.RTC, when, pendingIntent);
