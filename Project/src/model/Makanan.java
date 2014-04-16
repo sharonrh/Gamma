@@ -20,9 +20,9 @@ public class Makanan {
 	public Makanan() {
 	}
 
-	public Makanan(String nama, int kalori, double protein, double karbohidrat,
-			double lemak, double kalsium, int persentase, int rating,
-			String jenisMakanan, int berat) {
+	public Makanan(String nama, int berat, int kalori, double protein,
+			double karbohidrat, double lemak, double kalsium, int persentase,
+			int rating, String jenisMakanan, long terakhirDipilih) {
 		this.nama = nama;
 		this.kalori = kalori;
 		this.protein = protein;
@@ -36,7 +36,7 @@ public class Makanan {
 		this.isHewani = false;
 		this.isSeafood = false;
 		this.isKacang = false;
-		this.terakhirDipilih = 0;
+		this.terakhirDipilih = terakhirDipilih;
 	}
 
 	public String getNama() {
@@ -147,7 +147,7 @@ public class Makanan {
 		return terakhirDipilih;
 	}
 
-	public void setTerakhir(int terakhirDipilih) {
+	public void setTerakhir(long terakhirDipilih) {
 		this.terakhirDipilih = terakhirDipilih;
 	}
 

@@ -30,7 +30,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// tabel makanan
-		String buatTabelMakanan = "CREATE TABLE makanan (nama TEXT PRIMARY KEY, kalori INTEGER, protein REAL, "
+		String buatTabelMakanan = "CREATE TABLE makanan (nama TEXT PRIMARY KEY, berat INTEGER, kalori INTEGER, protein REAL, "
 				+ "lemak REAL, karbohidrat REAL, kalsium REAL, rating INTEGER, persentase INTEGER, jenis TEXT, hewani INTEGER, "
 				+ "seafood INTEGER, kacang INTEGER, terakhirDipilih INTEGER);";
 		db.execSQL(buatTabelMakanan);
@@ -42,7 +42,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(buatTabelNotifikasi);
 		// tabel profil
 		String buatTabelProfil = "CREATE TABLE profil (id INTEGER PRIMARY KEY, nama TEXT, umur INTEGER, berat REAL, tinggi REAL, target REAL, gender INTEGER, "
-				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, hewani INTEGER, foto TEXT);";
+				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, hewani INTEGER, foto TEXT, startTime REAL, endTime REAL);";
 		db.execSQL(buatTabelProfil);
 
 		// isi tabel profil dengan data awal
@@ -58,6 +58,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put("seafood", 0);
 		values.put("hewani", 0);
 		values.put("foto", "");
+		values.put("startTime", 0);
+		values.put("endTime", 0);
+
 		// Inserting Row
 		db.insert("profil", null, values);
 
@@ -97,6 +100,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 				ContentValues values = new ContentValues();
 				values.put("nama", temp[0]);
+				values.put("berat", 100);
 				values.put("kalori", Integer.parseInt(temp[1]));
 				values.put("protein", Double.parseDouble(temp[2]));
 				values.put("lemak", Double.parseDouble(temp[3]));
@@ -108,7 +112,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				values.put("hewani", isHewani);
 				values.put("seafood", isSeafood);
 				values.put("kacang", isKacang);
-				values.put("terakhirDipilih", Integer.parseInt(temp[12]));
+				values.put("terakhirDipilih", 0);
 
 				db.insert("makanan", null, values);
 			}

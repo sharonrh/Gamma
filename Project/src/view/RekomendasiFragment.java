@@ -25,57 +25,9 @@ public class RekomendasiFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		RekomendasiController con = new RekomendasiController(getActivity().getApplicationContext());
-		ArrayList<Makanan> rek = new ArrayList<Makanan>();
-for (Makanan m : rek) {
-	System.out.println(m.getNama()+" terakhir= "+m.getTerakhir());
-	
-}
-		
-		// ------------------ dummy data --------------------
-
-		List<Makanan> listMakanan = new ArrayList<Makanan>();
-		Makanan m = new Makanan();
-		m.setNama("Roti selai");
-		m.setBerat(100);
-		m.setKalori(200);
-		listMakanan.add(m);
-		m = new Makanan();
-		m.setNama("Susu Sapi");
-		m.setBerat(200);
-		m.setKalori(150);
-		listMakanan.add(m);
-
-		m = new Makanan();
-		m.setNama("Pisang");
-		m.setBerat(20);
-		m.setKalori(25);
-		listMakanan.add(m);
-
-		m = new Makanan();
-		m.setNama("Nasi Putih");
-		m.setBerat(200);
-		m.setKalori(250);
-		listMakanan.add(m);
-
-		m = new Makanan();
-		m.setNama("Sayur Lodeh");
-		m.setBerat(50);
-		m.setKalori(50);
-		listMakanan.add(m);
-
-		m = new Makanan();
-		m.setNama("Tempe Goreng");
-		m.setBerat(100);
-		m.setKalori(100);
-		listMakanan.add(m);
-
-		m = new Makanan();
-		m.setNama("Nasi Putih");
-		m.setBerat(200);
-		m.setKalori(250);
-		listMakanan.add(m);
-		// ------------------ dummy end ----------------------
+		RekomendasiController con = new RekomendasiController(getActivity()
+				.getApplicationContext());
+		List<Makanan> listMakanan = con.getRekomendasi();
 
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), listMakanan, con.getCount(), con.getHeader());

@@ -81,15 +81,12 @@ public class ProfilFragment extends Fragment {
 
 		if (!profil.isAlergiKacang()) {
 			kacangImg.setVisibility(View.GONE);
-			kacangTxt.setVisibility(View.GONE);
 		}
 		if (!profil.isAlergiSeafood()) {
 			ikanImg.setVisibility(View.GONE);
-			ikanTxt.setVisibility(View.GONE);
 		}
 		if (!profil.isVegetarian()) {
 			sayurImg.setImageResource(R.drawable.burger);;
-			sayurTxt.setText("Non Vegetarian");
 		}
 
 		if (profil.getGayaHidup() < 3){
