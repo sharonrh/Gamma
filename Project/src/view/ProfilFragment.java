@@ -22,9 +22,9 @@ public class ProfilFragment extends Fragment {
 
 	private Button editProfil;
 	private TextView nama, umur, beratSekarang, beratTarget, tinggi, ikanTxt,
-			kacangTxt, sayurTxt, gayaTxt;
+			kacangTxt, sayurTxt, gayaTxt, mulaiTxt, akhirTxt;
 	private ImageView foto, genderImg, ikanImg, kacangImg, sayurImg, gaya1Img,
-			gaya2Img, gaya3Img, gaya4Img;
+			gaya2Img, gaya3Img, gaya4Img, mulaiImg, akhirImg;
 	private ProfilController con;
 
 	@Override
@@ -46,12 +46,15 @@ public class ProfilFragment extends Fragment {
 		foto = (ImageView) v.findViewById(R.id.fotoProfilTv);
 
 		genderImg = (ImageView) v.findViewById(R.id.imageGender);
+		
+		mulaiImg = (ImageView) v.findViewById(R.id.imageMulai);
+		mulaiTxt = (TextView) v.findViewById(R.id.textMulai);
+		akhirImg = (ImageView) v.findViewById(R.id.imageSelesai);
+		akhirImg = (ImageView) v.findViewById(R.id.imageSelesai);
+		
 		ikanImg = (ImageView) v.findViewById(R.id.imageIkan);
 		kacangImg = (ImageView) v.findViewById(R.id.imageKacang);
 		sayurImg = (ImageView) v.findViewById(R.id.imageVegetarian);
-		kacangTxt = (TextView) v.findViewById(R.id.textKacang);
-		ikanTxt = (TextView) v.findViewById(R.id.textIkan);
-		sayurTxt = (TextView) v.findViewById(R.id.textVegetarian);
 
 		gaya1Img = (ImageView) v.findViewById(R.id.imageGayaHidup1);
 		gaya2Img = (ImageView) v.findViewById(R.id.imageGayaHidup2);

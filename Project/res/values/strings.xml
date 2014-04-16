@@ -19,6 +19,14 @@
     <string name="display_spinner">-pilih satu-</string>
     <string name="spinnerGayaHidup">Pilih gaya hidup</string>
     <string name="lama_diet">Lama Diet</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    
+    <string-array name="isi_durasi">
+        <item>1 Minggu</item>
+        <item>2 Minggu</item>
+        <item>4 Minggu</item>
+        <item>8 Minggu</item>
+    </string-array>
     
     <string name="sangat_aktif">Sangat Aktif</string>
     <string-array name="isi_gayaHidup">

@@ -41,7 +41,7 @@ public class EditProfilActivity extends Activity {
 	private RadioGroup genderPick;
 	private RadioButton selected;
 	private CheckBox vegetarian, kacang, seafood;
-	private Spinner spinTransport;
+	private Spinner spinTransport, spinTransport2;
 	private Button batal, simpan;
 	private ImageView fotoProfil;
 	private String gaya, akv1, akv2, akv3, akv4;
@@ -52,6 +52,8 @@ public class EditProfilActivity extends Activity {
 	// Declaring the String Array with the Text Data for the Spinners
 	private String[] languages = { "Jarang Sekali", "Sedikit Aktif", "Aktif",
 			"Sangat Aktif" };
+	private String[] durasi = { "1 Minggu", "2 Minggu", "4 Minggu",
+	"8 Minggu" };
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class EditProfilActivity extends Activity {
 		setContentView(R.layout.activity_edit_profil);
 		Utils.setThemeToActivity(this);
 		spinTransport = (Spinner) findViewById(R.id.spinnerGayaHidup);
+		spinTransport2 = (Spinner) findViewById(R.id.spinnerLamaDiet);
 
 		namaField = (EditText) findViewById(R.id.editNama);
 		umurField = (EditText) findViewById(R.id.editUmur);
@@ -95,9 +98,12 @@ public class EditProfilActivity extends Activity {
 		});
 		CustomAdapter adapter = new CustomAdapter(this,
 				android.R.layout.simple_spinner_item, languages);
+		CustomAdapter adapter2 = new CustomAdapter(this,
+				android.R.layout.simple_spinner_item, durasi);
 
 		// The Adapter is used to provide the data which backs this Spinner.
 		spinTransport.setAdapter(adapter);
+		spinTransport2.setAdapter(adapter2);
 
 		spinTransport.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View view,
