@@ -6,4 +6,10 @@
     <color name="hijau">#00FF99</color>
     <color name="jeruk">#FFCC00</color>
     <color name="hijau_pencet">#80f182</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
 </resources>

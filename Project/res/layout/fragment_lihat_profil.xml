@@ -121,11 +121,11 @@
 
                 <ImageView
                     android:id="@+id/fotoProfilTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="0.67"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/profil" />
             </TableRow>
         </TableLayout>
 
@@ -155,9 +155,18 @@
                 android:layout_marginLeft="60dp"
                 android:layout_row="0"
                 android:layout_weight="0.67" />
+
         </GridLayout>
 
-        <TextView
+        
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.67"
+            android:columnCount="1" >
+            
+            <TextView
             android:id="@+id/TextView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,12 +175,6 @@
             android:text="Alergi"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.67"
-            android:columnCount="1" >
 
             <LinearLayout
                 android:layout_width="66dp"
@@ -184,15 +187,8 @@
                 <ImageView
                     android:id="@+id/imageKacang"
                     android:layout_width="match_parent"
-                    android:layout_height="47dp"
-                    android:src="@drawable/peanut" />
+                    android:layout_height="47dp" />
 
-                <TextView
-                    android:id="@+id/textKacang"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Kacang" />
             </LinearLayout>
 
             <LinearLayout
@@ -207,15 +203,8 @@
                 <ImageView
                     android:id="@+id/imageIkan"
                     android:layout_width="match_parent"
-                    android:layout_height="47dp"
-                    android:src="@drawable/fish" />
+                    android:layout_height="47dp" />
 
-                <TextView
-                    android:id="@+id/textIkan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Seafood" />
             </LinearLayout>
         </GridLayout>
 
@@ -246,15 +235,8 @@
                 <ImageView
                     android:id="@+id/imageVegetarian"
                     android:layout_width="match_parent"
-                    android:layout_height="47dp"
-                    android:src="@drawable/vegetable" />
+                    android:layout_height="47dp" />
 
-                <TextView
-                    android:id="@+id/textVegetarian"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Vegetarian" />
             </LinearLayout>
         </GridLayout>
 
@@ -280,8 +262,7 @@
                 android:layout_column="0"
                 android:layout_gravity="left"
                 android:layout_marginLeft="60dp"
-                android:layout_row="0"
-                android:src="@drawable/sports" />
+                android:layout_row="0" />
 
             <ImageView
                 android:id="@+id/imageGayaHidup4"
@@ -290,8 +271,7 @@
                 android:layout_column="0"
                 android:layout_gravity="left"
                 android:layout_marginLeft="189dp"
-                android:layout_row="0"
-                android:src="@drawable/sports" />
+                android:layout_row="0" />
 
             <GridLayout
                 android:layout_width="wrap_content"
@@ -309,8 +289,7 @@
                     android:layout_height="47dp"
                     android:layout_column="0"
                     android:layout_gravity="left"
-                    android:layout_row="0"
-                    android:src="@drawable/sports" />
+                    android:layout_row="0" />
 
                 <ImageView
                     android:id="@+id/imageGayaHidup3"
@@ -319,15 +298,14 @@
                     android:layout_column="0"
                     android:layout_gravity="left"
                     android:layout_marginLeft="43dp"
-                    android:layout_row="0"
-                    android:src="@drawable/sports" />
+                    android:layout_row="0" />
 
                 <TextView
                     android:id="@+id/textGayaHidup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/sangat_aktif" />
+                    android:layout_gravity="center_horizontal" />
+
             </GridLayout>
         </GridLayout>
 
