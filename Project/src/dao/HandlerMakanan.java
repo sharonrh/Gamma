@@ -94,26 +94,28 @@ public class HandlerMakanan extends DatabaseHandler {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(tabelMakanan, new String[] { namaMakanan,
-				jlhKalori, jlhProtein, jlhLemak, jlhKarbo, jlhKalsium, rating,
-				persentase, jenis, hewani, seafood, kacang, terakhir },
+				"berat", jlhKalori, jlhProtein, jlhLemak, jlhKarbo, jlhKalsium,
+				rating, persentase, jenis, hewani, seafood, kacang, terakhir },
 				namaMakanan + "=?", new String[] { String.valueOf(nama) },
 				null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
 		Makanan makanan = new Makanan(cursor.getString(0),
-				Integer.parseInt(cursor.getString(1)),
-				Double.parseDouble(cursor.getString(2)),
+				Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor
+						.getString(2)),
 				Double.parseDouble(cursor.getString(3)),
 				Double.parseDouble(cursor.getString(4)),
 				Double.parseDouble(cursor.getString(5)),
-				Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor
-						.getString(7)), cursor.getString(8), 100);
+				Double.parseDouble(cursor.getString(6)),
+				Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor
+						.getString(8)), cursor.getString(9),
+				Long.parseLong(cursor.getString(13)));
 
 		// retrieve data alegi
-		int h = Integer.parseInt(cursor.getString(9));
-		int s = Integer.parseInt(cursor.getString(10));
-		int k = Integer.parseInt(cursor.getString(11));
+		int h = Integer.parseInt(cursor.getString(10));
+		int s = Integer.parseInt(cursor.getString(11));
+		int k = Integer.parseInt(cursor.getString(12));
 
 		if (h == 1) {
 			makanan.setHewani(true);
@@ -124,7 +126,6 @@ public class HandlerMakanan extends DatabaseHandler {
 		if (k == 1) {
 			makanan.setKacang(true);
 		}
-		makanan.setTerakhir(Integer.parseInt(cursor.getString(12)));
 
 		return makanan;
 	}
@@ -143,19 +144,20 @@ public class HandlerMakanan extends DatabaseHandler {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
-				makanan.setProtein(Double.parseDouble(cursor.getString(2)));
-				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(3)));
-				makanan.setLemak(Double.parseDouble(cursor.getString(4)));
-				makanan.setKalsium(Double.parseDouble(cursor.getString(5)));
-				makanan.setPersentase(Integer.parseInt(cursor.getString(6)));
-				makanan.setRating(Integer.parseInt(cursor.getString(7)));
-				makanan.setJenisMakanan(cursor.getString(8));
+				makanan.setBerat(Integer.parseInt(cursor.getString(1)));
+				makanan.setKalori(Integer.parseInt(cursor.getString(2)));
+				makanan.setProtein(Double.parseDouble(cursor.getString(3)));
+				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(4)));
+				makanan.setLemak(Double.parseDouble(cursor.getString(5)));
+				makanan.setKalsium(Double.parseDouble(cursor.getString(6)));
+				makanan.setPersentase(Integer.parseInt(cursor.getString(7)));
+				makanan.setRating(Integer.parseInt(cursor.getString(8)));
+				makanan.setJenisMakanan(cursor.getString(9));
 
 				// retrieve data alegi
-				int h = Integer.parseInt(cursor.getString(9));
-				int s = Integer.parseInt(cursor.getString(10));
-				int k = Integer.parseInt(cursor.getString(11));
+				int h = Integer.parseInt(cursor.getString(10));
+				int s = Integer.parseInt(cursor.getString(11));
+				int k = Integer.parseInt(cursor.getString(12));
 
 				if (h == 1) {
 					makanan.setHewani(true);
@@ -166,23 +168,21 @@ public class HandlerMakanan extends DatabaseHandler {
 				if (k == 1) {
 					makanan.setKacang(true);
 				}
-				
+				makanan.setTerakhir(Long.parseLong(cursor.getString(13)));
 				// Adding makanan to list
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
 		}
 
-		// return makanan list
 		return makananList;
 	}
 
 	public List<Makanan> getRekomendasi() {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// Select All Query
-		String selectQuery = "SELECT nama,berat,kalori FROM " + tabelMakanan+" WHERE jenis='pokok' " +
-				"ORDER BY terakhirDipilih";
-
 		SQLiteDatabase db = this.getWritableDatabase();
+		String selectQuery = "SELECT nama,berat,kalori FROM " + tabelMakanan
+				+ " ORDER BY RANDOM() LIMIT 9";
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
 		// looping through all rows and adding to list
@@ -190,72 +190,13 @@ public class HandlerMakanan extends DatabaseHandler {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
-				makanan.setProtein(Double.parseDouble(cursor.getString(2)));
-				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(3)));
-				makanan.setLemak(Double.parseDouble(cursor.getString(4)));
-				makanan.setKalsium(Double.parseDouble(cursor.getString(5)));
-				makanan.setPersentase(Integer.parseInt(cursor.getString(6)));
-				makanan.setRating(Integer.parseInt(cursor.getString(7)));
-				makanan.setJenisMakanan(cursor.getString(8));
-
-				// retrieve data alegi
-				int h = Integer.parseInt(cursor.getString(9));
-				int s = Integer.parseInt(cursor.getString(10));
-				int k = Integer.parseInt(cursor.getString(11));
-
-				if (h == 1) {
-					makanan.setHewani(true);
-				}
-				if (s == 1) {
-					makanan.setSeafood(true);
-				}
-				if (k == 1) {
-					makanan.setKacang(true);
-				}
-				makanan.setTerakhir(Integer.parseInt(cursor.getString(12)));
-
-				// Adding makanan to list
+				makanan.setBerat(Integer.parseInt(cursor.getString(1)));
+				makanan.setKalori(Integer.parseInt(cursor.getString(2)));
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
 		}
 
 		return makananList;
-	}
-
-	// Updating single makanan
-	public int updateMakanan(Makanan makanan) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		int h = 0, s = 0, k = 0;
-		ContentValues values = new ContentValues();
-		values.put(namaMakanan, makanan.getNama());
-		values.put(jlhKalori, makanan.getKalori());
-		values.put(jlhProtein, makanan.getProtein());
-		values.put(jlhLemak, makanan.getLemak());
-		values.put(jlhKarbo, makanan.getKarbohidrat());
-		values.put(jlhKalsium, makanan.getKalsium());
-		values.put(rating, makanan.getRating());
-		values.put(persentase, makanan.getPersentase());
-		values.put(jenis, makanan.getJenisMakanan());
-		if (makanan.isHewani()) {
-			h = 1;
-		}
-		values.put(hewani, h);
-
-		if (makanan.isSeafood()) {
-			s = 1;
-		}
-		values.put(seafood, s);
-
-		if (makanan.isKacang()) {
-			k = 1;
-		}
-		values.put(kacang, k);
-		values.put(terakhir, makanan.getTerakhir());
-
-		// updating row
-		return db.update(tabelMakanan, values, KEY_ID + " = ?",
-				new String[] { String.valueOf(makanan.getNama()) });
 	}
 
 	// Deleting single makanan
