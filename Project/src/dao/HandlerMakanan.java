@@ -90,7 +90,7 @@ public class HandlerMakanan extends DatabaseHandler {
 	}
 
 	// Getting single makanan
-	Makanan getMakanan(String nama) {
+	public Makanan getMakanan(String nama) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(tabelMakanan, new String[] { namaMakanan,
@@ -166,8 +166,7 @@ public class HandlerMakanan extends DatabaseHandler {
 				if (k == 1) {
 					makanan.setKacang(true);
 				}
-				makanan.setTerakhir(Integer.parseInt(cursor.getString(12)));
-
+				
 				// Adding makanan to list
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
@@ -180,7 +179,8 @@ public class HandlerMakanan extends DatabaseHandler {
 	public List<Makanan> getRekomendasi() {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// Select All Query
-		String selectQuery = "SELECT  * FROM " + tabelMakanan;
+		String selectQuery = "SELECT nama,berat,kalori FROM " + tabelMakanan+" WHERE jenis='pokok' " +
+				"ORDER BY terakhirDipilih";
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -220,7 +220,6 @@ public class HandlerMakanan extends DatabaseHandler {
 			} while (cursor.moveToNext());
 		}
 
-		// return makanan list
 		return makananList;
 	}
 

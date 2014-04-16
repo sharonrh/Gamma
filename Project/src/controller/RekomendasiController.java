@@ -26,7 +26,7 @@ public class RekomendasiController {
 	}
 
 	public List<Makanan> getRekomendasi() {
-		rekomen = db.getAllMakanan();
+		rekomen = db.getRekomendasi();
 		return rekomen;
 	}
 

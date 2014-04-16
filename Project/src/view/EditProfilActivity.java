@@ -47,7 +47,7 @@ public class EditProfilActivity extends Activity {
 	private String gaya, akv1, akv2, akv3, akv4;
 	private TextView penjelasan;
 	private ProfilController con;
-	private String str="";
+	private String str = "";
 
 	// Declaring the String Array with the Text Data for the Spinners
 	private String[] languages = { "Jarang Sekali", "Sedikit Aktif", "Aktif",
@@ -174,7 +174,8 @@ public class EditProfilActivity extends Activity {
 								Double.parseDouble(tinggi),
 								Double.parseDouble(target), gender.charAt(0),
 								gayaHidup, kacang.isChecked(),
-								seafood.isChecked(), vegetarian.isChecked(), str)) {
+								seafood.isChecked(), vegetarian.isChecked(),
+								str, 0, 0)) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
@@ -272,23 +273,23 @@ public class EditProfilActivity extends Activity {
 
 			Bitmap b = BitmapFactory.decodeFile(picturePath);
 			fotoProfil.setImageBitmap(b);
-						
+
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-			
+
 			byte[] a = baos.toByteArray();
 			byte[] c = Base64.encode(a, Base64.DEFAULT);
-			
+
 			try {
-				
-				//string gambar
+
+				// string gambar
 				str = new String(c, "UTF-8");
-				
+
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-}
+		}
 
 	}
 }

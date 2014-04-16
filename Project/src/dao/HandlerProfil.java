@@ -14,20 +14,20 @@ public class HandlerProfil extends DatabaseHandler {
 	private static final String tabelProfil = "profil";
 
 	// Kolom tabel profil
-	private static final String id = "id";
-	private static final String nama = "nama";
-	private static final String umur = "umur";
-	private static final String berat = "berat";
-	private static final String tinggi = "tinggi";
-	private static final String target = "target";
-	private static final String gender = "gender";
-	private static final String gayaHidup = "gayaHidup";
-	private static final String kacang = "kacang";
-	private static final String seafood = "seafood";
-	private static final String hewani = "hewani";
-	private static final String foto = "foto";
-	private static final String startTime = "startTime";
-	private static final String endTime = "endTime";
+	private final String id = "id";
+	private final String nama = "nama";
+	private final String umur = "umur";
+	private final String berat = "berat";
+	private final String tinggi = "tinggi";
+	private final String target = "target";
+	private final String gender = "gender";
+	private final String gayaHidup = "gayaHidup";
+	private final String kacang = "kacang";
+	private final String seafood = "seafood";
+	private final String hewani = "hewani";
+	private final String foto = "foto";
+	private final String startTime = "startTime";
+	private final String endTime = "endTime";
 
 	public static HandlerProfil getInstance(Context context) {
 		if (sInstance == null) {
@@ -46,7 +46,7 @@ public class HandlerProfil extends DatabaseHandler {
 
 		Cursor cursor = db.query(tabelProfil, new String[] { id, nama, umur,
 				berat, tinggi, target, gender, gayaHidup, kacang, seafood,
-				hewani, foto }, id + "=?", new String[] { String.valueOf(1) },
+				hewani, foto, startTime, endTime }, id + "=?", new String[] { String.valueOf(1) },
 				null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();

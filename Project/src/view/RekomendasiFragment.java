@@ -26,8 +26,12 @@ public class RekomendasiFragment extends ListFragment {
 		super.onActivityCreated(savedInstanceState);
 
 		RekomendasiController con = new RekomendasiController(getActivity().getApplicationContext());
-//		List<Makanan> values = con.getListMakanan();
-
+		ArrayList<Makanan> rek = new ArrayList<Makanan>();
+for (Makanan m : rek) {
+	System.out.println(m.getNama()+" terakhir= "+m.getTerakhir());
+	
+}
+		
 		// ------------------ dummy data --------------------
 
 		List<Makanan> listMakanan = new ArrayList<Makanan>();

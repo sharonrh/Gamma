@@ -15,7 +15,7 @@ public class Makanan {
 	private boolean isHewani;
 	private boolean isSeafood;
 	private boolean isKacang;
-	private int terakhirDipilih;
+	private long terakhirDipilih;
 
 	public Makanan() {
 	}
@@ -143,7 +143,7 @@ public class Makanan {
 		this.isSeafood = isSeafood;
 	}
 
-	public int getTerakhir() {
+	public long getTerakhir() {
 		return terakhirDipilih;
 	}
 
