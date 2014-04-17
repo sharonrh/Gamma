@@ -17,13 +17,13 @@ public class Utils {
 	  try { 
 			 if(Utils.THEME.equalsIgnoreCase("defaultTheme"))
 			 {
-				 act.setTheme(R.style.HoloBlackTheme);
+				 act.setTheme(R.style.gray_gradient);
 			 }
 
 
 			 if(Utils.THEME.equalsIgnoreCase("Gray"))
 			 {
-				 act.setTheme(R.style.HoloLightTheme);
+				 act.setTheme(R.style.radial_gradient);
 			 }
 
 			 if(Utils.THEME.equalsIgnoreCase("Radial"))
