@@ -26,14 +26,14 @@
                 android:id="@+id/holoDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sungai"
+                android:text="Holo Dark"
                 android:textSize="15dp" />
 
             <RadioButton
                 android:id="@+id/holoLight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Awan"
+                android:text="Holo Light"
                 android:textSize="15dp" />
 
             <RadioButton
