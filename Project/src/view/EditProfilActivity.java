@@ -59,7 +59,6 @@ public class EditProfilActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profil);
-		Utils.setThemeToActivity(this);
 		
 		Intent i = getIntent();
 		spinTransport = (Spinner) findViewById(R.id.spinnerGayaHidup);

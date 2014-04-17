@@ -23,6 +23,8 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int Clouds=0x7f05000f;
+        public static final int Peter River=0x7f05000e;
         public static final int black=0x7f050001;
         public static final int counter_text_bg=0x7f05000b;
         public static final int counter_text_color=0x7f05000c;
@@ -30,6 +32,7 @@ public final class R {
         public static final int hijau=0x7f050004;
         public static final int hijau_pencet=0x7f050006;
         public static final int jeruk=0x7f050005;
+        public static final int lime=0x7f05000d;
         public static final int list_background=0x7f050008;
         public static final int list_background_pressed=0x7f050009;
         public static final int list_divider=0x7f05000a;
@@ -275,7 +278,29 @@ public final class R {
         public static final int umur_anda=0x7f060017;
     }
     public static final class style {
-        /** 
+        /**  <style name="Theme.SmallText">
+     <item name="textTitle">@style/small_title_text</item>
+     <item name="textBody">@style/small_body_text</item>
+     <item name="buttonText">@style/small_button_text</item>
+  </style>
+
+  <style name="Theme.LargeText">
+      <item name="textTitle">@style/large_title_text</item>
+      <item name="textBody">@style/large_body_text</item>
+      <item name="buttonText">@style/large_button_text</item>
+  </style>
+  
+  
+   <style name="Theme.Gray">
+      <item name="backgroundTheme">@style/gray_gradient</item>
+  </style>
+
+  <style name="Theme.Radial">
+      <item name="backgroundTheme">@style/radial_gradient</item>
+  </style>
+    
+     
+
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     
@@ -296,12 +321,25 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f080009;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080003;
-        public static final int HoloBlackTheme=0x7f080002;
-        public static final int HoloLightTheme=0x7f080001;
+        public static final int AppTheme=0x7f08000c;
+        public static final int HoloBlackTheme=0x7f08000b;
+        public static final int HoloLightTheme=0x7f08000a;
+        public static final int Theme=0x7f080008;
+        /**  Change gray_radient theme 
+         */
+        public static final int gray_gradient=0x7f080006;
+        public static final int large_body_text=0x7f080004;
+        public static final int large_button_text=0x7f080005;
+        public static final int large_title_text=0x7f080003;
+        /**  Change radial gradient theme 
+         */
+        public static final int radial_gradient=0x7f080007;
+        public static final int small_body_text=0x7f080001;
+        public static final int small_button_text=0x7f080002;
+        public static final int small_title_text=0x7f080000;
     }
 }

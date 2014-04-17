@@ -25,6 +25,8 @@ public class HalamanUtama extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_halaman_utama);
+		
+		Utils.setThemeToActivity(this);
 
 		profil = (ImageButton) findViewById(R.id.profil);
 		rekomendasi = (ImageButton) findViewById(R.id.rekomendasi);
