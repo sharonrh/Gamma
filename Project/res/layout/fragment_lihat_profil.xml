@@ -330,8 +330,17 @@
                 android:layout_gravity="center_vertical"
                 android:text="Gaya Hidup"
                 android:textStyle="bold" />
-
+            
             <ImageView
+                    android:id="@+id/imageGayaHidup1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_column="0"
+                    android:layout_gravity="top"
+                    android:layout_marginLeft="100dp"
+                    android:layout_row="0" />
+
+            <!--  <ImageView
                 android:id="@+id/imageGayaHidup1"
                 android:layout_width="wrap_content"
                 android:layout_height="47dp"
@@ -385,7 +394,7 @@
             </GridLayout>
         </GridLayout>
 
-        <!--
+        
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -472,9 +481,9 @@
                     android:gravity="center"
                     android:text="Aktivitas3" />
             </LinearLayout>
-
+-->
         </GridLayout>
-        -->
+       
 
     </LinearLayout>
 

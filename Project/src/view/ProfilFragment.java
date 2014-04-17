@@ -59,10 +59,6 @@ public class ProfilFragment extends Fragment {
 		sayurImg = (ImageView) v.findViewById(R.id.imageVegetarian);
 
 		gaya1Img = (ImageView) v.findViewById(R.id.imageGayaHidup1);
-		gaya2Img = (ImageView) v.findViewById(R.id.imageGayaHidup2);
-		gayaTxt = (TextView) v.findViewById(R.id.textGayaHidup);
-		gaya3Img = (ImageView) v.findViewById(R.id.imageGayaHidup3);
-		gaya4Img = (ImageView) v.findViewById(R.id.imageGayaHidup4);
 
 		nama.setText(profil.getNama());
 		umur.setText(profil.getUmur() + " tahun");
@@ -77,31 +73,47 @@ public class ProfilFragment extends Fragment {
 		foto.setImageBitmap(decodedByte);
 
 		if (profil.getGender() == 'P')
-			genderImg.setBackgroundResource(R.drawable.male);
+			genderImg.setBackgroundResource(R.drawable.man);
 		else
-			genderImg.setBackgroundResource(R.drawable.female);
+			genderImg.setBackgroundResource(R.drawable.woman);
 
+		mulaiImg.setBackgroundResource(R.drawable.start);
+		akhirImg.setBackgroundResource(R.drawable.finish);
+		mulaiTxt.setText(profil.getStartTime() + "");
+		akhirTxt.setText(profil.getEndTime() + "");
+		
 		if (!profil.isAlergiKacang()) {
 			kacangImg.setVisibility(View.GONE);
 		}
+		else
+			kacangImg.setBackgroundResource(R.drawable.alergi_kacang);
+		
 		if (!profil.isAlergiSeafood()) {
 			ikanImg.setVisibility(View.GONE);
 		}
+		else
+			ikanImg.setBackgroundResource(R.drawable.alergi_seafood);
+		
 		if (!profil.isVegetarian()) {
-			sayurImg.setImageResource(R.drawable.burger);;
+			sayurImg.setImageResource(R.drawable.non_veg);;
 		}
+		else
+			sayurImg.setImageResource(R.drawable.vegetarian);
 
-		if (profil.getGayaHidup() < 3){
-			gaya4Img.setVisibility(View.GONE);
-			gayaTxt.setText("Aktif");
+		if (profil.getGayaHidup() == 3){
+			gaya1Img.setBackgroundResource(R.drawable.sangat_aktif);
 		}
-		if (profil.getGayaHidup() < 2){
-			gaya3Img.setVisibility(View.GONE);
-			gayaTxt.setText("Sedikit Aktif");
+		
+		if (profil.getGayaHidup() == 2){
+			gaya1Img.setBackgroundResource(R.drawable.aktif);
 		}
-		if (profil.getGayaHidup() < 1){
-			gaya2Img.setVisibility(View.GONE);
-			gayaTxt.setText("Jarang Sekali");
+		
+		if (profil.getGayaHidup() == 1){
+			gaya1Img.setBackgroundResource(R.drawable.sedikit_aktif);
+		}
+		
+		if (profil.getGayaHidup() == 0){
+			gaya1Img.setBackgroundResource(R.drawable.jarang_sekali);
 		}
 
 		editProfil.setOnClickListener(new View.OnClickListener() {
