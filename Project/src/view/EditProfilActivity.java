@@ -58,6 +58,7 @@ public class EditProfilActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_edit_profil);
 		
 		Intent i = getIntent();
