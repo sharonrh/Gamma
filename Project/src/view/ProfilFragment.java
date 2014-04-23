@@ -26,7 +26,7 @@ public class ProfilFragment extends Fragment {
 	private ImageView foto, genderImg, ikanImg, kacangImg, sayurImg, gaya1Img,
 			gaya2Img, gaya3Img, gaya4Img, mulaiImg, akhirImg;
 	private ProfilController con;
-	
+
 	Pengguna profil;
 
 	@Override
@@ -48,12 +48,12 @@ public class ProfilFragment extends Fragment {
 		foto = (ImageView) v.findViewById(R.id.fotoProfilTv);
 
 		genderImg = (ImageView) v.findViewById(R.id.imageGender);
-		
+
 		mulaiImg = (ImageView) v.findViewById(R.id.imageMulai);
 		mulaiTxt = (TextView) v.findViewById(R.id.textMulai);
 		akhirImg = (ImageView) v.findViewById(R.id.imageSelesai);
-		akhirImg = (ImageView) v.findViewById(R.id.imageSelesai);
-		
+		akhirTxt = (TextView) v.findViewById(R.id.textSelesai);
+
 		ikanImg = (ImageView) v.findViewById(R.id.imageIkan);
 		kacangImg = (ImageView) v.findViewById(R.id.imageKacang);
 		sayurImg = (ImageView) v.findViewById(R.id.imageVegetarian);
@@ -81,38 +81,37 @@ public class ProfilFragment extends Fragment {
 		akhirImg.setBackgroundResource(R.drawable.finish);
 		mulaiTxt.setText(profil.getStartTime() + "");
 		akhirTxt.setText(profil.getEndTime() + "");
-		
+
 		if (!profil.isAlergiKacang()) {
 			kacangImg.setVisibility(View.GONE);
-		}
-		else
+		} else {
 			kacangImg.setBackgroundResource(R.drawable.alergi_kacang);
-		
+		}
+
 		if (!profil.isAlergiSeafood()) {
 			ikanImg.setVisibility(View.GONE);
-		}
-		else
+		} else
 			ikanImg.setBackgroundResource(R.drawable.alergi_seafood);
-		
-		if (!profil.isVegetarian()) {
-			sayurImg.setImageResource(R.drawable.non_veg);;
-		}
-		else
-			sayurImg.setImageResource(R.drawable.vegetarian);
 
-		if (profil.getGayaHidup() == 3){
+		if (!profil.isVegetarian()) {
+			sayurImg.setImageResource(R.drawable.non_veg);
+		} else {
+			sayurImg.setImageResource(R.drawable.vegetarian);
+		}
+
+		if (profil.getGayaHidup() == 3) {
 			gaya1Img.setBackgroundResource(R.drawable.sangat_aktif);
 		}
-		
-		if (profil.getGayaHidup() == 2){
+
+		else if (profil.getGayaHidup() == 2) {
 			gaya1Img.setBackgroundResource(R.drawable.aktif);
 		}
-		
-		if (profil.getGayaHidup() == 1){
+
+		else if (profil.getGayaHidup() == 1) {
 			gaya1Img.setBackgroundResource(R.drawable.sedikit_aktif);
 		}
-		
-		if (profil.getGayaHidup() == 0){
+
+		else {
 			gaya1Img.setBackgroundResource(R.drawable.jarang_sekali);
 		}
 
@@ -124,7 +123,7 @@ public class ProfilFragment extends Fragment {
 				Intent i = new Intent(getActivity().getApplicationContext(),
 						EditProfilActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				
+
 				i.putExtra("nama", nama.getText());
 				i.putExtra("umur", umur.getText());
 				i.putExtra("beratSkrg", beratSekarang.getText());
@@ -136,7 +135,7 @@ public class ProfilFragment extends Fragment {
 				i.putExtra("gayaHidup", profil.getGayaHidup());
 				i.putExtra("ikan", profil.isAlergiSeafood());
 				i.putExtra("kacang", profil.isAlergiKacang());
-				
+
 				getActivity().startActivity(i);
 			}
 		});

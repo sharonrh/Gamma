@@ -141,7 +141,6 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="2.56"
                 android:text="@string/jenis_kelamin"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -182,7 +181,6 @@
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="5dp"
                 android:layout_row="0"
-                android:layout_weight="0.67"
                 android:columnCount="1" >
 
                 <ImageView
@@ -191,8 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:layout_gravity="center_horizontal|top"
-                    android:layout_row="0"
-                    android:layout_weight="0.67" />
+                    android:layout_row="0"/>
 
                 <TextView
                     android:id="@+id/textMulai"
@@ -273,7 +270,6 @@
                 android:layout_column="0"
                 android:layout_marginLeft="150dp"
                 android:layout_row="0"
-                android:layout_weight="0.67"
                 android:orientation="vertical" >
 
                 <ImageView
@@ -305,7 +301,6 @@
                 android:layout_column="0"
                 android:layout_marginLeft="100dp"
                 android:layout_row="0"
-                android:layout_weight="0.67"
                 android:orientation="vertical" >
 
                 <ImageView
