@@ -20,15 +20,16 @@
     <string name="spinnerGayaHidup">Pilih gaya hidup</string>
     <string name="lama_diet">Lama Diet</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
-    
+
     <string-array name="isi_durasi">
         <item>1 Minggu</item>
         <item>2 Minggu</item>
         <item>4 Minggu</item>
         <item>8 Minggu</item>
     </string-array>
-    
+
     <string name="sangat_aktif">Sangat Aktif</string>
+
     <string-array name="isi_gayaHidup">
         <item>Jarang Sekali</item>
         <item>Sedikit Aktif</item>
@@ -39,6 +40,7 @@
         <item>Jogging</item>
         <item>Belajar</item>
     </string-array>
+
     <string name="edit_profil">Edit Profil</string>
     <string name="info_personal">Info Personal</string>
     <string name="nama_anda">Nama Anda</string>
@@ -48,32 +50,33 @@
     <string name="kg">kg</string>
     <string name="berat_target">Berat Target</string>
     <string name="tinggi_badan">Tinggi Badan</string>
-    
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
-    
+
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Profil</item>
-        <item >Rekomendasi</item>
-        <item >Statistik</item>
-        <item >Katalog</item>
-        <item >Achievement</item>
-        <item >Pengaturan</item>
+        <item>Rekomendasi</item>
+        <item>Profil</item>
+        <item>Statistik</item>
+        <item>Laporan</item>
+        <item>Katalog</item>
+        <item>Achievement</item>
+        <item>Pengaturan</item>
     </string-array>
-    
+
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/profil</item>
         <item>@drawable/rekomendasi</item>
+        <item>@drawable/profil</item>
         <item>@drawable/statistik</item>
+        <item>@drawable/statistik</item> <!--  ntar ganti laporan yak -->
         <item>@drawable/katalog</item>
         <item>@drawable/achievement</item>
         <item>@drawable/pengaturan</item>
-    </array>
-    
-     <!-- Content Description -->
+    </array><!--  -->
+
+    <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
 
 </resources>
