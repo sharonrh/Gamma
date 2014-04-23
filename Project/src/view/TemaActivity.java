@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.widget.RadioGroup;
 
 //import com.example.com.exampe.changetheme.CustomThemeActivity;
-import view.SettingActivity;
+import view.SettingFragment;
 import view.Utils;
 import com.example.gamma.R;
 
@@ -26,17 +26,17 @@ public class TemaActivity extends Activity {
 		case R.id.holoDark:
 			Utils.THEME="DEFAULT";
 		    Utils.settingChanged=true;
-		    startActivity(new Intent(this,  SettingActivity.class));
+		    startActivity(new Intent(this,  SettingFragment.class));
 			break;
 		case R.id.holoLight:
 			Utils.THEME="Gray";
 		    Utils.settingChanged=true;;
-		    startActivity(new Intent( this,  SettingActivity.class));
+		    startActivity(new Intent( this,  SettingFragment.class));
 			break;
 		default :
 			Utils.THEME="Radial";
 		    Utils.settingChanged=true;
-		    startActivity(new Intent( this,  SettingActivity.class)); 
+		    startActivity(new Intent( this,  SettingFragment.class)); 
 			break;
 			
 		}

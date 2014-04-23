@@ -23,36 +23,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="view.SettingActivity"
-            android:label="@string/title_activity_setting_fragment"
-            android:parentActivityName="view.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.MainActivity" />
-        </activity>
-        <activity
             android:name="view.NotifikasiActivity"
-            android:label="@string/title_activity_notifikasi"
-            android:parentActivityName="view.SettingActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.SettingActivity" />
+            android:label="@string/title_activity_notifikasi" >
         </activity>
         <activity
             android:name="view.TemaActivity"
-            android:label="@string/title_activity_tema"
-            android:parentActivityName="view.SettingActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.SettingActivity" />
+            android:label="@string/title_activity_tema" >
         </activity>
         <activity
             android:name="view.TentangActivity"
-            android:label="@string/title_activity_tentang"
-            android:parentActivityName="view.SettingActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="view.SettingActivity" />
+            android:label="@string/title_activity_tentang" >
         </activity>
         <activity
             android:name="view.EditProfilActivity"

@@ -157,7 +157,7 @@ public class MainActivity extends Activity {
 			fragment = new LaporanFragment(); // ntar ganti achievement
 			break;
 		case 6:
-			fragment = new LaporanFragment(); // ntar ganti setting
+			fragment = new SettingFragment(); 
 			break;
 		default:
 			break;

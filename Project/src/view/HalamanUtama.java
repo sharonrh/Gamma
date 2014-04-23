@@ -88,7 +88,7 @@ public class HalamanUtama extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(),
-						SettingActivity.class);
+						SettingFragment.class);
 				startActivity(i);
 			}
 		});
