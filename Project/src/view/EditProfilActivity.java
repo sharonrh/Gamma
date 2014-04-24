@@ -2,6 +2,9 @@ package view;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
+import model.Pengguna;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -48,6 +51,8 @@ public class EditProfilActivity extends Activity {
 	private TextView penjelasan;
 	private ProfilController con;
 	private String str = "";
+	private String pesan = "Terjadi Kesalahan pada: ";
+
 
 	// Declaring the String Array with the Text Data for the Spinners
 	private String[] languages = { "Jarang Sekali", "Sedikit Aktif", "Aktif",
@@ -60,6 +65,7 @@ public class EditProfilActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_edit_profil);
+		Utils.setThemeToActivity(this);
 		
 		Intent i = getIntent();
 		spinTransport = (Spinner) findViewById(R.id.spinnerGayaHidup);
@@ -76,67 +82,64 @@ public class EditProfilActivity extends Activity {
 		kacang = (CheckBox) findViewById(R.id.editKacang);
 		seafood = (CheckBox) findViewById(R.id.editIkan);
 		fotoProfil = (ImageView) findViewById(R.id.editFoto);
-//		i.putExtra("nama", nama.getText());
-//		i.putExtra("umur", umur.getText());
-//		i.putExtra("beratSkrg", beratSekarang.getText());
-//		i.putExtra("beratTarget", beratTarget.getText());
-//		i.putExtra("tinggi", tinggi.getText());
-//		i.putExtra("jeKel", profil.getGender());
-//		i.putExtra("foto", profil.getFoto());
-//		i.putExtra("sayur", profil.isVegetarian());
-//		i.putExtra("gayaHidup", profil.getGayaHidup());
-//		i.putExtra("ikan", profil.isAlergiSeafood());
-//		i.putExtra("kacang", profil.isAlergiKacang());
-		
-		if(i.getStringExtra("nama").length()!=0){
-			namaField.setText(i.getStringExtra("nama"));
-			umurField.setText(i.getStringExtra("umur"));
-			beratField.setText(i.getStringExtra("beratSkrg"));
-			targetField.setText(i.getStringExtra("beratTarget"));
-			tinggiField.setText(i.getStringExtra("tinggi"));
-			
-			
-			byte[] decodedString = Base64.decode(i.getStringExtra("foto"), Base64.DEFAULT);
-			Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
-					decodedString.length);
 
-			fotoProfil.setImageBitmap(decodedByte);
+		con = new ProfilController(getApplicationContext());
+		Pengguna user = con.getProfil();
+
+		
+		
+		if(user != null){
+//			
+			if(user.getNama().length() != 0){
+			namaField.setText(user.getNama());
+			umurField.setText("" + user.getUmur());
+			beratField.setText(""+user.getBerat());
+			targetField.setText(""+user.getTarget());
+			tinggiField.setText(""+user.getTinggi());
 			
+			user.getGayaHidup();
+		//	user.g
 			
-			String gender = i.getStringExtra("jeKel");
-			
-			if(gender.equalsIgnoreCase("P")){
+			if( user.getFoto() != null){	
+				if (user.getFoto().length() != 0){
+					byte[] decodedString = Base64.decode(user.getFoto(), Base64.DEFAULT);
+					Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
+							decodedString.length);
+					fotoProfil.setImageBitmap(decodedByte);
+				}
+			}
+			else {
+				
+			}
+//			
+			if(user.getGender() == 'P'){
 				genderPick.check(R.id.editPria);
 			}
-			else if(gender.equalsIgnoreCase("L")){
+			else if(user.getGender() == 'W'){
 				genderPick.check(R.id.editWanita);
 			}
 			else {
 				
 			}
-			
-			//genderPick = (RadioGroup) findViewById(R.id.editGender);
-			
-			String isVege = i.getStringExtra("sayur");
-			if(isVege.equalsIgnoreCase("true")){
+//			
+			if(user.isVegetarian()){
 				vegetarian.setChecked(true);
 			}
 			else {
 			}
-			
-			String isKacang = i.getStringExtra("sayur");
-			if(isKacang.equalsIgnoreCase("true")){
+//			
+			if(user.isAlergiKacang()){
 				kacang.setChecked(true);
 			}
 			else {
 			}
-			
-			String isSea = i.getStringExtra("sayur");
-			if(isSea.equalsIgnoreCase("true")){
+//			
+			if(user.isAlergiSeafood()){
 				seafood.setChecked(true);
 			}
 			else {
 			}
+		}
 		}
 			
 		penjelasan = (TextView) findViewById(R.id.textPenjelasanGaya);
@@ -225,15 +228,15 @@ public class EditProfilActivity extends Activity {
 				int selectedId = genderPick.getCheckedRadioButtonId();
 				int gayaHidup = spinTransport.getSelectedItemPosition();
 
-				if (selectedId != -1) {
-					selected = (RadioButton) findViewById(selectedId);
-					String gender = selected.getText().toString();
+				if (selectedId != -1 || nama.length() != 0 && umur.length() != 0
+						&& berat.length() != 0 && tinggi.length() != 0) {
+					
 					// P =pria,W=wanita
 
-					if (nama.length() != 0 && umur.length() != 0
-							&& berat.length() != 0 && tinggi.length() != 0) {
-						con = new ProfilController(getApplicationContext());
-
+					if (validasiInput(nama, umur, genderPick, berat, target, tinggi)) {
+						
+						selected = (RadioButton) findViewById(selectedId);
+						String gender = selected.getText().toString();
 						if (con.updateProfil(nama, Integer.parseInt(umur),
 								Double.parseDouble(berat),
 								Double.parseDouble(tinggi),
@@ -260,8 +263,10 @@ public class EditProfilActivity extends Activity {
 
 					else {
 						Toast.makeText(getApplicationContext(),
-								"Ada field yang masih kosong",
+								pesan +  ".",
 								Toast.LENGTH_LONG).show();
+						
+						pesan = "Terjadi Kesalahan pada: ";
 					}
 				} else {
 					Toast.makeText(getApplicationContext(),
@@ -356,5 +361,42 @@ public class EditProfilActivity extends Activity {
 			}
 		}
 
+	}
+	
+	public boolean validasiInput(String nama, String umur, RadioGroup jekel, 
+			String berat, String tinggi, String target){
+		
+		String pesan1 = "";
+		ArrayList<String> list = new ArrayList<String>();
+		if(!nama.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$"))
+			list.add("nama");
+		if(!umur.matches("^[0-9]{1,3}"))
+			list.add("umur");
+		if(!berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+			list.add("berat");
+		if(!tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+			list.add("tinggi");
+		if(!target.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+			list.add("target");
+		if((jekel.getCheckedRadioButtonId() == -1))
+			list.add("kamu belum memilih jenis kelamin");
+		
+		for(int ii = 0; ii< list.size(); ii++){
+			pesan = pesan + list.get(ii);
+			if(ii < list.size() - 2){
+				pesan = pesan + ", ";
+			}
+			if(ii == list.size()-2){
+				pesan = pesan + " dan ";
+			}
+			
+		}
+		
+		return nama.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$") &&
+				umur.matches("^[0-9]{1,3}")&&
+				(jekel.getCheckedRadioButtonId() != -1)&&
+				berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")&&
+				tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")&&
+				target.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
 	}
 }
