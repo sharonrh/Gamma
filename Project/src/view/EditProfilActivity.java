@@ -386,6 +386,7 @@ public class EditProfilActivity extends Activity {
 			if(ii < list.size() - 2){
 				pesan = pesan + ", ";
 			}
+			
 			if(ii == list.size()-2){
 				pesan = pesan + " dan ";
 			}

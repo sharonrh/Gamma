@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -9,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -21,7 +25,7 @@ public class LaporanFragment extends Fragment {
 	Button simpanBtn;
 	Button batalBtn;
 	boolean cek = false;
-
+	String pesan = "";
 	LaporanController kontrol;
 
 	@Override
@@ -47,55 +51,25 @@ public class LaporanFragment extends Fragment {
 
 				cek = false;
 
-				if (berat.length() != 0 && tinggi.length() != 0) {
+				if (validasiInput(berat, tinggi)) {
 					cek = kontrol.addLaporan(berat, tinggi);
+				}
+				else {
+					Toast.makeText(getActivity().getApplicationContext(),
+							pesan + ".",
+							Toast.LENGTH_LONG).show();
+					
+					pesan = "";
 				}
 
 				if (cek) {
-					AlertDialog alertDialog = new AlertDialog.Builder(
-							getActivity()).create();
-
-					// Setting Dialog Title
-					alertDialog.setTitle("Sukses");
-
-					// Setting Dialog Message
-					alertDialog.setMessage("Laporan berhasil disimpan :) ");
-
-					// Setting Icon to Dialog
-					alertDialog.setIcon(R.drawable.ic_launcher);
-
-					// Setting OK Button
-					alertDialog.setButton("OK",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int which) {
-									getActivity().finish();
-								}
-							});
-					// Showing Alert Message
-					alertDialog.show();
+					Toast.makeText(getActivity().getApplicationContext(),
+							"Laporan Kamu berhasil disimpan",
+							Toast.LENGTH_LONG).show();
 				} else {
-					AlertDialog alertDialog = new AlertDialog.Builder(
-							getActivity()).create();
-
-					// Setting Dialog Title
-					alertDialog.setTitle("Gagal");
-
-					// Setting Dialog Message
-					alertDialog.setMessage("Laporan gagal disimpan :(");
-
-					// Setting Icon to Dialog
-					alertDialog.setIcon(R.drawable.ic_launcher);
-
-					// Setting OK Button
-					alertDialog.setButton("OK",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int which) {
-								}
-							});
-					// Showing Alert Message
-					alertDialog.show();
+					Toast.makeText(getActivity().getApplicationContext(),
+							"Laporan Kamu gagal disimpan",
+							Toast.LENGTH_LONG).show();
 				}
 
 				// tv.setText(kontrol.getListLaporan().toString());
@@ -113,5 +87,40 @@ public class LaporanFragment extends Fragment {
 
 		return v;
 
+	}
+	
+	public boolean validasiInput(String berat, String tinggi){
+		
+		String pesan1 = "";
+		ArrayList<String> list = new ArrayList<String>();
+		
+		
+		if(berat.length()!=0 && tinggi.length()!=0 ){
+			if(!berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+				list.add("Berat Sekarang");
+			if(!tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+				list.add("Tinggi Sekarang");
+			
+			for(int ii = 0; ii< list.size(); ii++){
+				pesan = pesan + list.get(ii);
+				if(ii < list.size() - 2){
+					pesan = pesan + ", ";
+				}
+				
+				if(ii == list.size()-2){
+					pesan = pesan + " dan ";
+				}
+				
+			}
+			
+			pesan = pesan + " Kamu, salah format";
+		}
+		else {
+			pesan = "Masih ada field yang belum Kamu isi";
+		}
+		
+		
+		return berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")&&
+				tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
 	}
 }
