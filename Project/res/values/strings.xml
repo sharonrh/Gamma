@@ -70,13 +70,18 @@
         <item>@drawable/rekomendasi</item>
         <item>@drawable/profil</item>
         <item>@drawable/statistik</item>
-        <item>@drawable/statistik</item> <!--  ntar ganti laporan yak -->
+        <item>@drawable/statistik</item>
+ <!-- ntar ganti laporan yak -->
         <item>@drawable/katalog</item>
         <item>@drawable/achievement</item>
         <item>@drawable/pengaturan</item>
-    </array><!--  -->
+    </array>
+ <!--  -->
+
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_rssfragment">RSSFragment</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

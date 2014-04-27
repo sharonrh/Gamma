@@ -1,12 +1,12 @@
 package view;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.Makanan;
-import model.Rekomendasi;
 import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +37,6 @@ public class RekomendasiFragment extends ListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		// do something with the data
 	}
 }
 
