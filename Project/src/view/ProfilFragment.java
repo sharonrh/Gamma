@@ -121,7 +121,7 @@ public class ProfilFragment extends Fragment {
 				// TODO Auto-generated method stub
 				getActivity().finish();
 				Intent i = new Intent(getActivity().getApplicationContext(),
-						RSSFragment.class);
+						EditProfilActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 				i.putExtra("nama", nama.getText());

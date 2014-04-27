@@ -74,46 +74,47 @@ public final class R {
         public static final int isi_laporan=0x7f020013;
         public static final int jarang_sekali=0x7f020014;
         public static final int katalog=0x7f020015;
-        public static final int list_divider=0x7f020016;
-        public static final int list_selector=0x7f020017;
-        public static final int listview_shape=0x7f020018;
-        public static final int man=0x7f020019;
-        public static final int myspinner_normal=0x7f02001a;
-        public static final int myspinner_press=0x7f02001b;
-        public static final int myspinner_select=0x7f02001c;
-        public static final int myspinner_selector=0x7f02001d;
-        public static final int non_veg=0x7f02001e;
-        public static final int notifikasi_list_selector=0x7f02001f;
-        public static final int pengaturan=0x7f020020;
-        public static final int penjelasangaya=0x7f020021;
-        public static final int profil=0x7f020022;
-        public static final int rekomendasi=0x7f020023;
-        public static final int sangat_aktif=0x7f020024;
-        public static final int sedikit_aktif=0x7f020025;
-        public static final int setting_list_divider=0x7f020026;
-        public static final int spinner=0x7f020027;
-        public static final int spinner_background=0x7f020028;
-        public static final int spinner_focused_holo_light_am=0x7f020029;
-        public static final int spinner_normal_holo=0x7f02002a;
-        public static final int start=0x7f02002b;
-        public static final int statistik=0x7f02002c;
-        public static final int stroganoff=0x7f02002d;
-        public static final int style=0x7f02002e;
-        public static final int tambah_foto=0x7f02002f;
-        public static final int trifle=0x7f020030;
-        public static final int vegetarian=0x7f020031;
-        public static final int voilet=0x7f020032;
-        public static final int woman=0x7f020033;
+        public static final int laporan=0x7f020016;
+        public static final int list_divider=0x7f020017;
+        public static final int list_selector=0x7f020018;
+        public static final int listview_shape=0x7f020019;
+        public static final int man=0x7f02001a;
+        public static final int myspinner_normal=0x7f02001b;
+        public static final int myspinner_press=0x7f02001c;
+        public static final int myspinner_select=0x7f02001d;
+        public static final int myspinner_selector=0x7f02001e;
+        public static final int non_veg=0x7f02001f;
+        public static final int notifikasi_list_selector=0x7f020020;
+        public static final int pengaturan=0x7f020021;
+        public static final int penjelasangaya=0x7f020022;
+        public static final int profil=0x7f020023;
+        public static final int rekomendasi=0x7f020024;
+        public static final int sangat_aktif=0x7f020025;
+        public static final int sedikit_aktif=0x7f020026;
+        public static final int setting_list_divider=0x7f020027;
+        public static final int spinner=0x7f020028;
+        public static final int spinner_background=0x7f020029;
+        public static final int spinner_focused_holo_light_am=0x7f02002a;
+        public static final int spinner_normal_holo=0x7f02002b;
+        public static final int start=0x7f02002c;
+        public static final int statistik=0x7f02002d;
+        public static final int stroganoff=0x7f02002e;
+        public static final int style=0x7f02002f;
+        public static final int tambah_foto=0x7f020030;
+        public static final int trifle=0x7f020031;
+        public static final int vegetarian=0x7f020032;
+        public static final int voilet=0x7f020033;
+        public static final int woman=0x7f020034;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f0a0059;
+        public static final int RelativeLayout1=0x7f0a0058;
         public static final int TextView01=0x7f0a000d;
         public static final int TextView02=0x7f0a0013;
         public static final int TextView03=0x7f0a002b;
         public static final int TextView04=0x7f0a002c;
-        public static final int Title=0x7f0a004f;
+        public static final int Title=0x7f0a004e;
         public static final int achievement=0x7f0a0020;
-        public static final int action_settings=0x7f0a005b;
+        public static final int action_settings=0x7f0a005a;
         public static final int aplikasi=0x7f0a0029;
         public static final int batalProfilBtn=0x7f0a001a;
         public static final int berat=0x7f0a0032;
@@ -121,11 +122,11 @@ public final class R {
         public static final int beratProfilTargetTv=0x7f0a003a;
         public static final int button1=0x7f0a0034;
         public static final int button2=0x7f0a0035;
-        public static final int cancel_button=0x7f0a0056;
-        public static final int chart_layout=0x7f0a004a;
+        public static final int cancel_button=0x7f0a0055;
+        public static final int chart_layout=0x7f0a0049;
         public static final int container=0x7f0a0028;
         public static final int content_frame=0x7f0a0023;
-        public static final int deFault=0x7f0a004e;
+        public static final int deFault=0x7f0a004d;
         public static final int drawer_layout=0x7f0a0022;
         public static final int editBeratSekarang=0x7f0a0007;
         public static final int editBeratTarget=0x7f0a0009;
@@ -141,8 +142,8 @@ public final class R {
         public static final int editVegetarian=0x7f0a0014;
         public static final int editWanita=0x7f0a0010;
         public static final int fotoProfilTv=0x7f0a003c;
-        public static final int holoDark=0x7f0a004c;
-        public static final int holoLight=0x7f0a004d;
+        public static final int holoDark=0x7f0a004b;
+        public static final int holoLight=0x7f0a004c;
         public static final int icon=0x7f0a0030;
         public static final int imageGayaHidup1=0x7f0a0047;
         public static final int imageGender=0x7f0a003d;
@@ -154,7 +155,7 @@ public final class R {
         public static final int katalog=0x7f0a001f;
         public static final int left_drawer=0x7f0a0024;
         public static final int linearLayout1=0x7f0a0000;
-        public static final int listView1=0x7f0a0049;
+        public static final int listView1=0x7f0a0048;
         public static final int listViewNotifikasi=0x7f0a0026;
         public static final int namaNotifikasi=0x7f0a002d;
         public static final int namaNotifikasiFields=0x7f0a002e;
@@ -163,25 +164,24 @@ public final class R {
         public static final int namaTv=0x7f0a0044;
         public static final int pengaturan=0x7f0a0021;
         public static final int pengembang=0x7f0a002a;
-        public static final int pilihTema=0x7f0a004b;
-        public static final int pilihTemaTV=0x7f0a0052;
-        public static final int popup_element=0x7f0a0051;
+        public static final int pilihTema=0x7f0a004a;
+        public static final int pilihTemaTV=0x7f0a0051;
+        public static final int popup_element=0x7f0a0050;
         public static final int profil=0x7f0a001c;
         public static final int rekomendasi=0x7f0a001d;
-        public static final int rss_feed=0x7f0a0048;
         public static final int scrollView1=0x7f0a001b;
-        public static final int separator=0x7f0a0057;
+        public static final int separator=0x7f0a0056;
         public static final int simpanProfilBtn=0x7f0a0019;
         public static final int spinnerGayaHidup=0x7f0a0017;
         public static final int spinnerLamaDiet=0x7f0a0012;
-        public static final int spinnerText=0x7f0a005a;
+        public static final int spinnerText=0x7f0a0059;
         public static final int statistik=0x7f0a001e;
-        public static final int subTitle=0x7f0a0050;
-        public static final int subtitle=0x7f0a0058;
+        public static final int subTitle=0x7f0a004f;
+        public static final int subtitle=0x7f0a0057;
         public static final int tableRow1=0x7f0a0003;
-        public static final int tableRow9=0x7f0a0054;
+        public static final int tableRow9=0x7f0a0053;
         public static final int tahunProfilTv=0x7f0a0038;
-        public static final int tema=0x7f0a0053;
+        public static final int tema=0x7f0a0052;
         public static final int textCm=0x7f0a000b;
         public static final int textKg=0x7f0a0008;
         public static final int textMulai=0x7f0a003f;
@@ -197,7 +197,7 @@ public final class R {
         public static final int titleProfilView=0x7f0a0001;
         public static final int titleSetNotifikasiView=0x7f0a0025;
         public static final int tmbhNtfkasiBtn=0x7f0a0027;
-        public static final int yes_button=0x7f0a0055;
+        public static final int yes_button=0x7f0a0054;
     }
     public static final class layout {
         public static final int activity_edit_profil=0x7f030000;
@@ -210,17 +210,15 @@ public final class R {
         public static final int drawer_list_item=0x7f030007;
         public static final int fragment_laporan=0x7f030008;
         public static final int fragment_lihat_profil=0x7f030009;
-        public static final int fragment_rekomendasi=0x7f03000a;
-        public static final int fragment_rs=0x7f03000b;
-        public static final int fragment_setting=0x7f03000c;
-        public static final int fragment_statistik=0x7f03000d;
-        public static final int layout_tema=0x7f03000e;
-        public static final int listfragment=0x7f03000f;
-        public static final int notifikasi_simplerow=0x7f030010;
-        public static final int popup_tema_style=0x7f030011;
-        public static final int sectioned_list_item=0x7f030012;
-        public static final int simplerow=0x7f030013;
-        public static final int spinner_row=0x7f030014;
+        public static final int fragment_setting=0x7f03000a;
+        public static final int fragment_statistik=0x7f03000b;
+        public static final int layout_tema=0x7f03000c;
+        public static final int listfragment=0x7f03000d;
+        public static final int notifikasi_simplerow=0x7f03000e;
+        public static final int popup_tema_style=0x7f03000f;
+        public static final int sectioned_list_item=0x7f030010;
+        public static final int simplerow=0x7f030011;
+        public static final int spinner_row=0x7f030012;
     }
     public static final class menu {
         public static final int edit_profil=0x7f090000;
@@ -235,6 +233,7 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int berat_sekarang=0x7f060019;
         public static final int berat_target=0x7f06001b;
+        public static final int connection_error=0x7f060025;
         /**   
  Content Description 
          */
@@ -248,6 +247,7 @@ public final class R {
         public static final int jenis_kelamin=0x7f060012;
         public static final int kg=0x7f06001a;
         public static final int lama_diet=0x7f060011;
+        public static final int lost_connection=0x7f060023;
         public static final int nama_anda=0x7f060016;
         public static final int sangat_aktif=0x7f060013;
         public static final int spinnerGayaHidup=0x7f060010;
@@ -267,6 +267,9 @@ public final class R {
         public static final int ui_tabname_rekomendasi=0x7f060003;
         public static final int ui_tabname_statistik=0x7f060004;
         public static final int umur_anda=0x7f060017;
+        public static final int updated=0x7f060022;
+        public static final int wifi_connected=0x7f060024;
+        public static final int xml_error=0x7f060026;
     }
     public static final class style {
         /**  <style name="Theme.SmallText">
