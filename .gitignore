@@ -28,13 +28,3 @@ proguard/
 .idea/
 Project/project.properties
 Project/gen/com/example/gamma/BuildConfig.java
-Project/project.properties
-Project/src/dao/DatabaseHandlerMakanan.java
-Project/src/model/Makanan.java
-Project/res/drawable-mdpi/katalog.PNG
-Project/res/drawable-mdpi/pengaturan.PNG
-Project/res/drawable-mdpi/profil.PNG
-Project/res/drawable-mdpi/statistik.PNG
-Project/res/drawable-mdpi/rekomendasi.png
-*.java
-Project/gen/com/example/gamma/BuildConfig.java
