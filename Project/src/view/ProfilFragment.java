@@ -8,11 +8,15 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -28,7 +32,54 @@ public class ProfilFragment extends Fragment {
 	private ProfilController con;
 
 	Pengguna profil;
+	
+	
 
+	 @Override
+	    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+	        // TODO Auto-generated method stub
+	        super.onCreateOptionsMenu(menu, inflater);
+	        inflater.inflate(R.menu.profil, menu);
+	    }
+	 
+	 @Override
+
+		public void onCreate(Bundle savedInstanceState) {
+		    // TODO Auto-generated method stub
+		    super.onCreate(savedInstanceState);
+		    setHasOptionsMenu(true);
+		}
+	 @Override
+	  public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // action with ID pensil was selected
+	    case R.id.pensil:
+	    	getActivity().finish();
+			Intent i = new Intent(getActivity().getApplicationContext(),
+					EditProfilActivity.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+			i.putExtra("nama", nama.getText());
+			i.putExtra("umur", umur.getText());
+			i.putExtra("beratSkrg", beratSekarang.getText());
+			i.putExtra("beratTarget", beratTarget.getText());
+			i.putExtra("tinggi", tinggi.getText());
+			i.putExtra("jeKel", profil.getGender());
+			i.putExtra("foto", profil.getFoto());
+			i.putExtra("sayur", profil.isVegetarian());
+			i.putExtra("gayaHidup", profil.getGayaHidup());
+			i.putExtra("ikan", profil.isAlergiSeafood());
+			i.putExtra("kacang", profil.isAlergiKacang());
+
+			getActivity().startActivity(i);
+	      break;
+	    default:
+	      break;
+	    }
+
+	    return true;
+	  }
+	 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -114,6 +165,8 @@ public class ProfilFragment extends Fragment {
 		else {
 			gaya1Img.setBackgroundResource(R.drawable.jarang_sekali);
 		}
+		
+		
 
 		editProfil.setOnClickListener(new View.OnClickListener() {
 			@Override

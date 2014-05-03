@@ -149,7 +149,7 @@ public class NotifikasiActivity extends Activity {
 
 			int jam = Integer.parseInt(str[0]);
 			int menit = Integer.parseInt(str[1]);
-			startAlarm(jam, menit);
+			//startAlarm(jam, menit);
 		}
 
 		System.out.println("123" + data);
@@ -279,7 +279,7 @@ public class NotifikasiActivity extends Activity {
 		}
 	}
 
-	@TargetApi(Build.VERSION_CODES.KITKAT)
+	/**@TargetApi(Build.VERSION_CODES.KITKAT)
 	private void startAlarm(int jam, int menit) {
 		AlarmManager alarmManager = (AlarmManager) this
 				.getSystemService(Context.ALARM_SERVICE);
@@ -294,7 +294,7 @@ public class NotifikasiActivity extends Activity {
 		PendingIntent pendingIntent = PendingIntent.getService(
 				getApplicationContext(), 0, intent, 0);
 		alarmManager.setExact(AlarmManager.RTC, when, pendingIntent);
-	}
+	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
