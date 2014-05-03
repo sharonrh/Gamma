@@ -16,6 +16,6 @@
     <color name="lime">#a6ec53</color>
     <color name="PeterRiver">#3498db</color>
     <color name="Clouds">#ecf0f1</color>
-    <color name="gray">C8C6C7</color>
-    <color name="card">F8F6F8</color>
+    <color name="card">#F8F6F8</color>
+    <color name="abu">#C8C6C7</color>
 </resources>
