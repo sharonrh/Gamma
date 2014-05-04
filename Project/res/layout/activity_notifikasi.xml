@@ -29,13 +29,12 @@
         <ListView
             android:id="@+id/listViewNotifikasi"
             android:layout_width="match_parent"
-            android:layout_height="211dp"
-            android:layout_weight="0.60"
+            android:layout_height="match_parent"
             android:clickable="false"
-            android:divider="@drawable/list_divider"
-            android:dividerHeight="3dp"
-            android:drawSelectorOnTop="false"
-            android:listSelector="@drawable/notifikasi_list_selector" >
+            android:divider="@drawable/setting_list_divider"
+            android:listSelector="@drawable/list_selector"
+            android:dividerHeight="0.5dp"
+            android:drawSelectorOnTop="false" >
 
         </ListView>
         
@@ -44,15 +43,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="75dp" >
-
-            <Button
-                android:id="@+id/tmbhNtfkasiBtn"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/button_style"
-                android:layout_marginRight="10dp"
-                android:text="Tambah Notifikasi" />
 
         </LinearLayout>
 

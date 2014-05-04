@@ -2,25 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:background="@drawable/listview_shape">
+  android:layout_height="fill_parent">
 
   <LinearLayout
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
-      android:orientation="vertical" >
+      android:background="@color/hijau"
+      android:gravity="left" >
 
       <TextView
           android:id="@+id/Title"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:textSize="20sp" />
+          android:layout_gravity="center_vertical"
+          android:layout_marginBottom="20dp"
+          android:layout_marginRight="10dp"
+          android:layout_marginTop="20dp"
+          android:text="sayang"
+          android:textSize="18sp" />
 
-      <TextView
-          android:id="@+id/subTitle"
+      <Switch
+          android:id="@+id/switch1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:textSize="12sp" />
+          android:layout_gravity="center_vertical"
+          android:layout_marginBottom="20dp"
+          android:layout_marginTop="20dp"
+          android:gravity="center_vertical|start|right"
+          android:textSize="15sp" />
 
   </LinearLayout>
   

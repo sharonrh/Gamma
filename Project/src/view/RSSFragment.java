@@ -246,8 +246,8 @@ public class RSSFragment extends ListFragment {
 				ViewHolder viewHolder = new ViewHolder();
 				viewHolder.title = (TextView) convertView
 						.findViewById(R.id.Title);
-				viewHolder.subtitle = (TextView) convertView
-						.findViewById(R.id.subTitle);
+			//	viewHolder.subtitle = (TextView) convertView
+			//			.findViewById(R.id.subTitle);
 
 				convertView.setTag(viewHolder);
 

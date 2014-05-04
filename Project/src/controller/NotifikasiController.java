@@ -21,4 +21,11 @@ public class NotifikasiController {
 	public List<Notifikasi> getListNotifikasi() {
 		return db.getAllNotifikasi();
 	}
+	public void tambahNotifikasiDefault() {
+		db.tambahNotifikasiDefault();
+	}
+	
+	public boolean updateNotifikasi(String namaNotif, long time){
+		return db.updateNotif(namaNotif, time);
+	}
 }

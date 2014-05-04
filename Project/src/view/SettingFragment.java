@@ -41,8 +41,11 @@ public class SettingFragment extends Fragment {
 		kontrol = new SettingController(getActivity());
 
 		set.add(new Setting("Notifikasi", "Atur Notifikasi"));
+		set.add(new Setting("Artikel", "Atur Notifikasi"));
+		set.add(new Setting("Reset Progress", "Atur Notifikasi"));
 		set.add(new Setting("Tema", "Ganti Tema Aplikasi"));
 		set.add(new Setting("Tentang", "Info Mengenai Pengembang"));
+		set.add(new Setting("Kredit", "Atur Notifikasi"));
 
 		lv = (ListView) v.findViewById(R.id.listView1);
 		adapter = new SettingArrayAdapter(getActivity(), set);
@@ -58,9 +61,9 @@ public class SettingFragment extends Fragment {
 
 				if (position == 0) {
 					kontrol.gantiHalaman(position);
-				} else if (position == 1) {
+				} else if (position == 3) {
 					temaPopupWindow();
-				} else {
+				} else if(position == 4) {
 					tentangPopupWindow();
 				}
 
@@ -98,7 +101,7 @@ public class SettingFragment extends Fragment {
 
 	static class ViewHolder {
 		public TextView title;
-		public TextView subtitle;
+	//	public TextView subtitle;
 	}
 
 	class SettingArrayAdapter extends ArrayAdapter<Setting> {
@@ -121,15 +124,15 @@ public class SettingFragment extends Fragment {
 				ViewHolder viewHolder = new ViewHolder();
 				viewHolder.title = (TextView) convertView
 						.findViewById(R.id.Title);
-				viewHolder.subtitle = (TextView) convertView
-						.findViewById(R.id.subTitle);
+			//	viewHolder.subtitle = (TextView) convertView
+					//	.findViewById(R.id.subTitle);
 
 				convertView.setTag(viewHolder);
 
 			}
 			ViewHolder holder = (ViewHolder) convertView.getTag();
 			holder.title.setText(set.getTitle());
-			holder.subtitle.setText(set.getSubTitle());
+		//	holder.subtitle.setText(set.getSubTitle());
 
 			return convertView;
 		}

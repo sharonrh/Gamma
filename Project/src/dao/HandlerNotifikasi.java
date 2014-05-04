@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Notifikasi;
@@ -94,6 +95,14 @@ public class HandlerNotifikasi extends DatabaseHandler{
 				new String[] { String.valueOf(nama) });
 		db.close();
 	}
+	
+	public boolean updateNotif(String namaNotif, long time) {
+		SQLiteDatabase db = this.getWritableDatabase();
+	    ContentValues args = new ContentValues();
+	    String str = "" + time;
+	    args.put(waktu, str);
+	    return db.update(tabelNotifikasi, args, nama + "=" + "'" + namaNotif + "'", null) > 0;
+	  }
 
 	// Getting notifikasis Count
 	public int getNotifikasiCount() {
@@ -104,5 +113,32 @@ public class HandlerNotifikasi extends DatabaseHandler{
 
 		// return count
 		return cursor.getCount();
+	}
+	
+	
+	public void tambahNotifikasiDefault(){
+		
+		Calendar calendar = Calendar.getInstance();
+		// 9 AM 
+		calendar.set(Calendar.HOUR_OF_DAY, 7);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		
+		Notifikasi sarapan = new Notifikasi("Sarapan", calendar.getTimeInMillis(), "Saatnya Sarapan!");
+		
+		calendar.set(Calendar.HOUR_OF_DAY, 12);
+		Notifikasi makanSiang = new Notifikasi("Makan Siang", calendar.getTimeInMillis(), "Saatnya Makan Siang!");
+		
+		calendar.set(Calendar.HOUR_OF_DAY, 19);
+		Notifikasi makanMalam = new Notifikasi("Makan Malam", calendar.getTimeInMillis(), "Woi, Makan Malam!");
+		
+		calendar.set(Calendar.HOUR_OF_DAY, 21);
+		Notifikasi tidur = new Notifikasi("Tidur", calendar.getTimeInMillis(), "Waktunya Kamu Bobo!");
+		
+		tambahNotifikasi(sarapan);
+		tambahNotifikasi(makanSiang);
+		tambahNotifikasi(makanMalam);
+		tambahNotifikasi(tidur);
+		
 	}
 }
