@@ -28,3 +28,4 @@ proguard/
 .idea/
 Project/project.properties
 Project/gen/com/example/gamma/BuildConfig.java
+Project/gen/com/example/gamma/R.java
