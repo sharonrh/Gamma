@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="@color/lime"
+    android:background="@color/abu"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -16,54 +16,46 @@
         android:layout_marginLeft="14dp"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/titleProfilView"
-            android:layout_width="188dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+        <ImageView
+            android:id="@+id/editFoto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
             android:layout_weight="0.67"
-            android:text="@string/edit_profil"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="35sp" />
-
+            android:background="@drawable/foto_edit" />
+        
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/info_personal" />
+            android:layout_marginTop="15dp"
+            android:text="@string/info_personal"
+            android:textStyle="bold"
+            android:textSize="18sp" />
 
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent" >
-
-            <TableRow
-                android:id="@+id/tableRow1"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="top" >
+        
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/editNama"
-                            android:layout_width="109dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="top"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/style"
-                            android:ems="10"
-                            android:hint="@string/nama_anda"
-                            android:inputType="textFilter"
-                            android:paddingLeft="5dp"
-                            android:textSize="12sp" />
+            				android:id="@+id/editNama"
+            				android:layout_width="match_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="0.67"
+            				android:ems="10"
+            				android:inputType="textPersonName" 
+            				android:hint="@string/nama_anda">
+							<requestFocus />
+        				</EditText>
+                        
                     </LinearLayout>
 
                     <LinearLayout
@@ -72,25 +64,34 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/editUmur"
-                            android:layout_width="109dp"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="0dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/style"
-                            android:ems="10"
-                            android:hint="@string/umur_anda"
-                            android:inputType="numberDecimal"
-                            android:paddingLeft="5dp"
-                            android:textSize="12sp" />
+            				android:id="@+id/editUmur"
+            				android:layout_width="120dp"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="0.67"
+            				android:ems="10"
+            				android:inputType="number" 
+            				android:hint="@string/umur_anda">
+							<requestFocus />
+        				</EditText>
 
                         <TextView
                             android:id="@+id/textTahun"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="3dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
                             android:text="@string/tahun" />
+
+                        <Spinner
+                            android:id="@+id/spinnerKelamin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.67"
+                            android:background="@drawable/spinner_normal_holo"
+                            android:prompt="@string/spinnerKelamin" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -99,155 +100,90 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/editBeratSekarang"
-                            android:layout_width="109dp"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="0dp"
+                            android:id="@+id/editBeratTinggi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/style"
-                            android:ems="10"
-                            android:hint="@string/berat_sekarang"
                             android:inputType="numberDecimal"
-                            android:paddingLeft="5dp"
-                            android:textSize="12sp" />
+                            android:hint="Tinggi Anda" />
 
                         <TextView
                             android:id="@+id/textKg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="3dp"
-                            android:text="@string/kg" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="10dp"
+                            android:text="cm" />
 
                         <EditText
-                            android:id="@+id/editBeratTarget"
-                            android:layout_width="109dp"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="0dp"
+                            android:id="@+id/editBeratSekarang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/style"
-                            android:ems="10"
-                            android:hint="@string/berat_target"
                             android:inputType="numberDecimal"
-                            android:paddingLeft="5dp"
-                            android:textSize="12sp" />
+                            android:hint="Berat Anda" />
 
                         <TextView
                             android:id="@+id/textKg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
                             android:text="@string/kg" />
                     </LinearLayout>
+
+                    
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal" >
 
-                        <EditText
-                            android:id="@+id/editTinggi"
-                            android:layout_width="109dp"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/style"
-                            android:ems="10"
-                            android:hint="@string/tinggi_badan"
-                            android:inputType="numberDecimal"
-                            android:paddingLeft="5dp"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/textCm"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" cm" />
+                       <Spinner
+                			android:id="@+id/spinnerGayaHidup"
+                			android:layout_width="wrap_content"
+                			android:layout_height="wrap_content"
+                			android:layout_weight="0.67"
+                			android:background="@drawable/spinner_normal_holo"
+                			android:prompt="@string/spinnerGayaHidup" />
                     </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+                       
+                        <TextView
+            				android:id="@+id/textPenjelasanGaya"
+            				android:layout_width="wrap_content"
+           					android:layout_height="160dp"
+            				android:layout_marginTop="10dp"
+            				android:layout_weight="0.67"
+            				android:background="@drawable/border"
+            				android:paddingTop="18dp"
+            				android:paddingLeft="40dp"
+            				android:paddingRight="40dp"
+            				android:text="Pilih salah satu jenis gaya hidup untuk melihat detailnya disini" />
+                        </LinearLayout>
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/editFoto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.67"
-                    android:background="@color/my_blue"
-                    android:src="@drawable/tambah_foto" />
-
-            </TableRow>
-        </TableLayout>
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.67"
-            android:text="Jenis Kelamin" />
 
         <RadioGroup
             android:id="@+id/editGender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-
-            <RadioButton
-                android:id="@+id/editPria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pria"
-                android:textSize="12dp" />
-
-            <RadioButton
-                android:id="@+id/editWanita"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wanita"
-                android:textSize="12dp" />
         </RadioGroup>
-        
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.67"
-            android:layout_marginBottom="10dp"
-            android:columnCount="1" >
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_column="0"
-                android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_row="0"
-                android:layout_weight="0.67"
-                android:text="@string/lama_diet" />
-
-            <Spinner
-                android:id="@+id/spinnerLamaDiet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_column="0"
-                android:layout_gravity="left|top"
-                android:layout_marginLeft="100dp"
-                android:layout_row="0"
-                android:layout_weight="0.67"
-                android:background="@drawable/spinner_normal_holo"
-                android:prompt="@string/spinnerGayaHidup" />
-
-        </GridLayout>
 
         <TextView
             android:id="@+id/TextView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.67"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:text="Data Tambahan (Opsional)" />
 
         <CheckBox
@@ -271,46 +207,7 @@
             android:layout_weight="0.67"
             android:text="Alergi Kacang-kacangan" />
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.67"
-            android:columnCount="1" >
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_column="0"
-                android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_row="0"
-                android:layout_weight="0.67"
-                android:text="Gaya Hidup" />
-
-            <Spinner
-                android:id="@+id/spinnerGayaHidup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_column="0"
-                android:layout_gravity="left|top"
-                android:layout_marginLeft="100dp"
-                android:layout_row="0"
-                android:layout_weight="0.67"
-                android:background="@drawable/spinner_normal_holo"
-                android:prompt="@string/spinnerGayaHidup" />
-        </GridLayout>
-
-        <TextView
-            android:id="@+id/textPenjelasanGaya"
-            android:layout_width="wrap_content"
-            android:layout_height="160dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.67"
-            android:background="@drawable/border"
-            android:paddingTop="18dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp" />
+        
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -17,7 +17,8 @@
     <string name="title_activity_tentang">Tentang</string>
     <string name="title_activity_edit_profil">Edit profil</string>
     <string name="display_spinner">-pilih satu-</string>
-    <string name="spinnerGayaHidup">Pilih gaya hidup</string>
+    <string name="spinnerGayaHidup">Pilih Gaya Hidup</string>
+    <string name="spinnerKelamin">Pilih Jenis Kelamin</string>
     <string name="lama_diet">Lama Diet</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
 

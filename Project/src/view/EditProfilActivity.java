@@ -5,12 +5,17 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import model.Pengguna;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.PorterDuff.Mode;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -44,7 +49,7 @@ public class EditProfilActivity extends Activity {
 	private RadioGroup genderPick;
 	private RadioButton selected;
 	private CheckBox vegetarian, kacang, seafood;
-	private Spinner spinTransport, spinTransport2;
+	private Spinner spinTransport, spinTransport2, spinTransport3;
 	private Button batal, simpan;
 	private ImageView fotoProfil;
 	private String gaya, akv1, akv2, akv3, akv4;
@@ -52,13 +57,20 @@ public class EditProfilActivity extends Activity {
 	private ProfilController con;
 	private String str = "";
 	private String pesan = "Terjadi Kesalahan pada: ";
+	private static Bitmap result;
+	private static Canvas canvas;
+	private static int color, roundPx;
+	private static Paint paint;
+	private static Rect rect;
+	private static RectF rectF;
 
 
 	// Declaring the String Array with the Text Data for the Spinners
-	private String[] languages = { "Jarang Sekali", "Sedikit Aktif", "Aktif",
+	private String[] languages = { "Pilih Jenis Gaya Hidup","Jarang Sekali", "Sedikit Aktif", "Aktif",
 			"Sangat Aktif" };
 	private String[] durasi = { "1 Minggu", "2 Minggu", "4 Minggu",
 	"8 Minggu" };
+	private String[] kelamin = { "Pilih Jenis Kelamin", "Pria", "Wanita"};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -69,13 +81,15 @@ public class EditProfilActivity extends Activity {
 		
 		Intent i = getIntent();
 		spinTransport = (Spinner) findViewById(R.id.spinnerGayaHidup);
-		spinTransport2 = (Spinner) findViewById(R.id.spinnerLamaDiet);
+		//spinTransport2 = (Spinner) findViewById(R.id.spinnerLamaDiet);
+		spinTransport3 = (Spinner) findViewById(R.id.spinnerKelamin);
+		
 
 		namaField = (EditText) findViewById(R.id.editNama);
 		umurField = (EditText) findViewById(R.id.editUmur);
 		beratField = (EditText) findViewById(R.id.editBeratSekarang);
-		targetField = (EditText) findViewById(R.id.editBeratTarget);
-		tinggiField = (EditText) findViewById(R.id.editTinggi);
+		//targetField = (EditText) findViewById(R.id.editBeratTarget);
+		//tinggiField = (EditText) findViewById(R.id.editTinggi);
 
 		genderPick = (RadioGroup) findViewById(R.id.editGender);
 		vegetarian = (CheckBox) findViewById(R.id.editVegetarian);
@@ -105,14 +119,17 @@ public class EditProfilActivity extends Activity {
 					byte[] decodedString = Base64.decode(user.getFoto(), Base64.DEFAULT);
 					Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
 							decodedString.length);
-					fotoProfil.setImageBitmap(decodedByte);
+					//fotoProfil.setImageBitmap(decodedByte);
+					Bitmap resized = Bitmap.createScaledBitmap(decodedByte, 100, 100, true);
+				    Bitmap conv_bm = getRoundedRectBitmap(resized, 100);
+				    fotoProfil.setImageBitmap(conv_bm);
 				}
 			}
 			else {
 				
 			}
 //			
-			if(user.getGender() == 'P'){
+			/**if(user.getGender() == 'P'){
 				genderPick.check(R.id.editPria);
 			}
 			else if(user.getGender() == 'W'){
@@ -120,7 +137,7 @@ public class EditProfilActivity extends Activity {
 			}
 			else {
 				
-			}
+			}*/
 //			
 			if(user.isVegetarian()){
 				vegetarian.setChecked(true);
@@ -166,12 +183,15 @@ public class EditProfilActivity extends Activity {
 		});
 		CustomAdapter adapter = new CustomAdapter(this,
 				android.R.layout.simple_spinner_item, languages);
-		CustomAdapter adapter2 = new CustomAdapter(this,
-				android.R.layout.simple_spinner_item, durasi);
+		//CustomAdapter adapter2 = new CustomAdapter(this,
+				//android.R.layout.simple_spinner_item, durasi);
+		CustomAdapter adapter3 = new CustomAdapter(this,
+				android.R.layout.simple_spinner_item, kelamin);
 
 		// The Adapter is used to provide the data which backs this Spinner.
 		spinTransport.setAdapter(adapter);
-		spinTransport2.setAdapter(adapter2);
+		//spinTransport2.setAdapter(adapter2);
+		spinTransport3.setAdapter(adapter3);
 
 		spinTransport.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View view,
@@ -181,7 +201,10 @@ public class EditProfilActivity extends Activity {
 				String item = parent.getItemAtPosition(position).toString();
 
 				// cek isi spinner dan ubah penjelasan
-				if (item.equalsIgnoreCase("jarang sekali"))
+				if (item.equalsIgnoreCase("Pilih Jenis Gaya Hidup"))
+					penjelasan
+							.setText("Pilih salah satu jenis gaya hidup untuk melihat detailnya disini");
+				else if (item.equalsIgnoreCase("jarang sekali"))
 					penjelasan
 							.setText("Jarang Sekali : Aktivitas hidup utama seperti istirahat, kerja kantoran atau menyetir. Kemungkinan melibatkan pekerjaan rumah moderat dan berdiri tetapi tidak ada latihan ringan yang dilakukan.");
 				else if (item.equalsIgnoreCase("sedikit aktif"))
@@ -342,7 +365,10 @@ public class EditProfilActivity extends Activity {
 			cursor.close();
 
 			Bitmap b = BitmapFactory.decodeFile(picturePath);
-			fotoProfil.setImageBitmap(b);
+			//fotoProfil.setImageBitmap(b);
+			Bitmap resized = Bitmap.createScaledBitmap(b, 100, 100, true);
+		    Bitmap conv_bm = getRoundedRectBitmap(resized, 100);
+		    fotoProfil.setImageBitmap(conv_bm);
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -400,4 +426,31 @@ public class EditProfilActivity extends Activity {
 				tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")&&
 				target.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
 	}
+	
+	public static Bitmap getRoundedRectBitmap(Bitmap bitmap, int pixels) {
+		try {
+		result = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(),
+		Bitmap.Config.ARGB_8888);
+		canvas = new Canvas(result);
+
+		color = 0xff424242;
+		paint = new Paint();
+		rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+		rectF = new RectF(rect);
+		roundPx = pixels;
+
+		paint.setAntiAlias(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(color);
+		canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+		canvas.drawBitmap(bitmap, rect, rect, paint);
+		} catch (NullPointerException e) {
+		// return bitmap;
+		} catch (OutOfMemoryError o){}
+		return result;
+		}
+	
+	
 }
