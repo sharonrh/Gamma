@@ -36,8 +36,8 @@ public class LaporanFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_laporan, container, false);
 
 		kontrol = new LaporanController(getActivity().getApplicationContext());
-		beratField = (EditText) v.findViewById(R.id.berat);
-		tinggiField = (EditText) v.findViewById(R.id.tinggi);
+		//beratField = (EditText) v.findViewById(R.id.berat);
+		//tinggiField = (EditText) v.findViewById(R.id.tinggi);
 		simpanBtn = (Button) v.findViewById(R.id.button1);
 		batalBtn = (Button) v.findViewById(R.id.button2);
 
