@@ -7,10 +7,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import model.Notifikasi;
-
 import service.AlarmService;
 import service.NotifikasiService;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -28,7 +26,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -38,7 +35,7 @@ import com.example.gamma.R;
 
 import controller.NotifikasiController;
 
-@SuppressLint("SimpleDateFormat")
+@SuppressLint({ "SimpleDateFormat", "NewApi" })
 public class NotifikasiActivity extends Activity {
 	
 	String str;

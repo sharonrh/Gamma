@@ -155,12 +155,15 @@ public class MainActivity extends Activity {
 			fragment = new LaporanFragment();
 			break;
 		case 4:
-			fragment = new RSSFragment(); // ntar ganti katalog
-			break;
+			fragment = new LaporanFragment(); // ntar ganti katalog
+			break;		
 		case 5:
-			fragment = new LaporanFragment(); // ntar ganti achievement
+			fragment = new RSSFragment(); 
 			break;
 		case 6:
+			fragment = new LaporanFragment(); // ntar ganti achievement
+			break;
+		case 7:
 			fragment = new SettingFragment(); 
 			break;
 		default:

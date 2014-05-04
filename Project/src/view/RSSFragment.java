@@ -13,19 +13,24 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import service.AlarmService;
 import service.RSSParser.Entry;
+import android.app.AlertDialog;
 import android.app.ListFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.example.gamma.R;
 
@@ -38,9 +43,7 @@ public class RSSFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Entry e = (Entry) l.getItemAtPosition(position);
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(e
-				.getLink()));
-		startActivity(browserIntent);
+		showAlert(e.link);
 	}
 
 	@Override
@@ -221,6 +224,40 @@ public class RSSFragment extends ListFragment {
 		}
 	}
 
+	public void showAlert(final String link) {
+		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+				.create();
+
+		alertDialog.setTitle("Menuju " + link + "..");
+
+		// ListNotifikasi Dialog Message
+		LayoutInflater inflater = getActivity().getLayoutInflater();
+
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		View v = inflater.inflate(R.layout.popup_konfirmasi_rss, null);
+		alertDialog.setView(v);
+
+		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Batal",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Lanjut",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+								Uri.parse(link));
+						startActivity(browserIntent);
+					}
+				});
+
+		// Showing Alert Message
+		alertDialog.show();
+
+	}
+
 	static class ViewHolder {
 		public TextView title;
 		public TextView subtitle;
@@ -246,8 +283,8 @@ public class RSSFragment extends ListFragment {
 				ViewHolder viewHolder = new ViewHolder();
 				viewHolder.title = (TextView) convertView
 						.findViewById(R.id.Title);
-			//	viewHolder.subtitle = (TextView) convertView
-			//			.findViewById(R.id.subTitle);
+				viewHolder.subtitle = (TextView) convertView
+						.findViewById(R.id.subTitle);
 
 				convertView.setTag(viewHolder);
 
