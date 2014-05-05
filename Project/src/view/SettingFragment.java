@@ -119,7 +119,7 @@ public class SettingFragment extends Fragment {
 			Setting set = (Setting) this.getItem(position);
 
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.simplerow, null);
+				convertView = inflater.inflate(R.layout.setting_simplerow, null);
 
 				ViewHolder viewHolder = new ViewHolder();
 				viewHolder.title = (TextView) convertView

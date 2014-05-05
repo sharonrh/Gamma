@@ -242,8 +242,9 @@ public final class R {
         public static final int popup_konfirmasi_rss=0x7f030010;
         public static final int popup_tema_style=0x7f030011;
         public static final int sectioned_list_item=0x7f030012;
-        public static final int simplerow=0x7f030013;
-        public static final int spinner_row=0x7f030014;
+        public static final int setting_simplerow=0x7f030013;
+        public static final int simplerow=0x7f030014;
+        public static final int spinner_row=0x7f030015;
     }
     public static final class menu {
         public static final int edit_profil=0x7f090000;
