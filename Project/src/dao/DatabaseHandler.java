@@ -66,6 +66,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// baca data makanan
 		bacaFile(c, db);
+		db.close();
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	public void bacaFile(Context context, SQLiteDatabase db) {
+	private void bacaFile(Context context, SQLiteDatabase db) {
 		AssetManager am = context.getAssets();
 		InputStream is;
 		try {
