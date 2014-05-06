@@ -157,7 +157,11 @@ public class MainActivity extends Activity {
 			break;
 		case 4:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			fragment = new LihatLaporanFragment(); // ntar ganti katalog
+=======
+			fragment = new KatalogFragment(); // ntar ganti katalog
+>>>>>>> ef7b1cc520c64d6ffd471c5c809397f33d64f4ac
 =======
 			fragment = new KatalogFragment(); // ntar ganti katalog
 >>>>>>> ef7b1cc520c64d6ffd471c5c809397f33d64f4ac
