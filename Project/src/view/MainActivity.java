@@ -156,13 +156,8 @@ public class MainActivity extends Activity {
 			fragment = new LaporanFragment();
 			break;
 		case 4:
-<<<<<<< HEAD
 			fragment = new KatalogFragment(); // ntar ganti katalog
-			break;		
-=======
-			fragment = new LaporanFragment(); // ntar ganti katalog
 			break;
->>>>>>> d98cd697ccb8010e6d5b34a6904eacea100db23c
 		case 5:
 			fragment = new RSSFragment();
 			break;
