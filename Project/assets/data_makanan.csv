@@ -1,71 +1,21 @@
-Bahan Makanan,Kalori,Protein,Karbohidrat,Lemak,Kalsium,Persentase,Rating,Jenis,Hewani,Seafood,Kacang,Terakhir dipilih
-Alpokat,85,0.9,7.7,6.5,10,61,0,Buah,N,N,N,0
-Anggur,50,0.5,12.8,0.2,9,100,0,Buah,N,N,N,0
-Apel,58,0.3,14.9,0.4,6,88,0,Buah,N,N,N,0
-Bengkuang,55,1.4,12.8,0.2,15,84,0,Buah,N,N,N,0
-Jeruk manis,45,0.9,11.2,0.2,33,72,0,Buah,N,N,N,0
-Nanas,52,0.4,13.7,0.2,16,53,0,Buah,N,N,N,0
-Pepaya,46,0.5,12.2,0,23,75,0,Buah,N,N,N,0
-Pisang ambon,99,1.2,25.8,0.2,8,75,0,Buah,N,N,N,0
-Salak,77,0.4,20.9,0,28,50,0,Buah,N,N,N,0
-Semangka,28,0.5,6.9,0.2,7,46,0,Buah,N,N,N,0
-Tahu ,80,10.9,0.8,4.7,223,100,0,Lauk,N,N,N,0
-Tempe kedelai pasar,150,14,9.1,7.7,517,100,0,Lauk,N,N,N,0
-Ayam,302,18.2,0,25,14,58,0,Lauk,Y,N,N,0
-Babat,113,17.6,0,4.2,12,100,0,Lauk,Y,N,N,0
-Daging sapi,207,18.8,0,14,11,100,0,Lauk,Y,N,N,0
-Daging kornet  ( corned beef ),241,16,0,25,10,100,0,Lauk,Y,N,N,0
-Telur bebek ,202,12.5,0,16.4,100,90,0,Lauk,Y,N,N,0
-Bawal,96,19,0,1.7,20,80,0,Lauk,Y,Y,N,0
-Ikan mas,86,16,0,2,20,80,0,Lauk,Y,Y,N,0
-Ikan mujair segar,89,18.7,0,1,96,80,0,Lauk,Y,Y,N,0
-Kerang ,101,14.4,3.9,2.6,321,100,0,Lauk,Y,Y,N,0
-Udang segar,91,21,0.1,0.2,136,68,0,Lauk,Y,Y,N,0
-Sardencis dalam kaleng,338,21.1,1,27,354,100,0,Lauk,Y,Y,N,0
-Jamur kuping kering,128,16,64.6,0.9,51,100,0,Lauk,N,N,N,0
-Ayam ras dada kentucky,298,34.2,0.1,16.8,90,100,0,Lauk,Y,N,N,0
-Rempelo ayam (goreng),270,32.3,9.9,11.2,0,100,0,Lauk,Y,N,N,0
-Sate ayam,227,41.3,1.8,6.1,17,100,0,Lauk,Y,N,N,0
-Soto dengan daging,102,2.1,6.6,7.5,8.6,100,0,Lauk,Y,N,N,0
-Usus ayam goreng,473,45.2,13.9,26.3,1407,100,0,Lauk,Y,N,N,0
-Telur ayam dadar,251,16.3,1.4,19.4,62,100,0,Lauk,Y,N,N,0
-Telur ceplok ,240,11,0,0,54,100,0,Lauk,Y,N,N,0
-Telur rebus ,154,12.2,0,0,54,100,0,Lauk,Y,N,N,0
-Kentang,83,2,19.1,0.1,11,85,0,Lauk,N,N,N,0
-Susu kedele,41,3.5,5,2.5,50,100,0,Minuman,N,N,N,0
-Susu sapi,61,3.2,4.3,3.5,143,100,0,Minuman,Y,N,N,0
-Teh,132,19.5,67.8,0.7,717,100,0,Minuman,N,N,N,0
-Susu full cream,502,27,40,26,800,100,0,Minuman,N,N,N,0
-Wedang jeruk,60,0.1,15.8,0,3,100,0,Minuman,N,N,N,0
-Roti putih,248,8,50,1.2,10,100,0,Pokok,N,N,N,0
-Roti warna sawo matang,249,7.9,49.7,1.5,20,100,0,Pokok,N,N,N,0
-Mie ayam,360,5.9,49.9,16.2,100,100,0,Pokok,Y,N,N,0
-Nasi ,176,3.3,0,0,4.9,100,0,Pokok,N,N,N,0
-Roti isi coklat,215,5.3,45,1.9,15,100,0,Pokok,N,N,N,0
-Siomay,162,7.5,24.4,3.8,3.6,100,0,Pokok,Y,N,N,0
-Ketoprak,153,7.9,13,7.7,153,100,0,Pokok,N,N,N,0
-Bayam,36,3.5,6.5,0.5,267,71,0,Sayur,N,N,N,0
-Daun singkong,73,6.8,13,1.2,165,87,0,Sayur,N,N,N,0
-Kangkung,29,3,5.4,0.3,73,70,0,Sayur,N,N,N,0
-Buncis,35,2.4,7.7,0.2,65,90,0,Sayur,N,N,N,0
-Nangka muda,51,2,11.3,0.4,45,80,0,Sayur,N,N,N,0
-Terong,24,1.1,5.5,0.2,15,87,0,Sayur,N,N,N,0
-Wortel,42,1.2,9.3,0.3,39,88,0,Sayur,N,N,N,0
-Pecel,243,11.1,31.7,12.5,267,100,0,Sayur,N,N,N,0
-Sayur lodeh,240,9.1,30.7,12.5,135,100,0,Sayur,N,N,N,0
-Soto betawi,135,2.5,11.5,8.8,222,100,0,Sayur,Y,N,N,0
-Tumis kangkung ,92,2.5,0,0,69.6,100,0,Sayur,N,N,N,0
-Kacang tanah,525,27.9,17.4,42.7,315,100,0,Snack,N,N,Y,0
-Kwaci,515,30.6,13.8,42.1,54,35,0,Snack,N,N,N,0
-Yoghurt,52,3.3,4,2.5,120,100,0,Snack,Y,N,N,0
-Coklat manis ( batang ),472,2,62.7,29.8,63,100,0,Snack,N,N,N,0
-Combro,105,0.8,17.9,3.3,3.2,100,0,Snack,N,N,N,0
-Keripik singkong,478,0.9,72,20.7,189,100,0,Snack,N,N,N,0
-Perkedel kentang,439,15.8,79.6,7.1,76,100,0,Snack,N,N,N,0
-Risoles,134,2.1,28.2,1.4,2.7,100,0,Snack,N,N,N,0
-Tahu goreng ,115,9.7,2.5,8.5,229,100,0,Snack,N,N,N,0
-Tempe goreng,82,4.6,3.2,5.8,37.4,100,0,Snack,N,N,N,0
-Bakpau,239,12.2,41.6,2.6,21,100,0,Snack,N,N,N,0
-Kue bakwan,280,8.2,39,10.2,79,100,0,Snack,N,N,N,0
-Mendoan,92,4.9,16.2,1,26,100,0,Snack,N,N,N,0
-Pisang goreng,132,1.4,23.1,3.8,7.2,100,0,Snack,N,N,N,0
+Bahan Makanan,Kalori,Protein,Karbohidrat,Lemak,Natrium,Porsi,Bobot,Rating,Jenis,Hewani,Seafood,Kacang,Terakhir dipilih,Path foto
+Bayam,37,2.65,3.39,2.07,262,porsi,92,0,Sayuran,N,N,N,0,\assets\
+Brokoli,32,2.18,6.56,0.38,256,mangkok,90,0,Sayuran,N,N,N,0,\assets\
+Jagung,123,4.6,27.2,1.69,21,bonggol,500,0,Pokok,N,N,N,0,\assets\
+Jamur,22,1.68,4.1,0.37,186,porsi,78,0,Sayuran,N,N,N,0,\assets\
+Kubis Hijau,33,0.77,3.4,2.18,215,porsi,78,0,Sayuran,N,N,N,0,\assets\
+Labu,58,1.35,9.92,2.19,208,porsi,78,0,Sayuran,N,N,N,0,\assets\
+Ubi Jalar,180,4.02,41.42,0.3,72,mangkok,200,0,Pokok,N,N,N,0,\assets\
+Terong,33,0.39,4.16,1.92,244,porsi,50,0,Sayuran,N,N,N,0,\assets\
+Wortel,41,0.56,6.07,1.88,233,porsi,76,0,Sayuran,N,N,N,0,\assets\
+Tumis Kangkung,106,2.76,4.31,9.4,414,porsi,85,0,Sayuran,N,N,N,0,\assets\
+Alpukat,322,4.02,17.15,29.47,14,buah,200,0,Buah,N,N,N,0,\assets\
+Anggur,55,0.58,14.48,0.13,2,porsi,80,0,Buah,N,N,N,0,\assets\
+Apel Fuji,71,0.36,19.06,0.24,1,buah,150,0,Buah,N,N,N,0,\assets\
+Jeruk,62,1.23,15.39,0.16,0,buah,130,0,Buah,N,N,N,0,\assets\
+Mangga (irisan),107,0.84,28.05,0.45,3,mangkok,160,0,Buah,N,N,N,0,\assets\
+Pir,96,0.63,25.66,0.2,2,buah,225,0,Buah,N,N,N,0,\assets\
+Semangka,86,1.74,21.52,0.43,3,iris,200,0,Buah,N,N,N,0,\assets\
+Pepaya,55,0.85,13.73,0.2,4,mangkok,140,0,Buah,N,N,N,0,\assets\
+Nanas,40,0.45,10.61,0.1,1,iris,80,0,Buah,N,N,N,0,\assets\
+Pisang,105,1.29,26.95,0.39,1,buah,110,0,Buah,N,N,N,0,\assets\
