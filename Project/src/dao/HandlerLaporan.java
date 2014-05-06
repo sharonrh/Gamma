@@ -10,7 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class HandlerLaporan extends DatabaseHandler{
+public class HandlerLaporan extends DatabaseHandler {
 
 	private static HandlerLaporan sInstance;
 	private static final String KEY_ID = "id";
@@ -36,21 +36,20 @@ public class HandlerLaporan extends DatabaseHandler{
 	}
 
 	/**
-	 * All CRUD(Create, Read, Update, Delete) Operations
-	 * untuk tabel Laporan
+	 * All CRUD(Create, Read, Update, Delete) Operations untuk tabel Laporan
 	 */
 
 	public boolean tambahLaporan(long waktuInput, String beratInput,
 			String tinggiInput) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
-		System.out.println("size: " + getLaporanCount());
 		ContentValues values = new ContentValues();
 		values.put(waktu, waktuInput);
 		values.put(berat, beratInput);
 		values.put(tinggi, tinggiInput);
 
-		Cursor cursor = db.rawQuery("SELECT waktu  FROM " + tabelLaporan, null);
+		Cursor cursor = db.rawQuery(
+				"SELECT " + waktu + " FROM " + tabelLaporan, null);
 
 		// pastiin dia ga kosong
 		if (cursor.moveToLast()) {
@@ -66,7 +65,12 @@ public class HandlerLaporan extends DatabaseHandler{
 						new String[] { String.valueOf(cursor.getCount()) }) > 0;
 			}
 		}
-		return db.insert(tabelLaporan, null, values) > 0;
+
+		boolean b = db.insert(tabelLaporan, null, values) > 0;
+		cursor.close();
+		db.close();
+
+		return b;
 	}
 
 	// Getting single laporan
@@ -77,13 +81,32 @@ public class HandlerLaporan extends DatabaseHandler{
 				tinggi }, KEY_ID + "=?", new String[] { String.valueOf(id) },
 				null, null, null, null);
 
-		if (cursor != null)
-			cursor.moveToFirst();
+		Laporan laporan = null;
+		if (cursor.moveToFirst()) {
+			laporan = new Laporan(Long.parseLong(cursor.getString(1)),
+					Double.parseDouble(cursor.getString(2)),
+					Double.parseDouble(cursor.getString(3)));
+		}
+		cursor.close();
+		db.close();
+		return laporan;
+	}
 
-		Laporan laporan = new Laporan(Long.parseLong(cursor.getString(1)),
-				Double.parseDouble(cursor.getString(2)),
-				Double.parseDouble(cursor.getString(3)));
+	// Getting single laporan
+	public Laporan getLaporanTerbaru() {
+		SQLiteDatabase db = this.getReadableDatabase();
 
+		Cursor cursor = db.rawQuery("SELECT * FROM " + tabelLaporan
+				+ " ORDER BY " + id + " DESC LIMIT 1", null);
+
+		Laporan laporan = null;
+		if (cursor.moveToFirst()) {
+			laporan = new Laporan(Long.parseLong(cursor.getString(1)),
+					Double.parseDouble(cursor.getString(2)),
+					Double.parseDouble(cursor.getString(3)));
+		}
+		cursor.close();
+		db.close();
 		return laporan;
 	}
 
@@ -108,8 +131,8 @@ public class HandlerLaporan extends DatabaseHandler{
 				laporanList.add(laporan);
 			} while (cursor.moveToNext());
 		}
-
-		// return laporan list
+		cursor.close();
+		db.close();
 		return laporanList;
 	}
 
@@ -118,17 +141,6 @@ public class HandlerLaporan extends DatabaseHandler{
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.delete(tabelLaporan, KEY_ID + " = ?",
 				new String[] { String.valueOf(id) });
+		db.close();
 	}
-
-	// Getting laporan count
-	public int getLaporanCount() {
-		String countQuery = "SELECT  * FROM " + tabelLaporan;
-		SQLiteDatabase db = getReadableDatabase();
-		Cursor cursor = db.rawQuery(countQuery, null);
-		// cursor.close();
-
-		// return count
-		return cursor.getCount();
-	}
-
 }

@@ -25,4 +25,8 @@ public class LaporanController {
 	public List<Laporan> getListLaporan() {
 		return db.getAllLaporan();
 	}
+	
+	public Laporan getLaporanTerbaru() {
+		return db.getLaporanTerbaru();	
+	}
 }

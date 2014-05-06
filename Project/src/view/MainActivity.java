@@ -61,7 +61,8 @@ public class MainActivity extends Activity {
 		DrawerItem[] items = new DrawerItem[size];
 
 		for (int i = 0; i < size; i++) {
-			items[i] = new DrawerItem(mNavTitles[i], mNavIcons.getResourceId(i, -1));
+			items[i] = new DrawerItem(mNavTitles[i], mNavIcons.getResourceId(i,
+					-1));
 		}
 
 		mDrawerList.setAdapter(new NavDrawerListAdapter(this, items));
@@ -155,16 +156,21 @@ public class MainActivity extends Activity {
 			fragment = new LaporanFragment();
 			break;
 		case 4:
+<<<<<<< HEAD
 			fragment = new KatalogFragment(); // ntar ganti katalog
 			break;		
+=======
+			fragment = new LaporanFragment(); // ntar ganti katalog
+			break;
+>>>>>>> d98cd697ccb8010e6d5b34a6904eacea100db23c
 		case 5:
-			fragment = new RSSFragment(); 
+			fragment = new RSSFragment();
 			break;
 		case 6:
-			fragment = new LaporanFragment(); // ntar ganti achievement
+			fragment = new AchievementFragment();
 			break;
 		case 7:
-			fragment = new SettingFragment(); 
+			fragment = new SettingFragment();
 			break;
 		default:
 			break;
@@ -190,8 +196,7 @@ public class MainActivity extends Activity {
 		mTitle = title;
 		getActionBar().setTitle(mTitle);
 	}
-	
-	
+
 	public void setIcon(Drawable icon) {
 		mIcon = icon;
 		getActionBar().setIcon(mIcon);

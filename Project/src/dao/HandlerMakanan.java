@@ -27,11 +27,11 @@ public class HandlerMakanan extends DatabaseHandler {
 
 	// Kolom tabel makanan
 	private static final String namaMakanan = "nama";
-	private static final String jlhKalori = "kalori";
-	private static final String jlhProtein = "protein";
-	private static final String jlhLemak = "lemak";
-	private static final String jlhKarbo = "karbohidrat";
-	private static final String jlhKalsium = "kalsium";
+	private static final String kalori = "kalori";
+	private static final String protein = "protein";
+	private static final String lemak = "lemak";
+	private static final String karbo = "karbohidrat";
+	private static final String kalsium = "kalsium";
 	private static final String persentase = "persentase";
 	private static final String rating = "rating";
 	private static final String jenis = "jenis";
@@ -51,42 +51,36 @@ public class HandlerMakanan extends DatabaseHandler {
 		super(context);
 	}
 
-	/**
-	 * All CRUD(Create, Read, Update, Delete) Operations untuk tabel Makanan
-	 */
-
 	// Adding new makanan
-	void tambahMakanan(Makanan makanan) {
+	public void tambahMakanan(Makanan makanan) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		int h = 0, s = 0, k = 0;
 		ContentValues values = new ContentValues();
 		values.put(namaMakanan, makanan.getNama());
-		values.put(jlhKalori, makanan.getKalori());
-		values.put(jlhProtein, makanan.getProtein());
-		values.put(jlhLemak, makanan.getLemak());
-		values.put(jlhKarbo, makanan.getKarbohidrat());
-		values.put(jlhKalsium, makanan.getKalsium());
+		values.put(kalori, makanan.getKalori());
+		values.put(protein, makanan.getProtein());
+		values.put(lemak, makanan.getLemak());
+		values.put(karbo, makanan.getKarbohidrat());
+		values.put(kalsium, makanan.getKalsium());
 		values.put(rating, makanan.getRating());
 		values.put(persentase, makanan.getPersentase());
 		values.put(jenis, makanan.getJenisMakanan());
 		if (makanan.isHewani()) {
 			h = 1;
 		}
-		values.put(hewani, h);
-
 		if (makanan.isSeafood()) {
 			s = 1;
 		}
-		values.put(seafood, s);
-
 		if (makanan.isKacang()) {
 			k = 1;
 		}
+		values.put(hewani, h);
+		values.put(seafood, s);
 		values.put(kacang, k);
 		values.put(terakhir, makanan.getTerakhir());
 
-		// Inserting Row
 		db.insert(tabelMakanan, null, values);
+		db.close();
 	}
 
 	// Getting single makanan
@@ -94,52 +88,46 @@ public class HandlerMakanan extends DatabaseHandler {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(tabelMakanan, new String[] { namaMakanan,
-				"berat", jlhKalori, jlhProtein, jlhLemak, jlhKarbo, jlhKalsium,
-				rating, persentase, jenis, hewani, seafood, kacang, terakhir },
+				"berat", kalori, protein, lemak, karbo, kalsium, rating,
+				persentase, jenis, hewani, seafood, kacang, terakhir },
 				namaMakanan + "=?", new String[] { String.valueOf(nama) },
 				null, null, null, null);
-		if (cursor != null)
-			cursor.moveToFirst();
 
-		Makanan makanan = new Makanan(cursor.getString(0),
-				Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor
-						.getString(2)),
-				Double.parseDouble(cursor.getString(3)),
-				Double.parseDouble(cursor.getString(4)),
-				Double.parseDouble(cursor.getString(5)),
-				Double.parseDouble(cursor.getString(6)),
-				Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor
-						.getString(8)), cursor.getString(9),
-				Long.parseLong(cursor.getString(13)));
+		Makanan makanan = null;
+		if (cursor.moveToFirst()) {
+			makanan = new Makanan(cursor.getString(0), Integer.parseInt(cursor
+					.getString(1)), Integer.parseInt(cursor.getString(2)),
+					Double.parseDouble(cursor.getString(3)),
+					Double.parseDouble(cursor.getString(4)),
+					Double.parseDouble(cursor.getString(5)),
+					Double.parseDouble(cursor.getString(6)),
+					Integer.parseInt(cursor.getString(7)),
+					Integer.parseInt(cursor.getString(8)), cursor.getString(9),
+					Long.parseLong(cursor.getString(13)));
 
-		// retrieve data alegi
-		int h = Integer.parseInt(cursor.getString(10));
-		int s = Integer.parseInt(cursor.getString(11));
-		int k = Integer.parseInt(cursor.getString(12));
+			// retrieve data alergi
+			int h = Integer.parseInt(cursor.getString(10));
+			int s = Integer.parseInt(cursor.getString(11));
+			int k = Integer.parseInt(cursor.getString(12));
 
-		if (h == 1) {
-			makanan.setHewani(true);
+			makanan.setHewani(h == 1);
+			makanan.setSeafood(s == 1);
+			makanan.setKacang(k == 1);
+
 		}
-		if (s == 1) {
-			makanan.setSeafood(true);
-		}
-		if (k == 1) {
-			makanan.setKacang(true);
-		}
-
+		cursor.close();
+		db.close();
 		return makanan;
 	}
 
 	// Getting All Makanan
 	public List<Makanan> getAllMakanan() {
 		List<Makanan> makananList = new ArrayList<Makanan>();
-		// Select All Query
 		String selectQuery = "SELECT  * FROM " + tabelMakanan;
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
-		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
@@ -159,21 +147,17 @@ public class HandlerMakanan extends DatabaseHandler {
 				int s = Integer.parseInt(cursor.getString(11));
 				int k = Integer.parseInt(cursor.getString(12));
 
-				if (h == 1) {
-					makanan.setHewani(true);
-				}
-				if (s == 1) {
-					makanan.setSeafood(true);
-				}
-				if (k == 1) {
-					makanan.setKacang(true);
-				}
+				makanan.setHewani(h == 1);
+				makanan.setSeafood(s == 1);
+				makanan.setKacang(k == 1);
 				makanan.setTerakhir(Long.parseLong(cursor.getString(13)));
-				// Adding makanan to list
+
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
 		}
 
+		cursor.close();
+		db.close();
 		return makananList;
 	}
 
@@ -196,6 +180,8 @@ public class HandlerMakanan extends DatabaseHandler {
 			} while (cursor.moveToNext());
 		}
 
+		cursor.close();
+		db.close();
 		return makananList;
 	}
 
@@ -212,9 +198,10 @@ public class HandlerMakanan extends DatabaseHandler {
 		String countQuery = "SELECT  * FROM " + tabelMakanan;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
+		int count = cursor.getCount();
 		cursor.close();
+		db.close();
 
-		// return count
-		return cursor.getCount();
+		return count;
 	}
 }

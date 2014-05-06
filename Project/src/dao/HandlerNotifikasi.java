@@ -10,7 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class HandlerNotifikasi extends DatabaseHandler{
+public class HandlerNotifikasi extends DatabaseHandler {
 
 	private static final String KEY_ID = "id";
 
@@ -28,8 +28,7 @@ public class HandlerNotifikasi extends DatabaseHandler{
 	}
 
 	/**
-	 * All CRUD(Create, Read, Update, Delete) Operations
-	 * untuk tabel Notifikasi
+	 * All CRUD(Create, Read, Update, Delete) Operations untuk tabel Notifikasi
 	 */
 	public boolean tambahNotifikasi(Notifikasi notifikasi) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -41,7 +40,7 @@ public class HandlerNotifikasi extends DatabaseHandler{
 
 		// Inserting Row
 		boolean cek = db.insert(tabelNotifikasi, null, values) > 0;
-		db.close(); // Closing database connection
+		db.close();
 		return cek;
 	}
 
@@ -52,13 +51,15 @@ public class HandlerNotifikasi extends DatabaseHandler{
 		Cursor cursor = db.query(tabelNotifikasi, new String[] { id, nama,
 				waktu, pesan }, KEY_ID + "=?",
 				new String[] { String.valueOf(nama) }, null, null, null, null);
-		if (cursor != null)
-			cursor.moveToFirst();
 
-		Notifikasi notifikasi = new Notifikasi(cursor.getString(1),
-				Long.parseLong(cursor.getString(2)), cursor.getString(3));
+		Notifikasi notifikasi = null;
+		if (cursor.moveToFirst()) {
+			notifikasi = new Notifikasi(cursor.getString(1),
+					Long.parseLong(cursor.getString(2)), cursor.getString(3));
+		}
+		cursor.close();
+		db.close();
 
-		// return notifikasi
 		return notifikasi;
 	}
 
@@ -83,8 +84,9 @@ public class HandlerNotifikasi extends DatabaseHandler{
 				notifikasiList.add(notifikasi);
 			} while (cursor.moveToNext());
 		}
+		cursor.close();
+		db.close();
 
-		// return notifikasi list
 		return notifikasiList;
 	}
 
@@ -95,50 +97,58 @@ public class HandlerNotifikasi extends DatabaseHandler{
 				new String[] { String.valueOf(nama) });
 		db.close();
 	}
-	
+
 	public boolean updateNotif(String namaNotif, long time) {
 		SQLiteDatabase db = this.getWritableDatabase();
-	    ContentValues args = new ContentValues();
-	    String str = "" + time;
-	    args.put(waktu, str);
-	    return db.update(tabelNotifikasi, args, nama + "=" + "'" + namaNotif + "'", null) > 0;
-	  }
+		ContentValues args = new ContentValues();
+		String str = "" + time;
+		args.put(waktu, str);
+		boolean b = db.update(tabelNotifikasi, args, nama + "=" + "'"
+				+ namaNotif + "'", null) > 0;
+		db.close();
+
+		return b;
+	}
 
 	// Getting notifikasis Count
 	public int getNotifikasiCount() {
 		String countQuery = "SELECT  * FROM " + tabelNotifikasi;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
+		int count = cursor.getCount();
 		cursor.close();
+		db.close();
 
-		// return count
-		return cursor.getCount();
+		return count;
 	}
-	
-	
-	public void tambahNotifikasiDefault(){
-		
+
+	public void tambahNotifikasiDefault() {
+
 		Calendar calendar = Calendar.getInstance();
-		// 9 AM 
+		// 9 AM
 		calendar.set(Calendar.HOUR_OF_DAY, 7);
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
-		
-		Notifikasi sarapan = new Notifikasi("Sarapan", calendar.getTimeInMillis(), "Saatnya Sarapan!");
-		
+
+		Notifikasi sarapan = new Notifikasi("Sarapan",
+				calendar.getTimeInMillis(), "Saatnya sarapan!");
+
 		calendar.set(Calendar.HOUR_OF_DAY, 12);
-		Notifikasi makanSiang = new Notifikasi("Makan Siang", calendar.getTimeInMillis(), "Saatnya Makan Siang!");
-		
+		Notifikasi makanSiang = new Notifikasi("Makan Siang",
+				calendar.getTimeInMillis(), "Saatnya makan siang!");
+
 		calendar.set(Calendar.HOUR_OF_DAY, 19);
-		Notifikasi makanMalam = new Notifikasi("Makan Malam", calendar.getTimeInMillis(), "Woi, Makan Malam!");
-		
+		Notifikasi makanMalam = new Notifikasi("Makan Malam",
+				calendar.getTimeInMillis(), "Saatnya makan malam!");
+
 		calendar.set(Calendar.HOUR_OF_DAY, 21);
-		Notifikasi tidur = new Notifikasi("Tidur", calendar.getTimeInMillis(), "Waktunya Kamu Bobo!");
-		
+		Notifikasi tidur = new Notifikasi("Tidur", calendar.getTimeInMillis(),
+				"Waktunya tidur!");
+
 		tambahNotifikasi(sarapan);
 		tambahNotifikasi(makanSiang);
 		tambahNotifikasi(makanMalam);
 		tambahNotifikasi(tidur);
-		
+
 	}
 }
