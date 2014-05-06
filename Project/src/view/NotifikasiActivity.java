@@ -67,6 +67,14 @@ public class NotifikasiActivity extends Activity {
 		adapter = new ListNotifikasiArrayAdapter(this, data);
 		lv.setAdapter(adapter);
 		
+		System.out.println(adapter.getItemId(0));
+		System.out.println(adapter.getItemId(2));
+		System.out.println(adapter.getCount());
+		System.out.println(adapter.getItemViewType(2));
+		System.out.println(adapter.getItemViewType(1));
+		Notifikasi notif =  adapter.getItem(0);
+		System.out.println(notif.getNama());
+		
 		lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
 			@Override

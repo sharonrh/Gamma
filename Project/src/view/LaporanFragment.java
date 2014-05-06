@@ -1,6 +1,10 @@
 package view;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import model.Laporan;
 import android.app.Fragment;
@@ -23,11 +27,16 @@ public class LaporanFragment extends Fragment {
 	private EditText tinggiField;
 	private TextView beratLalu;
 	private TextView tinggiLalu;
-
+	TextView tglHariLalu;
+	TextView tglHariIni;
 	private Button simpanBtn;
 	private Button batalBtn;
 	private boolean cek = false;
 	private String pesan = "";
+	double lastBerat=0;
+	double lastTinggi=0;
+	int tglLalu=1;
+	int selisihHari=0;
 	private LaporanController kontrol;
 
 	@Override
@@ -39,16 +48,40 @@ public class LaporanFragment extends Fragment {
 		kontrol = new LaporanController(getActivity().getApplicationContext());
 		beratField = (EditText) v.findViewById(R.id.beratIsiLaporan);
 		tinggiField = (EditText) v.findViewById(R.id.tinggiIsiLaporan);
+		tglHariLalu = (TextView) v.findViewById(R.id.tanggalHariSebelumnya);
+		tglHariIni = (TextView) v.findViewById(R.id.tanggalHariIni);
 		simpanBtn = (Button) v.findViewById(R.id.button1);
 		batalBtn = (Button) v.findViewById(R.id.button2);
 		beratLalu = (TextView) v.findViewById(R.id.beratLaluIsiLaporan);
 		tinggiLalu = (TextView) v.findViewById(R.id.tinggiLaluIsiLaporan);
 
-		Laporan laporanTerbaru = kontrol.getLaporanTerbaru();
-
-		if (laporanTerbaru != null) {
-			beratLalu.setText(laporanTerbaru.getBeratBadan() + " kg");
-			tinggiLalu.setText(laporanTerbaru.getTinggiBadan() + " cm");
+		List<Laporan> data = kontrol.getListLaporan();
+		
+		
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");	
+		String formatted = format.format(date);
+		
+		tglHariLalu.setText("Data Sebelumnya (" + selisihHari + " hari yang lalu)");
+		tglHariIni.setText("Data untuk tanggal " + formatted);
+		
+		if(!data.isEmpty()){
+			
+			Laporan lastLaporan = data.get(data.size()-1);
+			
+			lastBerat = lastLaporan.getBeratBadan();
+			lastTinggi = lastLaporan.getTinggiBadan();
+			
+			Calendar cal = Calendar.getInstance();
+			
+			long waktuLalu = lastLaporan.getWaktu();
+			
+			cal.setTimeInMillis(waktuLalu);
+			tglLalu = cal.DAY_OF_YEAR;
+			
+			beratLalu.setText(lastBerat + " kg");
+			tinggiLalu.setText(lastTinggi + " cm");
+			
 		}
 
 		simpanBtn.setOnClickListener(new View.OnClickListener() {
@@ -94,14 +127,22 @@ public class LaporanFragment extends Fragment {
 
 	}
 
-	public boolean validasiInput(String berat, String tinggi) {
-
+public boolean validasiInput(String berat, String tinggi){
+		
+		double difBerat = Double.parseDouble(berat) - lastBerat;
+		double difTinggi = Double.parseDouble(tinggi) - lastTinggi;
+		
+		String pesan1 = "";
 		ArrayList<String> list = new ArrayList<String>();
-
-		if (berat.length() != 0 && tinggi.length() != 0) {
-			if (!berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+		
+		Calendar kalender = Calendar.getInstance();
+		kalender.setTimeInMillis(System.currentTimeMillis());
+		int y = kalender.DAY_OF_YEAR;
+		
+		if(berat.length()!=0 && tinggi.length()!=0 ){
+			if(!(berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))) 
 				list.add("Berat Sekarang");
-			if (!tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+			if(!(tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")))
 				list.add("Tinggi Sekarang");
 
 			for (int ii = 0; ii < list.size(); ii++) {
@@ -116,11 +157,27 @@ public class LaporanFragment extends Fragment {
 
 			}
 			pesan = pesan + " Salah format";
-		} else {
-			pesan = "Masih ada field yang belum diisi";
+		} 
+		else {
+			pesan = "Masih ada field yang belum Kamu isi";
 		}
-
-		return berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")
-				&& tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
+		
+		if(Math.abs(difBerat) >= 5.0 || Math.abs(difTinggi) >= 2.0){
+			pesan = "Data yang kamu masukkan tidak logis";
+			
+			return false;
+		}
+		
+		selisihHari = y-tglLalu;
+		int maksHari = 7;
+		if(selisihHari < 7){
+			pesan = "Kamu baru bisa mengisi kembali " + (maksHari - selisihHari) + " hari lagi";
+			
+			return false;
+		}
+		
+		
+		return berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")&&
+				tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
 	}
 }

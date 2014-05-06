@@ -138,17 +138,14 @@ public class HandlerNotifikasi extends DatabaseHandler {
 				calendar.getTimeInMillis(), "Saatnya makan siang!");
 
 		calendar.set(Calendar.HOUR_OF_DAY, 19);
-		Notifikasi makanMalam = new Notifikasi("Makan Malam",
-				calendar.getTimeInMillis(), "Saatnya makan malam!");
-
-		calendar.set(Calendar.HOUR_OF_DAY, 21);
-		Notifikasi tidur = new Notifikasi("Tidur", calendar.getTimeInMillis(),
-				"Waktunya tidur!");
-
+		Notifikasi makanMalam = new Notifikasi("Makan Malam", calendar.getTimeInMillis(), "Woi, Makan Malam!");
+		
+		calendar.set(Calendar.HOUR_OF_DAY, 10);
+		Notifikasi snack = new Notifikasi("Snack", calendar.getTimeInMillis(), "Waktunya Kamu Makan Snack!");
+		
 		tambahNotifikasi(sarapan);
 		tambahNotifikasi(makanSiang);
 		tambahNotifikasi(makanMalam);
-		tambahNotifikasi(tidur);
-
+		tambahNotifikasi(snack);
 	}
 }
