@@ -1,11 +1,13 @@
 package view;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -34,6 +36,8 @@ public class MainActivity extends Activity {
 	private CharSequence mTitle;
 	private String[] mNavTitles;
 	private TypedArray mNavIcons;
+	private int mDrawerIcon;
+	private Drawable mIcon;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -57,7 +61,8 @@ public class MainActivity extends Activity {
 		DrawerItem[] items = new DrawerItem[size];
 
 		for (int i = 0; i < size; i++) {
-			items[i] = new DrawerItem(mNavTitles[i], mNavIcons.getResourceId(i, -1));
+			items[i] = new DrawerItem(mNavTitles[i], mNavIcons.getResourceId(i,
+					-1));
 		}
 
 		mDrawerList.setAdapter(new NavDrawerListAdapter(this, items));
@@ -151,13 +156,16 @@ public class MainActivity extends Activity {
 			fragment = new LaporanFragment();
 			break;
 		case 4:
-			fragment = new RSSFragment(); // ntar ganti katalog
+			fragment = new KatalogFragment(); // ntar ganti katalog
 			break;
 		case 5:
-			fragment = new LaporanFragment(); // ntar ganti achievement
+			fragment = new RSSFragment();
 			break;
 		case 6:
-			fragment = new SettingFragment(); 
+			fragment = new AchievementFragment();
+			break;
+		case 7:
+			fragment = new SettingFragment();
 			break;
 		default:
 			break;
@@ -171,6 +179,7 @@ public class MainActivity extends Activity {
 			mDrawerList.setItemChecked(position, true);
 			setTitle(mNavTitles[position]);
 			mDrawerLayout.closeDrawer(mDrawerList);
+			setIcon(mNavIcons.getDrawable(position));
 		} else {
 			// error in creating fragment
 			Log.e("MainActivity", "Error in creating fragment");
@@ -181,6 +190,11 @@ public class MainActivity extends Activity {
 	public void setTitle(CharSequence title) {
 		mTitle = title;
 		getActionBar().setTitle(mTitle);
+	}
+
+	public void setIcon(Drawable icon) {
+		mIcon = icon;
+		getActionBar().setIcon(mIcon);
 	}
 
 	/**

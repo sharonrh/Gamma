@@ -10,10 +10,8 @@ public class HandlerProfil extends DatabaseHandler {
 	private static HandlerProfil sInstance;
 	private static final String KEY_ID = "id";
 
-	// Nama tabel yang akan dibuat
 	private static final String tabelProfil = "profil";
 
-	// Kolom tabel profil
 	private final String id = "id";
 	private final String nama = "nama";
 	private final String umur = "umur";
@@ -40,50 +38,43 @@ public class HandlerProfil extends DatabaseHandler {
 		super(context);
 	}
 
-	// Getting single profil
 	public Pengguna getProfil() {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(tabelProfil, new String[] { id, nama, umur,
 				berat, tinggi, target, gender, gayaHidup, kacang, seafood,
-				hewani, foto, startTime, endTime }, id + "=?", new String[] { String.valueOf(1) },
-				null, null, null, null);
-		if (cursor != null)
-			cursor.moveToFirst();
+				hewani, foto, startTime, endTime }, id + "=?",
+				new String[] { String.valueOf(1) }, null, null, null, null);
 
-		int i = Integer.parseInt(cursor.getString(6));
-		char g = 'P';
-		if (i == 1)
-			g = 'W';
+		Pengguna profil = null;
+		if (cursor.moveToFirst()) {
 
-		Pengguna profil = new Pengguna(cursor.getString(1),
-				Integer.parseInt(cursor.getString(2)),
-				Double.parseDouble(cursor.getString(3)),
-				Double.parseDouble(cursor.getString(4)),
-				Double.parseDouble(cursor.getString(5)), g,
-				Integer.parseInt(cursor.getString(7)), false, false, false,
-				cursor.getString(11), Long.parseLong(cursor.getString(12)),
-				Long.parseLong(cursor.getString(13)));
+			int i = Integer.parseInt(cursor.getString(6));
+			char g = i == 1 ? 'W' : 'P';
 
-		// retrieve data alergi
-		int h = Integer.parseInt(cursor.getString(8));
-		int s = Integer.parseInt(cursor.getString(9));
-		int k = Integer.parseInt(cursor.getString(10));
+			profil = new Pengguna(cursor.getString(1), Integer.parseInt(cursor
+					.getString(2)), Double.parseDouble(cursor.getString(3)),
+					Double.parseDouble(cursor.getString(4)),
+					Double.parseDouble(cursor.getString(5)), g,
+					Integer.parseInt(cursor.getString(7)), false, false, false,
+					cursor.getString(11), Long.parseLong(cursor.getString(12)),
+					Long.parseLong(cursor.getString(13)));
 
-		if (h == 1) {
-			profil.setVegetarian(false);
-		}
-		if (s == 1) {
-			profil.setAlergiSeafood(true);
-		}
-		if (k == 1) {
-			profil.setAlergiKacang(true);
+			// retrieve data alergi
+			int h = Integer.parseInt(cursor.getString(8));
+			int s = Integer.parseInt(cursor.getString(9));
+			int k = Integer.parseInt(cursor.getString(10));
+
+			profil.setVegetarian(h != 1);
+			profil.setAlergiSeafood(s == 1);
+			profil.setAlergiKacang(k == 1);
 		}
 
+		cursor.close();
+		db.close();
 		return profil;
 	}
 
-	// Adding new profil
 	public boolean updateProfil(String namaNew, int umurNew, double beratNew,
 			double tinggiNew, double targetNew, char genderNew,
 			int gayaHidupNew, boolean isAlergiKacang, boolean isAlergiSeafood,
@@ -96,7 +87,6 @@ public class HandlerProfil extends DatabaseHandler {
 		values.put(berat, beratNew);
 		values.put(tinggi, tinggiNew);
 		values.put(target, targetNew);
-		System.out.println("Gender = " + genderNew);
 		// pria = 0, wanita = 1
 		if (genderNew == 'W') {
 			g = 1;
@@ -106,34 +96,23 @@ public class HandlerProfil extends DatabaseHandler {
 		if (isAlergiKacang) {
 			k = 1;
 		}
-		values.put(kacang, k);
-
 		if (isAlergiSeafood) {
 			s = 1;
 		}
-		values.put(seafood, s);
-
 		if (isVegetarian) {
 			h = 1;
 		}
+		values.put(kacang, k);
+		values.put(seafood, s);
 		values.put(hewani, h);
 		values.put(foto, fotoNew);
 		values.put(this.startTime, startTime);
 		values.put(this.endTime, endTime);
 
-		// updating row
-		return db.update(tabelProfil, values, KEY_ID + " = ?",
+		boolean b = db.update(tabelProfil, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(1) }) > 0;
+		db.close();
+
+		return b;
 	}
-
-	// Getting profils Count
-	public int getProfilCount() {
-		String countQuery = "SELECT  * FROM " + tabelProfil;
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery(countQuery, null);
-		cursor.close();
-
-		return cursor.getCount();
-	}
-
 }

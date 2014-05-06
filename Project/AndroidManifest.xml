@@ -26,6 +26,7 @@
         </activity>
         <activity
             android:name="view.NotifikasiActivity"
+            android:icon="@drawable/pengaturan"
             android:label="@string/title_activity_notifikasi" >
         </activity>
         <activity
@@ -34,11 +35,18 @@
         </activity>
         <activity
             android:name="view.TentangActivity"
+            android:icon="@drawable/pengaturan"
             android:label="@string/title_activity_tentang" >
         </activity>
         <activity
             android:name="view.EditProfilActivity"
+            android:icon="@drawable/profil"
             android:label="@string/title_activity_edit_profil" >
+        </activity>
+        <activity
+            android:name="view.DetailStatistikActivity"
+            android:icon="@drawable/statistik"
+            android:label="@string/title_activity_detail_statistik" >
         </activity>
 
         <service
@@ -46,7 +54,6 @@
             android:enabled="true"
             android:exported="true" >
         </service>
-
     </application>
 
 </manifest>

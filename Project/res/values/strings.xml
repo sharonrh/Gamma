@@ -17,7 +17,8 @@
     <string name="title_activity_tentang">Tentang</string>
     <string name="title_activity_edit_profil">Edit profil</string>
     <string name="display_spinner">-pilih satu-</string>
-    <string name="spinnerGayaHidup">Pilih gaya hidup</string>
+    <string name="spinnerGayaHidup">Pilih Gaya Hidup</string>
+    <string name="spinnerKelamin">Pilih Jenis Kelamin</string>
     <string name="lama_diet">Lama Diet</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
 
@@ -52,6 +53,7 @@
     <string name="tinggi_badan">Tinggi Badan</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
+    <string name="konfirmasi_rss">Apakah Anda yakin akan membaca artikel ini? Artikel selengkapnya akan muncul pada jendela web browser Anda.</string>
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
@@ -60,6 +62,7 @@
         <item>Statistik</item>
         <item>Laporan</item>
         <item>Katalog</item>
+        <item>Artikel</item>
         <item>Achievement</item>
         <item>Pengaturan</item>
     </string-array>
@@ -70,24 +73,24 @@
         <item>@drawable/rekomendasi</item>
         <item>@drawable/profil</item>
         <item>@drawable/statistik</item>
-        <item>@drawable/statistik</item>
- <!-- ntar ganti laporan yak -->
+        <item>@drawable/laporan</item>
         <item>@drawable/katalog</item>
+        <item>@drawable/artikel</item>
         <item>@drawable/achievement</item>
         <item>@drawable/pengaturan</item>
     </array>
- <!--  -->
+    <!--  -->
 
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="title_activity_rssfragment">RSSFragment</string>
     <string name="hello_world">Hello world!</string>
-
     <string name="updated">Last updated:</string>
     <string name="lost_connection">Lost connection.</string>
     <string name="wifi_connected">Wi-Fi reconnected.</string>
     <string name="connection_error">Unable to load content. Check your network connection.</string>
     <string name="xml_error">Error parsing XML.</string>
-    
+    <string name="title_activity_detail_statistik">Detail</string>
+
 </resources>
