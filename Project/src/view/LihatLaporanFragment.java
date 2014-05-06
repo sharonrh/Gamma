@@ -21,7 +21,6 @@ public class LihatLaporanFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_lihatlaporan, container,
 				false);
 
-
 		return v;
 	}
 
@@ -38,11 +37,16 @@ public class LihatLaporanFragment extends Fragment {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent i = new Intent(getActivity().getApplicationContext(),
-				DetailStatistikActivity.class);
-		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		getActivity().startActivity(i);
-		
+		switch (item.getItemId()) {
+		case R.id.pensil:
+			Intent i = new Intent(getActivity().getApplicationContext(),
+					IsiLaporanActivity.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			getActivity().startActivity(i);
+			break;
+		default:
+			break;
+		}
 		return true;
 	}
 }

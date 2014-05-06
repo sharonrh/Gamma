@@ -25,75 +25,56 @@ public class IsiLaporanActivity extends Activity {
 	private EditText tinggiField;
 	private TextView beratLalu;
 	private TextView tinggiLalu;
-	TextView tglHariLalu;
-	TextView tglHariIni;
+	private TextView tglHariLalu;
+	private TextView tglHariIni;
 	private Button simpanBtn;
 	private Button batalBtn;
 	private boolean cek = false;
 	private String pesan = "";
-	double lastBerat=0;
-	double lastTinggi=0;
-	int tglLalu=1;
-	int selisihHari=0;
+	private double lastBerat = 0;
+	private double lastTinggi = 0;
+	private int tglLalu = 1;
+	private int selisihHari = 0;
 	private LaporanController kontrol;
 
 	@Override
-<<<<<<< HEAD:Project/src/view/IsiLaporanActivity.java
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_isilaporan);
+		setContentView(R.layout.activity_isilaporan);
 
 		kontrol = new LaporanController(getApplicationContext());
 		beratField = (EditText) findViewById(R.id.beratIsiLaporan);
 		tinggiField = (EditText) findViewById(R.id.tinggiIsiLaporan);
+		tglHariLalu = (TextView) findViewById(R.id.tanggalHariSebelumnya);
+		tglHariIni = (TextView) findViewById(R.id.tanggalHariIni);
 		simpanBtn = (Button) findViewById(R.id.button1);
 		batalBtn = (Button) findViewById(R.id.button2);
 		beratLalu = (TextView) findViewById(R.id.beratLaluIsiLaporan);
 		tinggiLalu = (TextView) findViewById(R.id.tinggiLaluIsiLaporan);
-=======
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
 
-		View v = inflater.inflate(R.layout.fragment_laporan, container, false);
+		Laporan laporanTerbaru = kontrol.getLaporanTerbaru();
 
-		kontrol = new LaporanController(getActivity().getApplicationContext());
-		beratField = (EditText) v.findViewById(R.id.beratIsiLaporan);
-		tinggiField = (EditText) v.findViewById(R.id.tinggiIsiLaporan);
-		tglHariLalu = (TextView) v.findViewById(R.id.tanggalHariSebelumnya);
-		tglHariIni = (TextView) v.findViewById(R.id.tanggalHariIni);
-		simpanBtn = (Button) v.findViewById(R.id.button1);
-		batalBtn = (Button) v.findViewById(R.id.button2);
-		beratLalu = (TextView) v.findViewById(R.id.beratLaluIsiLaporan);
-		tinggiLalu = (TextView) v.findViewById(R.id.tinggiLaluIsiLaporan);
->>>>>>> ef7b1cc520c64d6ffd471c5c809397f33d64f4ac:Project/src/view/LaporanFragment.java
+		if (laporanTerbaru != null) {
+			Date date = new Date(System.currentTimeMillis());
+			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+			String formatted = format.format(date);
 
-		List<Laporan> data = kontrol.getListLaporan();
-		
-		
-		Date date = new Date(System.currentTimeMillis());
-		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");	
-		String formatted = format.format(date);
-		
-		tglHariLalu.setText("Data Sebelumnya (" + selisihHari + " hari yang lalu)");
-		tglHariIni.setText("Data untuk tanggal " + formatted);
-		
-		if(!data.isEmpty()){
-			
-			Laporan lastLaporan = data.get(data.size()-1);
-			
-			lastBerat = lastLaporan.getBeratBadan();
-			lastTinggi = lastLaporan.getTinggiBadan();
-			
+			tglHariLalu.setText("Data Sebelumnya (" + selisihHari
+					+ " hari yang lalu)");
+			tglHariIni.setText("Data untuk tanggal " + formatted);
+
+			lastBerat = laporanTerbaru.getBeratBadan();
+			lastTinggi = laporanTerbaru.getTinggiBadan();
+
 			Calendar cal = Calendar.getInstance();
-			
-			long waktuLalu = lastLaporan.getWaktu();
-			
+
+			long waktuLalu = laporanTerbaru.getWaktu();
+
 			cal.setTimeInMillis(waktuLalu);
 			tglLalu = cal.DAY_OF_YEAR;
-			
+
 			beratLalu.setText(lastBerat + " kg");
 			tinggiLalu.setText(lastTinggi + " cm");
-			
 		}
 
 		simpanBtn.setOnClickListener(new View.OnClickListener() {
@@ -135,22 +116,21 @@ public class IsiLaporanActivity extends Activity {
 		});
 	}
 
-public boolean validasiInput(String berat, String tinggi){
-		
+	public boolean validasiInput(String berat, String tinggi) {
+
 		double difBerat = Double.parseDouble(berat) - lastBerat;
 		double difTinggi = Double.parseDouble(tinggi) - lastTinggi;
-		
-		String pesan1 = "";
+
 		ArrayList<String> list = new ArrayList<String>();
-		
+
 		Calendar kalender = Calendar.getInstance();
 		kalender.setTimeInMillis(System.currentTimeMillis());
 		int y = kalender.DAY_OF_YEAR;
-		
-		if(berat.length()!=0 && tinggi.length()!=0 ){
-			if(!(berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))) 
+
+		if (berat.length() != 0 && tinggi.length() != 0) {
+			if (!(berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")))
 				list.add("Berat Sekarang");
-			if(!(tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")))
+			if (!(tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")))
 				list.add("Tinggi Sekarang");
 
 			for (int ii = 0; ii < list.size(); ii++) {
@@ -165,27 +145,26 @@ public boolean validasiInput(String berat, String tinggi){
 
 			}
 			pesan = pesan + " Salah format";
-		} 
-		else {
-			pesan = "Masih ada field yang belum Kamu isi";
+		} else {
+			pesan = "Masih ada field yang belum diisi";
 		}
-		
-		if(Math.abs(difBerat) >= 5.0 || Math.abs(difTinggi) >= 2.0){
-			pesan = "Data yang kamu masukkan tidak logis";
-			
+
+		if (Math.abs(difBerat) >= 5.0 || Math.abs(difTinggi) >= 2.0) {
+			pesan = "Data yang dimasukkan tidak logis";
+
 			return false;
 		}
-		
-		selisihHari = y-tglLalu;
+
+		selisihHari = y - tglLalu;
 		int maksHari = 7;
-		if(selisihHari < 7){
-			pesan = "Kamu baru bisa mengisi kembali " + (maksHari - selisihHari) + " hari lagi";
-			
+		if (selisihHari < 7) {
+			pesan = "Kamu baru bisa mengisi kembali "
+					+ (maksHari - selisihHari) + " hari lagi";
+
 			return false;
 		}
-		
-		
-		return berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")&&
-				tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
+
+		return berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")
+				&& tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
 	}
 }

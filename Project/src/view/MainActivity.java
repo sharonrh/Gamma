@@ -1,6 +1,5 @@
 package view;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -18,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -36,8 +36,8 @@ public class MainActivity extends Activity {
 	private CharSequence mTitle;
 	private String[] mNavTitles;
 	private TypedArray mNavIcons;
-	private int mDrawerIcon;
-	private Drawable mIcon;
+	private int mIcon;
+	private int[] iconIds;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -59,16 +59,17 @@ public class MainActivity extends Activity {
 		// set up the drawer's list view with items and click listener
 		int size = mNavTitles.length;
 		DrawerItem[] items = new DrawerItem[size];
+		iconIds = new int[mNavIcons.length()];
 
 		for (int i = 0; i < size; i++) {
-			items[i] = new DrawerItem(mNavTitles[i], mNavIcons.getResourceId(i,
-					-1));
+			iconIds[i] = mNavIcons.getResourceId(i, -1);
+			items[i] = new DrawerItem(mNavTitles[i], iconIds[i]);
 		}
 
+		mNavIcons.recycle(); // masih dipikirin
 		mDrawerList.setAdapter(new NavDrawerListAdapter(this, items));
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 
@@ -82,14 +83,12 @@ public class MainActivity extends Activity {
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				invalidateOptionsMenu();
 			}
 
 			public void onDrawerOpened(View drawerView) {
 				getActionBar().setTitle(mDrawerTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				invalidateOptionsMenu(); // creates call to PrepareOptionsMenu()
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -97,7 +96,6 @@ public class MainActivity extends Activity {
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
-
 	}
 
 	@Override
@@ -156,15 +154,7 @@ public class MainActivity extends Activity {
 			fragment = new LihatLaporanFragment();
 			break;
 		case 4:
-<<<<<<< HEAD
-<<<<<<< HEAD
-			fragment = new LihatLaporanFragment(); // ntar ganti katalog
-=======
-			fragment = new KatalogFragment(); // ntar ganti katalog
->>>>>>> ef7b1cc520c64d6ffd471c5c809397f33d64f4ac
-=======
-			fragment = new KatalogFragment(); // ntar ganti katalog
->>>>>>> ef7b1cc520c64d6ffd471c5c809397f33d64f4ac
+			fragment = new KatalogFragment();
 			break;
 		case 5:
 			fragment = new RSSFragment();
@@ -178,6 +168,7 @@ public class MainActivity extends Activity {
 		default:
 			break;
 		}
+
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
@@ -186,8 +177,9 @@ public class MainActivity extends Activity {
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			setTitle(mNavTitles[position]);
+			// setIcon(mNavIcons.getDrawable(position));
+			setIcon(iconIds[position]);
 			mDrawerLayout.closeDrawer(mDrawerList);
-			setIcon(mNavIcons.getDrawable(position));
 		} else {
 			// error in creating fragment
 			Log.e("MainActivity", "Error in creating fragment");
@@ -200,7 +192,7 @@ public class MainActivity extends Activity {
 		getActionBar().setTitle(mTitle);
 	}
 
-	public void setIcon(Drawable icon) {
+	public void setIcon(int icon) {
 		mIcon = icon;
 		getActionBar().setIcon(mIcon);
 	}

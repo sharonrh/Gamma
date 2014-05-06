@@ -1,23 +1,16 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.example.gamma.R;
-
 import android.app.Fragment;
-import android.app.ListFragment;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.gamma.R;
 
 public class KatalogFragment extends Fragment{
 	

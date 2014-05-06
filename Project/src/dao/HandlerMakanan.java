@@ -1,16 +1,11 @@
 package dao;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Makanan;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -18,9 +13,6 @@ public class HandlerMakanan extends DatabaseHandler {
 
 	private static final String KEY_ID = "nama";
 	private static HandlerMakanan sInstance;
-
-	// Database Name
-	private static final String namaDB = "gamma.db";
 
 	// Nama tabel yang akan dibuat
 	private static final String tabelMakanan = "makanan";
