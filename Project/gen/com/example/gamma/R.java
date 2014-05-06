@@ -232,19 +232,20 @@ public final class R {
         public static final int activity_tentang=0x7f030006;
         public static final int atur_notifikasi_layout=0x7f030007;
         public static final int drawer_list_item=0x7f030008;
-        public static final int fragment_laporan=0x7f030009;
-        public static final int fragment_lihat_profil=0x7f03000a;
-        public static final int fragment_setting=0x7f03000b;
-        public static final int fragment_statistik=0x7f03000c;
-        public static final int layout_tema=0x7f03000d;
-        public static final int listfragment=0x7f03000e;
-        public static final int notifikasi_simplerow=0x7f03000f;
-        public static final int popup_konfirmasi_rss=0x7f030010;
-        public static final int popup_tema_style=0x7f030011;
-        public static final int sectioned_list_item=0x7f030012;
-        public static final int setting_simplerow=0x7f030013;
-        public static final int simplerow=0x7f030014;
-        public static final int spinner_row=0x7f030015;
+        public static final int fragment_katalog=0x7f030009;
+        public static final int fragment_laporan=0x7f03000a;
+        public static final int fragment_lihat_profil=0x7f03000b;
+        public static final int fragment_setting=0x7f03000c;
+        public static final int fragment_statistik=0x7f03000d;
+        public static final int layout_tema=0x7f03000e;
+        public static final int listfragment=0x7f03000f;
+        public static final int notifikasi_simplerow=0x7f030010;
+        public static final int popup_konfirmasi_rss=0x7f030011;
+        public static final int popup_tema_style=0x7f030012;
+        public static final int sectioned_list_item=0x7f030013;
+        public static final int setting_simplerow=0x7f030014;
+        public static final int simplerow=0x7f030015;
+        public static final int spinner_row=0x7f030016;
     }
     public static final class menu {
         public static final int edit_profil=0x7f090000;
