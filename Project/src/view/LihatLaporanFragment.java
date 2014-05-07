@@ -1,7 +1,5 @@
 package view;
 
-import view.KatalogFragment.MyPerformanceArrayAdapter;
-import view.KatalogFragment.MyPerformanceArrayAdapter.ViewHolder;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;

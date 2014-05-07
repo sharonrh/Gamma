@@ -195,7 +195,6 @@ public class ProfilFragment extends Fragment {
 		switch (item.getItemId()) {
 		// action with ID pensil was selected
 		case R.id.pensil:
-			getActivity().finish();
 			Intent i = new Intent(getActivity().getApplicationContext(),
 					EditProfilActivity.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

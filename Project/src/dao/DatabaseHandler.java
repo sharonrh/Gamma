@@ -63,10 +63,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// Inserting Row
 		db.insert("profil", null, values);
-
 		// baca data makanan
 		bacaFile(c, db);
-		db.close();
 	}
 
 	@Override
@@ -122,5 +120,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			e.printStackTrace();
 		}
 	}
-
 }

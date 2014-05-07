@@ -34,7 +34,6 @@ public class DetailStatistikActivity extends Activity{
     switch (item.getItemId()) {
     // action with ID pensil was selected
     case R.id.pensil:
-    	this.finish();
 		Intent i = new Intent(this.getApplicationContext(),
 				MainActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

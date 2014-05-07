@@ -1,6 +1,7 @@
 package view;
 
 import java.io.ByteArrayOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -30,6 +31,8 @@ import com.example.gamma.R;
 
 public class RSSFragment extends ListFragment {
 
+	private static final int MAX_RETRIES = 3;
+
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
@@ -43,41 +46,26 @@ public class RSSFragment extends ListFragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		new GetAndroidPitRssFeedTask().execute();
+		new RssFeedTask().execute(
+				"http://www.health.com/health/diet-fitness/feed",
+				"http://www.situskesehatan.com/feed");
+		// new RssFeedTask().execute("http://www.situskesehatan.com/feed");
 	}
 
-	private String getAndroidPitRssFeed() throws IOException {
-		InputStream in = null;
-		String rssFeed = null;
-		try {
-			URL url = new URL("http://www.health.com/health/diet-fitness/feed");
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			in = conn.getInputStream();
-			ByteArrayOutputStream out = new ByteArrayOutputStream();
-			byte[] buffer = new byte[1024];
-			for (int count; (count = in.read(buffer)) != -1;) {
-				out.write(buffer, 0, count);
-			}
-			byte[] response = out.toByteArray();
-			rssFeed = new String(response, "UTF-8");
-		} finally {
-			if (in != null) {
-				in.close();
-			}
-		}
-		return rssFeed;
-	}
-
-	private class GetAndroidPitRssFeedTask extends
-			AsyncTask<Void, Void, List<Entry>> {
+	private class RssFeedTask extends AsyncTask<String, Void, List<Entry>> {
 
 		@Override
-		protected List<Entry> doInBackground(Void... voids) {
+		protected List<Entry> doInBackground(String... urls) {
 			List<Entry> result = null;
 			try {
-				String feed = getAndroidPitRssFeed();
+				System.out.println(urls[0] + "," + urls[1]);
+				String feed = getRssFeed(urls[0]);
 				RSSParser parser = new RSSParser();
 				result = parser.parse(feed);
+				System.out.println("size= " + result.size());
+				result.addAll(parser.parse(getRssFeed(urls[1])));
+				System.out.println("size stelah addAll= " + result.size());
+
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -94,7 +82,32 @@ public class RSSFragment extends ListFragment {
 		}
 	}
 
-	public void showAlert(final String link) {
+	private String getRssFeed(String targetUrl) throws IOException {
+		InputStream in = null;
+		String rssFeed = null;
+		HttpURLConnection conn = null;
+		try {
+			URL url = new URL(targetUrl);
+			conn = (HttpURLConnection) url.openConnection();
+			in = conn.getInputStream();
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			for (int count; (count = in.read(buffer)) != -1;) {
+				out.write(buffer, 0, count);
+			}
+			byte[] response = out.toByteArray();
+			rssFeed = new String(response, "UTF-8");
+		} finally {
+			if (in != null) {
+				in.close();
+			}
+			System.out.println("dc-ed");
+			conn.disconnect();
+		}
+		return rssFeed;
+	}
+
+	private void showAlert(final String link) {
 		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 				.create();
 
