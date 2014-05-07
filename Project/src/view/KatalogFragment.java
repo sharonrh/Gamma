@@ -40,6 +40,7 @@ public class KatalogFragment extends Fragment{
 		 MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(getActivity(), values);
 		 listview.setAdapter(adapter);
 		 
+		 //ubah tinggi listview katalog
 		 LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, (adapter.getCount()*50));
 	     listview.setLayoutParams(mParam);
 		

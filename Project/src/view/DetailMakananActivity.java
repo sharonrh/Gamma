@@ -97,9 +97,6 @@ public class DetailMakananActivity extends Activity{
  			public void onClick(View arg0) {
  				// TODO Auto-generated method stub
  				finish();
- 				Intent i = new Intent(getApplicationContext(),
- 						MainActivity.class);
- 				startActivity(i);
  			}
  		});
 	}
