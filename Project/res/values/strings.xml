@@ -15,7 +15,8 @@
     <string name="title_activity_notifikasi">Notifikasi</string>
     <string name="title_activity_tema">Tema</string>
     <string name="title_activity_tentang">Tentang</string>
-    <string name="title_activity_edit_profil">Edit profil</string>
+    <string name="title_activity_edit_profil">Edit Profil</string>
+    <string name="title_activity_detail_makanan">Detail Makanan</string>
     <string name="display_spinner">-pilih satu-</string>
     <string name="spinnerGayaHidup">Pilih Gaya Hidup</string>
     <string name="spinnerKelamin">Pilih Jenis Kelamin</string>

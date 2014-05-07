@@ -53,6 +53,11 @@
             android:icon="@drawable/laporan"
             android:label="@string/title_activity_isi_laporan" >
         </activity>
+        <activity
+            android:name="view.DetailMakananActivity"
+            android:icon="@drawable/katalog"
+            android:label="@string/title_activity_detail_makanan" >
+        </activity>
 
         <service
             android:name="service.NotifikasiService"
