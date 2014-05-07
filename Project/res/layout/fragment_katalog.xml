@@ -186,7 +186,7 @@
         <ListView
             android:id="@+id/listKatalog"
             android:layout_width="match_parent"
-            android:layout_height="1355dp"
+            android:layout_height="70dp"
             android:cacheColorHint="@android:color/transparent"
             android:divider="@null"
             android:dividerHeight="10dp"
