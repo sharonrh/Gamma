@@ -42,23 +42,7 @@ public class IsiLaporanActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_isilaporan);
 		kontrol = new LaporanController(getApplicationContext());
-		
-//		Time t = new Time();
-//		t.set(1, 5, 2014);
-//		kontrol.addLaporan("45", "170", t);
-//		
-//		t.set(8, 5, 2014);
-//		kontrol.addLaporan("44", "170", t);
-//		
-//		t.set(15, 5, 2014);
-//		kontrol.addLaporan("45", "170", t);
-//		
-//		t.set(22, 5, 2014);
-//		kontrol.addLaporan("47", "170", t);
-//		
-//		t.set(1, 6, 2014);
-//		kontrol.addLaporan("49", "170", t);
-		
+				
 		beratField = (EditText) findViewById(R.id.beratIsiLaporan);
 		tinggiField = (EditText) findViewById(R.id.tinggiIsiLaporan);
 		tglHariLalu = (TextView) findViewById(R.id.tanggalHariSebelumnya);

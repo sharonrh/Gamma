@@ -45,7 +45,7 @@ public class LihatLaporanFragment extends Fragment {
 	     listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			    //you might want to use 'view' here
-				  Intent intent = new Intent(getActivity().getApplicationContext(), EditLaporanActivity.class);
+				  Intent intent = new Intent(getActivity().getApplicationContext(), IsiLaporanActivity.class);
 				  
 				  //passing nama makanan dari katalog ke detail makanan
 				  SharedPreferences spre = getActivity().getApplicationContext().getSharedPreferences("Your prefName",
