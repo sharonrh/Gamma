@@ -19,6 +19,6 @@ public class KatalogController {
 	}
 	
 	public int[] getJenisCount() {
-		return new int[1];
+		return db.getJenisCount();
 	}
 }
