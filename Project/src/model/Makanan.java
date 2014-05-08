@@ -1,154 +1,162 @@
 package model;
 
 public class Makanan {
+    private String nama;
+    private int kalori;
+    private double protein;
+    private double karbohidrat;
+    private double lemak;
+    private double natrium;
+    private String porsi;
+    private int bobot;
+    private int rating;
+    private String jenisMakanan;
+    private boolean isHewani;
+    private boolean isSeafood;
+    private boolean isKacang;
+    private long terakhirDipilih;
+    private String pathFoto;
 
-	private String nama;
-	private int kalori;
-	private double protein;
-	private double karbohidrat;
-	private double lemak;
-	private double kalsium;
-	private int persentase;
-	private int rating;
-	private String jenisMakanan;
-	private int berat;
-	private boolean isHewani;
-	private boolean isSeafood;
-	private boolean isKacang;
-	private long terakhirDipilih;
+    public Makanan() {
+    }
 
-	public Makanan() {
-	}
+    public Makanan(String nama, int kalori, double protein, double karbohidrat, double lemak, double natrium, String porsi, int bobot, int rating,
+                   String jenisMakanan, boolean isHewani, boolean isSeafood, boolean isKacang, long terakhirDipilih, String pathFoto) {
+        this.nama = nama;
+        this.kalori = kalori;
+        this.protein = protein;
+        this.karbohidrat = karbohidrat;
+        this.lemak = lemak;
+        this.natrium = natrium;
+        this.porsi = porsi;
+        this.bobot = bobot;
+        this.rating = rating;
+        this.jenisMakanan = jenisMakanan;
+        this.isHewani = isHewani;
+        this.isSeafood = isSeafood;
+        this.isKacang = isKacang;
+        this.terakhirDipilih = terakhirDipilih;
+        this.pathFoto = pathFoto;
+    }
 
-	public Makanan(String nama, int berat, int kalori, double protein,
-			double karbohidrat, double lemak, double kalsium, int persentase,
-			int rating, String jenisMakanan, long terakhirDipilih) {
-		this.nama = nama;
-		this.kalori = kalori;
-		this.protein = protein;
-		this.karbohidrat = karbohidrat;
-		this.lemak = lemak;
-		this.kalsium = kalsium;
-		this.persentase = persentase;
-		this.rating = rating;
-		this.jenisMakanan = jenisMakanan;
-		this.berat = berat;
-		this.isHewani = false;
-		this.isSeafood = false;
-		this.isKacang = false;
-		this.terakhirDipilih = terakhirDipilih;
-	}
+    public String getNama() {
+        return nama;
+    }
 
-	public String getNama() {
-		return nama;
-	}
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 
-	public void setNama(String nama) {
-		this.nama = nama;
-	}
+    public int getKalori() {
+        return kalori;
+    }
 
-	public double getKalori() {
-		return kalori;
-	}
+    public void setKalori(int kalori) {
+        this.kalori = kalori;
+    }
 
-	public void setKalori(int kalori) {
-		this.kalori = kalori;
-	}
+    public double getProtein() {
+        return protein;
+    }
 
-	public double getProtein() {
-		return protein;
-	}
+    public void setProtein(double protein) {
+        this.protein = protein;
+    }
 
-	public void setProtein(double protein) {
-		this.protein = protein;
-	}
+    public double getKarbohidrat() {
+        return karbohidrat;
+    }
 
-	public double getKarbohidrat() {
-		return karbohidrat;
-	}
+    public void setKarbohidrat(double karbohidrat) {
+        this.karbohidrat = karbohidrat;
+    }
 
-	public void setKarbohidrat(double karbohidrat) {
-		this.karbohidrat = karbohidrat;
-	}
+    public double getLemak() {
+        return lemak;
+    }
 
-	public double getLemak() {
-		return lemak;
-	}
+    public void setLemak(double lemak) {
+        this.lemak = lemak;
+    }
 
-	public void setLemak(double lemak) {
-		this.lemak = lemak;
-	}
+    public double getNatrium() {
+        return natrium;
+    }
 
-	public double getKalsium() {
-		return kalsium;
-	}
+    public void setNatrium(double natrium) {
+        this.natrium = natrium;
+    }
 
-	public void setKalsium(double kalsium) {
-		this.kalsium = kalsium;
-	}
+    public String getPorsi() {
+        return porsi;
+    }
 
-	public int getRating() {
-		return rating;
-	}
+    public void setPorsi(String porsi) {
+        this.porsi = porsi;
+    }
 
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+    public int getBobot() {
+        return bobot;
+    }
 
-	public int getPersentase() {
-		return persentase;
-	}
+    public void setBobot(int bobot) {
+        this.bobot = bobot;
+    }
 
-	public void setPersentase(int persentase) {
-		this.persentase = persentase;
-	}
+    public int getRating() {
+        return rating;
+    }
 
-	public String getJenisMakanan() {
-		return jenisMakanan;
-	}
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
-	public void setJenisMakanan(String jenisMakanan) {
-		this.jenisMakanan = jenisMakanan;
-	}
+    public String getJenisMakanan() {
+        return jenisMakanan;
+    }
 
-	public int getBerat() {
-		return berat;
-	}
+    public void setJenisMakanan(String jenisMakanan) {
+        this.jenisMakanan = jenisMakanan;
+    }
 
-	public void setBerat(int berat) {
-		this.berat = berat;
-	}
+    public boolean isHewani() {
+        return isHewani;
+    }
 
-	public boolean isHewani() {
-		return isHewani;
-	}
+    public void setHewani(boolean isHewani) {
+        this.isHewani = isHewani;
+    }
 
-	public void setHewani(boolean isHewani) {
-		this.isHewani = isHewani;
-	}
+    public boolean isSeafood() {
+        return isSeafood;
+    }
 
-	public boolean isKacang() {
-		return isKacang;
-	}
+    public void setSeafood(boolean isSeafood) {
+        this.isSeafood = isSeafood;
+    }
 
-	public void setKacang(boolean isKacang) {
-		this.isKacang = isKacang;
-	}
+    public boolean isKacang() {
+        return isKacang;
+    }
 
-	public boolean isSeafood() {
-		return isSeafood;
-	}
+    public void setKacang(boolean isKacang) {
+        this.isKacang = isKacang;
+    }
 
-	public void setSeafood(boolean isSeafood) {
-		this.isSeafood = isSeafood;
-	}
+    public long getTerakhirDipilih() {
+        return terakhirDipilih;
+    }
 
-	public long getTerakhir() {
-		return terakhirDipilih;
-	}
+    public void setTerakhirDipilih(long terakhirDipilih) {
+        this.terakhirDipilih = terakhirDipilih;
+    }
 
-	public void setTerakhir(long terakhirDipilih) {
-		this.terakhirDipilih = terakhirDipilih;
-	}
+    public String getPathFoto() {
+        return pathFoto;
+    }
 
+    public void setPathFoto(String pathFoto) {
+        this.pathFoto = pathFoto;
+    }
 }
+

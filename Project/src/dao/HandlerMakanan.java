@@ -21,16 +21,18 @@ public class HandlerMakanan extends DatabaseHandler {
 	private static final String namaMakanan = "nama";
 	private static final String kalori = "kalori";
 	private static final String protein = "protein";
+    private static final String karbo = "karbohidrat";
 	private static final String lemak = "lemak";
-	private static final String karbo = "karbohidrat";
-	private static final String kalsium = "kalsium";
-	private static final String persentase = "persentase";
+	private static final String natrium = "natrium";
+	private static final String porsi = "porsi";
+    private static final String bobot = "bobot";
 	private static final String rating = "rating";
 	private static final String jenis = "jenis";
 	private static final String hewani = "hewani";
 	private static final String seafood = "seafood";
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
+    private static final String pathFoto = "pathFoto";
 
 	public static HandlerMakanan getInstance(Context context) {
 		if (sInstance == null) {
@@ -51,11 +53,12 @@ public class HandlerMakanan extends DatabaseHandler {
 		values.put(namaMakanan, makanan.getNama());
 		values.put(kalori, makanan.getKalori());
 		values.put(protein, makanan.getProtein());
-		values.put(lemak, makanan.getLemak());
-		values.put(karbo, makanan.getKarbohidrat());
-		values.put(kalsium, makanan.getKalsium());
+        values.put(karbo, makanan.getKarbohidrat());
+        values.put(lemak, makanan.getLemak());
+		values.put(natrium, makanan.getNatrium());
+        values.put(porsi, makanan.getPorsi());
+        values.put(bobot, makanan.getBobot());
 		values.put(rating, makanan.getRating());
-		values.put(persentase, makanan.getPersentase());
 		values.put(jenis, makanan.getJenisMakanan());
 		if (makanan.isHewani()) {
 			h = 1;
@@ -69,7 +72,8 @@ public class HandlerMakanan extends DatabaseHandler {
 		values.put(hewani, h);
 		values.put(seafood, s);
 		values.put(kacang, k);
-		values.put(terakhir, makanan.getTerakhir());
+		values.put(terakhir, makanan.getTerakhirDipilih());
+        values.put(pathFoto, makanan.getPathFoto());
 
 		db.insert(tabelMakanan, null, values);
 		db.close();
@@ -80,22 +84,26 @@ public class HandlerMakanan extends DatabaseHandler {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(tabelMakanan, new String[] { namaMakanan,
-				"berat", kalori, protein, lemak, karbo, kalsium, rating,
-				persentase, jenis, hewani, seafood, kacang, terakhir },
+				kalori, protein, karbo, lemak, natrium, porsi, bobot,
+				rating, jenis, hewani, seafood, kacang, terakhir, pathFoto },
 				namaMakanan + "=?", new String[] { String.valueOf(nama) },
 				null, null, null, null);
 
 		Makanan makanan = null;
 		if (cursor.moveToFirst()) {
-			makanan = new Makanan(cursor.getString(0), Integer.parseInt(cursor
-					.getString(1)), Integer.parseInt(cursor.getString(2)),
+			makanan = new Makanan(cursor.getString(0),
+                    Integer.parseInt(cursor.getString(1)),
+                    Double.parseDouble(cursor.getString(2)),
 					Double.parseDouble(cursor.getString(3)),
 					Double.parseDouble(cursor.getString(4)),
 					Double.parseDouble(cursor.getString(5)),
-					Double.parseDouble(cursor.getString(6)),
+					cursor.getString(6),
 					Integer.parseInt(cursor.getString(7)),
-					Integer.parseInt(cursor.getString(8)), cursor.getString(9),
-					Long.parseLong(cursor.getString(13)));
+					Integer.parseInt(cursor.getString(8)),
+                    cursor.getString(9),
+                    false, false, false,
+					Long.parseLong(cursor.getString(13)),
+                    cursor.getString(14));
 
 			// retrieve data alergi
 			int h = Integer.parseInt(cursor.getString(10));
@@ -120,17 +128,17 @@ public class HandlerMakanan extends DatabaseHandler {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
-		if (cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
-				makanan.setBerat(Integer.parseInt(cursor.getString(1)));
-				makanan.setKalori(Integer.parseInt(cursor.getString(2)));
-				makanan.setProtein(Double.parseDouble(cursor.getString(3)));
-				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(4)));
-				makanan.setLemak(Double.parseDouble(cursor.getString(5)));
-				makanan.setKalsium(Double.parseDouble(cursor.getString(6)));
-				makanan.setPersentase(Integer.parseInt(cursor.getString(7)));
+				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
+				makanan.setProtein(Double.parseDouble(cursor.getString(2)));
+				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(3)));
+				makanan.setLemak(Double.parseDouble(cursor.getString(4)));
+                makanan.setNatrium(Double.parseDouble(cursor.getString(5)));
+				makanan.setPorsi(cursor.getString(6));
+                makanan.setBobot(Integer.parseInt(cursor.getString(7)));
 				makanan.setRating(Integer.parseInt(cursor.getString(8)));
 				makanan.setJenisMakanan(cursor.getString(9));
 
@@ -142,7 +150,8 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setHewani(h == 1);
 				makanan.setSeafood(s == 1);
 				makanan.setKacang(k == 1);
-				makanan.setTerakhir(Long.parseLong(cursor.getString(13)));
+				makanan.setTerakhirDipilih(Long.parseLong(cursor.getString(13)));
+                makanan.setPathFoto(cursor.getString(14));
 
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
@@ -155,9 +164,9 @@ public class HandlerMakanan extends DatabaseHandler {
 
 	public List<Makanan> getRekomendasi() {
 		List<Makanan> makananList = new ArrayList<Makanan>();
-		// Select All Query
+		// algo rekomendasi?
 		SQLiteDatabase db = this.getWritableDatabase();
-		String selectQuery = "SELECT nama,berat,kalori FROM " + tabelMakanan
+		String selectQuery = "SELECT nama,kalori,porsi,bobot FROM " + tabelMakanan
 				+ " ORDER BY RANDOM() LIMIT 9";
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -166,8 +175,9 @@ public class HandlerMakanan extends DatabaseHandler {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
-				makanan.setBerat(Integer.parseInt(cursor.getString(1)));
-				makanan.setKalori(Integer.parseInt(cursor.getString(2)));
+				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
+				makanan.setPorsi(cursor.getString(2));
+                makanan.setBobot(Integer.parseInt(cursor.getString(3)));
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
 		}

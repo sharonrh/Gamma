@@ -30,9 +30,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// tabel makanan
-		String buatTabelMakanan = "CREATE TABLE makanan (nama TEXT PRIMARY KEY, berat INTEGER, kalori INTEGER, protein REAL, "
-				+ "lemak REAL, karbohidrat REAL, kalsium REAL, rating INTEGER, persentase INTEGER, jenis TEXT, hewani INTEGER, "
-				+ "seafood INTEGER, kacang INTEGER, terakhirDipilih INTEGER);";
+		String buatTabelMakanan = "CREATE TABLE makanan (nama TEXT PRIMARY KEY, kalori INTEGER, protein REAL, karbohidrat REAL, "
+				+ "lemak REAL, natrium REAL, porsi INTEGER, bobot INTEGER, rating INTEGER, jenis TEXT, hewani INTEGER, "
+				+ "seafood INTEGER, kacang INTEGER, terakhirDipilih INTEGER, pathFoto TEXT);";
 		db.execSQL(buatTabelMakanan);
 		// tabel laporan
 		String buatTabelLaporan = "CREATE TABLE laporan (id INTEGER PRIMARY KEY AUTOINCREMENT, waktu INTEGER, berat REAL, tinggi REAL);";
@@ -93,25 +93,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			while ((line = reader.readLine()) != null) {
 				String[] temp = line.split(",");
 
-				int isHewani = temp[9].charAt(0) == 'Y' ? 1 : 0;
-				int isSeafood = temp[10].charAt(0) == 'Y' ? 1 : 0;
-				int isKacang = temp[11].charAt(0) == 'Y' ? 1 : 0;
+				int isHewani = temp[10].charAt(0) == 'Y' ? 1 : 0;
+				int isSeafood = temp[11].charAt(0) == 'Y' ? 1 : 0;
+				int isKacang = temp[12].charAt(0) == 'Y' ? 1 : 0;
 
 				ContentValues values = new ContentValues();
 				values.put("nama", temp[0]);
-				values.put("berat", 100);
 				values.put("kalori", Integer.parseInt(temp[1]));
 				values.put("protein", Double.parseDouble(temp[2]));
-				values.put("lemak", Double.parseDouble(temp[3]));
-				values.put("karbohidrat", Double.parseDouble(temp[4]));
-				values.put("kalsium", Double.parseDouble(temp[5]));
-				values.put("rating", Integer.parseInt(temp[6]));
-				values.put("persentase", Integer.parseInt(temp[7]));
-				values.put("jenis", temp[8]);
+				values.put("karbohidrat", Double.parseDouble(temp[3]));
+                values.put("lemak", Double.parseDouble(temp[4]));
+				values.put("natrium", Double.parseDouble(temp[5]));
+                values.put("porsi", temp[6]);
+                values.put("bobot", Integer.parseInt(temp[7]));
+                values.put("rating", Integer.parseInt(temp[8]));
+				values.put("jenis", temp[9]);
 				values.put("hewani", isHewani);
 				values.put("seafood", isSeafood);
 				values.put("kacang", isKacang);
-				values.put("terakhirDipilih", 0);
+				values.put("terakhirDipilih", Long.parseLong(temp[13]));
+                values.put("pathFoto", temp[14]);
 
 				db.insert("makanan", null, values);
 			}
