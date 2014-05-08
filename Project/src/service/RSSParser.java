@@ -59,8 +59,9 @@ public class RSSParser {
 	private Entry readItem(XmlPullParser parser) throws XmlPullParserException,
 			IOException {
 		String title = null;
-		String summary = null;
+		String date = null;
 		String link = null;
+		String desc = null;
 		parser.require(XmlPullParser.START_TAG, null, "item");
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -70,15 +71,17 @@ public class RSSParser {
 			if (name.equals("title")) {
 				title = readTitle(parser);
 			} else if (name.equals("pubDate")) {
-				summary = readSummary(parser);
+				date = readDate(parser);
 			} else if (name.equals("link")) {
 				link = readLink(parser);
+			} else if (name.equals("description")) {
+				desc = readDesc(parser);
 			} else {
 				skip(parser);
 			}
 
 		}
-		return new Entry(title, summary, link);
+		return new Entry(title, date, link, desc);
 	}
 
 	// Processes title tags in the feed.
@@ -100,12 +103,21 @@ public class RSSParser {
 	}
 
 	// Processes summary tags in the feed.
-	private String readSummary(XmlPullParser parser) throws IOException,
+	private String readDate(XmlPullParser parser) throws IOException,
 			XmlPullParserException {
 		parser.require(XmlPullParser.START_TAG, null, "pubDate");
-		String summary = readText(parser);
+		String date = readText(parser);
 		parser.require(XmlPullParser.END_TAG, null, "pubDate");
-		return summary;
+		return date;
+	}
+
+	// Processes summary tags in the feed.
+	private String readDesc(XmlPullParser parser) throws IOException,
+			XmlPullParserException {
+		parser.require(XmlPullParser.START_TAG, null, "description");
+		String desc = readText(parser);
+		parser.require(XmlPullParser.END_TAG, null, "description");
+		return desc;
 	}
 
 	private String readText(XmlPullParser parser) throws IOException,
@@ -139,24 +151,30 @@ public class RSSParser {
 	public static class Entry {
 		public final String title;
 		public final String link;
-		public final String summary;
+		public final String date;
+		public final String desc;
 
-		public Entry(String title, String summary, String link) {
+		public Entry(String title, String date, String link, String desc) {
 			this.title = title;
-			this.summary = summary;
+			this.date = date;
 			this.link = link;
+			this.desc = desc;
 		}
 
 		public String getTitle() {
 			return title;
 		}
 
-		public String getSummary() {
-			return summary;
+		public String getDate() {
+			return date;
 		}
 
 		public String getLink() {
 			return link;
+		}
+
+		public String getDesc() {
+			return desc;
 		}
 	}
 }

@@ -79,7 +79,7 @@ class MyPerformanceArrayAdapter extends ArrayAdapter<Makanan> {
 		ViewHolder holder = (ViewHolder) rowView.getTag();
 
 		Makanan m = rekList.get(position);
-		holder.text.setText(m.getNama() + " (" + m.getBerat() + " mg)");
+		holder.text.setText(m.getNama() + " (" + m.getBobot() + " mg)");
 		holder.subtitle.setText("" + m.getKalori() + " kkal");
 
 		if (count[position]) {

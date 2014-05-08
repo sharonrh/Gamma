@@ -1,7 +1,6 @@
 package view;
 
 import java.io.ByteArrayOutputStream;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -14,11 +13,10 @@ import service.RSSParser;
 import service.RSSParser.Entry;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.ListFragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -43,30 +41,25 @@ public class RSSFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
-	
+
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		
+
 		View v = inflater.inflate(R.layout.fragment_artikel, container, false);
 		list = (ListView) v.findViewById(R.id.listArtikel);
-		
+
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			    //you might want to use 'view' here
-				  Entry e = (Entry) parent.getItemAtPosition(position);
-				  showAlert(e.link);
-			  }
-			});
-		
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// you might want to use 'view' here
+				Entry e = (Entry) parent.getItemAtPosition(position);
+				showAlert(e.link);
+			}
+		});
+
 		return v;
 	}
-
-	//@Override
-	//public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		//Entry e = (Entry) parent.getItemAtPosition(position);
-		//showAlert(e.link);
-	//}
 
 	@Override
 	public void onStart() {
@@ -74,10 +67,16 @@ public class RSSFragment extends Fragment {
 		new RssFeedTask().execute(
 				"http://www.health.com/health/diet-fitness/feed",
 				"http://www.situskesehatan.com/feed");
-		// new RssFeedTask().execute("http://www.situskesehatan.com/feed");
 	}
 
 	private class RssFeedTask extends AsyncTask<String, Void, List<Entry>> {
+
+		private ProgressDialog dialog = new ProgressDialog(getActivity());
+
+		protected void onPreExecute() {
+			dialog.setMessage("Mengambil data.. Harap tunggu...");
+			dialog.show();
+		}
 
 		@Override
 		protected List<Entry> doInBackground(String... urls) {
@@ -87,10 +86,7 @@ public class RSSFragment extends Fragment {
 				String feed = getRssFeed(urls[0]);
 				RSSParser parser = new RSSParser();
 				result = parser.parse(feed);
-				System.out.println("size= " + result.size());
 				result.addAll(parser.parse(getRssFeed(urls[1])));
-				System.out.println("size stelah addAll= " + result.size());
-
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -101,13 +97,15 @@ public class RSSFragment extends Fragment {
 
 		@Override
 		protected void onPostExecute(List<Entry> rssFeed) {
+			dialog.dismiss();
 			if (rssFeed != null) {
 				list.setAdapter(new RSSArrayAdapter(getActivity(), rssFeed));
-				
-				//ubah tinggi listview katalog
+
+				// ubah tinggi listview katalog
 				data = rssFeed;
-				LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, (data.size()*70));
-			    list.setLayoutParams(mParam);
+				LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(
+						LayoutParams.MATCH_PARENT, (data.size() * 130));
+				list.setLayoutParams(mParam);
 			}
 		}
 	}
@@ -132,7 +130,7 @@ public class RSSFragment extends Fragment {
 				in.close();
 			}
 			System.out.println("dc-ed");
-			conn.disconnect();
+			conn.disconnect(); // liat ntar mesti diapus ga
 		}
 		return rssFeed;
 	}
@@ -167,7 +165,9 @@ public class RSSFragment extends Fragment {
 
 	static class ViewHolder {
 		public TextView title;
-		public TextView subtitle;
+		public TextView date;
+		public TextView desc;
+
 	}
 
 	class RSSArrayAdapter extends ArrayAdapter<Entry> {
@@ -190,16 +190,18 @@ public class RSSFragment extends Fragment {
 				ViewHolder viewHolder = new ViewHolder();
 				viewHolder.title = (TextView) convertView
 						.findViewById(R.id.judulArtikel);
-				viewHolder.subtitle = (TextView) convertView
-						.findViewById(R.id.penulisAndSite);
+				viewHolder.date = (TextView) convertView
+						.findViewById(R.id.dateArtikel);
+				viewHolder.desc = (TextView) convertView
+						.findViewById(R.id.kutipan);
 
 				convertView.setTag(viewHolder);
 
 			}
 			ViewHolder holder = (ViewHolder) convertView.getTag();
 			holder.title.setText(set.getTitle());
-			holder.subtitle.setText(set.getSummary());
-
+			holder.date.setText(set.getDate());
+			holder.desc.setText(set.getDesc());
 			return convertView;
 		}
 	}
