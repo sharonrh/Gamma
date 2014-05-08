@@ -2,20 +2,26 @@ package model;
 
 public class Achievement {
 	private String nama;
+    private boolean terkunci;
 	private String deskripsi;
-	private double requirement;
+	private double progress;
 	private boolean isGet;
+    private String pathLogo;
 	
-	public Achievement(String nama, String deskripsi, double requirement,
-			boolean isGet) {
+	public Achievement(String nama, boolean isGet, String deskripsi, double progress,
+			String pathLogo) {
 		super();
 		this.nama = nama;
 		this.deskripsi = deskripsi;
-		this.requirement = requirement;
+		this.progress = progress;
 		this.isGet = isGet;
+        this.pathLogo = pathLogo;
 	}
 
-	public String getNama() {
+    public Achievement() {
+    }
+
+    public String getNama() {
 		return nama;
 	}
 
@@ -23,7 +29,7 @@ public class Achievement {
 		this.nama = nama;
 	}
 
-	public String getDeskripsi() {
+    public String getDeskripsi() {
 		return deskripsi;
 	}
 
@@ -31,12 +37,12 @@ public class Achievement {
 		this.deskripsi = deskripsi;
 	}
 
-	public double getRequirement() {
-		return requirement;
+	public double getProgress() {
+		return progress;
 	}
 
-	public void setRequirement(double requirement) {
-		this.requirement = requirement;
+	public void setProgress(double progress) {
+		this.progress = progress;
 	}
 
 	public boolean isGet() {
@@ -46,5 +52,12 @@ public class Achievement {
 	public void setGet(boolean isGet) {
 		this.isGet = isGet;
 	}
-	
+
+    public String getPathLogo() {
+        return pathLogo;
+    }
+
+    public void setPathLogo(String pathLogo) {
+        this.pathLogo = pathLogo;
+    }
 }
