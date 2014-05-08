@@ -13,35 +13,60 @@ import org.xmlpull.v1.XmlPullParserException;
 import service.RSSParser;
 import service.RSSParser.Entry;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gamma.R;
 
-public class RSSFragment extends ListFragment {
+public class RSSFragment extends Fragment {
 
 	private static final int MAX_RETRIES = 3;
+	private static ListView list;
+	private static List<Entry> data;
 
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
-
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		Entry e = (Entry) l.getItemAtPosition(position);
-		showAlert(e.link);
+	
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// Inflate the layout for this fragment
+		
+		View v = inflater.inflate(R.layout.fragment_artikel, container, false);
+		list = (ListView) v.findViewById(R.id.listArtikel);
+		
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			    //you might want to use 'view' here
+				  Entry e = (Entry) parent.getItemAtPosition(position);
+				  showAlert(e.link);
+			  }
+			});
+		
+		return v;
 	}
+
+	//@Override
+	//public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		//Entry e = (Entry) parent.getItemAtPosition(position);
+		//showAlert(e.link);
+	//}
 
 	@Override
 	public void onStart() {
@@ -77,7 +102,12 @@ public class RSSFragment extends ListFragment {
 		@Override
 		protected void onPostExecute(List<Entry> rssFeed) {
 			if (rssFeed != null) {
-				setListAdapter(new RSSArrayAdapter(getActivity(), rssFeed));
+				list.setAdapter(new RSSArrayAdapter(getActivity(), rssFeed));
+				
+				//ubah tinggi listview katalog
+				data = rssFeed;
+				LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, (data.size()*70));
+			    list.setLayoutParams(mParam);
 			}
 		}
 	}
@@ -145,7 +175,7 @@ public class RSSFragment extends ListFragment {
 		private LayoutInflater inflater;
 
 		public RSSArrayAdapter(Context context, List<Entry> feeds) {
-			super(context, R.layout.simplerow, R.id.Title, feeds);
+			super(context, R.layout.list_artikel, R.id.Title, feeds);
 			// Cache the LayoutInflate to avoid asking for a new one each time.
 			inflater = LayoutInflater.from(context);
 		}
@@ -155,13 +185,13 @@ public class RSSFragment extends ListFragment {
 			Entry set = (Entry) this.getItem(position);
 
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.simplerow, null);
+				convertView = inflater.inflate(R.layout.list_artikel, null);
 
 				ViewHolder viewHolder = new ViewHolder();
 				viewHolder.title = (TextView) convertView
-						.findViewById(R.id.Title);
+						.findViewById(R.id.judulArtikel);
 				viewHolder.subtitle = (TextView) convertView
-						.findViewById(R.id.subTitle);
+						.findViewById(R.id.penulisAndSite);
 
 				convertView.setTag(viewHolder);
 

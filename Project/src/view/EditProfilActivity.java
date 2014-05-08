@@ -232,10 +232,6 @@ public class EditProfilActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				finish();
-				Intent i = new Intent(getApplicationContext(),
-						MainActivity.class);
-				i.putExtra("nomorFragment", 3);
-				startActivity(i);
 			}
 		});
 
