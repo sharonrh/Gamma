@@ -21,10 +21,6 @@ public class RekomendasiController {
 
 	}
 
-	public List<Makanan> getListMakanan() {
-		return db.getAllMakanan();
-	}
-
 	public List<Makanan> getRekomendasi() {
 		rekomen = db.getRekomendasi();
 		return rekomen;
