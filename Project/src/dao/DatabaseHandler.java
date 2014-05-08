@@ -44,6 +44,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String buatTabelProfil = "CREATE TABLE profil (id INTEGER PRIMARY KEY, nama TEXT, umur INTEGER, berat REAL, tinggi REAL, target REAL, gender INTEGER, "
 				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, hewani INTEGER, foto TEXT, startTime REAL, endTime REAL);";
 		db.execSQL(buatTabelProfil);
+        //tabel achievement
+        String buatTabelAchievement = "CREATE TABLE achievement (nama TEXT PRIMARY KEY, terkunci INTEGER, deskripsi TEXT, progress REAL, pathLogo TEXT);";
+        db.execSQL(buatTabelAchievement);
 
 		// isi tabel profil dengan data awal
 		ContentValues values = new ContentValues();
@@ -74,6 +77,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS laporan");
 		db.execSQL("DROP TABLE IF EXISTS notifikasi");
 		db.execSQL("DROP TABLE IF EXISTS profil");
+        db.execSQL("DROP TABLE IF EXISTS achievement");
 		// Create tables again
 		onCreate(db);
 	}
@@ -121,4 +125,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			e.printStackTrace();
 		}
 	}
+
+    private void initAchievement (Context context, SQLiteDatabase db) {
+        AssetManager am = context.getAssets();
+        InputStream is;
+        try {
+            is = am.open("achievement.csv");
+
+            InputStreamReader isr = new InputStreamReader(is);
+
+            BufferedReader reader = new BufferedReader(isr);
+            reader.readLine(); // baca header
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] temp = line.split(",");
+
+                ContentValues values = new ContentValues();
+                values.put("nama", temp[0]);
+                values.put("terkunci", Integer.parseInt(temp[1]));
+                values.put("deskripsi", temp[2]);
+                values.put("progress", Double.parseDouble(temp[3]));
+                values.put("pathLogo", temp[4]);
+                db.insert("achievement", null, values);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }
