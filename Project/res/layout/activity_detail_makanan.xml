@@ -24,8 +24,8 @@
 
                 <ImageView
                     android:id="@+id/fotoDetailMakanan"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/alpokat" />
 
             </GridLayout>
@@ -33,6 +33,7 @@
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:rowCount="3" >
 
                 <GridLayout
@@ -40,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_row="0"
                     android:background="@drawable/layer_card_background"
                     android:columnCount="1"
@@ -52,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="Makanan"
-                        android:textColor="@color/lumut"
+                        android:textColor="@color/hijau_donker"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -67,14 +68,16 @@
                 </GridLayout>
 
                 <GridLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_row="1"
                     android:background="@drawable/layer_card_background"
                     android:columnCount="2"
-                    android:padding="5dp" >
+                    android:padding="5dp"
+                    android:layout_gravity="center_horizontal" >
 
                     <!--
                     <ImageView
@@ -142,12 +145,14 @@
                     android:layout_column="0"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="2"
-                    android:columnCount="1" >
+                    android:columnCount="1"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp" >
 
                     <Button
                         android:id="@+id/rateBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
                         android:background="@drawable/button_style"
                         android:text="Rate!" />
                 </GridLayout>

@@ -32,6 +32,7 @@ public final class R {
         public static final int counter_text_color=0x7f05000c;
         public static final int green=0x7f050002;
         public static final int hijau=0x7f050004;
+        public static final int hijau_donker=0x7f050013;
         public static final int hijau_pencet=0x7f050006;
         public static final int jeruk=0x7f050005;
         public static final int lime=0x7f05000d;

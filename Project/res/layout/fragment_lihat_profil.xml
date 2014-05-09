@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="BMI"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -106,7 +106,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
                 android:text="Info Personal"
-                android:textColor="@color/lime"
+                android:textColor="@color/hijau_donker"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -214,7 +214,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
                 android:text="Data Tambahan"
-                android:textColor="@color/lime"
+                android:textColor="@color/hijau_donker"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

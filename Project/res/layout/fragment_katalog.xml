@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Makanan Pokok"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Sayur"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textStyle="bold" />
 
                 <TextView
@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Buah"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textStyle="bold" />
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Lauk Pauk"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textStyle="bold" />
 
                 <TextView
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Minuman"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textStyle="bold" />
 
                 <TextView
