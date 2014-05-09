@@ -1,57 +1,57 @@
 Bahan Makanan,Kalori,Protein,Karbohidrat,Lemak,Natrium,Porsi,Bobot,Rating,Jenis,Hewani,Seafood,Kacang,Terakhir dipilih,Path foto
-Bayam,37,2.65,3.39,2.07,262,porsi,92,0,Sayuran,N,N,N,0,\gambar_makanan\bayam.jpg
-Brokoli,32,2.18,6.56,0.38,256,mangkok,90,0,Sayuran,N,N,N,0,\gambar_makanan\brokoli.jpg
-Jagung,123,4.6,27.2,1.69,21,bonggol,500,0,Pokok,N,N,N,0,\gambar_makanan\jagung.jpg
-Jamur,22,1.68,4.1,0.37,186,porsi,78,0,Sayuran,N,N,N,0,\gambar_makanan\jamur.jpg
-Kubis,33,0.77,3.4,2.18,215,porsi,78,0,Sayuran,N,N,N,0,\gambar_makanan\kubis.jpg
-Labu,58,1.35,9.92,2.19,208,porsi,78,0,Sayuran,N,N,N,0,\gambar_makanan\labu.jpg
-Ubi Jalar,180,4.02,41.42,0.3,72,mangkok,200,0,Pokok,N,N,N,0,\gambar_makanan\ubijalar.jpg
-Terong,33,0.39,4.16,1.92,244,porsi,50,0,Sayuran,N,N,N,0,\gambar_makanan\terong.jpg
-Wortel,41,0.56,6.07,1.88,233,porsi,76,0,Sayuran,N,N,N,0,\gambar_makanan\wortel.jpg
-Tumis Kangkung,106,2.76,4.31,9.4,414,porsi,85,0,Sayuran,N,N,N,0,\gambar_makanan\tumiskangkung.jpg
-Alpukat,322,4.02,17.15,29.47,14,buah,200,0,Buah,N,N,N,0,\gambar_makanan\alpukat.jpg
-Anggur,55,0.58,14.48,0.13,2,porsi,80,0,Buah,N,N,N,0,\gambar_makanan\anggur.jpg
-Apel Fuji,71,0.36,19.06,0.24,1,buah,150,0,Buah,N,N,N,0,\gambar_makanan\apelfuji.jpg
-Jeruk,62,1.23,15.39,0.16,0,buah,130,0,Buah,N,N,N,0,\gambar_makanan\jeruk.jpg
-Mangga (irisan),107,0.84,28.05,0.45,3,mangkok,160,0,Buah,N,N,N,0,\gambar_makanan\mangga(irisan).jpg
-Pir,96,0.63,25.66,0.2,2,buah,225,0,Buah,N,N,N,0,\gambar_makanan\pir.jpg
-Semangka,86,1.74,21.52,0.43,3,iris,200,0,Buah,N,N,N,0,\gambar_makanan\semangka.jpg
-Pepaya,55,0.85,13.73,0.2,4,mangkok,140,0,Buah,N,N,N,0,\gambar_makanan\pepaya.jpg
-Nanas,40,0.45,10.61,0.1,1,iris,80,0,Buah,N,N,N,0,\gambar_makanan\nanas.jpg
-Pisang,105,1.29,26.95,0.39,1,buah,110,0,Buah,N,N,N,0,\gambar_makanan\pisang.jpg
-Dada Ayam,191,28.96,0,7.57,385,porsi,98,0,Lauk,Y,N,N,0,\gambar_makanan\dadaayam.jpg
-Paha Ayam,152,15.41,0,9.52,252,porsi,62,0,Lauk,Y,N,N,0,\gambar_makanan\pahaayam.jpg
-Sayap Ayam,92,8.52,0,6.18,129,porsi,32,0,Lauk,Y,N,N,0,\gambar_makanan\sayapayam.jpg
-Sate Ayam,101,8.79,2.19,6.67,160,porsi,45,0,Lauk,Y,N,N,0,\gambar_makanan\sateayam.jpg
-Ayam Panggang,111,20.33,0,2.7,75,porsi,100,0,Lauk,Y,N,N,0,\gambar_makanan\ayampanggang.jpg
-Bakso Sapi,283,17.37,10.61,18.43,669,mangkok,140,0,Lauk,Y,N,N,0,\gambar_makanan\baksosapi.jpg
-Sapi Panggang,227,22.02,0,14.72,184,porsi,85,0,Lauk,Y,N,N,0,\gambar_makanan\sapipanggang.jpg
-Kornet Sapi,251,18.17,0.47,18.98,1134,porsi,100,0,Lauk,Y,N,N,0,\gambar_makanan\kornetsapi.jpg
-Steak Sapi,214,23.2,0,12.76,317,porsi,85,0,Lauk,Y,N,N,0,\gambar_makanan\steaksapi.jpg
-Sosis Sapi,42,1.44,0.52,3.78,146,potong,12,0,Lauk,Y,N,N,0,\gambar_makanan\sosissapi.jpg
-Nasi,242,4.43,53.18,0.39,0,mangkok,186,0,Pokok,N,N,N,0,\gambar_makanan\nasi.jpg
-Nasi Uduk,260,4.07,32.84,12.95,317,porsi,160,0,Pokok,N,N,N,0,\gambar_makanan\nasiuduk.jpg
-Nasi Goreng,250,9.39,31.38,9.28,618,porsi,149,0,Pokok,N,N,N,0,\gambar_makanan\nasigoreng.jpg
-Bihun,192,1.6,43.82,0.35,33,mangkok,176,0,Pokok,N,N,N,0,\gambar_makanan\bihun.jpg
-Spageti + Saus,379,17.91,46.18,13.39,965,mangkok,248,0,,N,N,N,0,\gambar_makanan\spageti+saus.jpg
-Spageti,220,8.06,42.95,1.29,325,mangkok,140,0,,N,N,N,0,\gambar_makanan\spageti.jpg
-Cumi Goreng,106,12.86,8.42,1.84,284,porsi,85,0,,N,N,N,0,\gambar_makanan\cumigoreng.jpg
-Udang,109,20.97,0.94,1.79,466,mangkok,76,0,,N,N,N,0,\gambar_makanan\udang.jpg
-Lobster Panggang,145,24.72,1.55,3.76,787,ekor,225,0,,N,N,N,0,\gambar_makanan\lobsterpanggang.jpg
-Kepiting Panggang,116,16.07,0.09,5.3,458,porsi,85,0,,N,N,N,0,\gambar_makanan\kepitingpanggang.jpg
-Kerang Rebus,90,13.75,1.98,2.63,359,porsi,85,0,,N,N,N,0,\gambar_makanan\kerangrebus.jpg
-Tempura Udang,123,15.48,8.8,2.37,364,porsi,85,0,,N,N,N,0,\gambar_makanan\tempuraudang.jpg
-Nila Goreng,128,26.15,0,2.65,56,porsi,100,0,,N,N,N,0,\gambar_makanan\nilagoreng.jpg
-Kakap,218,44.71,0,2.92,140,irisan,218,0,,N,N,N,0,\gambar_makanan\kakap.jpg
-Salmon Panggang,145,20.37,0.42,6.43,397,porsi,85,0,,N,N,N,0,\gambar_makanan\salmonpanggang.jpg
-Lele,233,17.04,8.28,14.09,386,ekor,98,0,,N,N,N,0,\gambar_makanan\lele.jpg
-Kembung Balado,245,31.7,2.99,11.06,416,porsi,150,0,,N,N,N,0,\gambar_makanan\kembungbalado.jpg
-Tuna,62,13.33,0,0.54,21,porsi,57,0,,N,N,N,0,\gambar_makanan\tuna.jpg
-Kacang Almond,164,6.03,5.6,14.36,0,ons,29,0,,N,N,N,0,\gambar_makanan\kacangalmond.jpg
-Sangrai Asin,164,6.63,6.02,13.9,228,porsi,28,0,,N,N,N,0,\gambar_makanan\sangraiasin.jpg
-Kacang Mete,165,4.77,8.55,13.54,87,ons,29,0,,N,N,N,0,\gambar_makanan\kacangmete.jpg
-Tahu Goreng,35,2.23,1.36,2.62,2,buah,13,0,,N,N,N,0,\gambar_makanan\tahugoreng.jpg
-Susu Kedelai,127,10.98,12.08,4.7,135,gelas,244,0,,N,N,N,0,\gambar_makanan\susukedelai.jpg
-Yogurt,143,11.92,15.98,3.52,159,porsi,230,0,,N,N,N,0,\gambar_makanan\yogurt.jpg
-Susu Murni,146,7.86,11.03,7.93,98,gelas,244,0,,N,N,N,0,\gambar_makanan\susumurni.jpg
-Susu,122,8.03,11.49,4.88,100,gelas,244,0,,N,N,N,0,\gambar_makanan\susu.jpg
+Bayam,37,2.65,3.39,2.07,262,porsi,92,0,Sayuran,N,N,N,0,gambar_makanan/bayam.jpg
+Brokoli,32,2.18,6.56,0.38,256,mangkok,90,0,Sayuran,N,N,N,0,gambar_makanan/brokoli.jpg
+Jagung,123,4.6,27.2,1.69,21,bonggol,500,0,Pokok,N,N,N,0,gambar_makanan/jagung.jpg
+Jamur,22,1.68,4.1,0.37,186,porsi,78,0,Sayuran,N,N,N,0,gambar_makanan/jamur.jpg
+Kubis,33,0.77,3.4,2.18,215,porsi,78,0,Sayuran,N,N,N,0,gambar_makanan/kubis.jpg
+Labu,58,1.35,9.92,2.19,208,porsi,78,0,Sayuran,N,N,N,0,gambar_makanan/labu.jpg
+Ubi Jalar,180,4.02,41.42,0.3,72,mangkok,200,0,Pokok,N,N,N,0,gambar_makanan/ubijalar.jpg
+Terong,33,0.39,4.16,1.92,244,porsi,50,0,Sayuran,N,N,N,0,gambar_makanan/terong.jpg
+Wortel,41,0.56,6.07,1.88,233,porsi,76,0,Sayuran,N,N,N,0,gambar_makanan/wortel.jpg
+Tumis Kangkung,106,2.76,4.31,9.4,414,porsi,85,0,Sayuran,N,N,N,0,gambar_makanan/tumiskangkung.jpg
+Alpukat,322,4.02,17.15,29.47,14,buah,200,0,Buah,N,N,N,0,gambar_makanan/alpukat.jpg
+Anggur,55,0.58,14.48,0.13,2,porsi,80,0,Buah,N,N,N,0,gambar_makanan/anggur.jpg
+Apel Fuji,71,0.36,19.06,0.24,1,buah,150,0,Buah,N,N,N,0,gambar_makanan/apelfuji.jpg
+Jeruk,62,1.23,15.39,0.16,0,buah,130,0,Buah,N,N,N,0,gambar_makanan/jeruk.jpg
+Mangga (irisan),107,0.84,28.05,0.45,3,mangkok,160,0,Buah,N,N,N,0,gambar_makanan/mangga(irisan).jpg
+Pir,96,0.63,25.66,0.2,2,buah,225,0,Buah,N,N,N,0,gambar_makanan/pir.jpg
+Semangka,86,1.74,21.52,0.43,3,iris,200,0,Buah,N,N,N,0,gambar_makanan/semangka.jpg
+Pepaya,55,0.85,13.73,0.2,4,mangkok,140,0,Buah,N,N,N,0,gambar_makanan/pepaya.jpg
+Nanas,40,0.45,10.61,0.1,1,iris,80,0,Buah,N,N,N,0,gambar_makanan/nanas.jpg
+Pisang,105,1.29,26.95,0.39,1,buah,110,0,Buah,N,N,N,0,gambar_makanan/pisang.jpg
+Dada Ayam,191,28.96,0,7.57,385,porsi,98,0,Lauk,Y,N,N,0,gambar_makanan/dadaayam.jpg
+Paha Ayam,152,15.41,0,9.52,252,porsi,62,0,Lauk,Y,N,N,0,gambar_makanan/pahaayam.jpg
+Sayap Ayam,92,8.52,0,6.18,129,porsi,32,0,Lauk,Y,N,N,0,gambar_makanan/sayapayam.jpg
+Sate Ayam,101,8.79,2.19,6.67,160,porsi,45,0,Lauk,Y,N,N,0,gambar_makanan/sateayam.jpg
+Ayam Panggang,111,20.33,0,2.7,75,porsi,100,0,Lauk,Y,N,N,0,gambar_makanan/ayampanggang.jpg
+Bakso Sapi,283,17.37,10.61,18.43,669,mangkok,140,0,Lauk,Y,N,N,0,gambar_makanan/baksosapi.jpg
+Sapi Panggang,227,22.02,0,14.72,184,porsi,85,0,Lauk,Y,N,N,0,gambar_makanan/sapipanggang.jpg
+Kornet Sapi,251,18.17,0.47,18.98,1134,porsi,100,0,Lauk,Y,N,N,0,gambar_makanan/kornetsapi.jpg
+Steak Sapi,214,23.2,0,12.76,317,porsi,85,0,Lauk,Y,N,N,0,gambar_makanan/steaksapi.jpg
+Sosis Sapi,42,1.44,0.52,3.78,146,potong,12,0,Lauk,Y,N,N,0,gambar_makanan/sosissapi.jpg
+Nasi,242,4.43,53.18,0.39,0,mangkok,186,0,Pokok,N,N,N,0,gambar_makanan/nasi.jpg
+Nasi Uduk,260,4.07,32.84,12.95,317,porsi,160,0,Pokok,N,N,N,0,gambar_makanan/nasiuduk.jpg
+Nasi Goreng,250,9.39,31.38,9.28,618,porsi,149,0,Pokok,N,N,N,0,gambar_makanan/nasigoreng.jpg
+Bihun,192,1.6,43.82,0.35,33,mangkok,176,0,Pokok,N,N,N,0,gambar_makanan/bihun.jpg
+Spageti + Saus,379,17.91,46.18,13.39,965,mangkok,248,0,,N,N,N,0,gambar_makanan/spageti+saus.jpg
+Spageti,220,8.06,42.95,1.29,325,mangkok,140,0,,N,N,N,0,gambar_makanan/spageti.jpg
+Cumi Goreng,106,12.86,8.42,1.84,284,porsi,85,0,,N,N,N,0,gambar_makanan/cumigoreng.jpg
+Udang,109,20.97,0.94,1.79,466,mangkok,76,0,,N,N,N,0,gambar_makanan/udang.jpg
+Lobster Panggang,145,24.72,1.55,3.76,787,ekor,225,0,,N,N,N,0,gambar_makanan/lobsterpanggang.jpg
+Kepiting Panggang,116,16.07,0.09,5.3,458,porsi,85,0,,N,N,N,0,gambar_makanan/kepitingpanggang.jpg
+Kerang Rebus,90,13.75,1.98,2.63,359,porsi,85,0,,N,N,N,0,gambar_makanan/kerangrebus.jpg
+Tempura Udang,123,15.48,8.8,2.37,364,porsi,85,0,,N,N,N,0,gambar_makanan/tempuraudang.jpg
+Nila Goreng,128,26.15,0,2.65,56,porsi,100,0,,N,N,N,0,gambar_makanan/nilagoreng.jpg
+Kakap,218,44.71,0,2.92,140,irisan,218,0,,N,N,N,0,gambar_makanan/kakap.jpg
+Salmon Panggang,145,20.37,0.42,6.43,397,porsi,85,0,,N,N,N,0,gambar_makanan/salmonpanggang.jpg
+Lele,233,17.04,8.28,14.09,386,ekor,98,0,,N,N,N,0,gambar_makanan/lele.jpg
+Kembung Balado,245,31.7,2.99,11.06,416,porsi,150,0,,N,N,N,0,gambar_makanan/kembungbalado.jpg
+Tuna,62,13.33,0,0.54,21,porsi,57,0,,N,N,N,0,gambar_makanan/tuna.jpg
+Kacang Almond,164,6.03,5.6,14.36,0,ons,29,0,,N,N,N,0,gambar_makanan/kacangalmond.jpg
+Sangrai Asin,164,6.63,6.02,13.9,228,porsi,28,0,,N,N,N,0,gambar_makanan/sangraiasin.jpg
+Kacang Mete,165,4.77,8.55,13.54,87,ons,29,0,,N,N,N,0,gambar_makanan/kacangmete.jpg
+Tahu Goreng,35,2.23,1.36,2.62,2,buah,13,0,,N,N,N,0,gambar_makanan/tahugoreng.jpg
+Susu Kedelai,127,10.98,12.08,4.7,135,gelas,244,0,,N,N,N,0,gambar_makanan/susukedelai.jpg
+Yogurt,143,11.92,15.98,3.52,159,porsi,230,0,,N,N,N,0,gambar_makanan/yogurt.jpg
+Susu Murni,146,7.86,11.03,7.93,98,gelas,244,0,,N,N,N,0,gambar_makanan/susumurni.jpg
+Susu,122,8.03,11.49,4.88,100,gelas,244,0,,N,N,N,0,gambar_makanan/susu.jpg
