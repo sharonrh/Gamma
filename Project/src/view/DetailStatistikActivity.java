@@ -1,61 +1,57 @@
 package view;
 
+import model.Pengguna;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
+
 import com.example.gamma.R;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import controller.ProfilController;
 
-public class DetailStatistikActivity extends Activity{
-	
+public class DetailStatistikActivity extends Activity {
+
+	private TextView beratAwal, beratTarget, progress, durasiReal,
+			durasiTarget, statusBMI, achieve, artikel;
+
+	ProfilController con;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_detail_statistik);
-		Utils.setThemeToActivity(this);
-		
+
+		con = new ProfilController(getApplicationContext());
+
+		beratAwal = (TextView) findViewById(R.id.beratAwalStatistik);
+		beratTarget = (TextView) findViewById(R.id.beratTargetStatistik);
+		progress = (TextView) findViewById(R.id.progressStatistik);
+		durasiReal = (TextView) findViewById(R.id.durasiDietStatistik);
+		durasiTarget = (TextView) findViewById(R.id.durasiMaksimalStatistik);
+		statusBMI = (TextView) findViewById(R.id.statusBMIStatistik);
+		achieve = (TextView) findViewById(R.id.achivementStatistik);
+		artikel = (TextView) findViewById(R.id.artikelStatistik);
+
+		Pengguna p = con.getProfil();
+
+		beratAwal.setText(p.getBerat() + " kg");
+		beratTarget.setText(p.getTarget() + " kg");
+		progress.setText(p.getTarget() - p.getBerat() + " kg");
+
+		double bmi = p.getBerat() / Math.pow(p.getTinggi() / 100, 2);
+		statusBMI.setText(getBMIStatus(bmi));
 	}
-	
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // TODO Auto-generated method stub
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.detail, menu);
-        return true;
-    }
- 
 
- @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-    // action with ID pensil was selected
-    case R.id.detail:
-		Intent i = new Intent(this.getApplicationContext(),
-				MainActivity.class);
-		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-		//i.putExtra("nama", nama.getText());
-		//i.putExtra("umur", umur.getText());
-		//i.putExtra("beratSkrg", beratSekarang.getText());
-		////i.putExtra("beratTarget", beratTarget.getText());
-		//i.putExtra("tinggi", tinggi.getText());
-		//i.putExtra("jeKel", profil.getGender());
-		//i.putExtra("foto", profil.getFoto());
-		//i.putExtra("sayur", profil.isVegetarian());
-		//i.putExtra("gayaHidup", profil.getGayaHidup());
-		//i.putExtra("ikan", profil.isAlergiSeafood());
-		//i.putExtra("kacang", profil.isAlergiKacang());
-
-		this.startActivity(i);
-      break;
-    default:
-      break;
-    }
-
-    return true;
-  }
+	private String getBMIStatus(double bmi) {
+		if (bmi < 16) {
+			return "Severely underweight";
+		} else if (bmi < 18.5) {
+			return "Underweight";
+		} else if (bmi < 25) {
+			return "Normal";
+		} else if (bmi < 30) {
+			return "Overweight";
+		}
+		return "Obese";
+	}
 }

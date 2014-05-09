@@ -35,7 +35,6 @@ public class DetailMakananActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_detail_makanan);
 
 		// bintang1 = (ImageView) findViewById(R.id.bintang1Detail);

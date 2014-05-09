@@ -44,8 +44,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Utils.setThemeToActivity(this);
-
+	
 		mTitle = mDrawerTitle = getTitle();
 		mNavTitles = getResources().getStringArray(R.array.nav_drawer_items);
 		mNavIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
