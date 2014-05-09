@@ -80,6 +80,7 @@
         android:id="@+id/listLaporan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="4.90"
         android:cacheColorHint="@android:color/transparent"
         android:divider="@null"
         android:dividerHeight="10dp"
