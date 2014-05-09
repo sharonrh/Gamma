@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +22,7 @@ import com.example.gamma.R;
 
 import controller.SettingController;
 
-public class SettingFragment extends Fragment {
+public class SettingFragment extends PreferenceFragment {
 
 	ListView lv;
 	TextView tv;

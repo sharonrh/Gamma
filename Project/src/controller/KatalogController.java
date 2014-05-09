@@ -17,7 +17,11 @@ public class KatalogController {
 	public List<Makanan> getListMakanan() {
 		return db.getAllMakanan();
 	}
-	
+
+	public Makanan getMakanan(String nama) {
+		return db.getMakanan(nama);
+	}
+
 	public int[] getJenisCount() {
 		return db.getJenisCount();
 	}

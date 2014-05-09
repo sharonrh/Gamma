@@ -66,8 +66,9 @@ public class ProfilFragment extends Fragment {
 			paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 			canvas.drawBitmap(bitmap, rect, rect, paint);
 		} catch (NullPointerException e) {
-			// return bitmap;
+
 		} catch (OutOfMemoryError o) {
+			System.out.println("Memori habis untuk gambar");
 		}
 		return result;
 	}
