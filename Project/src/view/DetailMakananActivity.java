@@ -40,124 +40,130 @@ public class DetailMakananActivity extends Activity {
 
 		rate = (Button) findViewById(R.id.rateBtn);
 
-		SharedPreferences spre = this.getSharedPreferences("Your prefName",
-				Context.MODE_PRIVATE);
-		String mystring = spre.getString("key", "");
+		// SharedPreferences spre = this.getSharedPreferences("Your prefName",
+		// Context.MODE_PRIVATE);
+		// String mystring = spre.getString("key", "");
 
-		kontrol = new KatalogController(getApplicationContext());
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			String mystring = extras.getString("nama");
 
-		nama = (TextView) findViewById(R.id.namaDetailMakanan);
-		kalori = (TextView) findViewById(R.id.kaloriDetailMakanan);
-		karbo = (TextView) findViewById(R.id.karbohidrat);
-		protein = (TextView) findViewById(R.id.protein);
-		lemak = (TextView) findViewById(R.id.lemak);
-		sodium = (TextView) findViewById(R.id.sodium);
-		jenis = (TextView) findViewById(R.id.jenis);
-		hewani = (TextView) findViewById(R.id.hewani);
-		kacang = (TextView) findViewById(R.id.kacang);
-		seafood = (TextView) findViewById(R.id.seafood);
-		foto = (ImageView) findViewById(R.id.fotoDetailMakanan);
+			kontrol = new KatalogController(getApplicationContext());
 
-		nama.setText(mystring);
+			nama = (TextView) findViewById(R.id.namaDetailMakanan);
+			kalori = (TextView) findViewById(R.id.kaloriDetailMakanan);
+			karbo = (TextView) findViewById(R.id.karbohidrat);
+			protein = (TextView) findViewById(R.id.protein);
+			lemak = (TextView) findViewById(R.id.lemak);
+			sodium = (TextView) findViewById(R.id.sodium);
+			jenis = (TextView) findViewById(R.id.jenis);
+			hewani = (TextView) findViewById(R.id.hewani);
+			kacang = (TextView) findViewById(R.id.kacang);
+			seafood = (TextView) findViewById(R.id.seafood);
+			foto = (ImageView) findViewById(R.id.fotoDetailMakanan);
 
-		Makanan m = kontrol.getMakanan(mystring);
-		kalori.setText(m.getKalori() + " kal");
-		karbo.setText(m.getKarbohidrat() + " gr");
-		protein.setText(m.getProtein() + " gr");
-		lemak.setText(m.getLemak() + " gr");
-		sodium.setText(m.getNatrium() + " gr");
-		jenis.setText(m.getJenisMakanan());
+			nama.setText(mystring);
 
-		String stat = m.isHewani() ? "Ya" : "Tidak";
-		hewani.setText(stat);
-		stat = m.isKacang() ? "Ya" : "Tidak";
-		kacang.setText(stat);
-		stat = m.isSeafood() ? "Ya" : "Tidak";
-		seafood.setText(stat);
+			Makanan m = kontrol.getMakanan(mystring);
+			kalori.setText(m.getKalori() + " kal");
+			karbo.setText(m.getKarbohidrat() + " gr");
+			protein.setText(m.getProtein() + " gr");
+			lemak.setText(m.getLemak() + " gr");
+			sodium.setText(m.getNatrium() + " gr");
+			jenis.setText(m.getJenisMakanan());
 
-		// byte[] decodedString = Base64.decode(m.getPathFoto(),
-		// Base64.DEFAULT);
-		// Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
-		// decodedString.length);
-		// foto.setImageBitmap(decodedByte);
+			String stat = m.isHewani() ? "Ya" : "Tidak";
+			hewani.setText(stat);
+			stat = m.isKacang() ? "Ya" : "Tidak";
+			kacang.setText(stat);
+			stat = m.isSeafood() ? "Ya" : "Tidak";
+			seafood.setText(stat);
 
-		bintang1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-			}
-		});
+			// byte[] decodedString = Base64.decode(m.getPathFoto(),
+			// Base64.DEFAULT);
+			// Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString,
+			// 0,
+			// decodedString.length);
+			// foto.setImageBitmap(decodedByte);
 
-		bintang2.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-			}
-		});
+			bintang1.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					bintang2.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+					bintang3.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+					bintang4.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+					bintang5.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+				}
+			});
 
-		bintang3.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-			}
-		});
+			bintang2.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					bintang2.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang3.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+					bintang4.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+					bintang5.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+				}
+			});
 
-		bintang4.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
-			}
-		});
+			bintang3.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					bintang2.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang3.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang4.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+					bintang5.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+				}
+			});
 
-		bintang5.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-			}
-		});
+			bintang4.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					bintang2.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang3.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang4.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang5.setImageDrawable(getResources().getDrawable(
+							R.drawable.alergi_seafood));
+				}
+			});
 
-		rate.setOnClickListener(new View.OnClickListener() {
+			bintang5.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					bintang2.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang3.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang4.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+					bintang5.setImageDrawable(getResources().getDrawable(
+							R.drawable.achievement));
+				}
+			});
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
+			rate.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					finish();
+				}
+			});
+		}
 	}
 }

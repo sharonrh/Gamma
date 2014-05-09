@@ -212,7 +212,7 @@ public class ProfilFragment extends Fragment {
 			i.putExtra("ikan", profil.isAlergiSeafood());
 			i.putExtra("kacang", profil.isAlergiKacang());
 
-			getActivity().startActivity(i);
+			startActivity(i);
 			break;
 		default:
 			break;

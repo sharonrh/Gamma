@@ -110,7 +110,7 @@ public class StatistikFragment extends Fragment {
 		targetRenderer.setFillPoints(true);
 		targetRenderer.setLineWidth(3);
 		targetRenderer.setDisplayChartValues(true);
-		realizedRenderer.setDisplayChartValuesDistance(10);
+		realizedRenderer.setDisplayChartValuesDistance(1);
 
 		// Creating a XYMultipleSeriesRenderer to customize the whole chart
 		XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
