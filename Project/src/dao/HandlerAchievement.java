@@ -89,7 +89,7 @@ public class HandlerAchievement extends DatabaseHandler {
                     achievement.setGet(true);
                 }
                 achievement.setDeskripsi(cursor.getString(2));
-                achievement.setProgress(Double.parseDouble(cursor.getString(3)));
+                achievement.setProgress(Integer.parseInt(cursor.getString(3)));
                 achievement.setPathLogo(cursor.getString(4));
 
                 listAchievement.add(achievement);
@@ -106,7 +106,7 @@ public class HandlerAchievement extends DatabaseHandler {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        if (achievement.getProgress() == 1.0) {
+        if (achievement.getProgress() == 10) {
             achievement.setGet(true);
         }
         values.put(terkunci, achievement.isGet());

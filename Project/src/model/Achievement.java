@@ -4,11 +4,11 @@ public class Achievement {
 	private String nama;
     private boolean terkunci;
 	private String deskripsi;
-	private double progress;
+	private int progress;
 	private boolean isGet;
     private String pathLogo;
 	
-	public Achievement(String nama, boolean isGet, String deskripsi, double progress,
+	public Achievement(String nama, boolean isGet, String deskripsi, int progress,
 			String pathLogo) {
 		super();
 		this.nama = nama;
@@ -37,11 +37,11 @@ public class Achievement {
 		this.deskripsi = deskripsi;
 	}
 
-	public double getProgress() {
+	public int getProgress() {
 		return progress;
 	}
 
-	public void setProgress(double progress) {
+	public void setProgress(int progress) {
 		this.progress = progress;
 	}
 
