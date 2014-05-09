@@ -18,5 +18,4 @@ public class AchievementFragment extends Fragment {
 
 		return v;
 	}
-
 }

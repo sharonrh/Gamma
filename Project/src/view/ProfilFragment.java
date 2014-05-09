@@ -31,11 +31,9 @@ import controller.ProfilController;
 
 public class ProfilFragment extends Fragment {
 
-	private Button editProfil;
-	private TextView nama, umur, beratSekarang, beratTarget, tinggi, ikanTxt,
-			kacangTxt, sayurTxt, gayaTxt, mulaiTxt, akhirTxt;
-	private ImageView foto, genderImg, ikanImg, kacangImg, sayurImg, gaya1Img,
-			gaya2Img, gaya3Img, gaya4Img, mulaiImg, akhirImg;
+	private TextView nama, umur, beratSekarang, tinggi, bmi, gender, gayaHidup,
+			vegetarian, kacang, seafood;
+	private ImageView foto;
 	private ProfilController con;
 	private static Bitmap result;
 	private static Canvas canvas;
@@ -76,117 +74,58 @@ public class ProfilFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
 		View v = inflater.inflate(R.layout.fragment_lihat_profil, container,
 				false);
 
 		con = new ProfilController(getActivity().getApplicationContext());
 		profil = con.getProfil();
 
-		// editProfil = (Button) v.findViewById(R.id.editProfilButton);
 		nama = (TextView) v.findViewById(R.id.namaProfilTv);
 		umur = (TextView) v.findViewById(R.id.tahunProfilTv);
 		beratSekarang = (TextView) v.findViewById(R.id.beratProfilSekarangTv);
-		// beratTarget = (TextView) v.findViewById(R.id.beratProfilTargetTv);
 		tinggi = (TextView) v.findViewById(R.id.tinggiProfilTv);
 		foto = (ImageView) v.findViewById(R.id.avatarProfilTv);
-
-		// genderImg = (ImageView) v.findViewById(R.id.imageGender);
-
-		// mulaiImg = (ImageView) v.findViewById(R.id.imageMulai);
-		// mulaiTxt = (TextView) v.findViewById(R.id.textMulai);
-		// akhirImg = (ImageView) v.findViewById(R.id.imageSelesai);
-		// akhirTxt = (TextView) v.findViewById(R.id.textSelesai);
-
-		// ikanImg = (ImageView) v.findViewById(R.id.imageIkan);
-		// kacangImg = (ImageView) v.findViewById(R.id.imageKacang);
-		// sayurImg = (ImageView) v.findViewById(R.id.imageVegetarian);
-
-		// gaya1Img = (ImageView) v.findViewById(R.id.imageGayaHidup1);
+		gender = (TextView) v.findViewById(R.id.kelaminProfilTv);
+		gayaHidup = (TextView) v.findViewById(R.id.gayaProfilTv);
+		vegetarian = (TextView) v.findViewById(R.id.vegeProfilTv);
+		kacang = (TextView) v.findViewById(R.id.kacangProfilTv);
+		seafood = (TextView) v.findViewById(R.id.seafoodProfilTv);
+		bmi = (TextView) v.findViewById(R.id.bmiProfil);
 
 		nama.setText(profil.getNama());
 		umur.setText(profil.getUmur() + " tahun");
-		beratSekarang.setText(profil.getBerat() + " kg");
-		// beratTarget.setText(profil.getTarget() + " kg");
+
+		gayaHidup.setText(con.gayaHidup[profil.getGayaHidup()]);
+		vegetarian.setText(profil.isVegetarian() ? "Ya" : "Tidak");
+		kacang.setText(profil.isAlergiKacang() ? "Ya" : "Tidak");
+		seafood.setText(profil.isAlergiSeafood() ? "Ya" : "Tidak");
+
+		String g = profil.getGender() == 'P' ? "Pria" : "Wanita";
+		gender.setText(g);
+
+		double temp = profil.getBerat();
+		beratSekarang.setText(temp + " kg");
 		tinggi.setText(profil.getTinggi() + " cm");
+		temp /= profil.getTinggi();
+		bmi.setText(String.format("%.3f", temp));
 
 		byte[] decodedString = Base64.decode(profil.getFoto(), Base64.DEFAULT);
 		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
 				decodedString.length);
 
-		// foto.setImageBitmap(decodedByte);
-
 		foto.setImageBitmap(getRoundedRectBitmap(decodedByte, 100));
-
-		/**
-		 * if (profil.getGender() == 'P')
-		 * genderImg.setBackgroundResource(R.drawable.man); else
-		 * genderImg.setBackgroundResource(R.drawable.woman);
-		 */
-		// mulaiImg.setBackgroundResource(R.drawable.start);
-		// akhirImg.setBackgroundResource(R.drawable.finish);
-		// mulaiTxt.setText(profil.getStartTime() + "");
-		// akhirTxt.setText(profil.getEndTime() + "");
-
-		/**
-		 * if (!profil.isAlergiKacang()) { kacangImg.setVisibility(View.GONE); }
-		 * else { kacangImg.setBackgroundResource(R.drawable.alergi_kacang); }
-		 * 
-		 * if (!profil.isAlergiSeafood()) { ikanImg.setVisibility(View.GONE); }
-		 * else ikanImg.setBackgroundResource(R.drawable.alergi_seafood);
-		 * 
-		 * if (!profil.isVegetarian()) {
-		 * sayurImg.setImageResource(R.drawable.non_veg); } else {
-		 * sayurImg.setImageResource(R.drawable.vegetarian); }
-		 * 
-		 * if (profil.getGayaHidup() == 3) {
-		 * gaya1Img.setBackgroundResource(R.drawable.sangat_aktif); }
-		 * 
-		 * else if (profil.getGayaHidup() == 2) {
-		 * gaya1Img.setBackgroundResource(R.drawable.aktif); }
-		 * 
-		 * else if (profil.getGayaHidup() == 1) {
-		 * gaya1Img.setBackgroundResource(R.drawable.sedikit_aktif); }
-		 * 
-		 * else { gaya1Img.setBackgroundResource(R.drawable.jarang_sekali); }
-		 */
-
-		/**
-		 * editProfil.setOnClickListener(new View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View args0) { // TODO Auto-generated
-		 *           method stub getActivity().finish(); Intent i = new
-		 *           Intent(getActivity().getApplicationContext(),
-		 *           EditProfilActivity.class);
-		 *           i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		 * 
-		 *           i.putExtra("nama", nama.getText()); i.putExtra("umur",
-		 *           umur.getText()); i.putExtra("beratSkrg",
-		 *           beratSekarang.getText()); i.putExtra("beratTarget",
-		 *           beratTarget.getText()); i.putExtra("tinggi",
-		 *           tinggi.getText()); i.putExtra("jeKel", profil.getGender());
-		 *           i.putExtra("foto", profil.getFoto()); i.putExtra("sayur",
-		 *           profil.isVegetarian()); i.putExtra("gayaHidup",
-		 *           profil.getGayaHidup()); i.putExtra("ikan",
-		 *           profil.isAlergiSeafood()); i.putExtra("kacang",
-		 *           profil.isAlergiKacang());
-		 * 
-		 *           getActivity().startActivity(i); } } );
-		 */
 
 		return v;
 	}
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		// TODO Auto-generated method stub
 		super.onCreateOptionsMenu(menu, inflater);
 		inflater.inflate(R.menu.profil, menu);
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
@@ -194,24 +133,10 @@ public class ProfilFragment extends Fragment {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		// action with ID pensil was selected
 		case R.id.pensil:
 			Intent i = new Intent(getActivity().getApplicationContext(),
 					EditProfilActivity.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-			i.putExtra("nama", nama.getText());
-			i.putExtra("umur", umur.getText());
-			i.putExtra("beratSkrg", beratSekarang.getText());
-			// i.putExtra("beratTarget", beratTarget.getText());
-			i.putExtra("tinggi", tinggi.getText());
-			i.putExtra("jeKel", profil.getGender());
-			i.putExtra("foto", profil.getFoto());
-			i.putExtra("sayur", profil.isVegetarian());
-			i.putExtra("gayaHidup", profil.getGayaHidup());
-			i.putExtra("ikan", profil.isAlergiSeafood());
-			i.putExtra("kacang", profil.isAlergiKacang());
-
 			startActivity(i);
 			break;
 		default:
