@@ -12,10 +12,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
         android:orientation="vertical" >
 
-        <GridLayout
+        <!-- <GridLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_weight="0.67"
@@ -91,7 +90,7 @@
                     android:text="None cm"
                     android:textColor="@color/lumut" />
             </GridLayout>
-        </GridLayout>
+        </GridLayout> -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,6 +130,28 @@
                     android:text="None"
                     android:textColor="@color/lumut" />
             </GridLayout>
+            
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Berat Badan Sekarang" />
+
+                <TextView
+                    android:id="@+id/beratSekarangStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
 
             <GridLayout
                 android:layout_width="match_parent"
@@ -148,6 +169,94 @@
 
                 <TextView
                     android:id="@+id/beratTargetStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+            
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Tinggi Badan Awal" />
+
+                <TextView
+                    android:id="@+id/tinggiAwalStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+            
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Tinggi Badan Sekarang" />
+
+                <TextView
+                    android:id="@+id/tinggiSekarangStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+            
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="BMI Awal" />
+
+                <TextView
+                    android:id="@+id/bmiAwalStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+            
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="BMI Sekarang" />
+
+                <TextView
+                    android:id="@+id/bmiSekarangStatistik"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="None"
