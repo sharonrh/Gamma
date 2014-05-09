@@ -79,15 +79,12 @@ public class ProfilFragment extends Fragment {
 
 		nama = (TextView) v.findViewById(R.id.namaProfilTv);
 		umur = (TextView) v.findViewById(R.id.tahunProfilTv);
-		beratSekarang = (TextView) v.findViewById(R.id.beratProfilSekarangTv);
-		tinggi = (TextView) v.findViewById(R.id.tinggiProfilTv);
 		foto = (ImageView) v.findViewById(R.id.avatarProfilTv);
 		gender = (TextView) v.findViewById(R.id.kelaminProfilTv);
 		gayaHidup = (TextView) v.findViewById(R.id.gayaProfilTv);
 		vegetarian = (TextView) v.findViewById(R.id.vegeProfilTv);
 		kacang = (TextView) v.findViewById(R.id.kacangProfilTv);
 		seafood = (TextView) v.findViewById(R.id.seafoodProfilTv);
-		bmi = (TextView) v.findViewById(R.id.bmiProfil);
 
 		nama.setText(profil.getNama());
 		umur.setText(profil.getUmur() + " tahun");
