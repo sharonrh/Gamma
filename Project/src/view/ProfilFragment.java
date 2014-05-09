@@ -28,8 +28,8 @@ import controller.ProfilController;
 
 public class ProfilFragment extends Fragment {
 
-	private TextView nama, umur, beratSekarang, tinggi, bmi, gender, gayaHidup,
-			vegetarian, kacang, seafood;
+	private TextView nama, umur, gender, gayaHidup, vegetarian, kacang,
+			seafood;
 	private ImageView foto;
 	private ProfilController con;
 	private static Bitmap result;
@@ -96,12 +96,6 @@ public class ProfilFragment extends Fragment {
 
 		String g = profil.getGender() == 'P' ? "Pria" : "Wanita";
 		gender.setText(g);
-
-		double temp = profil.getBerat();
-		beratSekarang.setText(temp + " kg");
-		tinggi.setText(profil.getTinggi() + " cm");
-		temp /= Math.pow(profil.getTinggi()/100, 2);
-		bmi.setText(String.format("%.3f", temp));
 
 		byte[] decodedString = Base64.decode(profil.getFoto(), Base64.DEFAULT);
 		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
