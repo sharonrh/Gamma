@@ -13,7 +13,7 @@
         android:padding="15dp" >
 
         <GridLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:columnCount="2"
@@ -200,6 +200,7 @@
             android:id="@+id/listKatalog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:layout_weight="4.90"
             android:cacheColorHint="@android:color/transparent"
             android:divider="@null"
@@ -207,6 +208,7 @@
             android:footerDividersEnabled="true"
             android:headerDividersEnabled="true"
             android:listSelector="@android:color/transparent" >
+
         </ListView>
     </LinearLayout>
 </RelativeLayout>
