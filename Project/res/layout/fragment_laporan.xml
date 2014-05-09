@@ -63,15 +63,13 @@
 
         </LinearLayout>
 
-        
-
         <TextView
             android:id="@+id/tanggalHariIni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="Data untuk tanggal X X X" />
+            android:text="Data untuk tanggal X X X :" />
         
         <GridLayout
             android:layout_width="wrap_content"

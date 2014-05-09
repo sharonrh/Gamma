@@ -88,8 +88,8 @@ public class EditProfilActivity extends Activity {
 		namaField = (EditText) findViewById(R.id.editNama);
 		umurField = (EditText) findViewById(R.id.editUmur);
 		beratField = (EditText) findViewById(R.id.editBeratSekarang);
-		//targetField = (EditText) findViewById(R.id.editBeratTarget);
-		//tinggiField = (EditText) findViewById(R.id.editTinggi);
+		targetField = (EditText) findViewById(R.id.editBeratTarget);
+		tinggiField = (EditText) findViewById(R.id.editTinggi);
 
 		genderPick = (RadioGroup) findViewById(R.id.editGender);
 		vegetarian = (CheckBox) findViewById(R.id.editVegetarian);

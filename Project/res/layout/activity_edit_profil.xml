@@ -100,7 +100,7 @@
                         android:orientation="horizontal" >
 
                         <EditText
-                            android:id="@+id/editBeratTinggi"
+                            android:id="@+id/editTinggi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -134,8 +134,47 @@
                             android:textStyle="bold"
                             android:text="@string/kg" />
                     </LinearLayout>
-
                     
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/editDurasiDiet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Durasi Diet"
+                            android:inputType="numberDecimal" />
+
+                        <TextView
+                            android:id="@+id/textMinggu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="10dp"
+                            android:text="minggu"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/editBeratTarget"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Berat Target"
+                            android:inputType="numberDecimal" />
+
+                        <TextView
+                            android:id="@+id/textKg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:text="@string/kg" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
