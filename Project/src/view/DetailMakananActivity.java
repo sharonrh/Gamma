@@ -34,15 +34,13 @@ public class DetailMakananActivity extends Activity {
 		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_detail_makanan);
 
-		//bintang1 = (ImageView) findViewById(R.id.bintang1Detail);
-		//bintang2 = (ImageView) findViewById(R.id.bintang2Detail);
-		//bintang3 = (ImageView) findViewById(R.id.bintang3Detail);
-		//bintang4 = (ImageView) findViewById(R.id.bintang4Detail);
-		//bintang5 = (ImageView) findViewById(R.id.bintang5Detail);
+		// bintang1 = (ImageView) findViewById(R.id.bintang1Detail);
+		// bintang2 = (ImageView) findViewById(R.id.bintang2Detail);
+		// bintang3 = (ImageView) findViewById(R.id.bintang3Detail);
+		// bintang4 = (ImageView) findViewById(R.id.bintang4Detail);
+		// bintang5 = (ImageView) findViewById(R.id.bintang5Detail);
 
 		rate = (Button) findViewById(R.id.rateBtn);
-		
-		
 
 		// SharedPreferences spre = this.getSharedPreferences("Your prefName",
 		// Context.MODE_PRIVATE);
@@ -90,80 +88,6 @@ public class DetailMakananActivity extends Activity {
 			// decodedString.length);
 			// foto.setImageBitmap(decodedByte);
 
-			/**bintang1.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					bintang2.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-					bintang3.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-				}
-			});
-
-			bintang2.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					bintang2.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang3.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-				}
-			});
-
-			bintang3.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					bintang2.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang3.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-				}
-			});
-
-			bintang4.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					bintang2.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang3.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_action_content_edit));
-				}
-			});
-
-			bintang5.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					bintang2.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang3.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.achievement));
-				}
-<<<<<<< HEAD
-			});
-		}
-=======
-			});*/
-
 			rate.setOnClickListener(new View.OnClickListener() {
 
 				@Override
@@ -173,7 +97,5 @@ public class DetailMakananActivity extends Activity {
 				}
 			});
 		}
-
->>>>>>> ccc722a41db2fdd87ee6bda75ef09df002d0c23e
 	}
 }
