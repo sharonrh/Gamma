@@ -193,7 +193,7 @@ public class HandlerMakanan extends DatabaseHandler {
 
 	// Getting makanan Count
 	public int[] getJenisCount() {
-		String[] arrJenis = { "Makanan Pokok", "Lauk Pauk", "Sayur", "Buah",
+		String[] arrJenis = { "Pokok", "Lauk", "Sayuran", "Buah",
 				"Minuman" };
 		int[] count = new int[arrJenis.length];
 

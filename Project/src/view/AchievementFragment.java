@@ -17,5 +17,5 @@ public class AchievementFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_achievement, container, false);
 
 		return v;
-	}
+	} 
 }
