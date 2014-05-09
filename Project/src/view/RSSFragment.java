@@ -102,10 +102,10 @@ public class RSSFragment extends Fragment {
 				list.setAdapter(new RSSArrayAdapter(getActivity(), rssFeed));
 
 				// ubah tinggi listview katalog
-				data = rssFeed;
+				/**data = rssFeed;
 				LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(
 						LayoutParams.MATCH_PARENT, (data.size() * 102));
-				list.setLayoutParams(mParam);
+				list.setLayoutParams(mParam);*/
 			}
 		}
 	}
