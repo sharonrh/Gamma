@@ -9,8 +9,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.gamma.R;
@@ -32,13 +34,15 @@ public class DetailMakananActivity extends Activity {
 		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_detail_makanan);
 
-		bintang1 = (ImageView) findViewById(R.id.bintang1Detail);
-		bintang2 = (ImageView) findViewById(R.id.bintang2Detail);
-		bintang3 = (ImageView) findViewById(R.id.bintang3Detail);
-		bintang4 = (ImageView) findViewById(R.id.bintang4Detail);
-		bintang5 = (ImageView) findViewById(R.id.bintang5Detail);
+		//bintang1 = (ImageView) findViewById(R.id.bintang1Detail);
+		//bintang2 = (ImageView) findViewById(R.id.bintang2Detail);
+		//bintang3 = (ImageView) findViewById(R.id.bintang3Detail);
+		//bintang4 = (ImageView) findViewById(R.id.bintang4Detail);
+		//bintang5 = (ImageView) findViewById(R.id.bintang5Detail);
 
 		rate = (Button) findViewById(R.id.rateBtn);
+		
+		
 
 		// SharedPreferences spre = this.getSharedPreferences("Your prefName",
 		// Context.MODE_PRIVATE);
@@ -86,7 +90,7 @@ public class DetailMakananActivity extends Activity {
 			// decodedString.length);
 			// foto.setImageBitmap(decodedByte);
 
-			bintang1.setOnClickListener(new View.OnClickListener() {
+			/**bintang1.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					bintang2.setImageDrawable(getResources().getDrawable(
@@ -154,7 +158,7 @@ public class DetailMakananActivity extends Activity {
 					bintang5.setImageDrawable(getResources().getDrawable(
 							R.drawable.achievement));
 				}
-			});
+			});*/
 
 			rate.setOnClickListener(new View.OnClickListener() {
 

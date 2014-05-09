@@ -72,9 +72,10 @@
                     android:layout_marginBottom="5dp"
                     android:layout_row="1"
                     android:background="@drawable/layer_card_background"
-                    android:columnCount="1"
+                    android:columnCount="2"
                     android:padding="5dp" >
 
+                    <!--
                     <ImageView
                         android:id="@+id/bintang1Detail"
                         android:layout_width="30dp"
@@ -123,6 +124,15 @@
                         android:layout_marginLeft="120dp"
                         android:layout_row="0"
                         android:src="@drawable/achievement" />
+                    -->
+
+                    <RatingBar
+                        android:id="@+id/myRatingBar"
+                    	style="?android:attr/ratingBarStyleSmall"
+                    	android:layout_width="wrap_content"
+                    	android:layout_height="wrap_content"
+                    	android:numStars="5"
+                    	android:isIndicator="false" />
                 </GridLayout>
 
                 <GridLayout
