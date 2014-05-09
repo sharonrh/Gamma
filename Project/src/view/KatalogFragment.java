@@ -36,7 +36,7 @@ public class KatalogFragment extends Fragment {
 		KatalogController kontrol = new KatalogController(getActivity()
 				.getApplicationContext());
 
-		List<Makanan> values = kontrol.getListMakanan();
+		final List<Makanan> values = kontrol.getListMakanan();
 
 		TextView pokok = (TextView) v.findViewById(R.id.makananPokokKatalog);
 		TextView lauk = (TextView) v.findViewById(R.id.laukpaukKatalog);
@@ -57,7 +57,7 @@ public class KatalogFragment extends Fragment {
 
 		// ubah tinggi listview katalog
 		LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(
-				LayoutParams.MATCH_PARENT, (adapter.getCount() * 40));
+				LayoutParams.MATCH_PARENT, (adapter.getCount() * 50));
 		listview.setLayoutParams(mParam);
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,8 +72,7 @@ public class KatalogFragment extends Fragment {
 						.getSharedPreferences("Your prefName",
 								Context.MODE_PRIVATE);
 				SharedPreferences.Editor prefEditor = spre.edit();
-				prefEditor.putString("key", parent.getItemAtPosition(position)
-						.toString());
+				prefEditor.putString("key", values.get(position).getNama());
 				prefEditor.commit();
 
 				startActivity(intent);

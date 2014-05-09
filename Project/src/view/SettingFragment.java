@@ -43,7 +43,7 @@ public class SettingFragment extends Fragment {
 		set.add(new Setting("Notifikasi", "Atur Notifikasi"));
 		set.add(new Setting("Artikel", "Atur Notifikasi"));
 		set.add(new Setting("Reset Progress", "Atur Notifikasi"));
-		set.add(new Setting("Tema", "Ganti Tema Aplikasi"));
+		//set.add(new Setting("Tema", "Ganti Tema Aplikasi"));
 		set.add(new Setting("Tentang", "Info Mengenai Pengembang"));
 		set.add(new Setting("Kredit", "Atur Notifikasi"));
 
@@ -61,9 +61,9 @@ public class SettingFragment extends Fragment {
 
 				if (position == 0) {
 					kontrol.gantiHalaman(position);
-				} else if (position == 3) {
-					temaPopupWindow();
-				} else if(position == 4) {
+				//} else if (position == 3) {
+					//temaPopupWindow();
+				} else if(position == 3) {
 					tentangPopupWindow();
 				}
 
