@@ -1,5 +1,12 @@
 package view;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import model.Laporan;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -22,25 +29,34 @@ import android.widget.TextView;
 
 import com.example.gamma.R;
 
-public class LihatLaporanFragment extends Fragment {
+import controller.LaporanController;
 
+public class LihatLaporanFragment extends Fragment {
+	
+	LaporanController kon;
+	Context konteks;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+		
+		konteks = getActivity().getApplicationContext();
+		
+		kon = new LaporanController(konteks);
+		
 		View v = inflater.inflate(R.layout.fragment_lihatlaporan, container,
 				false);
-		final ListView listview = (ListView) v.findViewById(R.id.listLaporan);
+		ListView listview = (ListView) v.findViewById(R.id.listLaporan);
+		TextView tv = (TextView) v.findViewById(R.id.jumlahLaporan);
+		List<Laporan> data = kon.getListLaporan();
+		System.out.println(tv);
+		tv.setText("" + data.size());
 		
-		final String[] values = new String[] { "7 April 2014 (awal diet)", "14 April 2014", "20 April 2014",
-		        "26 April 2014", "32 April 2014" };
-		
-		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(getActivity(), values);
+		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(getActivity(), data);
 		listview.setAdapter(adapter);
 
 		//ubah tinggi listview katalog
-		 LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, (adapter.getCount()*60));
-	     listview.setLayoutParams(mParam);
+//		 LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, (adapter.getCount()*60));
+//	     listview.setLayoutParams(mParam);
 		
 	     listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -87,47 +103,61 @@ public class LihatLaporanFragment extends Fragment {
 		return true;
 	}
 	
-	class MyPerformanceArrayAdapter extends ArrayAdapter<String> {
+	class MyPerformanceArrayAdapter extends ArrayAdapter<Laporan> {
 		  private final Activity context;
-		  private final String[] names;
+		  private List<Laporan> list;
 
 		  class ViewHolder {
-		    public TextView text;
-		    public ImageView image;
+		    public TextView tanggal;
+		    public TextView berat;
+		    public TextView tinggi;
 		  }
 
-		  public MyPerformanceArrayAdapter(Activity context, String[] names) {
-		    super(context, R.layout.list_laporan, names);
+		  public MyPerformanceArrayAdapter(Activity context, List<Laporan> list) {
+		    super(context, R.layout.list_laporan, list);
 		    this.context = context;
-		    this.names = names;
+		    this.list = list;
 		  }
 
-		  @Override
+		  @SuppressLint("SimpleDateFormat")
+		@Override
 		  public View getView(int position, View convertView, ViewGroup parent) {
 		    View rowView = convertView;
+		    ViewHolder viewHolder;
 		    // reuse views
 		    if (rowView == null) {
 		      LayoutInflater inflater = context.getLayoutInflater();
 		      rowView = inflater.inflate(R.layout.list_laporan, null);
 		      // configure view holder
-		      ViewHolder viewHolder = new ViewHolder();
-		      viewHolder.text = (TextView) rowView.findViewById(R.id.tanggalListLaporan);
-		      //viewHolder.image = (ImageView) rowView
-		          //.findViewById(R.id.ImageView01);
+		      viewHolder = new ViewHolder();
+		      viewHolder.tanggal = (TextView) rowView.findViewById(R.id.tanggalListLaporan);
+		      viewHolder.berat = (TextView) rowView.findViewById(R.id.beratListLaporan);
+		      viewHolder.tinggi = (TextView) rowView.findViewById(R.id.tinggiListLaporan);
 		      rowView.setTag(viewHolder);
 		    }
+		    else {
 
 		    // fill data
-		    ViewHolder holder = (ViewHolder) rowView.getTag();
-		    String s = names[position];
-		    holder.text.setText(s);
-		    /**if (s.startsWith("Windows7") || s.startsWith("iPhone")
-		        || s.startsWith("Solaris")) {
-		      holder.image.setImageResource(R.drawable.no);
-		    } else {
-		      holder.image.setImageResource(R.drawable.ok);
-		    }*/
-
+			    viewHolder = (ViewHolder) rowView.getTag();
+		    }
+		    
+		    Laporan l = list.get(list.size()- (position+1));
+		    
+		    String iberat = ""+l.getBeratBadan();
+		    String itinggi = ""+l.getTinggiBadan();
+		    long waktu = l.getWaktu();
+		    Date date = new Date(waktu);
+			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");	
+			String itanggal = format.format(date);
+			
+			System.out.println(iberat);
+			System.out.println(itinggi);
+			System.out.println(itanggal);
+			
+			viewHolder.tanggal.setText(itanggal);
+			viewHolder.berat.setText(iberat + " kg");
+			viewHolder.tinggi.setText(itinggi + " cm");
+		    
 		    return rowView;
 		  }
 		}

@@ -74,17 +74,19 @@
                     android:text="None" />
             </GridLayout>
         </GridLayout>
-
-        <ListView
-            android:id="@+id/listLaporan"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="@null"
-            android:dividerHeight="10dp"
-            android:footerDividersEnabled="true"
-            android:headerDividersEnabled="true"
-            android:listSelector="@android:color/transparent" >
-        </ListView>
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/listLaporan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="10dp"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:listSelector="@android:color/transparent" >
+        
+    </ListView>
+
 </LinearLayout>
