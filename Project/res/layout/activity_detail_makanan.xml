@@ -37,8 +37,8 @@
                 android:rowCount="3" >
 
                 <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
@@ -52,6 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:singleLine="false"
                         android:text="Makanan"
                         android:textColor="@color/hijau_donker"
                         android:textSize="20sp"
@@ -61,10 +62,9 @@
                         android:id="@+id/kaloriDetailMakanan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_column="0"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
                         android:text="None kkal" />
+
                 </GridLayout>
 
                 <GridLayout

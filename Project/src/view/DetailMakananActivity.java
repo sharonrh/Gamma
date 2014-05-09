@@ -2,10 +2,8 @@ package view;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Locale;
 
 import model.Makanan;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -71,15 +69,11 @@ public class DetailMakananActivity extends Activity {
 			foto = (ImageView) findViewById(R.id.fotoDetailMakanan);
 
 			nama.setText(mystring);
-			
-			
-			String namaMakanan = mystring;
-			namaMakanan = namaMakanan.trim();
-			namaMakanan = namaMakanan.toLowerCase(Locale.getDefault());
+			Makanan m = kontrol.getMakanan(mystring);
 			
 			Bitmap bm = null;
 			try {
-				bm = getBitmapFromAsset("gambar_makanan/" + mystring + ".jpg");
+				bm = getBitmapFromAsset(m.getPathFoto());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -88,7 +82,7 @@ public class DetailMakananActivity extends Activity {
 			System.out.println(bm);
 			foto.setImageBitmap(bm);
 			
-			Makanan m = kontrol.getMakanan(mystring);
+			
 			kalori.setText(m.getKalori() + " kal");
 			karbo.setText(m.getKarbohidrat() + " gr");
 			protein.setText(m.getProtein() + " gr");
