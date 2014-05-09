@@ -140,7 +140,7 @@ public class StatistikFragment extends Fragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// TODO Auto-generated method stub
 		super.onCreateOptionsMenu(menu, inflater);
-		inflater.inflate(R.menu.profil, menu);
+		inflater.inflate(R.menu.detail, menu);
 	}
 
 	@Override
@@ -154,7 +154,7 @@ public class StatistikFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		// action with ID pensil was selected
-		case R.id.pensil:
+		case R.id.detail:
 			getActivity().finish();
 			Intent i = new Intent(getActivity().getApplicationContext(),
 					DetailStatistikActivity.class);

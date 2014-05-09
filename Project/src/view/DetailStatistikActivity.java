@@ -24,7 +24,7 @@ public class DetailStatistikActivity extends Activity{
     public boolean onCreateOptionsMenu(Menu menu) {
         // TODO Auto-generated method stub
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.profil, menu);
+        getMenuInflater().inflate(R.menu.detail, menu);
         return true;
     }
  
@@ -33,7 +33,7 @@ public class DetailStatistikActivity extends Activity{
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
     // action with ID pensil was selected
-    case R.id.pensil:
+    case R.id.detail:
 		Intent i = new Intent(this.getApplicationContext(),
 				MainActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
