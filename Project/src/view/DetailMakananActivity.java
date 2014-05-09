@@ -85,13 +85,13 @@ public class DetailMakananActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 			}
 		});
 
@@ -101,11 +101,11 @@ public class DetailMakananActivity extends Activity {
 				bintang2.setImageDrawable(getResources().getDrawable(
 						R.drawable.achievement));
 				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 			}
 		});
 
@@ -117,9 +117,9 @@ public class DetailMakananActivity extends Activity {
 				bintang3.setImageDrawable(getResources().getDrawable(
 						R.drawable.achievement));
 				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 			}
 		});
 
@@ -133,7 +133,7 @@ public class DetailMakananActivity extends Activity {
 				bintang4.setImageDrawable(getResources().getDrawable(
 						R.drawable.achievement));
 				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.alergi_seafood));
+						R.drawable.ic_action_content_edit));
 			}
 		});
 

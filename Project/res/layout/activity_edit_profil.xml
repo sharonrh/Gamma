@@ -260,8 +260,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/button_style"
-                android:text="Simpan" />
+                android:background="@drawable/yes_button" />
 
             <Button
                 android:id="@+id/batalProfilBtn"
@@ -269,8 +268,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/button_style"
-                android:text="Batal" />
+                android:background="@drawable/no_button" />
+
         </LinearLayout>
     </LinearLayout>
 
