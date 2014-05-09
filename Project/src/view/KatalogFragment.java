@@ -56,9 +56,9 @@ public class KatalogFragment extends Fragment {
 		listview.setAdapter(adapter);
 
 		// ubah tinggi listview katalog
-		LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(
+		/**LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(
 				LayoutParams.MATCH_PARENT, (adapter.getCount() * 50));
-		listview.setLayoutParams(mParam);
+		listview.setLayoutParams(mParam);*/
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,

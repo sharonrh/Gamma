@@ -23,7 +23,7 @@
         android:layout_row="0"
         android:columnCount="1" >
 
-        <ImageView
+        <!-- <ImageView
             android:id="@+id/bintang1"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -70,7 +70,16 @@
             android:layout_gravity="left"
             android:layout_marginLeft="120dp"
             android:layout_row="0"
-            android:src="@drawable/badge" />
+            android:src="@drawable/badge" />  -->
+
+        <RatingBar
+            android:id="@+id/ratingBarList"
+                    	style="?android:attr/ratingBarStyleSmall"
+                    	android:layout_width="wrap_content"
+                    	android:layout_height="wrap_content"
+                    	android:numStars="5"
+                    	android:isIndicator="true" /> />
+
     </GridLayout>
 
     <TextView

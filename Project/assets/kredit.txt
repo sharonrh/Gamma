@@ -1,0 +1,32 @@
+Ikon
+-----
+Berikut ini ikon yang didapat dari situs The Noun Project, beserta pembuatnya :
+Rekomendasi : Claire Jones (Food)
+Profil : Murali Krishna (User Information)
+Statistik : David Waschbüsch (Graph)
+Laporan : Simple Icons (Document)
+Katalog : Lorena Salagre (Catalog)Artikel : John Caserta (Newspaper)
+Achievement : Albert Rojo (Badge)
+Pengaturan : Dmitry  Kudinov (Gear)
+Bookworm : WARPAINT Media Inc. (Glasses)
+Progress : Benni (Loading)
+Tambah Gambar : Keta Shah (Add User)
+Berikut ini ikon / gambar yang didapat dari situs lainnya :
+Logo GaMMa : IconsDB (Scale)
+
+
+Data Makanan
+------------
+Data nutrisi makanan didapat dari situs FatSecret.com. Penggunaan data telah melalui izin yang bersangkutan.
+Makanan bermerk, hak ciptanya dimiliki oleh pemilik merk-nya masing-masing.
+
+
+Gambar Makanan
+--------------
+Gambar makanan didapat dari situs pencari gambar Google. Hak cipta gambar dimiliki oleh pemiliknya masing-masing.
+Gambar di-crop agar memenuhi kebutuhan aplikasi.
+
+
+Lainnya
+-------
+Mock up dibuat dengan template buatan Taylor Ling. Desain card UI terinspirasi oleh Google Now.

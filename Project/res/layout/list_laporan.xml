@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal|top"
             android:layout_row="0"
             android:text="Tanggal Diet"
-            android:textColor="@color/lumut"
+            android:textColor="@color/hijau_donker"
             android:textSize="15sp"
             android:textStyle="bold" />
 

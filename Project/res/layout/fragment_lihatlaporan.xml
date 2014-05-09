@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Durasi (hari)"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Jumlah Laporan"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/hijau_donker"
                     android:textStyle="bold" />
 
                 <TextView
@@ -80,12 +80,14 @@
         android:id="@+id/listLaporan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="4.90"
         android:cacheColorHint="@android:color/transparent"
         android:divider="@null"
         android:dividerHeight="10dp"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true"
-        android:listSelector="@android:color/transparent" >
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="15dp" >
         
     </ListView>
 
