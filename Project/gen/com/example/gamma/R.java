@@ -119,7 +119,7 @@ public final class R {
         public static final int TextView04=0x7f0a0050;
         public static final int Title=0x7f0a007e;
         public static final int achivementStatistik=0x7f0a0027;
-        public static final int action_settings=0x7f0a008d;
+        public static final int action_settings=0x7f0a008e;
         public static final int aplikasi=0x7f0a004c;
         public static final int artikelStatistik=0x7f0a0029;
         public static final int avatarProfilTv=0x7f0a0014;
@@ -150,6 +150,7 @@ public final class R {
         public static final int content_frame=0x7f0a0048;
         public static final int dateArtikel=0x7f0a0072;
         public static final int deFault=0x7f0a0070;
+        public static final int detail=0x7f0a008d;
         public static final int drawer_layout=0x7f0a0047;
         public static final int durasiDiet=0x7f0a0068;
         public static final int durasiDietStatistik=0x7f0a001f;
@@ -200,7 +201,7 @@ public final class R {
         public static final int namaDetailMakanan=0x7f0a0001;
         public static final int namaProfilTv=0x7f0a0061;
         public static final int pengembang=0x7f0a004d;
-        public static final int pensil=0x7f0a008e;
+        public static final int pensil=0x7f0a008f;
         public static final int pilihTema=0x7f0a006d;
         public static final int pilihTemaTV=0x7f0a0082;
         public static final int popup_element=0x7f0a0081;
@@ -288,11 +289,21 @@ public final class R {
         public static final int spinner_row=0x7f03001c;
     }
     public static final class menu {
+<<<<<<< HEAD
         public static final int edit_profil=0x7f090000;
         public static final int main=0x7f090001;
         public static final int profil=0x7f090002;
         public static final int rs=0x7f090003;
         public static final int setting=0x7f090004;
+=======
+        public static final int detail=0x7f090000;
+        public static final int edit_profil=0x7f090001;
+        public static final int halaman_utama=0x7f090002;
+        public static final int main=0x7f090003;
+        public static final int profil=0x7f090004;
+        public static final int rs=0x7f090005;
+        public static final int setting=0x7f090006;
+>>>>>>> 46a2763553e62cd4b9f3b857ca65bb2ee7e36ff0
     }
     public static final class string {
         public static final int NS=0x7f060009;
