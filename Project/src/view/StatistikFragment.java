@@ -154,7 +154,6 @@ public class StatistikFragment extends Fragment {
 		switch (item.getItemId()) {
 		// action with ID pensil was selected
 		case R.id.detail:
-			getActivity().finish();
 			Intent i = new Intent(getActivity().getApplicationContext(),
 					DetailStatistikActivity.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
