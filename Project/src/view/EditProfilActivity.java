@@ -2,7 +2,6 @@ package view;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
-import android.text.format.Time;
 import java.util.ArrayList;
 
 import model.Pengguna;
@@ -20,6 +19,7 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.format.Time;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +31,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -86,8 +85,10 @@ public class EditProfilActivity extends Activity {
 		con = new ProfilController(getApplicationContext());
 		Pengguna user = con.getProfil();
 
+		final String[] gaya = con.gayaHidup;
+
 		CustomAdapter adapter = new CustomAdapter(this,
-				android.R.layout.simple_spinner_item, con.gayaHidup);
+				android.R.layout.simple_spinner_item, gaya);
 		CustomAdapter adapter3 = new CustomAdapter(this,
 				android.R.layout.simple_spinner_item, kelamin);
 
@@ -161,19 +162,19 @@ public class EditProfilActivity extends Activity {
 								.toString();
 
 						// cek isi spinner dan ubah penjelasan
-						if (item.equalsIgnoreCase("Pilih Jenis Gaya Hidup"))
+						if (item.equalsIgnoreCase(gaya[0]))
 							penjelasan
 									.setText("Pilih salah satu jenis gaya hidup untuk melihat detailnya disini");
-						else if (item.equalsIgnoreCase("jarang sekali"))
+						else if (item.equalsIgnoreCase(gaya[1]))
 							penjelasan
 									.setText("Jarang Sekali : Aktivitas hidup utama seperti istirahat, kerja kantoran atau menyetir. Kemungkinan melibatkan pekerjaan rumah moderat dan berdiri tetapi tidak ada latihan ringan yang dilakukan.");
-						else if (item.equalsIgnoreCase("sedikit aktif"))
+						else if (item.equalsIgnoreCase(gaya[2]))
 							penjelasan
 									.setText("Sedikit Aktif : Disamping kegiatan sehari-hari, melakukan kegiatan yang lebih berat, seperti berdiri lebih lama atau pekerjaan rumah. Beberapa bentuk latihan dilakukan, seperti jalan pelan, bersepeda santai atau berkebun.");
-						else if (item.equalsIgnoreCase("aktif"))
+						else if (item.equalsIgnoreCase(gaya[3]))
 							penjelasan
 									.setText("Aktif : Sedikit duduk / istirahat dan kemungkinan bekerja dilingkungan yang membutuhkan berdiri dan/atau sedikit kerja fisik. Secara teratur melakukan olahraga ringan, seperti menari, jalan cepat atau berenang.");
-						else if (item.equalsIgnoreCase("sangat aktif"))
+						else if (item.equalsIgnoreCase(gaya[4]))
 							penjelasan
 									.setText("Sangat Aktif : Lingkungan kerja fisik intensif seperti konstruksi dan / atau melakukan kegiatan yang berat banyak hari dalam seminggu, seperti jogging, menggunakan peralatan olahraga atau berpartisipasi dalam olahraga fisik.");
 					}
