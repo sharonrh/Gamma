@@ -87,7 +87,7 @@ public class IsiLaporanActivity extends Activity {
 				cek = false;
 
 				if (validasiInput(berat, tinggi)) {
-				//	cek = kontrol.addLaporan(berat, tinggi);
+					cek = kontrol.addLaporan(berat, tinggi);
 				} else {
 					Toast.makeText(getApplicationContext(), pesan + ".",
 							Toast.LENGTH_LONG).show();
@@ -118,8 +118,7 @@ public class IsiLaporanActivity extends Activity {
 
 	public boolean validasiInput(String berat, String tinggi) {
 
-		double difBerat = Double.parseDouble(berat) - lastBerat;
-		double difTinggi = Double.parseDouble(tinggi) - lastTinggi;
+		
 
 		ArrayList<String> list = new ArrayList<String>();
 
@@ -127,7 +126,14 @@ public class IsiLaporanActivity extends Activity {
 		kalender.setTimeInMillis(System.currentTimeMillis());
 		int y = kalender.DAY_OF_YEAR;
 
-		if (berat.length() != 0 && tinggi.length() != 0) {
+		
+		if(berat.length() == 0 && tinggi.length() == 0){
+			pesan = "Masih ada field yang belum diisi";
+			
+			return false;
+		}
+		else if(!(berat.matches("^[0-9]{2,3}(\\.[0-9][0-9]?)?$"))||!(tinggi.matches("^[0-9]{2,3}(\\.[0-9][0-9]?)?$"))) {
+
 			if (!(berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")))
 				list.add("Berat Sekarang");
 			if (!(tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")))
@@ -145,26 +151,40 @@ public class IsiLaporanActivity extends Activity {
 
 			}
 			pesan = pesan + " Salah format";
-		} else {
-			pesan = "Masih ada field yang belum diisi";
-		}
-
-		if (Math.abs(difBerat) >= 5.0 || Math.abs(difTinggi) >= 2.0) {
-			pesan = "Data yang dimasukkan tidak logis";
-
+			
 			return false;
 		}
+		else {
+			double beratSkrg = Double.parseDouble(berat);
+			double tinggiSkrg = Double.parseDouble(tinggi);
+			if(beratSkrg==0 || tinggiSkrg==0){
+				pesan = "Data yang dimasukkan tidak logis";
+				return false;
+			}
+			else if(lastBerat != 0 && lastBerat != 0){
+				double difBerat = beratSkrg - lastBerat;
+				double difTinggi = tinggiSkrg - lastTinggi;
+				
+				selisihHari = y - tglLalu;
+				int maksHari = 7;
+				if (difTinggi < 0 || Math.abs(difBerat) >= 5.0 || Math.abs(difTinggi) >= 2.0) {
+					pesan = "Data yang dimasukkan tidak logis";
+					return false;
+				}
+				else if(selisihHari < 7){
+					pesan = "Kamu baru bisa mengisi kembali "
+							+ (maksHari - selisihHari) + " hari lagi";
 
-		selisihHari = y - tglLalu;
-		int maksHari = 7;
-		if (selisihHari < 7) {
-			pesan = "Kamu baru bisa mengisi kembali "
-					+ (maksHari - selisihHari) + " hari lagi";
-
-			return false;
+					return false;
+				}
+				else{
+					return true;
+				}	
+			}
+			else {
+				return true;
+			}
+			
 		}
-
-		return berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")
-				&& tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
 	}
 }
