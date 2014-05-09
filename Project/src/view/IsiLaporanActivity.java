@@ -42,7 +42,7 @@ public class IsiLaporanActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_isilaporan);
 		kontrol = new LaporanController(getApplicationContext());
-				
+
 		beratField = (EditText) findViewById(R.id.beratIsiLaporan);
 		tinggiField = (EditText) findViewById(R.id.tinggiIsiLaporan);
 		tglHariLalu = (TextView) findViewById(R.id.tanggalHariSebelumnya);
@@ -118,21 +118,19 @@ public class IsiLaporanActivity extends Activity {
 
 	public boolean validasiInput(String berat, String tinggi) {
 
-		
-
 		ArrayList<String> list = new ArrayList<String>();
 
 		Calendar kalender = Calendar.getInstance();
 		kalender.setTimeInMillis(System.currentTimeMillis());
 		int y = kalender.DAY_OF_YEAR;
 
-		
-		if(berat.length() == 0 && tinggi.length() == 0){
+		if (berat.length() == 0 && tinggi.length() == 0) {
 			pesan = "Masih ada field yang belum diisi";
-			
 			return false;
 		}
-		else if(!(berat.matches("^[0-9]{2,3}(\\.[0-9][0-9]?)?$"))||!(tinggi.matches("^[0-9]{2,3}(\\.[0-9][0-9]?)?$"))) {
+
+		else if (!(berat.matches("^[0-9]{2,3}(\\.[0-9][0-9]?)?$"))
+				|| !(tinggi.matches("^[0-9]{2,3}(\\.[0-9][0-9]?)?$"))) {
 
 			if (!(berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")))
 				list.add("Berat Sekarang");
@@ -148,43 +146,38 @@ public class IsiLaporanActivity extends Activity {
 				if (ii == list.size() - 2) {
 					pesan = pesan + " dan ";
 				}
-
 			}
 			pesan = pesan + " Salah format";
-			
+
 			return false;
-		}
-		else {
+		} else {
 			double beratSkrg = Double.parseDouble(berat);
 			double tinggiSkrg = Double.parseDouble(tinggi);
-			if(beratSkrg==0 || tinggiSkrg==0){
+			if (beratSkrg == 0 || tinggiSkrg == 0) {
 				pesan = "Data yang dimasukkan tidak logis";
 				return false;
-			}
-			else if(lastBerat != 0 && lastBerat != 0){
+			} else if (lastBerat != 0 && lastBerat != 0) {
 				double difBerat = beratSkrg - lastBerat;
 				double difTinggi = tinggiSkrg - lastTinggi;
-				
+
 				selisihHari = y - tglLalu;
 				int maksHari = 7;
-				if (difTinggi < 0 || Math.abs(difBerat) >= 5.0 || Math.abs(difTinggi) >= 2.0) {
+				if (difTinggi < 0 || Math.abs(difBerat) >= 5.0
+						|| Math.abs(difTinggi) >= 2.0) {
 					pesan = "Data yang dimasukkan tidak logis";
 					return false;
-				}
-				else if(selisihHari < 7){
+				} else if (selisihHari < 7) {
 					pesan = "Kamu baru bisa mengisi kembali "
 							+ (maksHari - selisihHari) + " hari lagi";
 
 					return false;
-				}
-				else{
+				} else {
 					return true;
-				}	
-			}
-			else {
+				}
+			} else {
 				return true;
 			}
-			
+
 		}
 	}
 }

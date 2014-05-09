@@ -1,5 +1,5 @@
 Nama, Terkunci, Deskripsi, Progress, PathLogo
-Starter, 0, Mencapai 25 % dari target diet., 0.0, \logo\starter.png
-Halfway, 0, Mencapai 50% dari target diet., 0.0, \logo\halfway.png
-Finisher, 0, Mencapai 100% dari target diet., 0.0, \logo\finisher.png
-Bookworm, 0, Membaca 10 artikel., 0.0, \logo\bookworm.png
+Starter, 0, Mencapai 25 % dari target diet., 0.0, logo/starter.png
+Halfway, 0, Mencapai 50% dari target diet., 0.0, logo/halfway.png
+Finisher, 0, Mencapai 100% dari target diet., 0.0, logo/finisher.png
+Bookworm, 0, Membaca 10 artikel., 0.0, logo/bookworm.png

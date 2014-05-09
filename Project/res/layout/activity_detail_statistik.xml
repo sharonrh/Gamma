@@ -7,10 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DetailStatistikActivit">
-    
+    tools:context=".DetailStatistikActivity" >
+
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="14dp"
@@ -22,8 +21,6 @@
             android:layout_weight="0.67"
             android:padding="10dp" >
 
-            
-
             <GridLayout
                 android:layout_width="55dp"
                 android:layout_height="55dp"
@@ -34,7 +31,6 @@
                 android:paddingTop="5dp" >
 
                 <TextView
-                    android:id="@+id/textView101"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -52,28 +48,27 @@
                     android:layout_row="1"
                     android:text="None" />
             </GridLayout>
-            
+
             <GridLayout
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center_horizontal"
-                android:columnCount="1"  >
-                
+                android:columnCount="1" >
+
                 <ImageView
                     android:id="@+id/avatarProfilTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/foto_default" />
+            </GridLayout>
 
-                </GridLayout>
-            
             <GridLayout
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/layer_card_background"
                 android:layout_width="70dp"
                 android:layout_height="55dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp" >
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/layer_card_background"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" >
 
                 <TextView
                     android:id="@+id/beratStatistikSekarang"
@@ -95,300 +90,267 @@
                     android:layout_row="1"
                     android:text="None cm"
                     android:textColor="@color/lumut" />
+            </GridLayout>
+        </GridLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layer_card_background"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:text="Ringkasan Diet"
+                android:textColor="@color/hijau_donker"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Berat Badan Awal" />
+
+                <TextView
+                    android:id="@+id/beratAwalStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
             </GridLayout>
 
-            
-            
-        </GridLayout>
-                
-                <LinearLayout
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
 
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/layer_card_background"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent">
-                    
-                    <TextView
-                        android:id="@+id/textView104"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="3dp"
-                        android:text="Ringkasan Diet"
-                        android:textColor="@color/hijau_donker"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:layout_gravity="left"
+                    android:text="Berat Badan Target" />
 
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
-
-                        <TextView
-                            android:id="@+id/textView105"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Berat Badan Awal" />
-                        
-                    <TextView
-                        android:id="@+id/beratAwalStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
-
-                        <TextView
-                            android:id="@+id/textView106"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Berat Badan Target" />
-                        
-                    <TextView
-                        android:id="@+id/beratTargetStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
-
-                        <TextView
-                            android:id="@+id/textView107"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Progress (dari berat awal)" />
-                        
-                    <TextView
-                        android:id="@+id/progressStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
-
-                        <TextView
-                            android:id="@+id/textView108"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Durasi Diet" />
-                        
-                    <TextView
-                        android:id="@+id/durasiDietStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
-
-                        <TextView
-                            android:id="@+id/textView108"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Durasi Maksimal" />
-                        
-                    <TextView
-                        android:id="@+id/durasiMaksimalStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
-
-                        <TextView
-                            android:id="@+id/textView108"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Status BMI" />
-
-                        <TextView
-                            android:id="@+id/statusBMIStatistik"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="None"
-                            android:textColor="@color/lumut" />
-
-                    </GridLayout>
-                    
-                </LinearLayout>
-                
-                
-<LinearLayout
-
+                <TextView
+                    android:id="@+id/beratTargetStatistik"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/layer_card_background"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp">
-                    
-                    <TextView
-                        android:id="@+id/textView109"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="3dp"
-                        android:text="Data Lainnya"
-                        android:textColor="@color/hijau_donker"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
 
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
 
-                        <TextView
-                            android:id="@+id/textView110"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Makanan Favorit" />
-                        
-                    <TextView
-                        android:id="@+id/makananStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Progress (dari berat awal)" />
 
-                        <TextView
-                            android:id="@+id/textView111"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Minuman Favorit" />
-                        
-                    <TextView
-                        android:id="@+id/minumanStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp" >
+                <TextView
+                    android:id="@+id/progressStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
 
-                        <TextView
-                            android:id="@+id/textView111"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Achivement Tercapai" />
-                        
-                    <TextView
-                        android:id="@+id/achivementStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp"
-                        android:layout_marginBottom="5dp" >
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
 
-                        <TextView
-                            android:id="@+id/textView112"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Jumlah Artikel Dibaca" />
-                        
-                    <TextView
-                        android:id="@+id/artikelStatistik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="None"
-                        android:textColor="@color/lumut" />
-                   
-                    </GridLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Durasi Diet" />
 
-                    
-                    
-                </LinearLayout>
-                
-</LinearLayout>
+                <TextView
+                    android:id="@+id/durasiDietStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Durasi Maksimal" />
+
+                <TextView
+                    android:id="@+id/durasiMaksimalStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Status BMI" />
+
+                <TextView
+                    android:id="@+id/statusBMIStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/layer_card_background"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:text="Data Lainnya"
+                android:textColor="@color/hijau_donker"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Makanan Favorit" />
+
+                <TextView
+                    android:id="@+id/makananStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Minuman Favorit" />
+
+                <TextView
+                    android:id="@+id/minumanStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Achivement Tercapai" />
+
+                <TextView
+                    android:id="@+id/achivementStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Jumlah Artikel Dibaca" />
+
+                <TextView
+                    android:id="@+id/artikelStatistik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textColor="@color/lumut" />
+            </GridLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </ScrollView>

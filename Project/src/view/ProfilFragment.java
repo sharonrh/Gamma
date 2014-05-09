@@ -103,7 +103,7 @@ public class ProfilFragment extends Fragment {
 		double temp = profil.getBerat();
 		beratSekarang.setText(temp + " kg");
 		tinggi.setText(profil.getTinggi() + " cm");
-		temp /= profil.getTinggi();
+		temp /= Math.pow(profil.getTinggi(), 2);
 		bmi.setText(String.format("%.3f", temp));
 
 		byte[] decodedString = Base64.decode(profil.getFoto(), Base64.DEFAULT);

@@ -66,7 +66,6 @@ public class EditProfilActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_edit_profil);
 
 		gayaHidupSpinner = (Spinner) findViewById(R.id.spinnerGayaHidup);
@@ -109,7 +108,8 @@ public class EditProfilActivity extends Activity {
 			durasiField.setText("" + (user.getEndTime() - user.getStartTime())
 					/ 604800);
 			gayaHidupSpinner.setSelection(user.getGayaHidup());
-			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1 = pria, 2= wanita
+			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1
+															// = pria, 2= wanita
 			genderSpinner.setSelection(gender);
 
 			if (user.getFoto() != null) {

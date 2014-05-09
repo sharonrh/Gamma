@@ -133,7 +133,6 @@ public class StatistikFragment extends Fragment {
 		GraphicalView mChart = (GraphicalView) ChartFactory.getTimeChartView(
 				getActivity(), dataset, multiRenderer, "dd/MM");
 		layout.addView(mChart);
-
 	}
 
 	@Override

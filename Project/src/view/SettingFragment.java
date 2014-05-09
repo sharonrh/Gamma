@@ -33,7 +33,6 @@ public class SettingFragment extends PreferenceFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Utils.setThemeToActivity(getActivity());
 
 		View v = inflater.inflate(R.layout.fragment_setting, container, false);
 
@@ -43,7 +42,7 @@ public class SettingFragment extends PreferenceFragment {
 		set.add(new Setting("Notifikasi", "Atur Notifikasi"));
 		set.add(new Setting("Artikel", "Atur Notifikasi"));
 		set.add(new Setting("Reset Progress", "Atur Notifikasi"));
-		//set.add(new Setting("Tema", "Ganti Tema Aplikasi"));
+		// set.add(new Setting("Tema", "Ganti Tema Aplikasi"));
 		set.add(new Setting("Tentang", "Info Mengenai Pengembang"));
 		set.add(new Setting("Kredit", "Atur Notifikasi"));
 
@@ -61,9 +60,9 @@ public class SettingFragment extends PreferenceFragment {
 
 				if (position == 0) {
 					kontrol.gantiHalaman(position);
-				//} else if (position == 3) {
-					//temaPopupWindow();
-				} else if(position == 3) {
+					// } else if (position == 3) {
+					// temaPopupWindow();
+				} else if (position == 3) {
 					tentangPopupWindow();
 				}
 
@@ -101,7 +100,7 @@ public class SettingFragment extends PreferenceFragment {
 
 	static class ViewHolder {
 		public TextView title;
-	//	public TextView subtitle;
+		// public TextView subtitle;
 	}
 
 	class SettingArrayAdapter extends ArrayAdapter<Setting> {
@@ -119,70 +118,25 @@ public class SettingFragment extends PreferenceFragment {
 			Setting set = (Setting) this.getItem(position);
 
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.setting_simplerow, null);
+				convertView = inflater
+						.inflate(R.layout.setting_simplerow, null);
 
 				ViewHolder viewHolder = new ViewHolder();
 				viewHolder.title = (TextView) convertView
 						.findViewById(R.id.Title);
-			//	viewHolder.subtitle = (TextView) convertView
-					//	.findViewById(R.id.subTitle);
+				// viewHolder.subtitle = (TextView) convertView
+				// .findViewById(R.id.subTitle);
 
 				convertView.setTag(viewHolder);
 
 			}
 			ViewHolder holder = (ViewHolder) convertView.getTag();
 			holder.title.setText(set.getTitle());
-		//	holder.subtitle.setText(set.getSubTitle());
-
 			return convertView;
 		}
 	}
 
 	RadioGroup rg;
-
-	@SuppressWarnings("deprecation")
-	public void temaPopupWindow() {
-
-		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
-				.create();
-
-		alertDialog.setTitle("Pilih Tema");
-		LayoutInflater inflater = getActivity().getLayoutInflater();
-
-		// Inflate and set the layout for the dialog
-		// Pass null as the parent view because its going in the dialog layout
-		final View v = inflater.inflate(R.layout.layout_tema, null);
-		alertDialog.setView(v);
-
-		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				RadioGroup rg = (RadioGroup) v.findViewById(R.id.pilihTema);
-
-				switch (rg.getCheckedRadioButtonId()) {
-
-				case R.id.holoDark:
-					Utils.THEME = "defaultTheme";
-					Utils.settingChanged = true;
-					startActivity(new Intent(getActivity(), MainActivity.class));
-					break;
-				case R.id.holoLight:
-					Utils.THEME = "Gray";
-					Utils.settingChanged = true;
-					startActivity(new Intent(getActivity(), MainActivity.class));
-					break;
-				case R.id.deFault:
-					Utils.THEME = "Radial";
-					Utils.settingChanged = true;
-					startActivity(new Intent(getActivity(), MainActivity.class));
-					break;
-				default:
-					break;
-				}
-			}
-		});
-		alertDialog.show();
-
-	}
 
 	public void tentangPopupWindow() {
 
