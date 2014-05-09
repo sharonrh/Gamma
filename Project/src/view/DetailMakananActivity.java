@@ -1,9 +1,15 @@
 package view;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Locale;
+
 import model.Makanan;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -65,7 +71,23 @@ public class DetailMakananActivity extends Activity {
 			foto = (ImageView) findViewById(R.id.fotoDetailMakanan);
 
 			nama.setText(mystring);
-
+			
+			
+			String namaMakanan = mystring;
+			namaMakanan = namaMakanan.trim();
+			namaMakanan = namaMakanan.toLowerCase(Locale.getDefault());
+			
+			Bitmap bm = null;
+			try {
+				bm = getBitmapFromAsset("gambar_makanan/" + mystring + ".jpg");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			System.out.println(bm);
+			foto.setImageBitmap(bm);
+			
 			Makanan m = kontrol.getMakanan(mystring);
 			kalori.setText(m.getKalori() + " kal");
 			karbo.setText(m.getKarbohidrat() + " gr");
@@ -98,4 +120,13 @@ public class DetailMakananActivity extends Activity {
 			});
 		}
 	}
+	
+	public Bitmap getBitmapFromAsset(String strName) throws IOException
+	{
+	    AssetManager assetManager = getResources().getAssets();
+	    InputStream istr = assetManager.open(strName);
+	    Bitmap bitmap = BitmapFactory.decodeStream(istr);
+	    return bitmap;
+	}
+	 
 }
