@@ -6,6 +6,8 @@ import dao.HandlerProfil;
 
 public class ProfilController {
 	private HandlerProfil db;
+	public final String[] gayaHidup = { "Pilih Jenis Gaya Hidup",
+			"Jarang Sekali", "Sedikit Aktif", "Aktif", "Sangat Aktif" };
 
 	public ProfilController(Context c) {
 		db = HandlerProfil.getInstance(c);
@@ -24,5 +26,4 @@ public class ProfilController {
 	public Pengguna getProfil() {
 		return db.getProfil();
 	}
-
 }

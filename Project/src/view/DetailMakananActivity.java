@@ -40,7 +40,6 @@ public class DetailMakananActivity extends Activity {
 
 		rate = (Button) findViewById(R.id.rateBtn);
 
-<<<<<<< HEAD
 		// SharedPreferences spre = this.getSharedPreferences("Your prefName",
 		// Context.MODE_PRIVATE);
 		// String mystring = spre.getString("key", "");
@@ -91,13 +90,13 @@ public class DetailMakananActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					bintang2.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 					bintang3.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 				}
 			});
 
@@ -107,11 +106,11 @@ public class DetailMakananActivity extends Activity {
 					bintang2.setImageDrawable(getResources().getDrawable(
 							R.drawable.achievement));
 					bintang3.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 				}
 			});
 
@@ -123,9 +122,9 @@ public class DetailMakananActivity extends Activity {
 					bintang3.setImageDrawable(getResources().getDrawable(
 							R.drawable.achievement));
 					bintang4.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 				}
 			});
 
@@ -139,7 +138,7 @@ public class DetailMakananActivity extends Activity {
 					bintang4.setImageDrawable(getResources().getDrawable(
 							R.drawable.achievement));
 					bintang5.setImageDrawable(getResources().getDrawable(
-							R.drawable.alergi_seafood));
+							R.drawable.ic_action_content_edit));
 				}
 			});
 
@@ -156,136 +155,6 @@ public class DetailMakananActivity extends Activity {
 							R.drawable.achievement));
 				}
 			});
-
-			rate.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
-					finish();
-				}
-			});
 		}
-=======
-		SharedPreferences spre = this.getSharedPreferences("Your prefName",
-				Context.MODE_PRIVATE);
-		String mystring = spre.getString("key", "");
-
-		kontrol = new KatalogController(getApplicationContext());
-
-		nama = (TextView) findViewById(R.id.namaDetailMakanan);
-		kalori = (TextView) findViewById(R.id.kaloriDetailMakanan);
-		karbo = (TextView) findViewById(R.id.karbohidrat);
-		protein = (TextView) findViewById(R.id.protein);
-		lemak = (TextView) findViewById(R.id.lemak);
-		sodium = (TextView) findViewById(R.id.sodium);
-		jenis = (TextView) findViewById(R.id.jenis);
-		hewani = (TextView) findViewById(R.id.hewani);
-		kacang = (TextView) findViewById(R.id.kacang);
-		seafood = (TextView) findViewById(R.id.seafood);
-		foto = (ImageView) findViewById(R.id.fotoDetailMakanan);
-
-		nama.setText(mystring);
-
-		Makanan m = kontrol.getMakanan(mystring);
-		kalori.setText(m.getKalori() + " kal");
-		karbo.setText(m.getKarbohidrat() + " gr");
-		protein.setText(m.getProtein() + " gr");
-		lemak.setText(m.getLemak() + " gr");
-		sodium.setText(m.getNatrium() + " gr");
-		jenis.setText(m.getJenisMakanan());
-
-		String stat = m.isHewani() ? "Ya" : "Tidak";
-		hewani.setText(stat);
-		stat = m.isKacang() ? "Ya" : "Tidak";
-		kacang.setText(stat);
-		stat = m.isSeafood() ? "Ya" : "Tidak";
-		seafood.setText(stat);
-
-		// byte[] decodedString = Base64.decode(m.getPathFoto(),
-		// Base64.DEFAULT);
-		// Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
-		// decodedString.length);
-		// foto.setImageBitmap(decodedByte);
-
-		bintang1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-			}
-		});
-
-		bintang2.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-			}
-		});
-
-		bintang3.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-			}
-		});
-
-		bintang4.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.ic_action_content_edit));
-			}
-		});
-
-		bintang5.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bintang2.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang3.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang4.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-				bintang5.setImageDrawable(getResources().getDrawable(
-						R.drawable.achievement));
-			}
-		});
-
-		rate.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
->>>>>>> 46a2763553e62cd4b9f3b857ca65bb2ee7e36ff0
 	}
 }

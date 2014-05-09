@@ -63,19 +63,16 @@ public class EditProfilActivity extends Activity {
 	private static Rect rect;
 	private static RectF rectF;
 
-	// Declaring the String Array with the Text Data for the Spinners
-	private String[] languages = { "Pilih Jenis Gaya Hidup", "Jarang Sekali",
-			"Sedikit Aktif", "Aktif", "Sangat Aktif" };
 	private String[] durasi = { "1 Minggu", "2 Minggu", "4 Minggu", "8 Minggu" };
 	private String[] kelamin = { "Pilih Jenis Kelamin", "Pria", "Wanita" };
+	private ProfilController kontrol;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_edit_profil);
-		Utils.setThemeToActivity(this);
-
+	
 		gayaHidupSpinner = (Spinner) findViewById(R.id.spinnerGayaHidup);
 		// spinTransport2 = (Spinner) findViewById(R.id.spinnerLamaDiet);
 		genderSpinner = (Spinner) findViewById(R.id.spinnerKelamin);
@@ -136,10 +133,8 @@ public class EditProfilActivity extends Activity {
 		simpan = (Button) findViewById(R.id.simpanProfilBtn);
 
 		fotoProfil.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
 				Intent i = new Intent(
 						Intent.ACTION_PICK,
 						android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -149,7 +144,7 @@ public class EditProfilActivity extends Activity {
 		});
 
 		CustomAdapter adapter = new CustomAdapter(this,
-				android.R.layout.simple_spinner_item, languages);
+				android.R.layout.simple_spinner_item, con.gayaHidup);
 		// CustomAdapter adapter2 = new CustomAdapter(this,
 		// android.R.layout.simple_spinner_item, durasi);
 		CustomAdapter adapter3 = new CustomAdapter(this,
