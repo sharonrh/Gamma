@@ -63,17 +63,20 @@ public class KatalogFragment extends Fragment {
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// you might want to use 'view' here
 				Intent intent = new Intent(getActivity()
 						.getApplicationContext(), DetailMakananActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
+				intent.putExtra("nama", values.get(position).getNama());
+				
 				// passing nama makanan dari katalog ke detail makanan
-				SharedPreferences spre = getActivity().getApplicationContext()
-						.getSharedPreferences("Your prefName",
-								Context.MODE_PRIVATE);
-				SharedPreferences.Editor prefEditor = spre.edit();
-				prefEditor.putString("key", values.get(position).getNama());
-				prefEditor.commit();
+				// SharedPreferences spre =
+				// getActivity().getApplicationContext()
+				// .getSharedPreferences("Your prefName",
+				// Context.MODE_PRIVATE);
+				// SharedPreferences.Editor prefEditor = spre.edit();
+				// prefEditor.putString("key", values.get(position).getNama());
+				// prefEditor.commit();
 
 				startActivity(intent);
 			}

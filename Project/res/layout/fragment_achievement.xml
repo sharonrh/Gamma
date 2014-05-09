@@ -49,7 +49,11 @@
             android:layout_height="150dp"
             android:layout_column="1"
             android:layout_row="1"
+<<<<<<< HEAD
+            android:scaleType="centerInside"/>
+=======
             android:scaleType="centerInside" />
+>>>>>>> 46a2763553e62cd4b9f3b857ca65bb2ee7e36ff0
     </GridLayout>
 
 </LinearLayout>

@@ -223,14 +223,14 @@ public class EditProfilActivity extends Activity {
 					if (validasiInput(nama, umur, genderSelected, berat,
 							target, tinggi)) {
 
-						char gch = genderSpinner.getSelectedItem().toString().charAt(0);
+						char gch = genderSpinner.getSelectedItem().toString()
+								.charAt(0);
 						if (con.updateProfil(nama, Integer.parseInt(umur),
 								Double.parseDouble(berat),
 								Double.parseDouble(tinggi),
-								Double.parseDouble(target), gch,
-								gayaHidup, kacang.isChecked(),
-								seafood.isChecked(), vegetarian.isChecked(),
-								str, 0, 0)) {
+								Double.parseDouble(target), gch, gayaHidup,
+								kacang.isChecked(), seafood.isChecked(),
+								vegetarian.isChecked(), str, 0, 0)) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",

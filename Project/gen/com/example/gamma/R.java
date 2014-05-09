@@ -289,6 +289,13 @@ public final class R {
         public static final int spinner_row=0x7f03001c;
     }
     public static final class menu {
+<<<<<<< HEAD
+        public static final int edit_profil=0x7f090000;
+        public static final int main=0x7f090001;
+        public static final int profil=0x7f090002;
+        public static final int rs=0x7f090003;
+        public static final int setting=0x7f090004;
+=======
         public static final int detail=0x7f090000;
         public static final int edit_profil=0x7f090001;
         public static final int halaman_utama=0x7f090002;
@@ -296,6 +303,7 @@ public final class R {
         public static final int profil=0x7f090004;
         public static final int rs=0x7f090005;
         public static final int setting=0x7f090006;
+>>>>>>> 46a2763553e62cd4b9f3b857ca65bb2ee7e36ff0
     }
     public static final class string {
         public static final int NS=0x7f060009;
