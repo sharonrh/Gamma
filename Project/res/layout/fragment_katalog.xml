@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/abu" >
 
@@ -12,48 +12,106 @@
         android:padding="15dp" >
 
         <GridLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.67"
-            android:padding="10dp" >
+            android:layout_marginBottom="10dp"
+            android:columnCount="2"
+            android:padding="5dp" >
 
             <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/layer_card_background"
                 android:columnCount="1"
-                android:padding="15dp" >
+                android:layout_gravity="left|top"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:rowCount="2"
+                android:layout_marginRight="10dp" >
 
-                <TextView
+                <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Makanan Pokok"
-                    android:textColor="@color/hijau_donker"
-                    android:textStyle="bold" />
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/layer_card_background"
+                    android:columnCount="1"
+                    android:layout_row="0"
+                    android:padding="15dp"
+                    android:layout_marginBottom="5dp" >
 
-                <TextView
-                    android:id="@+id/makananPokokKatalog"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Makanan Pokok"
+                        android:textColor="@color/hijau_donker"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/makananPokokKatalog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_row="1"
+                        android:text="None" />
+                </GridLayout>
+
+                <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
                     android:layout_row="1"
-                    android:text="None" />
+                    android:background="@drawable/layer_card_background"
+                    android:columnCount="1"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Lauk Pauk"
+                        android:textColor="@color/hijau_donker"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/laukPaukKatalog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_row="1"
+                        android:text="None" />
+                </GridLayout>
+
             </GridLayout>
 
             <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/layer_card_background"
+                android:layout_column="1"
+                android:layout_gravity="left|top"
+                android:layout_row="0"
                 android:columnCount="1"
-                android:padding="15dp" >
+                android:rowCount="2" >
+
+                <GridLayout
+                    android:layout_column="0"
+                    android:layout_gravity="left|top"
+                    android:layout_row="0"
+                    android:rowCount="1"
+                    android:columnCount="2"
+                    android:layout_marginBottom="5dp" >
+                    
+                    <GridLayout
+                		android:layout_width="wrap_content"
+                		android:layout_height="wrap_content"
+                		android:layout_gravity="center_vertical"
+                		android:layout_marginRight="5dp"
+                		android:background="@drawable/layer_card_background"
+                		android:columnCount="1"
+                		android:padding="15dp"
+                		android:layout_row="0"
+                		android:layout_column="0" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,14 +131,16 @@
                     android:layout_row="1"
                     android:text="None" />
             </GridLayout>
-
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/layer_card_background"
-                android:padding="15dp" >
+            
+                    <GridLayout
+                		android:layout_width="wrap_content"
+                		android:layout_height="wrap_content"
+                		android:layout_gravity="center_horizontal"
+                		android:background="@drawable/layer_card_background"
+                		android:columnCount="1"
+                		android:padding="15dp"
+                		android:layout_row="0"
+                		android:layout_column="1" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,51 +160,17 @@
                     android:layout_row="1"
                     android:text="None" />
             </GridLayout>
-        </GridLayout>
+                    
+                </GridLayout>
 
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.67"
-            android:padding="10dp" >
-
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/layer_card_background"
-                android:columnCount="1"
-                android:padding="15dp" >
-
-                <TextView
+                <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Lauk Pauk"
-                    android:textColor="@color/hijau_donker"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/laukpaukKatalog"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_marginLeft="0dp"
                     android:layout_row="1"
-                    android:text="None" />
-            </GridLayout>
-
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/layer_card_background"
-                android:columnCount="1"
-                android:padding="15dp" >
+                    android:background="@drawable/layer_card_background"
+                    android:padding="15dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,6 +190,9 @@
                     android:layout_row="1"
                     android:text="None" />
             </GridLayout>
+                
+            </GridLayout>
+
         </GridLayout>
 
         <ListView

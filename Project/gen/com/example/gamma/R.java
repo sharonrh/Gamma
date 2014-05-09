@@ -134,7 +134,7 @@ public final class R {
         public static final int beratStatistikSekarang=0x7f0a0011;
         public static final int beratTargetStatistik=0x7f0a0017;
         public static final int bmiProfil=0x7f0a005b;
-        public static final int buahKatalog=0x7f0a0057;
+        public static final int buahKatalog=0x7f0a0058;
         public static final int button1=0x7f0a0041;
         public static final int button2=0x7f0a0042;
         public static final int cancel_button=0x7f0a0080;
@@ -176,7 +176,7 @@ public final class R {
         public static final int katalog=0x7f0a0053;
         public static final int kelaminProfilTv=0x7f0a005f;
         public static final int kutipan=0x7f0a0070;
-        public static final int laukpaukKatalog=0x7f0a0058;
+        public static final int laukPaukKatalog=0x7f0a0056;
         public static final int left_drawer=0x7f0a0045;
         public static final int lemak=0x7f0a0007;
         public static final int linearLayout1=0x7f0a000d;
@@ -204,7 +204,7 @@ public final class R {
         public static final int ratingBarDetail=0x7f0a0003;
         public static final int ratingBarList=0x7f0a0072;
         public static final int rekomendasi=0x7f0a0051;
-        public static final int sayurKatalog=0x7f0a0056;
+        public static final int sayurKatalog=0x7f0a0057;
         public static final int seafood=0x7f0a000c;
         public static final int seafoodProfilTv=0x7f0a0064;
         public static final int separator=0x7f0a0081;
