@@ -383,50 +383,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:text="Makanan Favorit" />
-
-                <TextView
-                    android:id="@+id/makananStatistik"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="None"
-                    android:textColor="@color/lumut" />
-            </GridLayout>
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="2dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="2dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="Minuman Favorit" />
-
-                <TextView
-                    android:id="@+id/minumanStatistik"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="None"
-                    android:textColor="@color/lumut" />
-            </GridLayout>
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="2dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="2dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
                     android:text="Achivement Tercapai" />
 
                 <TextView
