@@ -17,39 +17,41 @@
         android:rowCount="2" >
 
         <ImageButton
-            android:id="@+id/profil"
+            android:id="@+id/starter"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_column="0"
             android:layout_row="0"
             android:scaleType="centerInside"
-            android:src="@drawable/profil" />
+            android:src="@drawable/starter" />
 
         <ImageButton
-            android:id="@+id/rekomendasi"
+            android:id="@+id/finisher"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_column="0"
             android:layout_row="1"
             android:scaleType="centerInside"
-            android:src="@drawable/rekomendasi" />
+            android:src="@drawable/finisher" />
 
         <ImageButton
-            android:id="@+id/statistik"
+            android:id="@+id/halfway"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_column="1"
             android:layout_row="0"
             android:scaleType="centerInside"
-            android:src="@drawable/statistik" />
+            android:src="@drawable/halfway" />
 
         <ImageButton
-            android:id="@+id/katalog"
+            android:id="@+id/bookworm"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_column="1"
             android:layout_row="1"
-            android:scaleType="centerInside" />
+            android:scaleType="centerInside"
+            android:src="@drawable/bookworm" />
+
     </GridLayout>
 
 </LinearLayout>
