@@ -42,11 +42,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(buatTabelNotifikasi);
 		// tabel profil
 		String buatTabelProfil = "CREATE TABLE profil (id INTEGER PRIMARY KEY, nama TEXT, umur INTEGER, berat REAL, tinggi REAL, target REAL, gender INTEGER, "
-				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, hewani INTEGER, foto TEXT, startTime REAL, endTime REAL);";
+				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, vegetarian INTEGER, foto TEXT, startTime REAL, endTime REAL);";
 		db.execSQL(buatTabelProfil);
-        //tabel achievement
-        String buatTabelAchievement = "CREATE TABLE achievement (nama TEXT PRIMARY KEY, terkunci INTEGER, deskripsi TEXT, progress REAL, pathLogo TEXT);";
-        db.execSQL(buatTabelAchievement);
+		// tabel achievement
+		String buatTabelAchievement = "CREATE TABLE achievement (nama TEXT PRIMARY KEY, terkunci INTEGER, deskripsi TEXT, progress REAL, pathLogo TEXT);";
+		db.execSQL(buatTabelAchievement);
 
 		// isi tabel profil dengan data awal
 		ContentValues values = new ContentValues();
@@ -59,7 +59,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put("gayaHidup", 0);
 		values.put("kacang", 0);
 		values.put("seafood", 0);
-		values.put("hewani", 0);
+		values.put("vegetarian", 0);
 		values.put("foto", "");
 		values.put("startTime", 0);
 		values.put("endTime", 0);
@@ -77,7 +77,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS laporan");
 		db.execSQL("DROP TABLE IF EXISTS notifikasi");
 		db.execSQL("DROP TABLE IF EXISTS profil");
-        db.execSQL("DROP TABLE IF EXISTS achievement");
+		db.execSQL("DROP TABLE IF EXISTS achievement");
 		// Create tables again
 		onCreate(db);
 	}
@@ -97,7 +97,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			while ((line = reader.readLine()) != null) {
 				String[] temp = line.split(",");
 
-				int isHewani = temp[10].charAt(0) == 'Y' ? 1 : 0;
+				int isVegetarian = temp[10].charAt(0) == 'Y' ? 1 : 0;
 				int isSeafood = temp[11].charAt(0) == 'Y' ? 1 : 0;
 				int isKacang = temp[12].charAt(0) == 'Y' ? 1 : 0;
 
@@ -106,17 +106,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				values.put("kalori", Integer.parseInt(temp[1]));
 				values.put("protein", Double.parseDouble(temp[2]));
 				values.put("karbohidrat", Double.parseDouble(temp[3]));
-                values.put("lemak", Double.parseDouble(temp[4]));
+				values.put("lemak", Double.parseDouble(temp[4]));
 				values.put("natrium", Double.parseDouble(temp[5]));
-                values.put("porsi", temp[6]);
-                values.put("bobot", Integer.parseInt(temp[7]));
-                values.put("rating", Integer.parseInt(temp[8]));
+				values.put("porsi", temp[6]);
+				values.put("bobot", Integer.parseInt(temp[7]));
+				values.put("rating", Integer.parseInt(temp[8]));
 				values.put("jenis", temp[9]);
-				values.put("hewani", isHewani);
+				values.put("vegetarian", isVegetarian);
 				values.put("seafood", isSeafood);
 				values.put("kacang", isKacang);
 				values.put("terakhirDipilih", Long.parseLong(temp[13]));
-                values.put("pathFoto", temp[14]);
+				values.put("pathFoto", temp[14]);
 
 				db.insert("makanan", null, values);
 			}
@@ -126,32 +126,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 	}
 
-    private void initAchievement (Context context, SQLiteDatabase db) {
-        AssetManager am = context.getAssets();
-        InputStream is;
-        try {
-            is = am.open("achievement.csv");
+	private void initAchievement(Context context, SQLiteDatabase db) {
+		AssetManager am = context.getAssets();
+		InputStream is;
+		try {
+			is = am.open("achievement.csv");
 
-            InputStreamReader isr = new InputStreamReader(is);
+			InputStreamReader isr = new InputStreamReader(is);
 
-            BufferedReader reader = new BufferedReader(isr);
-            reader.readLine(); // baca header
-            String line;
+			BufferedReader reader = new BufferedReader(isr);
+			reader.readLine(); // baca header
+			String line;
 
-            while ((line = reader.readLine()) != null) {
-                String[] temp = line.split(",");
+			while ((line = reader.readLine()) != null) {
+				String[] temp = line.split(",");
 
-                ContentValues values = new ContentValues();
-                values.put("nama", temp[0]);
-                values.put("terkunci", Integer.parseInt(temp[1]));
-                values.put("deskripsi", temp[2]);
-                values.put("progress", Double.parseDouble(temp[3]));
-                values.put("pathLogo", temp[4]);
-                db.insert("achievement", null, values);
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+				ContentValues values = new ContentValues();
+				values.put("nama", temp[0]);
+				values.put("terkunci", Integer.parseInt(temp[1]));
+				values.put("deskripsi", temp[2]);
+				values.put("progress", Double.parseDouble(temp[3]));
+				values.put("pathLogo", temp[4]);
+				db.insert("achievement", null, values);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

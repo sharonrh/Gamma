@@ -22,7 +22,7 @@ public class HandlerProfil extends DatabaseHandler {
 	private final String gayaHidup = "gayaHidup";
 	private final String kacang = "kacang";
 	private final String seafood = "seafood";
-	private final String hewani = "hewani";
+	private final String vegetarian = "vegetarian";
 	private final String foto = "foto";
 	private final String startTime = "startTime";
 	private final String endTime = "endTime";
@@ -43,7 +43,7 @@ public class HandlerProfil extends DatabaseHandler {
 
 		Cursor cursor = db.query(tabelProfil, new String[] { id, nama, umur,
 				berat, tinggi, target, gender, gayaHidup, kacang, seafood,
-				hewani, foto, startTime, endTime }, id + "=?",
+				vegetarian, foto, startTime, endTime }, id + "=?",
 				new String[] { String.valueOf(1) }, null, null, null, null);
 
 		Pengguna profil = null;
@@ -51,25 +51,27 @@ public class HandlerProfil extends DatabaseHandler {
 
 			int i = Integer.parseInt(cursor.getString(6));
 			char g = i == 1 ? 'W' : 'P';
+System.out.println("di handler "+ Double.valueOf(cursor.getString(12)));
+System.out.println("di handler "+ Double.valueOf(cursor.getString(12)).longValue());
 
 			profil = new Pengguna(cursor.getString(1), Integer.parseInt(cursor
 					.getString(2)), Double.parseDouble(cursor.getString(3)),
 					Double.parseDouble(cursor.getString(4)),
 					Double.parseDouble(cursor.getString(5)), g,
 					Integer.parseInt(cursor.getString(7)), false, false, false,
-					cursor.getString(11), Long.parseLong(cursor.getString(12)),
-					Long.parseLong(cursor.getString(13)));
+					cursor.getString(11), Double.valueOf(cursor.getString(12))
+							.longValue(), Double.valueOf(cursor.getString(13))
+							.longValue());
 
 			// retrieve data alergi
 			int h = Integer.parseInt(cursor.getString(8));
 			int s = Integer.parseInt(cursor.getString(9));
 			int k = Integer.parseInt(cursor.getString(10));
 
-			profil.setVegetarian(h != 1);
+			profil.setVegetarian(h == 1);
 			profil.setAlergiSeafood(s == 1);
 			profil.setAlergiKacang(k == 1);
 		}
-
 		cursor.close();
 		db.close();
 		return profil;
@@ -78,7 +80,7 @@ public class HandlerProfil extends DatabaseHandler {
 	public boolean updateProfil(String namaNew, int umurNew, double beratNew,
 			double tinggiNew, double targetNew, char genderNew,
 			int gayaHidupNew, boolean isAlergiKacang, boolean isAlergiSeafood,
-			boolean isVegetarian, String fotoNew, long startTime, long endTime) {
+			boolean isVegetarian, String fotoNew, long startNew, long endNew) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		int h = 0, s = 0, k = 0, g = 0;
 		ContentValues values = new ContentValues();
@@ -104,10 +106,10 @@ public class HandlerProfil extends DatabaseHandler {
 		}
 		values.put(kacang, k);
 		values.put(seafood, s);
-		values.put(hewani, h);
+		values.put(vegetarian, h);
 		values.put(foto, fotoNew);
-		values.put(this.startTime, startTime);
-		values.put(this.endTime, endTime);
+		values.put(startTime, startNew);
+		values.put(endTime, endNew);
 
 		boolean b = db.update(tabelProfil, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(1) }) > 0;

@@ -74,7 +74,6 @@ public class StatistikFragment extends Fragment {
 
 		GregorianCalendar end = new GregorianCalendar();
 		end.setTimeInMillis(p.getEndTime());
-
 		// untuk grafik target cuma pake data awal + akhir
 		targetSeries.add(start.getTime(), awal);
 		targetSeries.add(end.getTime(), target);
@@ -128,7 +127,8 @@ public class StatistikFragment extends Fragment {
 		// multiRenderer.setMarginsColor(Color.argb(0x00, 0x01, 0x01, 0x01));
 		LinearLayout layout = (LinearLayout) getActivity().findViewById(
 				R.id.chart_layout);
-		// Creating an intent to plot line chart using dataset and multipleRenderer
+		// Creating an intent to plot line chart using dataset and
+		// multipleRenderer
 
 		GraphicalView mChart = (GraphicalView) ChartFactory.getTimeChartView(
 				getActivity(), dataset, multiRenderer, "dd/MM");

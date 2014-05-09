@@ -2,6 +2,7 @@ package view;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
+import android.text.format.Time;
 import java.util.ArrayList;
 
 import model.Pengguna;
@@ -12,10 +13,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.PorterDuff.Mode;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -30,8 +31,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,13 +45,11 @@ public class EditProfilActivity extends Activity {
 	protected static final int RESULT_LOAD_IMAGE = 1;
 
 	private EditText namaField, umurField, beratField, tinggiField,
-			targetField;
-	private RadioButton selected;
+			targetField, durasiField;
 	private CheckBox vegetarian, kacang, seafood;
-	private Spinner gayaHidupSpinner, spinTransport2, genderSpinner;
+	private Spinner gayaHidupSpinner, genderSpinner;
 	private Button batal, simpan;
 	private ImageView fotoProfil;
-	private String gaya, akv1, akv2, akv3, akv4;
 	private TextView penjelasan;
 	private ProfilController con;
 	private String str = "";
@@ -63,18 +61,15 @@ public class EditProfilActivity extends Activity {
 	private static Rect rect;
 	private static RectF rectF;
 
-	private String[] durasi = { "1 Minggu", "2 Minggu", "4 Minggu", "8 Minggu" };
 	private String[] kelamin = { "Pilih Jenis Kelamin", "Pria", "Wanita" };
-	private ProfilController kontrol;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Utils.setThemeToActivity(this);
 		setContentView(R.layout.activity_edit_profil);
-	
+
 		gayaHidupSpinner = (Spinner) findViewById(R.id.spinnerGayaHidup);
-		// spinTransport2 = (Spinner) findViewById(R.id.spinnerLamaDiet);
 		genderSpinner = (Spinner) findViewById(R.id.spinnerKelamin);
 
 		namaField = (EditText) findViewById(R.id.editNama);
@@ -82,6 +77,7 @@ public class EditProfilActivity extends Activity {
 		beratField = (EditText) findViewById(R.id.editBeratSekarang);
 		targetField = (EditText) findViewById(R.id.editBeratTarget);
 		tinggiField = (EditText) findViewById(R.id.editTinggi);
+		durasiField = (EditText) findViewById(R.id.editDurasiDiet);
 
 		vegetarian = (CheckBox) findViewById(R.id.editVegetarian);
 		kacang = (CheckBox) findViewById(R.id.editKacang);
@@ -91,6 +87,14 @@ public class EditProfilActivity extends Activity {
 		con = new ProfilController(getApplicationContext());
 		Pengguna user = con.getProfil();
 
+		CustomAdapter adapter = new CustomAdapter(this,
+				android.R.layout.simple_spinner_item, con.gayaHidup);
+		CustomAdapter adapter3 = new CustomAdapter(this,
+				android.R.layout.simple_spinner_item, kelamin);
+
+		gayaHidupSpinner.setAdapter(adapter);
+		genderSpinner.setAdapter(adapter3);
+
 		// case user udah pernah isi nama
 		if (user.getNama().length() != 0) {
 			namaField.setText(user.getNama());
@@ -98,9 +102,14 @@ public class EditProfilActivity extends Activity {
 			beratField.setText("" + user.getBerat());
 			targetField.setText("" + user.getTarget());
 			tinggiField.setText("" + user.getTinggi());
+			System.out.println(user.getEndTime());
+			System.out.println(user.getStartTime());
+			System.out
+					.println((user.getEndTime() - user.getStartTime()) / 604800);
+			durasiField.setText("" + (user.getEndTime() - user.getStartTime())
+					/ 604800);
 			gayaHidupSpinner.setSelection(user.getGayaHidup());
-
-			int gender = user.getGender() == 'W' ? 1 : 0;
+			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1 = pria, 2= wanita
 			genderSpinner.setSelection(gender);
 
 			if (user.getFoto() != null) {
@@ -143,22 +152,10 @@ public class EditProfilActivity extends Activity {
 			}
 		});
 
-		CustomAdapter adapter = new CustomAdapter(this,
-				android.R.layout.simple_spinner_item, con.gayaHidup);
-		// CustomAdapter adapter2 = new CustomAdapter(this,
-		// android.R.layout.simple_spinner_item, durasi);
-		CustomAdapter adapter3 = new CustomAdapter(this,
-				android.R.layout.simple_spinner_item, kelamin);
-
-		gayaHidupSpinner.setAdapter(adapter);
-		// spinTransport2.setAdapter(adapter2);
-		genderSpinner.setAdapter(adapter3);
-
 		gayaHidupSpinner
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
 					public void onItemSelected(AdapterView parent, View view,
 							int position, long id) {
-
 						// On selecting a spinner item
 						String item = parent.getItemAtPosition(position)
 								.toString();
@@ -179,9 +176,6 @@ public class EditProfilActivity extends Activity {
 						else if (item.equalsIgnoreCase("sangat aktif"))
 							penjelasan
 									.setText("Sangat Aktif : Lingkungan kerja fisik intensif seperti konstruksi dan / atau melakukan kegiatan yang berat banyak hari dalam seminggu, seperti jogging, menggunakan peralatan olahraga atau berpartisipasi dalam olahraga fisik.");
-
-						// simpan item yang dipilih
-						gaya = item;
 					}
 
 					public void onNothingSelected(AdapterView arg0) {
@@ -192,7 +186,6 @@ public class EditProfilActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
 				finish();
 			}
 		});
@@ -206,6 +199,7 @@ public class EditProfilActivity extends Activity {
 				String berat = beratField.getText().toString();
 				String target = targetField.getText().toString();
 				String tinggi = tinggiField.getText().toString();
+				int durasi = Integer.parseInt(durasiField.getText().toString());
 				int genderSelected = genderSpinner.getSelectedItemPosition();
 				int gayaHidup = gayaHidupSpinner.getSelectedItemPosition();
 
@@ -220,12 +214,17 @@ public class EditProfilActivity extends Activity {
 
 						char gch = genderSpinner.getSelectedItem().toString()
 								.charAt(0);
+
+						Time t = new Time();
+						t.setToNow();
+						long l = t.toMillis(false);
 						if (con.updateProfil(nama, Integer.parseInt(umur),
 								Double.parseDouble(berat),
 								Double.parseDouble(tinggi),
 								Double.parseDouble(target), gch, gayaHidup,
 								kacang.isChecked(), seafood.isChecked(),
-								vegetarian.isChecked(), str, 0, 0)) {
+								vegetarian.isChecked(), str, l, l
+										+ (durasi * 604800))) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
@@ -258,19 +257,19 @@ public class EditProfilActivity extends Activity {
 		});
 	}
 
-	class CustomAdapter extends ArrayAdapter {
+	class CustomAdapter extends ArrayAdapter<String> {
 
 		Activity context;
 
-		String[] deer;
+		String[] values;
 
-		public CustomAdapter(Activity context, int resource, String[] deer) {
+		public CustomAdapter(Activity context, int resource, String[] val) {
 
-			super(context, resource, deer);
+			super(context, resource, val);
 
 			this.context = context;
 
-			this.deer = deer;
+			this.values = val;
 
 		}
 
@@ -282,21 +281,12 @@ public class EditProfilActivity extends Activity {
 			View row = convertView;
 
 			if (row == null) {
-
 				LayoutInflater inflater = context.getLayoutInflater();
-
 				row = inflater.inflate(R.layout.spinner_row, parent, false);
-
 			}
-
-			String current = deer[position];
-
-			// ImageView profile = (ImageView) row.findViewById(R.id.p);
-
-			// profile.setBackgroundResource(current.getResourceId());
+			String current = values[position];
 
 			TextView name = (TextView) row.findViewById(R.id.spinnerText);
-
 			name.setText(current);
 
 			return row;

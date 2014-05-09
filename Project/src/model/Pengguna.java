@@ -1,6 +1,5 @@
 package model;
 
-
 public class Pengguna {
 
 	private String nama;
@@ -16,7 +15,6 @@ public class Pengguna {
 	private String foto;
 	private long startTime;
 	private long endTime;
-
 
 	public Pengguna(String nama, int umur, double berat, double tinggi,
 			double target, char gender, int gayaHidup, boolean isAlergiKacang,
