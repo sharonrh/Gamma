@@ -86,7 +86,8 @@
         android:dividerHeight="10dp"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true"
-        android:listSelector="@android:color/transparent" >
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="15dp" >
         
     </ListView>
 
