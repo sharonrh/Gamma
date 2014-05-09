@@ -37,7 +37,7 @@ import controller.NotifikasiController;
 
 @SuppressLint({ "SimpleDateFormat", "NewApi" })
 public class NotifikasiActivity extends Activity {
-	
+
 	String str;
 	Button tambahNotifikasiBtn;
 	ListNotifikasiArrayAdapter adapter;
@@ -47,34 +47,34 @@ public class NotifikasiActivity extends Activity {
 	AlarmService alrm;
 	List<Notifikasi> data = new ArrayList<Notifikasi>();
 	int id = 0;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_notifikasi);
-		alrm= new AlarmService(getApplicationContext());
-		
-		//tambahNotifikasiBtn = (Button) findViewById(R.id.tmbhNtfkasiBtn);
+		alrm = new AlarmService(getApplicationContext());
+
+		// tambahNotifikasiBtn = (Button) findViewById(R.id.tmbhNtfkasiBtn);
 		lv = (ListView) findViewById(R.id.listViewNotifikasi);
 		kontrol = new NotifikasiController(getApplicationContext());
-		
+
 		data = kontrol.getListNotifikasi();
-		
-		if(data.isEmpty()){
+
+		if (data.isEmpty()) {
 			kontrol.tambahNotifikasiDefault();
 		}
-		
+
 		adapter = new ListNotifikasiArrayAdapter(this, data);
 		lv.setAdapter(adapter);
-		
+
 		System.out.println(adapter.getItemId(0));
 		System.out.println(adapter.getItemId(2));
 		System.out.println(adapter.getCount());
 		System.out.println(adapter.getItemViewType(2));
 		System.out.println(adapter.getItemViewType(1));
-		Notifikasi notif =  adapter.getItem(0);
+		Notifikasi notif = adapter.getItem(0);
 		System.out.println(notif.getNama());
-		
+
 		lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
 			@Override
@@ -85,33 +85,30 @@ public class NotifikasiActivity extends Activity {
 				showAlert(position);
 				lv.setAdapter(adapter);
 				recreate();
-				
+
 				return false;
 			}
 		});
-		
-		int ii=0;
-		while(!data.isEmpty() && ii < data.size()){
+
+		int ii = 0;
+		while (!data.isEmpty() && ii < data.size()) {
 			long l = data.get(ii).getWaktu();
 			ii++;
 			Date date = new Date(l);
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 			String formatted = format.format(date);
 			String[] str = formatted.split(":");
-			
+
 			int jam = Integer.parseInt(str[0]);
 			int menit = Integer.parseInt(str[1]);
-			//startAlarm(jam, menit);
+			// startAlarm(jam, menit);
 		}
-		
-		
+
 		System.out.println("123" + data);
-		
-		
-		
+
 	}
-	
-	public void showAlert(int position){
+
+	public void showAlert(int position) {
 
 		// TODO Auto-generated method stub
 
@@ -121,83 +118,82 @@ public class NotifikasiActivity extends Activity {
 		// ListNotifikasi Dialog Title
 		String title = "";
 		System.out.println(position);
-		
-		if(position==0){
+
+		if (position == 0) {
 			title = "Atur Waktu Sarapan";
 			nama = "Sarapan";
-		}
-		else if(position==1){
+		} else if (position == 1) {
 			title = "Atur Waktu Makan Siang";
 			nama = "Makan Siang";
-			id=1;
-		}
-		else if(position==2){
+			id = 1;
+		} else if (position == 2) {
 			title = "Atur Waktu Makan Malam";
 			nama = "Makan Malam";
-			id=2;
+			id = 2;
 		}
-		
+
 		alertDialog.setTitle(title);
 
 		// ListNotifikasi Dialog Message
-		 LayoutInflater inflater = getLayoutInflater();
+		LayoutInflater inflater = getLayoutInflater();
 
-		    // Inflate and set the layout for the dialog
-		    // Pass null as the parent view because its going in the dialog layout
-		 View v = inflater.inflate(R.layout.atur_notifikasi_layout, null);
-		 alertDialog.setView(v);
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		View v = inflater.inflate(R.layout.atur_notifikasi_layout, null);
+		alertDialog.setView(v);
 
 		// ListNotifikasi Icon to Dialog
-	//	alertDialog.setIcon(R.drawable.ic_launcher);
-		 
-		 final TimePicker tp =(TimePicker) v.findViewById(R.id.timePicker1);
-		 tp.setIs24HourView(true);
-		 
-		// ListNotifikasi OK Button
-		 alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "batal", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog,
-						int which) {
-					
-				}
-			});
-		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "simpan", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,
-					int which) {
-				Time t = new Time();
-				t.setToNow();
-				System.out.println(t.hour);
-				System.out.println(t.minute);
-				
-				int jamSekarang = tp.getCurrentHour();
-				int menitSekarang = tp.getCurrentMinute();
-				
-				Time nt = new Time();
-				
-				//nyimpen waktu sekarang
-				nt.set(0, menitSekarang, jamSekarang, t.monthDay, t.month, t.year);
-				
-				long l = nt.toMillis(false);
-				System.out.println("abc2");
-				
-				//nyimpen ke database
-				System.out.println(nama);
-				System.out.println(kontrol.updateNotifikasi(nama, l));
-				System.out.println(data);
+		// alertDialog.setIcon(R.drawable.ic_launcher);
 
-				lv.setAdapter(adapter);
-				AlarmService myAlarm = new AlarmService(getApplicationContext());
-				System.out.println(id);
-				myAlarm.startAlarm(l, id);
-				recreate();
-			}
-		});
-		
+		final TimePicker tp = (TimePicker) v.findViewById(R.id.timePicker1);
+		tp.setIs24HourView(true);
+
+		// ListNotifikasi OK Button
+		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "batal",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				});
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "simpan",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						Time t = new Time();
+						t.setToNow();
+						System.out.println(t.hour);
+						System.out.println(t.minute);
+
+						int jamSekarang = tp.getCurrentHour();
+						int menitSekarang = tp.getCurrentMinute();
+
+						Time nt = new Time();
+
+						// nyimpen waktu sekarang
+						nt.set(0, menitSekarang, jamSekarang, t.monthDay,
+								t.month, t.year);
+
+						long l = nt.toMillis(false);
+						System.out.println("abc2");
+
+						// nyimpen ke database
+						System.out.println(nama);
+						System.out.println(kontrol.updateNotifikasi(nama, l));
+						System.out.println(data);
+
+						lv.setAdapter(adapter);
+						AlarmService myAlarm = new AlarmService(
+								getApplicationContext());
+						System.out.println(id);
+						myAlarm.startAlarm(l, id);
+						recreate();
+					}
+				});
+
 		// Showing Alert Message
 		alertDialog.show();
-	
-	
+
 	}
-	
+
 	class ListNotifikasi {
 		String title;
 		String subTitle;
@@ -207,63 +203,45 @@ public class NotifikasiActivity extends Activity {
 			this.title = title;
 			this.subTitle = subTitle;
 		}
-
-		public String getTitle() {
-			return title;
-		}
-
-		public void setTitle(String title) {
-			this.title = title;
-		}
-
-		public String getSubTitle() {
-			return subTitle;
-		}
-
-		public void setSubTitle(String subTitle) {
-			this.subTitle = subTitle;
-		}
-		
-		public String toString(){
-			return title;
-		}
-
 	}
 
 	/** Holds child views for one row. */
 	class ListNotifikasiViewHolder {
 		private TextView textView1;
 		private Switch timeTv;
-		
-		
+
 		public ListNotifikasiViewHolder(Switch timeTv, TextView textView1) {
 			super();
 			this.timeTv = timeTv;
 			this.textView1 = textView1;
 		}
-		
+
 		public TextView getTextView1() {
 			return textView1;
 		}
+
 		public void setTextView1(TextView textView1) {
 			this.textView1 = textView1;
 		}
+
 		public Switch getTimeTv() {
 			return timeTv;
 		}
+
 		public void setTimeTv(Switch timeTv) {
 			this.timeTv = timeTv;
 		}
 
 	}
 
-	
 	class ListNotifikasiArrayAdapter extends ArrayAdapter<Notifikasi> {
 
 		private LayoutInflater inflater;
 
-		public ListNotifikasiArrayAdapter(Context context, List<Notifikasi> ListNotifikasiList) {
-			super(context, R.layout.notifikasi_simplerow, R.id.Title, ListNotifikasiList);
+		public ListNotifikasiArrayAdapter(Context context,
+				List<Notifikasi> ListNotifikasiList) {
+			super(context, R.layout.notifikasi_simplerow, R.id.Title,
+					ListNotifikasiList);
 			// Cache the LayoutInflate to avoid asking for a new one each time.
 			inflater = LayoutInflater.from(context);
 		}
@@ -280,22 +258,18 @@ public class NotifikasiActivity extends Activity {
 
 			// Create a new row view
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.notifikasi_simplerow, null);
+				convertView = inflater.inflate(R.layout.notifikasi_simplerow,
+						null);
 
 				// Find the child views.
 				tv1 = (TextView) convertView.findViewById(R.id.Title);
 				tv2 = (Switch) convertView.findViewById(R.id.switch1);
 
-				// Optimization: Tag the row with it's child views, so we don't
-				// have to
-				// call findViewById() later when we reuse the row.
 				convertView.setTag(new ListNotifikasiViewHolder(tv2, tv1));
 
 			}
 			// Reuse existing row view
 			else {
-				// Because we use a ViewHolder, we avoid having to call
-				// findViewById().
 				ListNotifikasiViewHolder viewHolder = (ListNotifikasiViewHolder) convertView
 						.getTag();
 				tv1 = viewHolder.getTextView1();
@@ -303,7 +277,6 @@ public class NotifikasiActivity extends Activity {
 			}
 
 			if (tv1 != null) {
-				
 				Date date = new Date(set.getWaktu());
 				SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 				String formatted = format.format(date);
@@ -313,26 +286,28 @@ public class NotifikasiActivity extends Activity {
 
 			return convertView;
 		}
-		
-		
 	}
 
 	private void startAlarm(int jam, int menit) {
-	    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-	    Calendar calendar = Calendar.getInstance();
-	    calendar.setTimeInMillis(System.currentTimeMillis());
-	    calendar.set(calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH, jam, menit);
+		AlarmManager alarmManager = (AlarmManager) this
+				.getSystemService(Context.ALARM_SERVICE);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(System.currentTimeMillis());
+		calendar.set(calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH, jam,
+				menit);
 
-	    long when = calendar.getTimeInMillis();         // notification time
-	            Intent intent = new Intent(getApplicationContext(), NotifikasiService.class);
-	            PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
-	            alarmManager.setExact(AlarmManager.RTC, when, pendingIntent);
-	        }
+		long when = calendar.getTimeInMillis(); // notification time
+		Intent intent = new Intent(getApplicationContext(),
+				NotifikasiService.class);
+		PendingIntent pendingIntent = PendingIntent.getService(
+				getApplicationContext(), 0, intent, 0);
+		alarmManager.setExact(AlarmManager.RTC, when, pendingIntent);
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.notifikasi, menu);
+		// getMenuInflater().inflate(R.menu.notifikasi, menu);
 		return true;
 	}
-
 }
