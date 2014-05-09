@@ -75,7 +75,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/laukPaukKatalog"
+                        android:id="@+id/laukpaukKatalog"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="0"

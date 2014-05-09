@@ -176,7 +176,7 @@ public final class R {
         public static final int katalog=0x7f0a0053;
         public static final int kelaminProfilTv=0x7f0a005f;
         public static final int kutipan=0x7f0a0070;
-        public static final int laukPaukKatalog=0x7f0a0056;
+        public static final int laukpaukKatalog=0x7f0a0056;
         public static final int left_drawer=0x7f0a0045;
         public static final int lemak=0x7f0a0007;
         public static final int linearLayout1=0x7f0a000d;

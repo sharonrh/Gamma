@@ -256,7 +256,7 @@
 
             <Button
                 android:id="@+id/simpanProfilBtn"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginRight="20dp"
@@ -264,7 +264,7 @@
 
             <Button
                 android:id="@+id/batalProfilBtn"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginLeft="20dp"

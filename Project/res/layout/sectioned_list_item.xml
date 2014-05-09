@@ -9,10 +9,10 @@
         style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="2dp"
+        android:background="@color/hijau_donker"
         android:paddingBottom="2dp"
-        android:textColor="#FFFFFF"
-        android:background= "@color/my_blue"/>
+        android:paddingTop="2dp"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/title"
