@@ -75,18 +75,18 @@ public class NotifikasiActivity extends Activity {
 		Notifikasi notif = adapter.getItem(0);
 		System.out.println(notif.getNama());
 
-		lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 				// TODO Auto-generated method stub
 				++id;
+				System.out.println("id"+id);
 				showAlert(position);
-				lv.setAdapter(adapter);
-				recreate();
+//				lv.setAdapter(adapter);
+//				recreate();
 
-				return false;
 			}
 		});
 

@@ -17,18 +17,20 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -37,10 +39,6 @@ public class RSSFragment extends Fragment {
 	private static final int MAX_RETRIES = 3;
 	private static ListView list;
 	private static List<Entry> data;
-
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -64,9 +62,36 @@ public class RSSFragment extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		new RssFeedTask().execute(
-				"http://www.health.com/health/diet-fitness/feed",
-				"http://www.situskesehatan.com/feed");
+		if (isOnline()) {
+			new RssFeedTask().execute(
+					"http://www.health.com/health/diet-fitness/feed",
+					"http://www.situskesehatan.com/feed");
+		} else {
+			AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+					.create();
+
+			alertDialog.setTitle("Info");
+			alertDialog
+					.setMessage("Tidak ada koneksi internet, cek koneksi Anda dan coba lagi.");
+			// alertDialog.setIcon(R.drawable.alerticon);
+			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+				}
+			});
+			alertDialog.show();
+		}
+	}
+
+	public boolean isOnline() {
+		ConnectivityManager conMgr = (ConnectivityManager) getActivity()
+				.getApplicationContext().getSystemService(
+						Context.CONNECTIVITY_SERVICE);
+		NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+		if (netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()) {
+			return false;
+		}
+		return true;
 	}
 
 	private class RssFeedTask extends AsyncTask<String, Void, List<Entry>> {
@@ -74,7 +99,7 @@ public class RSSFragment extends Fragment {
 		private ProgressDialog dialog = new ProgressDialog(getActivity());
 
 		protected void onPreExecute() {
-			dialog.setMessage("Mengambil data.. Harap tunggu...");
+			dialog.setMessage("Mengambil data..");
 			dialog.show();
 		}
 

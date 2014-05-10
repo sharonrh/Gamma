@@ -9,6 +9,7 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -30,10 +31,6 @@
             android:label="@string/title_activity_notifikasi" >
         </activity>
         <activity
-            android:name="view.TemaActivity"
-            android:label="@string/title_activity_tema" >
-        </activity>
-        <activity
             android:name="view.TentangActivity"
             android:icon="@drawable/pengaturan"
             android:label="@string/title_activity_tentang" >
@@ -48,7 +45,7 @@
             android:icon="@drawable/statistik"
             android:label="@string/title_activity_detail_statistik" >
         </activity>
-         <activity
+        <activity
             android:name="view.IsiLaporanActivity"
             android:icon="@drawable/laporan"
             android:label="@string/title_activity_isi_laporan" >
@@ -57,11 +54,6 @@
             android:name="view.DetailMakananActivity"
             android:icon="@drawable/katalog"
             android:label="@string/title_activity_detail_makanan" >
-        </activity>
-        <activity
-            android:name="view.EditLaporanActivity"
-            android:icon="@drawable/laporan"
-            android:label="@string/title_activity_edit_laporan" >
         </activity>
 
         <service
