@@ -51,17 +51,14 @@ public class HandlerProfil extends DatabaseHandler {
 
 			int i = Integer.parseInt(cursor.getString(6));
 			char g = i == 1 ? 'W' : 'P';
-System.out.println("di handler "+ Double.valueOf(cursor.getString(12)));
-System.out.println("di handler "+ Double.valueOf(cursor.getString(12)).longValue());
 
-			profil = new Pengguna(cursor.getString(1), Integer.parseInt(cursor
-					.getString(2)), Double.parseDouble(cursor.getString(3)),
-					Double.parseDouble(cursor.getString(4)),
-					Double.parseDouble(cursor.getString(5)), g,
-					Integer.parseInt(cursor.getString(7)), false, false, false,
-					cursor.getString(11), Double.valueOf(cursor.getString(12))
-							.longValue(), Double.valueOf(cursor.getString(13))
-							.longValue());
+			System.out.println("di handler " + cursor.getString(12));
+
+			profil = new Pengguna(cursor.getString(1), cursor.getInt(2),
+					cursor.getDouble(3), cursor.getDouble(4),
+					cursor.getDouble(5), g, cursor.getInt(7), false, false,
+					false, cursor.getString(11), cursor.getLong(12),
+					cursor.getLong(13));
 
 			// retrieve data alergi
 			int h = Integer.parseInt(cursor.getString(8));
@@ -110,6 +107,8 @@ System.out.println("di handler "+ Double.valueOf(cursor.getString(12)).longValue
 		values.put(foto, fotoNew);
 		values.put(startTime, startNew);
 		values.put(endTime, endNew);
+		System.out.println("pas update, start : " + startNew);
+		System.out.println("pas update, end : " + endNew);
 
 		boolean b = db.update(tabelProfil, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(1) }) > 0;

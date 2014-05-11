@@ -55,8 +55,8 @@ public class HandlerNotifikasi extends DatabaseHandler {
 
 		Notifikasi notifikasi = null;
 		if (cursor.moveToFirst()) {
-			notifikasi = new Notifikasi(cursor.getString(1),
-					Long.parseLong(cursor.getString(2)), cursor.getString(3));
+			notifikasi = new Notifikasi(cursor.getString(1), cursor.getLong(2),
+					cursor.getString(3));
 		}
 		cursor.close();
 		db.close();
@@ -78,7 +78,7 @@ public class HandlerNotifikasi extends DatabaseHandler {
 			do {
 				Notifikasi notifikasi = new Notifikasi();
 				notifikasi.setNama(cursor.getString(1));
-				notifikasi.setWaktu(Long.parseLong(cursor.getString(2)));
+				notifikasi.setWaktu(cursor.getLong(2));
 				notifikasi.setPesan(cursor.getString(3));
 
 				// Adding notifikasi to list

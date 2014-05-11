@@ -91,25 +91,21 @@ public class HandlerMakanan extends DatabaseHandler {
 
 		Makanan makanan = null;
 		if (cursor.moveToFirst()) {
-			makanan = new Makanan(cursor.getString(0), Integer.parseInt(cursor
-					.getString(1)), Double.parseDouble(cursor.getString(2)),
-					Double.parseDouble(cursor.getString(3)),
-					Double.parseDouble(cursor.getString(4)),
-					Double.parseDouble(cursor.getString(5)),
-					cursor.getString(6), Integer.parseInt(cursor.getString(7)),
-					Float.parseFloat(cursor.getString(8)), cursor.getString(9),
-					false, false, false, Long.parseLong(cursor.getString(13)),
-					cursor.getString(14));
+			makanan = new Makanan(cursor.getString(0), cursor.getInt(1),
+					cursor.getDouble(2), cursor.getDouble(3),
+					cursor.getDouble(4), cursor.getDouble(5),
+					cursor.getString(6), cursor.getInt(7), cursor.getFloat(8),
+					cursor.getString(9), false, false, false,
+					cursor.getLong(13), cursor.getString(14));
 
 			// retrieve data alergi
-			int h = Integer.parseInt(cursor.getString(10));
-			int s = Integer.parseInt(cursor.getString(11));
-			int k = Integer.parseInt(cursor.getString(12));
+			int h = cursor.getInt(10);
+			int s = cursor.getInt(11);
+			int k = cursor.getInt(12);
 
 			makanan.setHewani(h == 1);
 			makanan.setSeafood(s == 1);
 			makanan.setKacang(k == 1);
-
 		}
 		cursor.close();
 		db.close();
@@ -128,14 +124,14 @@ public class HandlerMakanan extends DatabaseHandler {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
-				makanan.setProtein(Double.parseDouble(cursor.getString(2)));
-				makanan.setKarbohidrat(Double.parseDouble(cursor.getString(3)));
-				makanan.setLemak(Double.parseDouble(cursor.getString(4)));
-				makanan.setNatrium(Double.parseDouble(cursor.getString(5)));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setProtein(cursor.getDouble(2));
+				makanan.setKarbohidrat(cursor.getDouble(3));
+				makanan.setLemak(cursor.getDouble(4));
+				makanan.setNatrium(cursor.getDouble(5));
 				makanan.setPorsi(cursor.getString(6));
-				makanan.setBobot(Integer.parseInt(cursor.getString(7)));
-				makanan.setRating(Float.parseFloat(cursor.getString(8)));
+				makanan.setBobot(cursor.getInt(7));
+				makanan.setRating(cursor.getFloat(8));
 				makanan.setJenisMakanan(cursor.getString(9));
 
 				// retrieve data alegi
@@ -146,7 +142,7 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setHewani(h == 1);
 				makanan.setSeafood(s == 1);
 				makanan.setKacang(k == 1);
-				makanan.setTerakhirDipilih(Long.parseLong(cursor.getString(13)));
+				makanan.setTerakhirDipilih(cursor.getLong(13));
 				makanan.setPathFoto(cursor.getString(14));
 
 				makananList.add(makanan);
@@ -171,9 +167,9 @@ public class HandlerMakanan extends DatabaseHandler {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(Integer.parseInt(cursor.getString(1)));
+				makanan.setKalori(cursor.getInt(1));
 				makanan.setPorsi(cursor.getString(2));
-				makanan.setBobot(Integer.parseInt(cursor.getString(3)));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
 		}
@@ -193,14 +189,13 @@ public class HandlerMakanan extends DatabaseHandler {
 
 	// Getting makanan Count
 	public int[] getJenisCount() {
-		String[] arrJenis = { "Pokok", "Lauk", "Sayuran", "Buah",
-				"Minuman" };
+		String[] arrJenis = { "Pokok", "Lauk", "Sayuran", "Buah", "Minuman" };
 		int[] count = new int[arrJenis.length];
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		for (int i = 0; i < arrJenis.length; i++) {
 			String countQuery = "SELECT  * FROM " + tabelMakanan + " WHERE "
-					+ jenis + " = '" + arrJenis[i]+"'";
+					+ jenis + " = '" + arrJenis[i] + "'";
 			Cursor cursor = db.rawQuery(countQuery, null);
 			count[i] = cursor.getCount();
 			cursor.close();
@@ -209,15 +204,15 @@ public class HandlerMakanan extends DatabaseHandler {
 
 		return count;
 	}
-	
+
 	public boolean updateRating(String nama, float rating) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		ContentValues values =new ContentValues();
-		values.put(this.rating, rating);		
-		
+		ContentValues values = new ContentValues();
+		values.put(this.rating, rating);
+
 		boolean b = db.update(tabelMakanan, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(nama) }) > 0;
 		db.close();
-return b;
+		return b;
 	}
 }

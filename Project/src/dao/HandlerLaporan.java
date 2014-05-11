@@ -56,7 +56,7 @@ public class HandlerLaporan extends DatabaseHandler {
 			Calendar c = Calendar.getInstance();
 			c.setTimeInMillis(waktuInput);
 			Calendar cl = Calendar.getInstance();
-			c.setTimeInMillis(Long.parseLong(cursor.getString(0)));
+			c.setTimeInMillis(cursor.getLong(0));
 			// kalo tanggalnya sama, update data yang lama
 			if (c.get(Calendar.YEAR) == cl.get(Calendar.YEAR)
 					&& c.get(Calendar.MONTH) == cl.get(Calendar.MONTH)
@@ -83,9 +83,8 @@ public class HandlerLaporan extends DatabaseHandler {
 
 		Laporan laporan = null;
 		if (cursor.moveToFirst()) {
-			laporan = new Laporan(Long.parseLong(cursor.getString(1)),
-					Double.parseDouble(cursor.getString(2)),
-					Double.parseDouble(cursor.getString(3)));
+			laporan = new Laporan(cursor.getLong(1), cursor.getDouble(2),
+					cursor.getDouble(3));
 		}
 		cursor.close();
 		db.close();
@@ -101,9 +100,8 @@ public class HandlerLaporan extends DatabaseHandler {
 
 		Laporan laporan = null;
 		if (cursor.moveToFirst()) {
-			laporan = new Laporan(Long.parseLong(cursor.getString(1)),
-					Double.parseDouble(cursor.getString(2)),
-					Double.parseDouble(cursor.getString(3)));
+			laporan = new Laporan(cursor.getLong(1), cursor.getDouble(2),
+					cursor.getDouble(3));
 		}
 		cursor.close();
 		db.close();
@@ -123,9 +121,9 @@ public class HandlerLaporan extends DatabaseHandler {
 		if (cursor.moveToFirst()) {
 			do {
 				Laporan laporan = new Laporan();
-				laporan.setWaktu(Long.parseLong(cursor.getString(1)));
-				laporan.setBeratBadan(Double.parseDouble(cursor.getString(2)));
-				laporan.setTinggiBadan(Double.parseDouble(cursor.getString(3)));
+				laporan.setWaktu(cursor.getLong(1));
+				laporan.setBeratBadan(cursor.getDouble(2));
+				laporan.setTinggiBadan(cursor.getDouble(3));
 
 				// Adding laporan to list
 				laporanList.add(laporan);

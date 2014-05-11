@@ -62,7 +62,7 @@ public class HandlerAchievement extends DatabaseHandler {
         Achievement achievement = null;
         if (cursor.moveToFirst()) {
             achievement = new Achievement(cursor.getString(0),
-                    false, cursor.getString(2), Integer.parseInt(cursor.getString(3)),
+                    false, cursor.getString(2), cursor.getInt(3),
                     cursor.getString(4));
             if (Integer.parseInt(cursor.getString(1)) == 1) {
                 achievement.setGet(true);
@@ -89,7 +89,7 @@ public class HandlerAchievement extends DatabaseHandler {
                     achievement.setGet(true);
                 }
                 achievement.setDeskripsi(cursor.getString(2));
-                achievement.setProgress(Integer.parseInt(cursor.getString(3)));
+                achievement.setProgress(cursor.getInt(3));
                 achievement.setPathLogo(cursor.getString(4));
 
                 listAchievement.add(achievement);
