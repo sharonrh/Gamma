@@ -230,10 +230,12 @@ public class EditProfilActivity extends Activity {
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
 									Toast.LENGTH_LONG).show();
-							finish();
+							finish(); 
 							Intent i = new Intent(getApplicationContext(),
 									MainActivity.class);
-							i.putExtra("nomorFragment", 3);
+							i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+							i.putExtra("nomorFragment", "2");
 
 							startActivity(i);
 						} else {

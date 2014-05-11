@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.format.Time;
 
 public class HandlerNotifikasi extends DatabaseHandler {
 
@@ -123,7 +124,7 @@ public class HandlerNotifikasi extends DatabaseHandler {
 	}
 
 	public void tambahNotifikasiDefault() {
-
+		
 		Calendar calendar = Calendar.getInstance();
 		// 9 AM
 		calendar.set(Calendar.HOUR_OF_DAY, 7);

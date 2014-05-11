@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import model.Laporan;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
@@ -105,6 +106,15 @@ public class IsiLaporanActivity extends Activity {
 					Toast.makeText(getApplicationContext(),
 							"Laporan gagal disimpan", Toast.LENGTH_LONG).show();
 				}
+				
+				finish();
+				Intent i = new Intent(getApplicationContext(),
+						MainActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+				i.putExtra("nomorFragment", "3");
+
+				startActivity(i);
 			}
 		});
 

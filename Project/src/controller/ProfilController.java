@@ -26,4 +26,36 @@ public class ProfilController {
 	public Pengguna getProfil() {
 		return db.getProfil();
 	}
+
+	public double getKebutuhanKal() {
+		Pengguna p = getProfil();
+		double kal = 0;
+
+		if (p.getGender() == 'P') {
+			kal = 66 + 13.7 * p.getBerat() + 5 * p.getTinggi() - 6.8
+					* p.getUmur();
+		} else {
+			kal = 65.5 + 9.6 * p.getBerat() + 1.8 * p.getTinggi() - 4.7
+					* p.getUmur();
+		}
+
+		switch (p.getGayaHidup()) {
+		case 1:
+			kal *= 1.2;
+			break;
+		case 2:
+			kal *= 1.375;
+			break;
+		case 3:
+			kal *= 1.55;
+			break;
+		case 4:
+			kal *= 1.725;
+			break;
+		default:
+			kal *= 1.2;
+			break;
+		}
+		return kal;
+	}
 }

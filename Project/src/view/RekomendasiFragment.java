@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.gamma.R;
 
+import controller.ProfilController;
 import controller.RekomendasiController;
 
 public class RekomendasiFragment extends ListFragment {
@@ -25,7 +26,10 @@ public class RekomendasiFragment extends ListFragment {
 
 		RekomendasiController con = new RekomendasiController(getActivity()
 				.getApplicationContext());
-		List<Makanan> listMakanan = con.getRekomendasi();
+		ProfilController conProfil = new ProfilController(getActivity()
+				.getApplicationContext()); 
+		
+		List<Makanan> listMakanan = con.getRekomendasi(conProfil.getKebutuhanKal());
 
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), listMakanan, con.getCount(), con.getHeader());

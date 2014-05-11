@@ -6,6 +6,7 @@ import java.io.InputStream;
 import model.Makanan;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -29,31 +30,22 @@ public class DetailMakananActivity extends Activity {
 	private Button rate;
 	private TextView nama, kalori, karbo, protein, lemak, sodium, jenis,
 			hewani, kacang, seafood;
+	private RatingBar rating;
 	private ImageView foto;
-	private KatalogController kontrol;
+	private KatalogController con;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail_makanan);
 
-		// bintang1 = (ImageView) findViewById(R.id.bintang1Detail);
-		// bintang2 = (ImageView) findViewById(R.id.bintang2Detail);
-		// bintang3 = (ImageView) findViewById(R.id.bintang3Detail);
-		// bintang4 = (ImageView) findViewById(R.id.bintang4Detail);
-		// bintang5 = (ImageView) findViewById(R.id.bintang5Detail);
-
 		rate = (Button) findViewById(R.id.rateBtn);
-
-		// SharedPreferences spre = this.getSharedPreferences("Your prefName",
-		// Context.MODE_PRIVATE);
-		// String mystring = spre.getString("key", "");
 
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
-			String mystring = extras.getString("nama");
+			final String mystring = extras.getString("nama");
 
-			kontrol = new KatalogController(getApplicationContext());
+			con = new KatalogController(getApplicationContext());
 
 			nama = (TextView) findViewById(R.id.namaDetailMakanan);
 			kalori = (TextView) findViewById(R.id.kaloriDetailMakanan);
@@ -66,22 +58,19 @@ public class DetailMakananActivity extends Activity {
 			kacang = (TextView) findViewById(R.id.kacang);
 			seafood = (TextView) findViewById(R.id.seafood);
 			foto = (ImageView) findViewById(R.id.fotoDetailMakanan);
+			rating = (RatingBar) findViewById(R.id.ratingBarDetail);
 
 			nama.setText(mystring);
-			Makanan m = kontrol.getMakanan(mystring);
-			
+			Makanan m = con.getMakanan(mystring);
+
 			Bitmap bm = null;
 			try {
 				bm = getBitmapFromAsset(m.getPathFoto());
+				foto.setImageBitmap(bm);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			System.out.println(bm);
-			foto.setImageBitmap(bm);
-			
-			
+
 			kalori.setText(m.getKalori() + " kal");
 			karbo.setText(m.getKarbohidrat() + " gr");
 			protein.setText(m.getProtein() + " gr");
@@ -96,30 +85,29 @@ public class DetailMakananActivity extends Activity {
 			stat = m.isSeafood() ? "Ya" : "Tidak";
 			seafood.setText(stat);
 
-			// byte[] decodedString = Base64.decode(m.getPathFoto(),
-			// Base64.DEFAULT);
-			// Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString,
-			// 0,
-			// decodedString.length);
-			// foto.setImageBitmap(decodedByte);
-
 			rate.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
+					con.updateRating(mystring, rating.getRating());
 					finish();
+					Intent i = new Intent(getApplicationContext(),
+							MainActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+					i.putExtra("nomorFragment", "4");
+
+					startActivity(i);
 				}
 			});
 		}
 	}
-	
-	public Bitmap getBitmapFromAsset(String strName) throws IOException
-	{
-	    AssetManager assetManager = getResources().getAssets();
-	    InputStream istr = assetManager.open(strName);
-	    Bitmap bitmap = BitmapFactory.decodeStream(istr);
-	    return bitmap;
+
+	public Bitmap getBitmapFromAsset(String strName) throws IOException {
+		AssetManager assetManager = getResources().getAssets();
+		InputStream istr = assetManager.open(strName);
+		Bitmap bitmap = BitmapFactory.decodeStream(istr);
+		return bitmap;
 	}
-	 
+
 }

@@ -25,4 +25,8 @@ public class KatalogController {
 	public int[] getJenisCount() {
 		return db.getJenisCount();
 	}
+	
+	public boolean updateRating(String nama, float rating) {
+		return db.updateRating(nama, rating);		
+	}
 }

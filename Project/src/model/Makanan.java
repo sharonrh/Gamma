@@ -1,6 +1,7 @@
 package model;
 
 public class Makanan {
+	
     private String nama;
     private int kalori;
     private double protein;
@@ -9,7 +10,7 @@ public class Makanan {
     private double natrium;
     private String porsi;
     private int bobot;
-    private int rating;
+    private float rating;
     private String jenisMakanan;
     private boolean isHewani;
     private boolean isSeafood;
@@ -20,7 +21,7 @@ public class Makanan {
     public Makanan() {
     }
 
-    public Makanan(String nama, int kalori, double protein, double karbohidrat, double lemak, double natrium, String porsi, int bobot, int rating,
+    public Makanan(String nama, int kalori, double protein, double karbohidrat, double lemak, double natrium, String porsi, int bobot, float rating,
                    String jenisMakanan, boolean isHewani, boolean isSeafood, boolean isKacang, long terakhirDipilih, String pathFoto) {
         this.nama = nama;
         this.kalori = kalori;
@@ -103,11 +104,11 @@ public class Makanan {
         this.bobot = bobot;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

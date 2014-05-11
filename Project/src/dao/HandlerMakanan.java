@@ -97,7 +97,7 @@ public class HandlerMakanan extends DatabaseHandler {
 					Double.parseDouble(cursor.getString(4)),
 					Double.parseDouble(cursor.getString(5)),
 					cursor.getString(6), Integer.parseInt(cursor.getString(7)),
-					Integer.parseInt(cursor.getString(8)), cursor.getString(9),
+					Float.parseFloat(cursor.getString(8)), cursor.getString(9),
 					false, false, false, Long.parseLong(cursor.getString(13)),
 					cursor.getString(14));
 
@@ -135,7 +135,7 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setNatrium(Double.parseDouble(cursor.getString(5)));
 				makanan.setPorsi(cursor.getString(6));
 				makanan.setBobot(Integer.parseInt(cursor.getString(7)));
-				makanan.setRating(Integer.parseInt(cursor.getString(8)));
+				makanan.setRating(Float.parseFloat(cursor.getString(8)));
 				makanan.setJenisMakanan(cursor.getString(9));
 
 				// retrieve data alegi
@@ -158,7 +158,7 @@ public class HandlerMakanan extends DatabaseHandler {
 		return makananList;
 	}
 
-	public List<Makanan> getRekomendasi() {
+	public List<Makanan> getRekomendasi(double kal) {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// algo rekomendasi?
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -208,5 +208,16 @@ public class HandlerMakanan extends DatabaseHandler {
 		db.close();
 
 		return count;
+	}
+	
+	public boolean updateRating(String nama, float rating) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values =new ContentValues();
+		values.put(this.rating, rating);		
+		
+		boolean b = db.update(tabelMakanan, values, KEY_ID + " = ?",
+				new String[] { String.valueOf(nama) }) > 0;
+		db.close();
+return b;
 	}
 }

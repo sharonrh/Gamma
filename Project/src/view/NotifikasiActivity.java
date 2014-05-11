@@ -60,10 +60,6 @@ public class NotifikasiActivity extends Activity {
 
 		data = kontrol.getListNotifikasi();
 
-		if (data.isEmpty()) {
-			kontrol.tambahNotifikasiDefault();
-		}
-
 		adapter = new ListNotifikasiArrayAdapter(this, data);
 		lv.setAdapter(adapter);
 

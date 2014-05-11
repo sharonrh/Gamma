@@ -93,8 +93,12 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		if (savedInstanceState == null) {
+		Bundle extras = getIntent().getExtras();
+		if (extras == null) {
 			selectItem(0);
+		} else {
+			String frag = extras.getString("nomorFragment");
+			selectItem(Integer.parseInt(frag));
 		}
 	}
 
