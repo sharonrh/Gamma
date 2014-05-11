@@ -54,7 +54,7 @@ public class IsiLaporanActivity extends Activity {
 		tinggiLalu = (TextView) findViewById(R.id.tinggiLaluIsiLaporan);
 
 		Laporan laporanTerbaru = kontrol.getLaporanTerbaru();
-		
+
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 		String formatted = format.format(date);
@@ -63,7 +63,7 @@ public class IsiLaporanActivity extends Activity {
 				+ " hari yang lalu)");
 
 		if (laporanTerbaru != null) {
-			
+
 			lastBerat = laporanTerbaru.getBeratBadan();
 			lastTinggi = laporanTerbaru.getTinggiBadan();
 
@@ -101,20 +101,14 @@ public class IsiLaporanActivity extends Activity {
 							.show();
 					beratLalu.setText(berat + " kg");
 					tinggiLalu.setText(tinggi + " cm");
+					finish();
+					Intent i = new Intent(getApplicationContext(),
+							MainActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.putExtra("nomorFragment", "3");
 
-				} else {
-					Toast.makeText(getApplicationContext(),
-							"Laporan gagal disimpan", Toast.LENGTH_LONG).show();
+					startActivity(i);
 				}
-				
-				finish();
-				Intent i = new Intent(getApplicationContext(),
-						MainActivity.class);
-				i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-				i.putExtra("nomorFragment", "3");
-
-				startActivity(i);
 			}
 		});
 

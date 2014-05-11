@@ -4,15 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-<<<<<<< HEAD
-
-=======
-import java.util.ArrayList;
 import java.util.Calendar;
 
-import model.Makanan;
 import model.Notifikasi;
->>>>>>> 019e65f6a7f2b472360ce4277bdaa00c3535d7ea
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
