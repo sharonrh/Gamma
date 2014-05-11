@@ -53,16 +53,16 @@ public class IsiLaporanActivity extends Activity {
 		tinggiLalu = (TextView) findViewById(R.id.tinggiLaluIsiLaporan);
 
 		Laporan laporanTerbaru = kontrol.getLaporanTerbaru();
+		
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		String formatted = format.format(date);
+		tglHariIni.setText("Data untuk tanggal " + formatted);
+		tglHariLalu.setText("Data Sebelumnya (" + selisihHari
+				+ " hari yang lalu)");
 
 		if (laporanTerbaru != null) {
-			Date date = new Date(System.currentTimeMillis());
-			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-			String formatted = format.format(date);
-
-			tglHariLalu.setText("Data Sebelumnya (" + selisihHari
-					+ " hari yang lalu)");
-			tglHariIni.setText("Data untuk tanggal " + formatted);
-
+			
 			lastBerat = laporanTerbaru.getBeratBadan();
 			lastTinggi = laporanTerbaru.getTinggiBadan();
 

@@ -219,7 +219,6 @@ public final class R {
         public static final int statusBMIStatistik=0x7f0a0017;
         public static final int subTitle=0x7f0a0077;
         public static final int subtitle=0x7f0a0076;
-        public static final int switch1=0x7f0a006c;
         public static final int tableRow1=0x7f0a0070;
         public static final int tableRow9=0x7f0a0072;
         public static final int tahunProfilTv=0x7f0a0054;
@@ -234,6 +233,7 @@ public final class R {
         public static final int textView1=0x7f0a001c;
         public static final int textView101=0x7f0a0049;
         public static final int timePicker1=0x7f0a0042;
+        public static final int timeTV=0x7f0a006c;
         public static final int tinggiAwalStatistik=0x7f0a0010;
         public static final int tinggiIsiLaporan=0x7f0a0034;
         public static final int tinggiLaluIsiLaporan=0x7f0a0032;

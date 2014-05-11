@@ -16,6 +16,10 @@
         android:icon="@drawable/gamma"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <receiver android:process=":remote" android:name="service.MyAlarm" ></receiver>
+        
+        
         <activity
             android:name="view.MainActivity"
             android:label="@string/app_name" >
@@ -55,12 +59,7 @@
             android:icon="@drawable/katalog"
             android:label="@string/title_activity_detail_makanan" >
         </activity>
-
-        <service
-            android:name="service.NotifikasiService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
+        
     </application>
 
 </manifest>
