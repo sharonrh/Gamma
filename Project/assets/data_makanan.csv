@@ -6,6 +6,7 @@ Apel Fuji,71,0.36,19.06,0.24,1,buah,150,0,Buah,N,N,N,0,gambar_makanan/apelfuji.j
 Ayam Panggang,111,20.33,0,2.7,75,porsi,100,0,Lauk,Y,N,N,0,gambar_makanan/ayampanggang.jpg
 Bakso Sapi,283,17.37,10.61,18.43,669,mangkok,140,0,Lauk,Y,N,N,0,gambar_makanan/baksosapi.jpg
 Bakwan,137,1.99,6.74,11.59,98,buah,60,0,Lauk,N,N,N,0,gambar_makanan/bakwan.jpg
+Batagor,174,6.17,17.49,8.95,91,porsi,60,0,Pokok,Y,N,Y,0,gambar_makanan/batagor.jpg
 Bayam,37,2.65,3.39,2.07,262,porsi,92,0,Sayuran,N,N,N,0,gambar_makanan/bayam.jpg
 Bear Brand,120,6,9,7,115,kaleng,189,0,Minuman,Y,N,N,0,gambar_makanan/bearbrand.jpg
 Big Mac,550,25,46,29,970,porsi,215,0,Pokok,Y,N,N,0,gambar_makanan/bigmac.jpg
@@ -15,16 +16,16 @@ BR Chocolate,170,3,17,10,60,sekop,71,0,Snack,N,N,N,0,gambar_makanan/brchocolate.
 Brokoli,32,2.18,6.56,0.38,256,mangkok,90,0,Sayuran,N,N,N,0,gambar_makanan/brokoli.jpg
 Brownies,129,1.62,21.26,4.68,50,potong,34,0,Snack,N,N,N,0,gambar_makanan/brownies.jpg
 Buavita Apel,120,0,30,0,0,gelas,250,0,Minuman,N,N,N,0,gambar_makanan/buavitaapel.jpg
-Bubur Ayam,372,27.56,36.12,12.39,584,mangkok,240,0,Pokok,Y,N,N,0,gambar_makanan/bubur ayam.jpg
-Butter Cookies,160,2,20,8,0,porsi,30,0,Snack,Y,N,Y,0,gambar_makayay/butter cookies.jpg
+Bubur Ayam,372,27.56,36.12,12.39,584,mangkok,240,0,Pokok,Y,N,N,0,gambar_makanan/buburayam.jpg
+Butter Cookies,160,2,20,8,0,porsi,30,0,Snack,Y,N,Y,0,gambar_makayay/buttercookies.jpg
 Cheetos,100,1,11,6,100,bungkus,18,0,Snack,N,N,N,0,gambar_makanan/cheetos.jpg
 Chicken Nugget,285,14.97,15.67,18.07,551,porsi,96,0,Lauk,Y,N,N,0,gambar_makanan/chickennugget.jpg
 Chitato,100,1,12,5,120,porsi,19,0,Snack,N,N,N,0,gambar_makanan/chitato.jpg
 Coca-cola,140,0,39,0,0,kaleng,355,0,Minuman,N,N,N,0,gambar_makanan/cocacola.jpg
-Coklat Panas,192,8.8,26.58,5.82,110,cangkir,250,0,Minuman,N,Y,N,0,gambar_makanan/coklat panas.jpg
+Coklat Panas,192,8.8,26.58,5.82,110,cangkir,250,0,Minuman,N,Y,N,0,gambar_makanan/coklatpanas.jpg
 Cumi Goreng,106,12.86,8.42,1.84,284,porsi,85,0,Lauk,Y,Y,N,0,gambar_makanan/cumigoreng.jpg
 Dada Ayam,191,28.96,0,7.57,385,porsi,98,0,Lauk,Y,N,N,0,gambar_makanan/dadaayam.jpg
-Donat Coklat,270,2.85,27.36,17.67,245,buah,57,0,Snack,N,N,N,0,gambar_makanan/donat coklat.jpg
+Donat Coklat,270,2.85,27.36,17.67,245,buah,57,0,Snack,N,N,N,0,gambar_makanan/donatcoklat.jpg
 Egg McMuffin,300,18,30,12,820,porsi,138,0,Pokok,Y,N,N,0,gambar_makanan/eggmcmuffin.jpg
 Energen Cereal,130,1,24,3.5,0,porsi,30,0,Pokok,N,N,N,0,gambar_makanan/energencereal.jpg
 Es Kopi,50,0.38,9.14,1.42,11,cangkir,180,0,Minuman,N,N,N,0,gambar_makanan/eskopi.jpg
@@ -34,10 +35,10 @@ Frestea Apel,110,0,28,0,20,botol,500,0,Minuman,N,N,N,0,gambar_makanan/fresteaape
 Genji Pie,150,1,15,9,150,pak,30,0,Snack,N,N,N,0,gambar_makanan/genjipie.jpg
 GoodDay Coffee,140,3,27,2.5,90,botol,250,0,Minuman,N,N,N,0,gambar_makanan/gooddaycoffee.jpg
 Happytos,150,2,18,7,135,porsi,28,0,Snack,N,N,N,0,gambar_makanan/happytos.jpg
-Hati Ayam,116,16.92,0,4.83,71,porsi,100,0,Lauk,Y,N,N,0,gambar_makanan/hati ayam.jpg
+Hati Ayam,116,16.92,0,4.83,71,porsi,100,0,Lauk,Y,N,N,0,gambar_makanan/hatiayam.jpg
 HB Yogurt,100,4,17,2,100,pak,200,0,Snack,N,N,N,0,gambar_makanan/hbyogurt.jpg
 HiLo Kacang,110,6,18,2.5,0,kotak,200,0,Minuman,Y,N,Y,0,gambar_makanan/hilokacang.jpg
-Hotdog,242,10.39,18.03,14.54,670,buah,100,0,Pokok,Y,N,N,0,gambar_makanan/hotdog.jpg
+Hot Dog,242,10.39,18.03,14.54,670,buah,100,0,Pokok,Y,N,N,0,gambar_makanan/hotdog.jpg
 Indomie Bulgogi,410,7,62,14,0,porsi,90,0,Pokok,Y,N,N,0,gambar_makanan/indomiebulgogi.jpg
 Indomilk Coklat,170,4,26,5,90,kotak,200,0,Minuman,Y,N,N,0,gambar_makanan/indomilkcoklat.jpg
 Jagung,123,4.6,27.2,1.69,21,bonggol,500,0,Pokok,N,N,N,0,gambar_makanan/jagung.jpg
@@ -51,13 +52,14 @@ Kacang Sukro ,240,3,26,13,240,porsi,45,0,Snack,N,N,Y,0,gambar_makanan/kacangsukr
 Kakap,218,44.71,0,2.92,140,irisan,218,0,Lauk,Y,Y,N,0,gambar_makanan/kakap.jpg
 Kari Ayam,219,20.3,8.39,11.81,857,porsi,177,0,Lauk,Y,N,N,0,gambar_makanan/kariayam.jpg
 Kari Sapi,326,20.69,10.27,22.94,975,porsi,177,0,Lauk,Y,N,N,0,gambar_makanan/karisapi.jpg
+Keju Cheddar,113,6.97,0.36,9.28,174,iris,28,0,Snack,Y,N,N,0,gambar_makanan/kejucheddar.jpg
 Kembung Balado,245,31.7,2.99,11.06,416,porsi,150,0,Lauk,Y,Y,N,0,gambar_makanan/kembungbalado.jpg
 Kentang Goreng,192,2.44,24.96,9.84,210,porsi,70,0,Snack,N,N,N,0,gambar_makanan/kentanggoreng.jpg
-Kentang Panggang,194,4.32,36.54,3.92,418,porsi,178,0,Snack,N,N,N,0,gambar_makanan/kentang panggang.jpg
+Kentang Panggang,194,4.32,36.54,3.92,418,porsi,178,0,Snack,N,N,N,0,gambar_makanan/kentangpanggang.jpg
 Kepiting Panggang,116,16.07,0.09,5.3,458,porsi,85,0,Lauk,Y,Y,N,0,gambar_makanan/kepitingpanggang.jpg
 Kerang Rebus,90,13.75,1.98,2.63,359,porsi,85,0,Lauk,Y,Y,N,0,gambar_makanan/kerangrebus.jpg
-Kerupuk Ringan,60,0.89,7.32,3.04,102,buah,12,0,Snack,N,N,N,0,gambar_makanan/kerupuk ringan.jpg
-Kerupuk Udang,151,1.86,14.02,9.85,382,porsi,28,0,Snack,Y,N,N,0,gambar_makanan/kerupuk udang.jpg
+Kerupuk,60,0.89,7.32,3.04,102,buah,12,0,Snack,N,N,N,0,gambar_makanan/kerupuk.jpg
+Kerupuk Udang,151,1.86,14.02,9.85,382,porsi,28,0,Snack,Y,N,N,0,gambar_makanan/kerupukudang.jpg
 Ketupat,176,3.6,33.4,2.66,131,buah,110,0,Pokok,N,N,N,0,gambar_makanan/ketupat.jpg
 KFC Original,130,29,0,2,520,potong,116,0,Lauk,Y,N,N,0,gambar_makanan/kfcoriginal.jpg
 Kornet Sapi,251,18.17,0.47,18.98,1134,porsi,100,0,Lauk,Y,N,N,0,gambar_makanan/kornetsapi.jpg
@@ -67,10 +69,12 @@ LaFonte Spaghetti,220,6,47,1,10,porsi,60,0,Pokok,N,N,N,0,gambar_makanan/lafontes
 Lele,233,17.04,8.28,14.09,386,ekor,98,0,Lauk,Y,Y,N,0,gambar_makanan/lele.jpg
 Lobster Panggang,145,24.72,1.55,3.76,787,ekor,225,0,Lauk,Y,Y,N,0,gambar_makanan/lobsterpanggang.jpg
 Lontong,130,2.49,28.58,0.2,111,porsi,90,0,Pokok,N,N,N,0,gambar_makanan/lontong.jpg
-Lontong Sayur,357,11.11,59.1,8.39,258,mangkok,400,0,Pokok,N,N,N,0,gambar_makanan/lontong sayur.jpg
-Lumpia Sayur,63,1.99,7.44,2.84,207,buah,64,0,Snack,N,N,N,0,gambar_makanan/lumpia sayur.jpg
-Lumpia Udang,67,2.62,7.39,2.97,242,buah,64,0,Snack,Y,Y,N,0,gambar_makanan/lumpia udang.jpg
+Lontong Sayur,357,11.11,59.1,8.39,258,mangkok,400,0,Pokok,N,N,N,0,gambar_makanan/lontongsayur.jpg
+Lumpia Sayur,63,1.99,7.44,2.84,207,buah,64,0,Snack,N,N,N,0,gambar_makanan/lumpiasayur.jpg
+Lumpia Udang,67,2.62,7.39,2.97,242,buah,64,0,Snack,Y,Y,N,0,gambar_makanan/lumpiaudang.jpg
 Mangga (irisan),107,0.84,28.05,0.45,3,mangkok,160,0,Buah,N,N,N,0,gambar_makanan/mangga(irisan).jpg
+Martabak,347,8.97,44.66,16.12,268,porsi,110,0,Pokok,Y,N,N,0,gambar_makanan/martabak.jpg
+Mie Ayam,421,16.7,46.21,18.74,36,mangkok,240,0,Pokok,Y,N,N,0,gambar_makanan/mieayam.jpg
 Mie Sedaap,390,10,54,15,1030,porsi,88,0,Pokok,N,N,N,0,gambar_makanan/miesedaap.jpg
 Mie Telur,221,7.26,40.26,3.31,8,mangkok,160,0,Pokok,Y,N,N,0,gambar_makanan/mietelur.jpg
 Nanas,40,0.45,10.61,0.1,1,iris,80,0,Buah,N,N,N,0,gambar_makanan/nanas.jpg
@@ -84,10 +88,11 @@ NutriSari Orange,60,0,14,0,0,sachet,14,0,Minuman,N,N,N,0,gambar_makanan/nutrisar
 Oishi Sponge,160,2,18,9,40,porsi,30,0,Snack,N,N,N,0,gambar_makanan/oishisponge.jpg
 Oreo,140,1,20,6,11,porsi,30,0,Snack,N,N,N,0,gambar_makanan/oreo.jpg
 Paha Ayam,152,15.41,0,9.52,252,porsi,62,0,Lauk,Y,N,N,0,gambar_makanan/pahaayam.jpg
+Pangsit,64,1.72,10.51,1.67,223,buah,51,0,Lauk,Y,N,N,0,gambar_makanan/pangsit.jpg
 Pepaya,55,0.85,13.73,0.2,4,mangkok,140,0,Buah,N,N,N,0,gambar_makanan/pepaya.jpg
-Pepes Tahu,63,5.71,2.46,3.56,296,bungkus,50,0,Lauk,N,N,N,0,gambar_makanan/pepes tahu.jpg
-Perkedel Jagung,91,1.87,9.45,5.4,117,buah,35,0,Lauk,N,N,N,0,gambar_makanan/perkedel jagung.jpg
-Perkedel Kentang,21,0.46,2.48,1.12,31,buah,15,0,Lauk,N,N,N,0,gambar_makanan/perkedel kentang.jpg
+Pepes Tahu,63,5.71,2.46,3.56,296,bungkus,50,0,Lauk,N,N,N,0,gambar_makanan/pepestahu.jpg
+Perkedel Jagung,91,1.87,9.45,5.4,117,buah,35,0,Lauk,N,N,N,0,gambar_makanan/perkedeljagung.jpg
+Perkedel Kentang,21,0.46,2.48,1.12,31,buah,15,0,Lauk,N,N,N,0,gambar_makanan/perkedelkentang.jpg
 Pir,96,0.63,25.66,0.2,2,buah,225,0,Buah,N,N,N,0,gambar_makanan/pir.jpg
 Pisang,105,1.29,26.95,0.39,1,buah,110,0,Buah,N,N,N,0,gambar_makanan/pisang.jpg
 Pizza Daging,530,21.28,55.35,24.29,1220,porsi,176,0,Pokok,Y,N,N,0,gambar_makanan/pizzadaging.jpg
@@ -124,13 +129,13 @@ Telur Rebus,77,6.26,0.56,5.28,139,buah,50,0,Lauk,Y,N,N,0,gambar_makanan/telurreb
 Tempe Goreng,34,2,1.79,2.28,42,buah,15,0,Lauk,N,N,N,0,gambar_makanan/tempegoreng.jpg
 Tempura Udang,123,15.48,8.8,2.37,364,porsi,85,0,Lauk,Y,Y,N,0,gambar_makanan/tempuraudang.jpg
 Terong,33,0.39,4.16,1.92,244,porsi,50,0,Sayuran,N,N,N,0,gambar_makanan/terong.jpg
-Tongkol Goreng,300,31.43,3.57,17.11,366,porsi,150,0,Lauk,Y,Y,N,0,gambar_makanan/tongkol goreng.jpg
+Tongkol Goreng,300,31.43,3.57,17.11,366,porsi,150,0,Lauk,Y,Y,N,0,gambar_makanan/tongkolgoreng.jpg
 Tumis Kangkung,106,2.76,4.31,9.4,414,porsi,85,0,Sayuran,N,N,N,0,gambar_makanan/tumiskangkung.jpg
 Tuna,62,13.33,0,0.54,21,porsi,57,0,Lauk,Y,Y,N,0,gambar_makanan/tuna.jpg
 Ubi Jalar,180,4.02,41.42,0.3,72,mangkok,200,0,Pokok,N,N,N,0,gambar_makanan/ubijalar.jpg
 Udang,109,20.97,0.94,1.79,466,mangkok,76,0,Lauk,Y,Y,N,0,gambar_makanan/udang.jpg
-Ultramilk Coklat,250,8,28,5,55,kotak,250,0,Minuman,Y,N,N,0,gambar_makanan/ultramilk coklat.jpg
-Wafel Buah,206,4.74,33.15,6.1,456,porsi,74,0,Pokok,N,N,N,0,gambar_makanan/wafel buah.jpg
+Ultramilk Coklat,250,8,28,5,55,kotak,250,0,Minuman,Y,N,N,0,gambar_makanan/ultramilkcoklat.jpg
+Wafel Buah,206,4.74,33.15,6.1,456,porsi,74,0,Pokok,N,N,N,0,gambar_makanan/wafelbuah.jpg
 Wall's Magnum,270,3,18,21,50,porsi,70,0,Snack,N,N,Y,0,gambar_makanan/wall'smagnum.jpg
 Wortel,41,0.56,6.07,1.88,233,porsi,76,0,Sayuran,N,N,N,0,gambar_makanan/wortel.jpg
 Yogurt,143,11.92,15.98,3.52,159,porsi,230,0,Snack,N,N,N,0,gambar_makanan/yogurt.jpg
