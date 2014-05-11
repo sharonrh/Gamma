@@ -123,6 +123,7 @@ public class HandlerNotifikasi extends DatabaseHandler {
 		return count;
 	}
 
+<<<<<<< HEAD
 	public void tambahNotifikasiDefault() {
 		
 		Calendar calendar = Calendar.getInstance();
@@ -149,4 +150,7 @@ public class HandlerNotifikasi extends DatabaseHandler {
 		tambahNotifikasi(makanMalam);
 		tambahNotifikasi(snack);
 	}
+=======
+	
+>>>>>>> 019e65f6a7f2b472360ce4277bdaa00c3535d7ea
 }

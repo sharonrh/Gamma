@@ -4,7 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+<<<<<<< HEAD
 
+=======
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import model.Makanan;
+import model.Notifikasi;
+>>>>>>> 019e65f6a7f2b472360ce4277bdaa00c3535d7ea
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -64,8 +72,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// Inserting Row
 		db.insert("profil", null, values);
+		
+		tambahNotifikasiDefault(db);
+		
+		
 		// baca data makanan
 		bacaFile(c, db);
+		
+		
 	}
 
 	@Override
@@ -122,6 +136,45 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void tambahNotifikasiDefault(SQLiteDatabase db) {
+
+		Calendar calendar = Calendar.getInstance();
+		// 9 AM
+		calendar.set(Calendar.HOUR_OF_DAY, 7);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+
+		Notifikasi sarapan = new Notifikasi("Sarapan",
+				calendar.getTimeInMillis(), "Saatnya sarapan!");
+
+		calendar.set(Calendar.HOUR_OF_DAY, 12);
+		Notifikasi makanSiang = new Notifikasi("Makan Siang",
+				calendar.getTimeInMillis(), "Saatnya makan siang!");
+
+		calendar.set(Calendar.HOUR_OF_DAY, 19);
+		Notifikasi makanMalam = new Notifikasi("Makan Malam", calendar.getTimeInMillis(), "Woi, Makan Malam!");
+		
+		calendar.set(Calendar.HOUR_OF_DAY, 10);
+		Notifikasi snack = new Notifikasi("Snack", calendar.getTimeInMillis(), "Waktunya Kamu Makan Snack!");
+		
+		tambahNotifikasi(sarapan, db);
+		tambahNotifikasi(makanSiang, db);
+		tambahNotifikasi(makanMalam, db);
+		tambahNotifikasi(snack, db);
+	}
+	
+	public boolean tambahNotifikasi(Notifikasi notifikasi, SQLiteDatabase db) {
+
+		ContentValues values = new ContentValues();
+		values.put("nama", notifikasi.getNama());
+		values.put("waktu", notifikasi.getWaktu());
+		values.put("pesan", notifikasi.getPesan());
+
+		// Inserting Row
+		boolean cek = db.insert("notifikasi", null, values) > 0;
+		return cek;
 	}
 
 	private void initAchievement(Context context, SQLiteDatabase db) {
