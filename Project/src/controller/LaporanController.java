@@ -39,38 +39,50 @@ public class LaporanController {
 		
 		Laporan laporanTerakhir = getLaporanTerbaru();
 		Laporan laporanPertama = getLaporanPertama();
+		System.out.println(laporanTerakhir);
+		if(laporanTerakhir != null || laporanPertama != null){
+			Long end = laporanTerakhir.getWaktu();
+			Long begin = laporanPertama.getWaktu();
+			
+			Long diff = end - begin;
+			long seconds = diff / 1000;
+		    long minutes = seconds / 60;
+		    long hours = minutes / 60;
+		    
+		    System.out.println("jam " + hours);
+		    long days = hours / 24;
+		    
+		    return (int) days;
+		}
+		else {
+			return 0;
+		}
 		
-		Long end = laporanTerakhir.getWaktu();
-		Long begin = laporanPertama.getWaktu();
-		
-		Long diff = end - begin;
-		long seconds = diff / 1000;
-	    long minutes = seconds / 60;
-	    long hours = minutes / 60;
-	    
-	    System.out.println("jam " + hours);
-	    long days = hours / 24;
-	    
-	    return (int) days;
 	}
 	
 	public boolean cekDurasiIsiLaporan(){
 		
 		Laporan laporanPertama = getLaporanPertama();
 		
-		Long end = System.currentTimeMillis();
-		Long begin = laporanPertama.getWaktu();
+		if(laporanPertama != null){
+			Long end = System.currentTimeMillis();
+			Long begin = laporanPertama.getWaktu();
+			
+			Long diff = end - begin;
+			long seconds = diff / 1000;
+		    long minutes = seconds / 60;
+		    long hours = minutes / 60;
+		    
+		    System.out.println("jam " + hours);
+		    long days = hours / 24;
+		    System.out.println("hari " + days);
+		    setSisaHari(7 - (int)days);
+		    return days > 7;
+		}
+		else {
+			return true;
+		}
 		
-		Long diff = end - begin;
-		long seconds = diff / 1000;
-	    long minutes = seconds / 60;
-	    long hours = minutes / 60;
-	    
-	    System.out.println("jam " + hours);
-	    long days = hours / 24;
-	    System.out.println("hari " + days);
-	    setSisaHari(7 - (int)days);
-	    return days > 7;
 	}
 
 	public int getSisaHari() {
