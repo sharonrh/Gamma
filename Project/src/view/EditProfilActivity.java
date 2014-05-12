@@ -163,10 +163,10 @@ public class EditProfilActivity extends Activity {
 									.setText("Pilih salah satu jenis gaya hidup untuk melihat detailnya disini");
 						else if (item.equalsIgnoreCase(gaya[1]))
 							penjelasan
-									.setText("Jarang Sekali : Aktivitas hidup utama seperti istirahat, kerja kantoran atau menyetir. Kemungkinan melibatkan pekerjaan rumah moderat dan berdiri tetapi tidak ada latihan ringan yang dilakukan.");
+									.setText("Tidak Aktif : Aktivitas hidup utama seperti istirahat, kerja kantoran atau menyetir. Kemungkinan melibatkan pekerjaan rumah moderat dan berdiri tetapi tidak ada latihan ringan yang dilakukan.");
 						else if (item.equalsIgnoreCase(gaya[2]))
 							penjelasan
-									.setText("Sedikit Aktif : Disamping kegiatan sehari-hari, melakukan kegiatan yang lebih berat, seperti berdiri lebih lama atau pekerjaan rumah. Beberapa bentuk latihan dilakukan, seperti jalan pelan, bersepeda santai atau berkebun.");
+									.setText("Kurang Aktif : Disamping kegiatan sehari-hari, melakukan kegiatan yang lebih berat, seperti berdiri lebih lama atau pekerjaan rumah. Beberapa bentuk latihan dilakukan, seperti jalan pelan, bersepeda santai atau berkebun.");
 						else if (item.equalsIgnoreCase(gaya[3]))
 							penjelasan
 									.setText("Aktif : Sedikit duduk / istirahat dan kemungkinan bekerja dilingkungan yang membutuhkan berdiri dan/atau sedikit kerja fisik. Secara teratur melakukan olahraga ringan, seperti menari, jalan cepat atau berenang.");

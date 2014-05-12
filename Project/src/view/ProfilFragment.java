@@ -102,6 +102,8 @@ public class ProfilFragment extends Fragment {
 		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
 				decodedString.length);
 
+		if(!profil.getFoto().equalsIgnoreCase(""))
+			foto.setBackgroundColor(getResources().getColor(R.color.abu));
 		foto.setImageBitmap(getRoundedRectBitmap(decodedByte, 100));
 		return v;
 	}
