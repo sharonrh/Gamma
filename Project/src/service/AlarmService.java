@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 public class AlarmService {
 	private Context context;
     private PendingIntent mAlarmSender;
+    AlarmManager am;
     private long waktu;
     private int id;
     
@@ -41,7 +42,7 @@ public class AlarmService {
       //  long firstTime = c.getTimeInMillis();
         // Schedule the alarm!
         System.out.println("notifikasi jalan");
-        AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         System.out.println("notifikasi jalan");
         am.setRepeating(AlarmManager.RTC_WAKEUP, waktu, AlarmManager.INTERVAL_FIFTEEN_MINUTES, mAlarmSender);
        // am.set(AlarmManager.RTC_WAKEUP, waktu, mAlarmSender);
@@ -53,5 +54,12 @@ public class AlarmService {
 //        pm.setComponentEnabledSetting(receiver,
 //                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
 //                PackageManager.DONT_KILL_APP); 
+    }
+    
+    public void cancelAlarm(){
+    	
+    	if(am != null || mAlarmSender != null){
+    		am.cancel(mAlarmSender);
+    	}
     }
 }
