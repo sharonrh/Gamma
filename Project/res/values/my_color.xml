@@ -23,4 +23,10 @@
     <color name="hijau_rss">#39CE78</color>
     <color name="health">#3498DB</color>
     <color name="kesehatan">#E74C46</color>
+    <color name="warna_pokok">#399ADC</color>
+    <color name="warna_sayur">#1ABC9C</color>
+    <color name="warna_buah">#F39C12</color>
+    <color name="warna_lauk">#9B59B6</color>
+    <color name="warna_snack">#C0392B</color>
+    <color name="warna_minuman">#7F8C8D</color>
 </resources>
