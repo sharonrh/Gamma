@@ -41,6 +41,7 @@ public class KatalogFragment extends Fragment {
 		TextView sayur = (TextView) v.findViewById(R.id.sayurKatalog);
 		TextView buah = (TextView) v.findViewById(R.id.buahKatalog);
 		TextView minuman = (TextView) v.findViewById(R.id.minumanKatalog);
+		TextView snack = (TextView) v.findViewById(R.id.snackKatalog);
 
 		int[] ctJenis = kontrol.getJenisCount();
 		pokok.setText("" + ctJenis[0]);
@@ -117,23 +118,23 @@ public class KatalogFragment extends Fragment {
 			holder.kalori.setText(m.getKalori() + " kal");
 			holder.rating.setRating(m.getRating());
 
-			GridLayout layout = (GridLayout) getActivity().findViewById(
+			/**GridLayout layout = (GridLayout) getActivity().findViewById(
 					R.id.kartuKatalog);
 
 			String jenis = m.getJenisMakanan();
 			if (jenis.equals("Pokok")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_makananpokok));
 			} else if (jenis.equals("Buah")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_buah));
 			} else if (jenis.equals("Sayuran")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_sayur));
 			} else if (jenis.equals("Snack")) {
-				// layout.setBackground();
+				//layout.setBackgroundDrawable((getResources().getDrawable(R.drawable.s)));
 			} else if (jenis.equals("Lauk")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_laukpauk));
 			} else { // minuman
-			// layout.setBackground();
-			}
+				 layout.setBackgroundResource((R.drawable.selector_card_background_minuman));
+			}*/
 
 			return rowView;
 		}

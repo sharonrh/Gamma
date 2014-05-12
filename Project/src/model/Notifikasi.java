@@ -4,6 +4,9 @@ public class Notifikasi {
 	private String nama;
 	private long waktu;
 	private String pesan;
+	private boolean isSelected = false;
+
+	
 
 	public Notifikasi() {}
 
@@ -35,6 +38,14 @@ public class Notifikasi {
 
 	public void setPesan(String pesan) {
 		this.pesan = pesan;
+	}
+	
+	public boolean isSelected() {
+		return isSelected;
+	}
+
+	public void setSelected(boolean isSelected) {
+		this.isSelected = isSelected;
 	}
 
 }

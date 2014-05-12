@@ -26,10 +26,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -128,6 +131,11 @@ public class NotifikasiActivity extends Activity {
 			nama = "Makan Malam";
 			id = 2;
 		}
+		else if (position == 3) {
+				title = "Atur Waktu Snack";
+				nama = "Snack";
+				id = 3;
+		}
 
 		alertDialog.setTitle(title);
 
@@ -178,12 +186,12 @@ public class NotifikasiActivity extends Activity {
 						System.out.println(data);
 
 						lv.setAdapter(adapter);
-						AlarmService myAlarm = new AlarmService();
-						System.out.println(id);
-					
-						myAlarm.startAlarm(getApplicationContext(), id, l);
+//						AlarmService myAlarm = new AlarmService();
+//						System.out.println(id);
+//					
+//						myAlarm.startAlarm(getApplicationContext(), id, l);
 						
-						//recreate();
+						recreate();
 					}
 				});
 
@@ -195,11 +203,20 @@ public class NotifikasiActivity extends Activity {
 	class ListNotifikasi {
 		String title;
 		String subTitle;
+		boolean selected;
 
 		public ListNotifikasi(String title, String subTitle) {
 			super();
 			this.title = title;
 			this.subTitle = subTitle;
+		}
+
+		private boolean isSelected() {
+			return selected;
+		}
+
+		private void setSelected(boolean selected) {
+			this.selected = selected;
 		}
 	}
 
@@ -207,40 +224,50 @@ public class NotifikasiActivity extends Activity {
 	class ListNotifikasiViewHolder {
 		private TextView textView1;
 		private TextView timeTv;
-
-		public ListNotifikasiViewHolder(TextView timeTv, TextView textView1) {
+		private Switch swNotif;
+		
+		
+		public ListNotifikasiViewHolder(TextView textView1, TextView timeTv,
+				Switch swNotif) {
 			super();
-			this.timeTv = timeTv;
 			this.textView1 = textView1;
+			this.timeTv = timeTv;
+			this.swNotif = swNotif;
 		}
-
-		public TextView getTextView1() {
+		
+		private TextView getTextView1() {
 			return textView1;
 		}
-
-		public void setTextView1(TextView textView1) {
+		private void setTextView1(TextView textView1) {
 			this.textView1 = textView1;
 		}
-
-		public TextView getTimeTv() {
+		private TextView getTimeTv() {
 			return timeTv;
 		}
-
-		public void setTimeTv(Switch timeTv) {
+		private void setTimeTv(TextView timeTv) {
 			this.timeTv = timeTv;
 		}
-
+		private Switch getSwNotif() {
+			return swNotif;
+		}
+		private void setSwNotif(Switch swNotif) {
+			this.swNotif = swNotif;
+		}
+		
+		
 	}
 
 	class ListNotifikasiArrayAdapter extends ArrayAdapter<Notifikasi> {
 
 		private LayoutInflater inflater;
+		List<Notifikasi> listNotifikasiList;
 
 		public ListNotifikasiArrayAdapter(Context context,
-				List<Notifikasi> ListNotifikasiList) {
+				List<Notifikasi> listNotifikasiList) {
 			super(context, R.layout.notifikasi_simplerow, R.id.Title,
-					ListNotifikasiList);
+					listNotifikasiList);
 			// Cache the LayoutInflate to avoid asking for a new one each time.
+			this.listNotifikasiList=listNotifikasiList;
 			inflater = LayoutInflater.from(context);
 		}
 
@@ -248,11 +275,14 @@ public class NotifikasiActivity extends Activity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// Nasabah to display
-			Notifikasi set = (Notifikasi) this.getItem(position);
+			final int posisi = position;
+			System.out.println("position " + position);
+			final Notifikasi set = (Notifikasi) this.getItem(position);
 
 			// The child views in each row.
 			TextView tv1;
 			TextView tv2;
+			Switch sw;
 
 			// Create a new row view
 			if (convertView == null) {
@@ -262,8 +292,53 @@ public class NotifikasiActivity extends Activity {
 				// Find the child views.
 				tv1 = (TextView) convertView.findViewById(R.id.Title);
 				tv2 = (TextView) convertView.findViewById(R.id.timeTV);
-
-				convertView.setTag(new ListNotifikasiViewHolder(tv2, tv1));
+				sw = (Switch) convertView.findViewById(R.id.switch1);
+				
+				
+				sw.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+					 
+		            public void onCheckedChanged(CompoundButton buttonView,
+		                    boolean ischecked) {
+		            	AlarmService myAlarm = new AlarmService();
+		            	
+		            	
+		            	Date date = new Date(set.getWaktu());
+						SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+						String formatted = format.format(date);
+						String[] str = formatted.split(":");
+						
+						int jam = Integer.parseInt(str[0]);
+						int menit = Integer.parseInt(str[1]);
+						
+		            	Calendar cal = Calendar.getInstance();
+		            	cal.setTimeInMillis(set.getWaktu());
+		            	
+		            	System.out.println("posisi " + posisi);
+		            	System.out.println("jam " + jam);
+		            	System.out.println("menit " + menit);
+		            	
+		            	Calendar cal2 = Calendar.getInstance();
+		            	cal2.set(Calendar.HOUR_OF_DAY, jam);
+		            	cal2.set(Calendar.MINUTE, menit);
+		            	
+		            	
+		                if (ischecked) {
+		                	myAlarm.startAlarm(getApplicationContext(), posisi, cal2.getTimeInMillis());
+		                	set.setSelected(true);
+		                    Toast.makeText(getApplicationContext(), "Switch on" + posisi,
+		                            Toast.LENGTH_LONG).show();
+		                    
+		                    
+		                } else {
+		                	myAlarm.cancelAlarm();
+		                    Toast.makeText(getApplicationContext(), "Switch off" + posisi,
+		                            Toast.LENGTH_LONG).show();
+		                    
+		                }
+		            }
+		        });
+				
+				convertView.setTag(new ListNotifikasiViewHolder(tv2, tv1,sw));
 
 			}
 			// Reuse existing row view
@@ -272,6 +347,14 @@ public class NotifikasiActivity extends Activity {
 						.getTag();
 				tv1 = viewHolder.getTextView1();
 				tv2 = viewHolder.getTimeTv();
+				sw = viewHolder.getSwNotif();
+			}
+			
+			
+			
+			
+			if(set.isSelected()){
+				sw.setChecked(true);
 			}
 
 			if (tv1 != null) {
@@ -286,21 +369,7 @@ public class NotifikasiActivity extends Activity {
 		}
 	}
 
-	private void startAlarm(int jam, int menit) {
-		AlarmManager alarmManager = (AlarmManager) this
-				.getSystemService(Context.ALARM_SERVICE);
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTimeInMillis(System.currentTimeMillis());
-		calendar.set(calendar.YEAR, calendar.MONTH, calendar.DAY_OF_MONTH, jam,
-				menit);
-
-		long when = calendar.getTimeInMillis(); // notification time
-		Intent intent = new Intent(getApplicationContext(),
-				NotifikasiService.class);
-		PendingIntent pendingIntent = PendingIntent.getService(
-				getApplicationContext(), 0, intent, 0);
-		alarmManager.setExact(AlarmManager.RTC, when, pendingIntent);
-	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
