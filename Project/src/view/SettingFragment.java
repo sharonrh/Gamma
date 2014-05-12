@@ -40,7 +40,7 @@ public class SettingFragment extends PreferenceFragment {
 		kontrol = new SettingController(getActivity());
 
 		set.add(new Setting("Notifikasi", "Atur Notifikasi"));
-		set.add(new Setting("Artikel", "Atur Notifikasi"));
+		//set.add(new Setting("Artikel", "Atur Notifikasi"));
 		set.add(new Setting("Reset Progress", "Atur Notifikasi"));
 		// set.add(new Setting("Tema", "Ganti Tema Aplikasi"));
 		set.add(new Setting("Tentang", "Info Mengenai Pengembang"));
@@ -58,13 +58,14 @@ public class SettingFragment extends PreferenceFragment {
 			public void onItemClick(AdapterView<?> parent, View item,
 					int position, long id) {
 
-				if (position == 0) {
+				if (position == 0) 
 					kontrol.gantiHalaman(position);
 					// } else if (position == 3) {
 					// temaPopupWindow();
-				} else if (position == 3) {
+				else if (position == 2)
 					tentangPopupWindow();
-				}
+				else if (position == 3) 
+					kreditPopupWindow();
 
 			}
 		});
@@ -149,6 +150,30 @@ public class SettingFragment extends PreferenceFragment {
 		// Inflate and set the layout for the dialog
 		// Pass null as the parent view because its going in the dialog layout
 		alertDialog.setView(inflater.inflate(R.layout.activity_tentang, null));
+
+		// Setting Icon to Dialog
+		// alertDialog.setIcon(R.drawable.ic_launcher);
+
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		alertDialog.show();
+
+	}
+	
+	public void kreditPopupWindow() {
+
+		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+				.create();
+
+		alertDialog.setTitle("Kredit");
+		LayoutInflater inflater = getActivity().getLayoutInflater();
+
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		alertDialog.setView(inflater.inflate(R.layout.activity_kredit, null));
 
 		// Setting Icon to Dialog
 		// alertDialog.setIcon(R.drawable.ic_launcher);

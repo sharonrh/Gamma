@@ -59,6 +59,11 @@
             android:icon="@drawable/katalog"
             android:label="@string/title_activity_detail_makanan" >
         </activity>
+        <activity
+            android:name="view.KreditActivity"
+            android:icon="@drawable/pengaturan"
+            android:label="@string/title_activity_kredit" >
+        </activity>
         
     </application>
 
