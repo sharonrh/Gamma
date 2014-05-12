@@ -37,6 +37,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_row="1"
                 android:text="www.health.com"
+                android:textColor="@color/health"
                 android:textSize="15sp" />
 
             <TextView
@@ -47,7 +48,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_row="2"
                 android:text="www.situskesehatan.com"
+                android:textColor="@color/kesehatan"
                 android:textSize="15sp" />
+
         </GridLayout>
 
         <ListView

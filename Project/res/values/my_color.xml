@@ -21,4 +21,6 @@
     <color name="lumut">#42DC2E</color>
     <color name="hijau_donker">#6F9F0F</color>
     <color name="hijau_rss">#39CE78</color>
+    <color name="health">#3498DB</color>
+    <color name="kesehatan">#E74C46</color>
 </resources>
