@@ -125,7 +125,7 @@ public class LihatLaporanFragment extends Fragment {
 		    public TextView tanggal;
 		    public TextView berat;
 		    public TextView tinggi;
-		    public ImageView img;
+		    
 		  }
 
 		  public MyPerformanceArrayAdapter(Activity context, List<Laporan> list) {
@@ -148,7 +148,7 @@ public class LihatLaporanFragment extends Fragment {
 		      viewHolder.tanggal = (TextView) rowView.findViewById(R.id.tanggalListLaporan);
 		      viewHolder.berat = (TextView) rowView.findViewById(R.id.beratListLaporan);
 		      viewHolder.tinggi = (TextView) rowView.findViewById(R.id.tinggiListLaporan);
-		      viewHolder.img =(ImageView) rowView.findViewById(R.id.imageView1);
+		      
 		      rowView.setTag(viewHolder);
 		    }
 		    else {
@@ -173,11 +173,7 @@ public class LihatLaporanFragment extends Fragment {
 			viewHolder.berat.setText(iberat + " kg");
 			viewHolder.tinggi.setText(itinggi + " cm");
 			
-			if (position==0) {
-				viewHolder.img.setVisibility(View.VISIBLE);
-			} else {
-				viewHolder.img.setVisibility(View.GONE);
-			}
+			
 		    
 		    return rowView;
 		  }
