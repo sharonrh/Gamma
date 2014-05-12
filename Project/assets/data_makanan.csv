@@ -17,7 +17,7 @@ Brokoli,32,2.18,6.56,0.38,256,mangkok,90,0,Sayuran,N,N,N,0,gambar_makanan/brokol
 Brownies,129,1.62,21.26,4.68,50,potong,34,0,Snack,N,N,N,0,gambar_makanan/brownies.jpg
 Buavita Apel,120,0,30,0,0,gelas,250,0,Minuman,N,N,N,0,gambar_makanan/buavitaapel.jpg
 Bubur Ayam,372,27.56,36.12,12.39,584,mangkok,240,0,Pokok,Y,N,N,0,gambar_makanan/buburayam.jpg
-Butter Cookies,160,2,20,8,0,porsi,30,0,Snack,Y,N,Y,0,gambar_makayay/buttercookies.jpg
+Butter Cookies,160,2,20,8,0,porsi,30,0,Snack,Y,N,Y,0,gambar_makanan/buttercookies.jpg
 Cheetos,100,1,11,6,100,bungkus,18,0,Snack,N,N,N,0,gambar_makanan/cheetos.jpg
 Chicken Nugget,285,14.97,15.67,18.07,551,porsi,96,0,Lauk,Y,N,N,0,gambar_makanan/chickennugget.jpg
 Chitato,100,1,12,5,120,porsi,19,0,Snack,N,N,N,0,gambar_makanan/chitato.jpg
@@ -99,7 +99,7 @@ Pizza Daging,530,21.28,55.35,24.29,1220,porsi,176,0,Pokok,Y,N,N,0,gambar_makanan
 Pop Mie,260,6,35,11,1420,porsi,57,0,Pokok,N,N,N,0,gambar_makanan/popmie.jpg
 Qtela Singkong,130,0,14,8,90,porsi,23,0,Snack,N,N,N,0,gambar_makanan/qtelasingkong.jpg
 Quaker Oatmeal,130,3,28,0,0,porsi,35,0,Pokok,N,N,N,0,gambar_makanan/quakeroatmeal.jpg
-Rendang,55,5.58,1.27,3.14,52,ons,28,0,Lauk,Y,N,N,0,gambar_makayay/rendang.jpg
+Rendang,55,5.58,1.27,3.14,52,ons,28,0,Lauk,Y,N,N,0,gambar_makanan/rendang.jpg
 Roti Sobek,200,5,30,6.5,125,bagian,57,0,Pokok,N,N,N,0,gambar_makanan/rotisobek.jpg
 Salmon Panggang,145,20.37,0.42,6.43,397,porsi,85,0,Lauk,Y,Y,N,0,gambar_makanan/salmonpanggang.jpg
 Sangrai Asin,164,6.63,6.02,13.9,228,porsi,28,0,Snack,N,N,Y,0,gambar_makanan/sangraiasin.jpg
