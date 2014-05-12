@@ -44,9 +44,7 @@ public class SettingFragment extends PreferenceFragment {
 		kontrol = new SettingController(getActivity());
 
 		set.add(new Setting("Notifikasi", "Atur Notifikasi"));
-		//set.add(new Setting("Artikel", "Atur Notifikasi"));
 		set.add(new Setting("Reset Progress", "Atur Notifikasi"));
-		// set.add(new Setting("Tema", "Ganti Tema Aplikasi"));
 		set.add(new Setting("Tentang", "Info Mengenai Pengembang"));
 		set.add(new Setting("Kredit", "Atur Notifikasi"));
 
@@ -62,15 +60,15 @@ public class SettingFragment extends PreferenceFragment {
 			public void onItemClick(AdapterView<?> parent, View item,
 					int position, long id) {
 
-				if (position == 0) 
+				if (position == 0)
 					kontrol.gantiHalaman(position);
-					// } else if (position == 3) {
-					// temaPopupWindow();
+				// } else if (position == 3) {
+				// temaPopupWindow();
 				else if (position == 1)
 					showAlertReset();
 				else if (position == 2)
 					tentangPopupWindow();
-				else if (position == 3) 
+				else if (position == 3)
 					kreditPopupWindow();
 
 			}
@@ -149,8 +147,6 @@ public class SettingFragment extends PreferenceFragment {
 		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 				.create();
 
-		
-		
 		LayoutInflater inflater = getActivity().getLayoutInflater();
 
 		View v = inflater.inflate(R.layout.popup_konfirmasi_reset, null);
@@ -172,8 +168,8 @@ public class SettingFragment extends PreferenceFragment {
 					}
 				});
 		alertDialog.show();
-	}	
-	
+	}
+
 	public void tentangPopupWindow() {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
@@ -197,7 +193,7 @@ public class SettingFragment extends PreferenceFragment {
 		alertDialog.show();
 
 	}
-	
+
 	public void kreditPopupWindow() {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
@@ -219,7 +215,6 @@ public class SettingFragment extends PreferenceFragment {
 			}
 		});
 		alertDialog.show();
-
 	}
 
 }

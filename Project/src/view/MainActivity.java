@@ -1,9 +1,14 @@
 package view;
 
+import model.Pengguna;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -26,6 +31,8 @@ import android.widget.Toast;
 
 import com.example.gamma.R;
 
+import controller.ProfilController;
+
 public class MainActivity extends Activity {
 
 	private DrawerLayout mDrawerLayout;
@@ -39,13 +46,15 @@ public class MainActivity extends Activity {
 	private int mIcon;
 	private int[] iconIds;
 	private boolean doubleBackToExitPressedOnce = false;
+	private ProfilController con;
+	SharedPreferences prefs = null;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		prefs = getSharedPreferences("com.example.gamma", MODE_PRIVATE);
 		mTitle = mDrawerTitle = getTitle();
 		mNavTitles = getResources().getStringArray(R.array.nav_drawer_items);
 		mNavIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
@@ -93,6 +102,9 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+		con = new ProfilController(getApplicationContext());
+		Pengguna p = con.getProfil();
+
 		Bundle extras = getIntent().getExtras();
 		if (extras == null) {
 			selectItem(0);
@@ -102,11 +114,46 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	public void popUpWindow() {
+
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+		alertDialog.setTitle("Kredit");
+		LayoutInflater inflater = getLayoutInflater();
+
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		alertDialog.setView(inflater.inflate(R.layout.popup_firstrun, null));
+
+		// Setting Icon to Dialog
+		// alertDialog.setIcon(R.drawable.ic_launcher);
+
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				finish();
+				Intent i = new Intent(getApplicationContext(),
+						EditProfilActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(i);
+			}
+		});
+		alertDialog.show();
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return true;
+	}
+
+	protected void onResume() {
+		super.onResume();
+
+		if (prefs.getBoolean("firstrun", true)) {
+			selectItem(1);
+			popUpWindow();
+		}
 	}
 
 	@Override

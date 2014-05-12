@@ -105,7 +105,7 @@ public class HandlerProfil extends DatabaseHandler {
 		values.put(foto, fotoNew);
 		values.put(startTime, startNew);
 		values.put(endTime, endNew);
-	
+
 		boolean b = db.update(tabelProfil, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(1) }) > 0;
 		db.close();

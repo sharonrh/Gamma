@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import model.Pengguna;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -115,7 +116,6 @@ public class EditProfilActivity extends Activity {
 							Base64.DEFAULT);
 					Bitmap decodedByte = BitmapFactory.decodeByteArray(
 							decodedString, 0, decodedString.length);
-					// fotoProfil.setImageBitmap(decodedByte);
 					Bitmap resized = Bitmap.createScaledBitmap(decodedByte,
 							100, 100, true);
 					Bitmap conv_bm = getRoundedRectBitmap(resized, 100);
@@ -196,18 +196,20 @@ public class EditProfilActivity extends Activity {
 				String berat = beratField.getText().toString();
 				String target = targetField.getText().toString();
 				String tinggi = tinggiField.getText().toString();
-				int durasi = Integer.parseInt(durasiField.getText().toString());
+				String durasi = durasiField.getText().toString();
 				int genderSelected = genderSpinner.getSelectedItemPosition();
 				int gayaHidup = gayaHidupSpinner.getSelectedItemPosition();
 
-				if (genderSelected != -1 && nama.length() != 0
+				System.out.println("gender" + genderSelected);
+				System.out.println("gaya" + gayaHidup);
+
+				if (genderSelected != 0 && nama.length() != 0
 						&& umur.length() != 0 && berat.length() != 0
-						&& tinggi.length() != 0) {
+						&& tinggi.length() != 0 && target.length() != 0
+						&& durasi.length() != 0 && gayaHidup != 0) {
 
-					// P =pria,W=wanita
-
-					if (validasiInput(nama, umur, genderSelected, berat,
-							target, tinggi)) {
+					int dur = Integer.parseInt(durasi);
+					if (validasiInput(nama, umur, berat, target, tinggi, dur)) {
 
 						char gch = genderSpinner.getSelectedItem().toString()
 								.charAt(0);
@@ -221,12 +223,18 @@ public class EditProfilActivity extends Activity {
 								Double.parseDouble(target), gch, gayaHidup,
 								kacang.isChecked(), seafood.isChecked(),
 								vegetarian.isChecked(), str, l, l
-										+ (durasi * 604800000))) {
+										+ (dur * 604800000))) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
 									Toast.LENGTH_LONG).show();
-							finish(); 
+
+							// tandai bahwa user sudah mengisi
+							SharedPreferences prefs = getSharedPreferences(
+									"com.example.gamma", MODE_PRIVATE);
+							prefs.edit().putBoolean("firstrun", false).commit();
+
+							finish();
 							Intent i = new Intent(getApplicationContext(),
 									MainActivity.class);
 							i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -234,10 +242,6 @@ public class EditProfilActivity extends Activity {
 							i.putExtra("nomorFragment", "1");
 
 							startActivity(i);
-						} else {
-							Toast.makeText(getApplicationContext(),
-									"Gagal. Cek ulang isian Anda",
-									Toast.LENGTH_LONG).show();
 						}
 					}
 
@@ -249,49 +253,38 @@ public class EditProfilActivity extends Activity {
 					}
 				} else {
 					Toast.makeText(getApplicationContext(),
-							"Ada field yang masih kosong", Toast.LENGTH_LONG)
-							.show();
+							"Ada field yang belum diisi / dipilih",
+							Toast.LENGTH_LONG).show();
 				}
 			}
 		});
 	}
 
 	class CustomAdapter extends ArrayAdapter<String> {
-
 		Activity context;
-
 		String[] values;
 
 		public CustomAdapter(Activity context, int resource, String[] val) {
-
 			super(context, resource, val);
-
 			this.context = context;
-
 			this.values = val;
-
 		}
 
 		@Override
 		public View getDropDownView(int position, View convertView,
 
 		ViewGroup parent) {
-
 			View row = convertView;
-
 			if (row == null) {
 				LayoutInflater inflater = context.getLayoutInflater();
 				row = inflater.inflate(R.layout.spinner_row, parent, false);
 			}
 			String current = values[position];
-
 			TextView name = (TextView) row.findViewById(R.id.spinnerText);
 			name.setText(current);
 
 			return row;
-
 		}
-
 	}
 
 	@Override
@@ -324,22 +317,18 @@ public class EditProfilActivity extends Activity {
 			byte[] c = Base64.encode(a, Base64.DEFAULT);
 
 			try {
-
 				// string gambar
 				str = new String(c, "UTF-8");
-
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 	}
 
-	public boolean validasiInput(String nama, String umur, int gender,
-			String berat, String tinggi, String target) {
+	public boolean validasiInput(String nama, String umur, String berat,
+			String tinggi, String target, int durasi) {
 
-		String pesan1 = "";
 		ArrayList<String> list = new ArrayList<String>();
 		if (!nama
 				.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$"))
@@ -352,28 +341,26 @@ public class EditProfilActivity extends Activity {
 			list.add("tinggi");
 		if (!target.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
 			list.add("target");
-		if ((gender == -1))
-			list.add("Jenis kelamin belum dipilih");
+		if (durasi <= 0)
+			list.add("durasi");
 
 		for (int ii = 0; ii < list.size(); ii++) {
 			pesan = pesan + list.get(ii);
 			if (ii < list.size() - 2) {
 				pesan = pesan + ", ";
 			}
-
 			if (ii == list.size() - 2) {
 				pesan = pesan + " dan ";
 			}
-
 		}
 
 		return nama
 				.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$")
-				&& umur.matches("^[0-9]{1,3}")
-				&& gender != -1
-				&& berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")
-				&& tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$")
-				&& target.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$");
+				&& umur.matches("^[1-9]{1,2}")
+				&& berat.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
+				&& tinggi.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
+				&& target.matches("^[1-9][0-9]{1,3}(\\.[0-9][0-9]?)?$")
+				&& durasi > 0;
 	}
 
 	public static Bitmap getRoundedRectBitmap(Bitmap bitmap, int pixels) {
