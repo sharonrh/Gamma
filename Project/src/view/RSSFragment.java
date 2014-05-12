@@ -36,9 +36,7 @@ import com.example.gamma.R;
 
 public class RSSFragment extends Fragment {
 
-	private static final int MAX_RETRIES = 3;
 	private static ListView list;
-	private static List<Entry> data;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -55,7 +53,6 @@ public class RSSFragment extends Fragment {
 				showAlert(e.link);
 			}
 		});
-
 		return v;
 	}
 

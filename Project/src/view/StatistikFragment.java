@@ -14,12 +14,12 @@ import org.achartengine.model.TimeSeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
+import org.achartengine.util.IndexXYMap;
 
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -71,21 +71,21 @@ public class StatistikFragment extends Fragment {
 
 		GregorianCalendar start = new GregorianCalendar();
 		start.setTimeInMillis(p.getStartTime());
-
 		GregorianCalendar end = new GregorianCalendar();
 		end.setTimeInMillis(p.getEndTime());
+
 		// untuk grafik target cuma pake data awal + akhir
 		targetSeries.add(start.getTime(), awal);
 		targetSeries.add(end.getTime(), target);
 
 		// masukin data awal
-		GregorianCalendar gc = new GregorianCalendar();
-		gc.setTimeInMillis(p.getStartTime());
-		x[0] = gc.getTime();
+		x[0] = start.getTime();
+		realSeries.add(x[0], p.getBerat());
 
+		GregorianCalendar gc = new GregorianCalendar();
 		// masukin tiap laporan untuk grafik realized
-		for (int i = 0; i < count; i++) {
-			Laporan l = listLaporan.get(i);
+		for (int i = 1; i < x.length; i++) {
+			Laporan l = listLaporan.get(i - 1);
 			gc.setTimeInMillis(l.getWaktu());
 			x[i] = gc.getTime();
 			realSeries.add(x[i], l.getBeratBadan());
@@ -118,18 +118,20 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.setYTitle("Berat badan");
 		multiRenderer.setXRoundedLabels(false);
 		multiRenderer.setZoomButtonsVisible(true);
+
 		// Note: The order of adding dataseries to dataset and renderers to
 		// multipleRenderer should be same
 		multiRenderer.addSeriesRenderer(realizedRenderer);
 		multiRenderer.addSeriesRenderer(targetRenderer);
 		multiRenderer.setApplyBackgroundColor(true);
 		multiRenderer.setBackgroundColor(Color.BLACK);
+		
 		// multiRenderer.setMarginsColor(Color.argb(0x00, 0x01, 0x01, 0x01));
 		LinearLayout layout = (LinearLayout) getActivity().findViewById(
 				R.id.chart_layout);
+
 		// Creating an intent to plot line chart using dataset and
 		// multipleRenderer
-
 		GraphicalView mChart = (GraphicalView) ChartFactory.getTimeChartView(
 				getActivity(), dataset, multiRenderer, "dd/MM");
 		layout.addView(mChart);

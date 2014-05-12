@@ -1,5 +1,6 @@
 package view;
 
+import model.Laporan;
 import model.Pengguna;
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,14 +8,17 @@ import android.widget.TextView;
 
 import com.example.gamma.R;
 
+import controller.LaporanController;
 import controller.ProfilController;
 
 public class DetailStatistikActivity extends Activity {
 
-	private TextView beratAwal, beratTarget, progress, durasiReal,
+	private TextView beratAwal, beratTarget, beratSekarang, tinggiAwal,
+			tinggiSekarang, bmiSekarang, bmiAwal, progress, durasiReal,
 			durasiTarget, statusBMI, achieve, artikel;
 
-	ProfilController con;
+	private ProfilController con;
+	private LaporanController laporanCon;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,7 @@ public class DetailStatistikActivity extends Activity {
 		setContentView(R.layout.activity_detail_statistik);
 
 		con = new ProfilController(getApplicationContext());
+		laporanCon = new LaporanController(getApplicationContext());
 
 		beratAwal = (TextView) findViewById(R.id.beratAwalStatistik);
 		beratTarget = (TextView) findViewById(R.id.beratTargetStatistik);
@@ -33,11 +38,18 @@ public class DetailStatistikActivity extends Activity {
 		artikel = (TextView) findViewById(R.id.artikelStatistik);
 
 		Pengguna p = con.getProfil();
+		Laporan l = laporanCon.getLaporanTerbaru();
 
 		beratAwal.setText(p.getBerat() + " kg");
 		beratTarget.setText(p.getTarget() + " kg");
-		progress.setText(p.getTarget() - p.getBerat() + " kg");
-
+		String prog = String.format("%.2f", (l.getBeratBadan() - p.getBerat())
+				/ (p.getTarget() - p.getBerat()) * 100)
+				+ "%";
+		progress.setText(prog);
+		durasiReal.setText((l.getWaktu() - p.getStartTime()) / 604800000
+				+ " minggu");
+		durasiTarget.setText((p.getEndTime() - p.getStartTime()) / 604800000
+				+ " minggu");
 		double bmi = p.getBerat() / Math.pow(p.getTinggi() / 100, 2);
 		statusBMI.setText(getBMIStatus(bmi));
 	}

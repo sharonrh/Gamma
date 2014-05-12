@@ -102,12 +102,8 @@ public class EditProfilActivity extends Activity {
 			beratField.setText("" + user.getBerat());
 			targetField.setText("" + user.getTarget());
 			tinggiField.setText("" + user.getTinggi());
-			System.out.println(user.getEndTime());
-			System.out.println(user.getStartTime());
-			System.out
-					.println((user.getEndTime() - user.getStartTime()) / 604800);
 			durasiField.setText("" + (user.getEndTime() - user.getStartTime())
-					/ 604800);
+					/ 604800000);
 			gayaHidupSpinner.setSelection(user.getGayaHidup());
 			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1
 															// = pria, 2= wanita
@@ -225,7 +221,7 @@ public class EditProfilActivity extends Activity {
 								Double.parseDouble(target), gch, gayaHidup,
 								kacang.isChecked(), seafood.isChecked(),
 								vegetarian.isChecked(), str, l, l
-										+ (durasi * 604800))) {
+										+ (durasi * 604800000))) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
@@ -357,7 +353,7 @@ public class EditProfilActivity extends Activity {
 		if (!target.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
 			list.add("target");
 		if ((gender == -1))
-			list.add("kamu belum memilih jenis kelamin");
+			list.add("Jenis kelamin belum dipilih");
 
 		for (int ii = 0; ii < list.size(); ii++) {
 			pesan = pesan + list.get(ii);

@@ -29,3 +29,4 @@ proguard-project.txt
 *.iws
 .idea/
 project.properties
+Project/gen/

@@ -52,8 +52,6 @@ public class HandlerProfil extends DatabaseHandler {
 			int i = Integer.parseInt(cursor.getString(6));
 			char g = i == 1 ? 'W' : 'P';
 
-			System.out.println("di handler " + cursor.getString(12));
-
 			profil = new Pengguna(cursor.getString(1), cursor.getInt(2),
 					cursor.getDouble(3), cursor.getDouble(4),
 					cursor.getDouble(5), g, cursor.getInt(7), false, false,
@@ -107,9 +105,7 @@ public class HandlerProfil extends DatabaseHandler {
 		values.put(foto, fotoNew);
 		values.put(startTime, startNew);
 		values.put(endTime, endNew);
-		System.out.println("pas update, start : " + startNew);
-		System.out.println("pas update, end : " + endNew);
-
+	
 		boolean b = db.update(tabelProfil, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(1) }) > 0;
 		db.close();

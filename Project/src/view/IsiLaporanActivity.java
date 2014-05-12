@@ -86,13 +86,17 @@ public class IsiLaporanActivity extends Activity {
 
 				cek = false;
 
-				if (validasiInput(berat, tinggi)) {
+				Calendar kalender = Calendar.getInstance();
+				kalender.setTimeInMillis(System.currentTimeMillis());
+				int y = kalender.DAY_OF_YEAR;
+
+//				if (validasiInput(berat, tinggi, y)) {
 					cek = kontrol.addLaporan(berat, tinggi);
-				} else {
-					Toast.makeText(getApplicationContext(), pesan + ".",
-							Toast.LENGTH_LONG).show();
-					pesan = "";
-				}
+//				} else {
+//					Toast.makeText(getApplicationContext(), pesan + ".",
+//							Toast.LENGTH_LONG).show();
+//					pesan = "";
+//				}
 
 				if (cek) {
 					Toast.makeText(getApplicationContext(),
@@ -119,15 +123,11 @@ public class IsiLaporanActivity extends Activity {
 		});
 	}
 
-	public boolean validasiInput(String berat, String tinggi) {
+	public boolean validasiInput(String berat, String tinggi, int y) {
 
 		ArrayList<String> list = new ArrayList<String>();
 
-		Calendar kalender = Calendar.getInstance();
-		kalender.setTimeInMillis(System.currentTimeMillis());
-		int y = kalender.DAY_OF_YEAR;
-
-		if (berat.length() == 0 && tinggi.length() == 0) {
+		if (berat.length() == 0 || tinggi.length() == 0) {
 			pesan = "Masih ada field yang belum diisi";
 			return false;
 		}
@@ -159,7 +159,7 @@ public class IsiLaporanActivity extends Activity {
 			if (beratSkrg == 0 || tinggiSkrg == 0) {
 				pesan = "Data yang dimasukkan tidak logis";
 				return false;
-			} else if (lastBerat != 0 && lastBerat != 0) {
+			} else if (lastBerat != 0 && lastTinggi != 0) {
 				double difBerat = beratSkrg - lastBerat;
 				double difTinggi = tinggiSkrg - lastTinggi;
 
