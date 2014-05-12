@@ -73,6 +73,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// baca data makanan
 		bacaFile(c, db);
 		
+		// baca data untuk achievement 
+		//initAchievement(c, db);
 		
 	}
 
@@ -199,4 +201,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			e.printStackTrace();
 		}
 	}
+
+    public void resetProgress (Context c, SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS laporan");
+        db.execSQL("DROP TABLE IF EXISTS notifikasi");
+        db.execSQL("DROP TABLE IF EXISTS profil");
+        
+
+        // buat database kembali
+        // tabel laporan
+        String buatTabelLaporan = "CREATE TABLE laporan (id INTEGER PRIMARY KEY AUTOINCREMENT, waktu INTEGER, berat REAL, tinggi REAL);";
+        db.execSQL(buatTabelLaporan);
+        // tabel notifikasi
+        String buatTabelNotifikasi = "CREATE TABLE notifikasi (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, waktu INTEGER, pesan TEXT);";
+        db.execSQL(buatTabelNotifikasi);
+        // tabel profil
+        String buatTabelProfil = "CREATE TABLE profil (id INTEGER PRIMARY KEY, nama TEXT, umur INTEGER, berat REAL, tinggi REAL, target REAL, gender INTEGER, "
+                + "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, vegetarian INTEGER, foto TEXT, startTime REAL, endTime REAL);";
+        db.execSQL(buatTabelProfil);
+
+        // isi tabel profil dengan data awal
+        ContentValues values = new ContentValues();
+        values.put("nama", "");
+        values.put("umur", 0);
+        values.put("berat", 0);
+        values.put("tinggi", 0);
+        values.put("target", 0);
+        values.put("gender", 0);
+        values.put("gayaHidup", 0);
+        values.put("kacang", 0);
+        values.put("seafood", 0);
+        values.put("vegetarian", 0);
+        values.put("foto", "");
+        values.put("startTime", 0);
+        values.put("endTime", 0);
+
+        // Inserting Row
+        db.insert("profil", null, values);
+
+        tambahNotifikasiDefault(db);
+
+        //initAchievement(c, db); //re-populate achievement di database
+    }
 }

@@ -116,5 +116,5 @@ public class HandlerAchievement extends DatabaseHandler {
         return db.update(tabelAchievement, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(achievement.getNama())});
     }
-
+    
 }

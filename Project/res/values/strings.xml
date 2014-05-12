@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Gain Mass Manager</string>
@@ -96,4 +95,6 @@
     <string name="title_activity_detail_statistik">Detail</string>
 	<string name="title_activity_isi_laporan">Isi Laporan</string>
 	<string name="title_activity_edit_laporan">Edit Laporan</string>
+	<string name="konfirmasi_reset">Apakah Anda yakin akan mereset progress Anda? Data profil, laporan, notifikasi, dan achievement Anda akan terhapus.</string>
+	<string name="sukses_reset">Reset progress berhasil. Silahkan isi kembali profil Anda.</string>
 </resources>
