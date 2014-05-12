@@ -33,6 +33,8 @@ public class HandlerMakanan extends DatabaseHandler {
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
 	private static final String pathFoto = "pathFoto";
+	private final String[] arrJenis = { "Pokok", "Lauk", "Sayuran", "Buah",
+			"Minuman", "Snack" };
 
 	public static HandlerMakanan getInstance(Context context) {
 		if (sInstance == null) {
@@ -158,9 +160,13 @@ public class HandlerMakanan extends DatabaseHandler {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// algo rekomendasi?
 		SQLiteDatabase db = this.getWritableDatabase();
-		String selectQuery = "SELECT nama,kalori,porsi,bobot FROM "
-				+ tabelMakanan + " ORDER BY RANDOM() LIMIT 9";
-		Cursor cursor = db.rawQuery(selectQuery, null);
+		// String selectQuery = "SELECT nama,kalori,porsi,bobot FROM "
+		// + tabelMakanan + " E";
+		// Cursor cursor = db.rawQuery(selectQuery, null);
+		Cursor cursor = db.query(true, tabelMakanan, new String[] {
+				namaMakanan, "sum(" + kalori + ")", bobot, jenis, terakhir }, jenis + " =?",
+				new String[] { arrJenis[0] }, jenis,
+				"sum(" + kalori + ")>1000", terakhir, "2");
 
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
@@ -168,8 +174,41 @@ public class HandlerMakanan extends DatabaseHandler {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setPorsi(cursor.getString(2));
-				makanan.setBobot(cursor.getInt(3));
+				makanan.setBobot(cursor.getInt(2));
+				makananList.add(makanan);
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
+				kalori, bobot, jenis, terakhir }, jenis + " =? OR ?",
+				new String[] { arrJenis[1], arrJenis[2] }, null, null,
+				terakhir, "4");
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setBobot(cursor.getInt(2));
+				makananList.add(makanan);
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
+				kalori, bobot, jenis, terakhir }, jenis + " =? OR ? OR ?",
+				new String[] { arrJenis[3], arrJenis[4], arrJenis[5] }, null,
+				null, terakhir, "3");
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setBobot(cursor.getInt(2));
 				makananList.add(makanan);
 			} while (cursor.moveToNext());
 		}
@@ -189,7 +228,6 @@ public class HandlerMakanan extends DatabaseHandler {
 
 	// Getting makanan Count
 	public int[] getJenisCount() {
-		String[] arrJenis = { "Pokok", "Lauk", "Sayuran", "Buah", "Minuman" };
 		int[] count = new int[arrJenis.length];
 
 		SQLiteDatabase db = this.getReadableDatabase();

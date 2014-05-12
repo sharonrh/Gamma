@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -40,22 +41,24 @@ public class KatalogFragment extends Fragment {
 		TextView sayur = (TextView) v.findViewById(R.id.sayurKatalog);
 		TextView buah = (TextView) v.findViewById(R.id.buahKatalog);
 		TextView minuman = (TextView) v.findViewById(R.id.minumanKatalog);
-		
+
 		int[] ctJenis = kontrol.getJenisCount();
 		pokok.setText("" + ctJenis[0]);
 		lauk.setText("" + ctJenis[1]);
 		sayur.setText("" + ctJenis[2]);
 		buah.setText("" + ctJenis[3]);
 		minuman.setText("" + ctJenis[4]);
-		
+
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), values);
 		listview.setAdapter(adapter);
 
 		// ubah tinggi listview katalog
-		/**LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(
-				LayoutParams.MATCH_PARENT, (adapter.getCount() * 50));
-		listview.setLayoutParams(mParam);*/
+		/**
+		 * LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(
+		 * LayoutParams.MATCH_PARENT, (adapter.getCount() * 50));
+		 * listview.setLayoutParams(mParam);
+		 */
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -65,7 +68,7 @@ public class KatalogFragment extends Fragment {
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 				intent.putExtra("nama", values.get(position).getNama());
-				
+
 				startActivity(intent);
 			}
 		});
@@ -102,16 +105,36 @@ public class KatalogFragment extends Fragment {
 						.findViewById(R.id.makananKatalog);
 				viewHolder.kalori = (TextView) rowView
 						.findViewById(R.id.kaloriKatalog);
-				viewHolder.rating = (RatingBar) rowView.findViewById(R.id.ratingBarList);
-				
+				viewHolder.rating = (RatingBar) rowView
+						.findViewById(R.id.ratingBarList);
 				rowView.setTag(viewHolder);
 			}
 
 			ViewHolder holder = (ViewHolder) rowView.getTag();
+
 			Makanan m = names.get(position);
 			holder.nama.setText(m.getNama());
 			holder.kalori.setText(m.getKalori() + " kal");
 			holder.rating.setRating(m.getRating());
+
+			GridLayout layout = (GridLayout) getActivity().findViewById(
+					R.id.kartuKatalog);
+
+			String jenis = m.getJenisMakanan();
+			if (jenis.equals("Pokok")) {
+				// layout.setBackground();
+			} else if (jenis.equals("Buah")) {
+				// layout.setBackground();
+			} else if (jenis.equals("Sayuran")) {
+				// layout.setBackground();
+			} else if (jenis.equals("Snack")) {
+				// layout.setBackground();
+			} else if (jenis.equals("Lauk")) {
+				// layout.setBackground();
+			} else { // minuman
+			// layout.setBackground();
+			}
+
 			return rowView;
 		}
 	}
