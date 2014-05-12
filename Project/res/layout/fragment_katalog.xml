@@ -197,17 +197,27 @@
         </GridLayout> -->
 
         <GridLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
             
             <GridLayout
-            	android:layout_width="match_parent"
+            	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
             	android:layout_gravity="top" >
+            	
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@drawable/layer_card_background"
+                    android:columnCount="1"
+                    android:padding="10dp" >
+                </GridLayout>
+                
         	</GridLayout>
         	
             <GridLayout
-            	android:layout_width="match_parent"
+            	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
             	android:layout_gravity="bottom" >
         	</GridLayout>
