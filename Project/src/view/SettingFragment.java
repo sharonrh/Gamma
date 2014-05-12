@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
@@ -17,10 +18,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
+import controller.ResetController;
 import controller.SettingController;
+import dao.DatabaseHandler;
 
 public class SettingFragment extends PreferenceFragment {
 
@@ -62,6 +66,8 @@ public class SettingFragment extends PreferenceFragment {
 					kontrol.gantiHalaman(position);
 					// } else if (position == 3) {
 					// temaPopupWindow();
+				else if (position == 1)
+					showAlertReset();
 				else if (position == 2)
 					tentangPopupWindow();
 				else if (position == 3) 
@@ -139,6 +145,35 @@ public class SettingFragment extends PreferenceFragment {
 
 	RadioGroup rg;
 
+	public void showAlertReset() {
+		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+				.create();
+
+		
+		
+		LayoutInflater inflater = getActivity().getLayoutInflater();
+
+		View v = inflater.inflate(R.layout.popup_konfirmasi_reset, null);
+		alertDialog.setView(v);
+
+		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Batal",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ya",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						Context c = getActivity().getApplicationContext();
+						ResetController rc = new ResetController(c);
+						rc.reset(c);
+						Toast.makeText(c, R.string.sukses_reset, 2).show();
+					}
+				});
+		alertDialog.show();
+	}	
+	
 	public void tentangPopupWindow() {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())

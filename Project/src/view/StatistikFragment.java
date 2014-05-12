@@ -14,12 +14,13 @@ import org.achartengine.model.TimeSeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
-import org.achartengine.util.IndexXYMap;
 
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -96,6 +97,12 @@ public class StatistikFragment extends Fragment {
 		dataset.addSeries(realSeries);
 		dataset.addSeries(targetSeries);
 
+		// value for font size
+		DisplayMetrics metrics = getActivity().getApplicationContext()
+				.getResources().getDisplayMetrics();
+		float val = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 18,
+				metrics);
+
 		XYSeriesRenderer realizedRenderer = new XYSeriesRenderer();
 		realizedRenderer.setColor(Color.rgb(127, 129, 250));
 		realizedRenderer.setPointStyle(PointStyle.CIRCLE);
@@ -103,21 +110,27 @@ public class StatistikFragment extends Fragment {
 		realizedRenderer.setLineWidth(3);
 		realizedRenderer.setDisplayChartValues(true);
 		realizedRenderer.setDisplayChartValuesDistance(1);
+		realizedRenderer.setChartValuesTextSize(val);
 
 		XYSeriesRenderer targetRenderer = new XYSeriesRenderer();
 		targetRenderer.setColor(Color.rgb(138, 237, 172));
 		targetRenderer.setFillPoints(true);
 		targetRenderer.setLineWidth(3);
 		targetRenderer.setDisplayChartValues(true);
-		realizedRenderer.setDisplayChartValuesDistance(1);
+		targetRenderer.setDisplayChartValuesDistance(1);
+		targetRenderer.setChartValuesTextSize(val);
 
 		// Creating a XYMultipleSeriesRenderer to customize the whole chart
 		XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
 		multiRenderer.setChartTitle("Grafik berat badan");
-		multiRenderer.setXTitle("Waktu");
-		multiRenderer.setYTitle("Berat badan");
+		multiRenderer.setXTitle("Waktu (DD/MM)");
+		multiRenderer.setYTitle("Berat badan (kg)");
 		multiRenderer.setXRoundedLabels(false);
 		multiRenderer.setZoomButtonsVisible(true);
+		multiRenderer.setLabelsTextSize(val);
+		multiRenderer.setLegendTextSize(val);
+		multiRenderer.setAxisTitleTextSize(val);
+		multiRenderer.setChartTitleTextSize(val);
 
 		// Note: The order of adding dataseries to dataset and renderers to
 		// multipleRenderer should be same
@@ -125,7 +138,7 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.addSeriesRenderer(targetRenderer);
 		multiRenderer.setApplyBackgroundColor(true);
 		multiRenderer.setBackgroundColor(Color.BLACK);
-		
+
 		// multiRenderer.setMarginsColor(Color.argb(0x00, 0x01, 0x01, 0x01));
 		LinearLayout layout = (LinearLayout) getActivity().findViewById(
 				R.id.chart_layout);

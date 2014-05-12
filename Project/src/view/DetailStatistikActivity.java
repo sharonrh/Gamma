@@ -14,7 +14,7 @@ import controller.ProfilController;
 public class DetailStatistikActivity extends Activity {
 
 	private TextView beratAwal, beratTarget, beratSekarang, tinggiAwal,
-			tinggiSekarang, bmiSekarang, bmiAwal, progress, durasiReal,
+			tinggiSekarang, bmiSekarang, bmiAwal, kalori, progress, durasiReal,
 			durasiTarget, statusBMI, achieve, artikel;
 
 	private ProfilController con;
@@ -29,29 +29,49 @@ public class DetailStatistikActivity extends Activity {
 		laporanCon = new LaporanController(getApplicationContext());
 
 		beratAwal = (TextView) findViewById(R.id.beratAwalStatistik);
+		beratSekarang = (TextView) findViewById(R.id.beratSekarangStatistik);
 		beratTarget = (TextView) findViewById(R.id.beratTargetStatistik);
+		tinggiAwal = (TextView) findViewById(R.id.tinggiAwalStatistik);
+		tinggiSekarang = (TextView) findViewById(R.id.tinggiSekarangStatistik);
 		progress = (TextView) findViewById(R.id.progressStatistik);
 		durasiReal = (TextView) findViewById(R.id.durasiDietStatistik);
 		durasiTarget = (TextView) findViewById(R.id.durasiMaksimalStatistik);
+		bmiAwal = (TextView) findViewById(R.id.bmiAwalStatistik);
+		bmiSekarang = (TextView) findViewById(R.id.bmiSekarangStatistik);
+		kalori = (TextView) findViewById(R.id.kaloriHarianStatistik);
 		statusBMI = (TextView) findViewById(R.id.statusBMIStatistik);
 		achieve = (TextView) findViewById(R.id.achivementStatistik);
 		artikel = (TextView) findViewById(R.id.artikelStatistik);
 
 		Pengguna p = con.getProfil();
-		Laporan l = laporanCon.getLaporanTerbaru();
 
 		beratAwal.setText(p.getBerat() + " kg");
 		beratTarget.setText(p.getTarget() + " kg");
-		String prog = String.format("%.2f", (l.getBeratBadan() - p.getBerat())
-				/ (p.getTarget() - p.getBerat()) * 100)
-				+ "%";
-		progress.setText(prog);
-		durasiReal.setText((l.getWaktu() - p.getStartTime()) / 604800000
-				+ " minggu");
-		durasiTarget.setText((p.getEndTime() - p.getStartTime()) / 604800000
-				+ " minggu");
 		double bmi = p.getBerat() / Math.pow(p.getTinggi() / 100, 2);
+		bmiAwal.setText(String.format("%.2f", bmi));
 		statusBMI.setText(getBMIStatus(bmi));
+		tinggiAwal.setText(p.getTinggi() + " cm");
+		kalori.setText(con.getKebutuhanKal() + " kal");
+
+		Laporan l = laporanCon.getLaporanTerbaru();
+
+		// handle case laporan masih kosong
+		if (l != null) {
+			beratSekarang.setText(l.getBeratBadan() + " kg");
+			tinggiSekarang.setText(p.getTinggi() + " cm");
+			bmiSekarang.setText(String.format("%.2f",
+					l.getBeratBadan() / Math.pow(l.getTinggiBadan() / 100, 2)));
+			String prog = String.format(
+					"%.2f",
+					(l.getBeratBadan() - p.getBerat())
+							/ (p.getTarget() - p.getBerat()) * 100)
+					+ "%";
+			progress.setText(prog);
+			durasiReal.setText((l.getWaktu() - p.getStartTime()) / 604800000
+					+ " minggu");
+			durasiTarget.setText((p.getEndTime() - p.getStartTime())
+					/ 604800000 + " minggu");
+		}
 	}
 
 	private String getBMIStatus(double bmi) {
