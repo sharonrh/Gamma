@@ -9,6 +9,7 @@ import model.Laporan;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,7 @@ public class IsiLaporanActivity extends Activity {
 	private TextView tinggiLalu;
 	private TextView tglHariLalu;
 	private TextView tglHariIni;
+	private TextView title;
 	private Button simpanBtn;
 	private Button batalBtn;
 	private boolean cek = false;
@@ -47,24 +49,39 @@ public class IsiLaporanActivity extends Activity {
 		tinggiField = (EditText) findViewById(R.id.tinggiIsiLaporan);
 		tglHariLalu = (TextView) findViewById(R.id.tanggalHariSebelumnya);
 		tglHariIni = (TextView) findViewById(R.id.tanggalHariIni);
+		title = (TextView) findViewById(R.id.titleLaporan);
 		simpanBtn = (Button) findViewById(R.id.button1);
 		batalBtn = (Button) findViewById(R.id.button2);
 		beratLalu = (TextView) findViewById(R.id.beratLaluIsiLaporan);
 		tinggiLalu = (TextView) findViewById(R.id.tinggiLaluIsiLaporan);
 
 		Laporan laporanTerbaru = kontrol.getLaporanTerbaru();
-
+		
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 		String formatted = format.format(date);
 		tglHariIni.setText("Data untuk tanggal " + formatted);
 		tglHariLalu.setText("Data Sebelumnya (" + selisihHari
 				+ " hari yang lalu)");
-
+		
+		Intent i = getIntent();
+		System.out.println("intent " + i);
+		Double berat = i.getDoubleExtra("berat", 0.0);
+		Double tinggi = i.getDoubleExtra("tinggi", 0.0);
+		
+		if(berat != 0.0 && tinggi != 0.0){
+			beratField.setText("" + berat);
+			tinggiField.setText("" + tinggi);
+			title.setText("Edit Laporan");
+		}
+		
 		if (laporanTerbaru != null) {
-
+			
 			lastBerat = laporanTerbaru.getBeratBadan();
 			lastTinggi = laporanTerbaru.getTinggiBadan();
+			
+			System.out.println("'" + lastBerat);
+			System.out.println("'" + lastTinggi);
 
 			Calendar cal = Calendar.getInstance();
 
@@ -75,6 +92,8 @@ public class IsiLaporanActivity extends Activity {
 
 			beratLalu.setText(lastBerat + " kg");
 			tinggiLalu.setText(lastTinggi + " cm");
+			
+			
 		}
 
 		simpanBtn.setOnClickListener(new View.OnClickListener() {
@@ -86,17 +105,13 @@ public class IsiLaporanActivity extends Activity {
 
 				cek = false;
 
-				Calendar kalender = Calendar.getInstance();
-				kalender.setTimeInMillis(System.currentTimeMillis());
-				int y = kalender.DAY_OF_YEAR;
-
-//				if (validasiInput(berat, tinggi, y)) {
+				if (validasiInput(berat, tinggi)) {
 					cek = kontrol.addLaporan(berat, tinggi);
-//				} else {
-//					Toast.makeText(getApplicationContext(), pesan + ".",
-//							Toast.LENGTH_LONG).show();
-//					pesan = "";
-//				}
+				} else {
+					Toast.makeText(getApplicationContext(), pesan + ".",
+							Toast.LENGTH_LONG).show();
+					pesan = "";
+				}
 
 				if (cek) {
 					Toast.makeText(getApplicationContext(),
@@ -104,14 +119,22 @@ public class IsiLaporanActivity extends Activity {
 							.show();
 					beratLalu.setText(berat + " kg");
 					tinggiLalu.setText(tinggi + " cm");
+					
 					finish();
 					Intent i = new Intent(getApplicationContext(),
 							MainActivity.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 					i.putExtra("nomorFragment", "3");
 
 					startActivity(i);
+
+				} else {
+					Toast.makeText(getApplicationContext(),
+							"Laporan gagal disimpan", Toast.LENGTH_LONG).show();
 				}
+				
+				
 			}
 		});
 
@@ -123,11 +146,15 @@ public class IsiLaporanActivity extends Activity {
 		});
 	}
 
-	public boolean validasiInput(String berat, String tinggi, int y) {
+	public boolean validasiInput(String berat, String tinggi) {
 
 		ArrayList<String> list = new ArrayList<String>();
 
-		if (berat.length() == 0 || tinggi.length() == 0) {
+		Calendar kalender = Calendar.getInstance();
+		kalender.setTimeInMillis(System.currentTimeMillis());
+		int y = kalender.DAY_OF_YEAR;
+
+		if (berat.length() == 0 && tinggi.length() == 0) {
 			pesan = "Masih ada field yang belum diisi";
 			return false;
 		}
@@ -159,7 +186,7 @@ public class IsiLaporanActivity extends Activity {
 			if (beratSkrg == 0 || tinggiSkrg == 0) {
 				pesan = "Data yang dimasukkan tidak logis";
 				return false;
-			} else if (lastBerat != 0 && lastTinggi != 0) {
+			} else if (lastBerat != 0 && lastBerat != 0) {
 				double difBerat = beratSkrg - lastBerat;
 				double difTinggi = tinggiSkrg - lastTinggi;
 
@@ -169,11 +196,7 @@ public class IsiLaporanActivity extends Activity {
 						|| Math.abs(difTinggi) >= 2.0) {
 					pesan = "Data yang dimasukkan tidak logis";
 					return false;
-				} else if (selisihHari < 7) {
-					pesan = "Kamu baru bisa mengisi kembali "
-							+ (maksHari - selisihHari) + " hari lagi";
 
-					return false;
 				} else {
 					return true;
 				}

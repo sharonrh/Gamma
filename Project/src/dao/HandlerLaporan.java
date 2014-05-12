@@ -107,6 +107,24 @@ public class HandlerLaporan extends DatabaseHandler {
 		db.close();
 		return laporan;
 	}
+	
+	// Getting single laporan
+			public Laporan getLaporanPertama() {
+				SQLiteDatabase db = this.getReadableDatabase();
+
+				Cursor cursor = db.rawQuery("SELECT * FROM " + tabelLaporan
+						+ " ORDER BY " + id + " ASC LIMIT 1", null);
+
+				Laporan laporan = null;
+				if (cursor.moveToFirst()) {
+					laporan = new Laporan(Long.parseLong(cursor.getString(1)),
+							Double.parseDouble(cursor.getString(2)),
+							Double.parseDouble(cursor.getString(3)));
+				}
+				cursor.close();
+				db.close();
+				return laporan;
+			}
 
 	// Getting All Laporan
 	public List<Laporan> getAllLaporan() {

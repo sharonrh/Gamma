@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -47,9 +48,11 @@ public class LihatLaporanFragment extends Fragment {
 				false);
 		ListView listview = (ListView) v.findViewById(R.id.listLaporan);
 		TextView tv = (TextView) v.findViewById(R.id.jumlahLaporan);
+		TextView tv2 = (TextView) v.findViewById(R.id.durasiDiet);
 		List<Laporan> data = kon.getListLaporan();
 		System.out.println(tv);
 		tv.setText("" + data.size());
+		tv2.setText("" + kon.getDurasiHari());
 		
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(getActivity(), data);
 		listview.setAdapter(adapter);
@@ -61,16 +64,20 @@ public class LihatLaporanFragment extends Fragment {
 	     listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			    //you might want to use 'view' here
-				  Intent intent = new Intent(getActivity().getApplicationContext(), IsiLaporanActivity.class);
 				  
-				  //passing nama makanan dari katalog ke detail makanan
-				  SharedPreferences spre = getActivity().getApplicationContext().getSharedPreferences("Your prefName",
-			                Context.MODE_PRIVATE);
-			        SharedPreferences.Editor prefEditor = spre.edit();
-			        prefEditor.putString("key", parent.getItemAtPosition(position).toString());
-			        prefEditor.commit();
-				  
-			      startActivity(intent);
+				  if(position == 0){
+					  
+					  Laporan lastLaporan = kon.getLaporanTerbaru();
+					  Intent intent = new Intent(getActivity().getApplicationContext(), IsiLaporanActivity.class);
+					  intent.putExtra("berat", lastLaporan.getBeratBadan());
+					  intent.putExtra("tinggi", lastLaporan.getTinggiBadan());
+					  startActivity(intent);
+				  }
+				  else {
+					  Toast.makeText(getActivity().getApplicationContext(), "Kamu hanya bisa mengubah laporan terakhir.", Toast.LENGTH_SHORT).show();
+					  
+				  }	  
+			      
 			  }
 			});
 	     
@@ -92,10 +99,17 @@ public class LihatLaporanFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.pensil:
-			Intent i = new Intent(getActivity().getApplicationContext(),
-					IsiLaporanActivity.class);
-			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			getActivity().startActivity(i);
+			
+			if(kon.cekDurasiIsiLaporan()){
+				Intent i = new Intent(getActivity().getApplicationContext(),
+						IsiLaporanActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				getActivity().startActivity(i);
+			}
+			else {
+				Toast.makeText(getActivity().getApplicationContext(),"Kamu baru bisa mengisi "+ kon.getSisaHari() + " lagi.", Toast.LENGTH_SHORT).show();
+			}
+			
 			break;
 		default:
 			break;
@@ -111,6 +125,7 @@ public class LihatLaporanFragment extends Fragment {
 		    public TextView tanggal;
 		    public TextView berat;
 		    public TextView tinggi;
+		    public ImageView img;
 		  }
 
 		  public MyPerformanceArrayAdapter(Activity context, List<Laporan> list) {
@@ -133,10 +148,10 @@ public class LihatLaporanFragment extends Fragment {
 		      viewHolder.tanggal = (TextView) rowView.findViewById(R.id.tanggalListLaporan);
 		      viewHolder.berat = (TextView) rowView.findViewById(R.id.beratListLaporan);
 		      viewHolder.tinggi = (TextView) rowView.findViewById(R.id.tinggiListLaporan);
+		      viewHolder.img =(ImageView) rowView.findViewById(R.id.imageView1);
 		      rowView.setTag(viewHolder);
 		    }
 		    else {
-
 		    // fill data
 			    viewHolder = (ViewHolder) rowView.getTag();
 		    }
@@ -157,6 +172,12 @@ public class LihatLaporanFragment extends Fragment {
 			viewHolder.tanggal.setText(itanggal);
 			viewHolder.berat.setText(iberat + " kg");
 			viewHolder.tinggi.setText(itinggi + " cm");
+			
+			if (position==0) {
+				viewHolder.img.setVisibility(View.VISIBLE);
+			} else {
+				viewHolder.img.setVisibility(View.GONE);
+			}
 		    
 		    return rowView;
 		  }
