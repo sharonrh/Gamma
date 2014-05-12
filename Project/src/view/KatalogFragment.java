@@ -36,18 +36,19 @@ public class KatalogFragment extends Fragment {
 
 		final List<Makanan> values = kontrol.getListMakanan();
 
-		//TextView pokok = (TextView) v.findViewById(R.id.makananPokokKatalog);
-		//TextView lauk = (TextView) v.findViewById(R.id.laukpaukKatalog);
-		//TextView sayur = (TextView) v.findViewById(R.id.sayurKatalog);
-		//TextView buah = (TextView) v.findViewById(R.id.buahKatalog);
-		//TextView minuman = (TextView) v.findViewById(R.id.minumanKatalog);
+		TextView pokok = (TextView) v.findViewById(R.id.makananPokokKatalog);
+		TextView lauk = (TextView) v.findViewById(R.id.laukpaukKatalog);
+		TextView sayur = (TextView) v.findViewById(R.id.sayurKatalog);
+		TextView buah = (TextView) v.findViewById(R.id.buahKatalog);
+		TextView minuman = (TextView) v.findViewById(R.id.minumanKatalog);
+		TextView snack = (TextView) v.findViewById(R.id.snackKatalog);
 
 		int[] ctJenis = kontrol.getJenisCount();
-		//pokok.setText("" + ctJenis[0]);
-		//lauk.setText("" + ctJenis[1]);
-		//sayur.setText("" + ctJenis[2]);
-		//buah.setText("" + ctJenis[3]);
-		//minuman.setText("" + ctJenis[4]);
+		pokok.setText("" + ctJenis[0]);
+		lauk.setText("" + ctJenis[1]);
+		sayur.setText("" + ctJenis[2]);
+		buah.setText("" + ctJenis[3]);
+		minuman.setText("" + ctJenis[4]);
 
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), values);
@@ -117,7 +118,7 @@ public class KatalogFragment extends Fragment {
 			holder.kalori.setText(m.getKalori() + " kal");
 			holder.rating.setRating(m.getRating());
 
-			GridLayout layout = (GridLayout) getActivity().findViewById(
+			/**GridLayout layout = (GridLayout) getActivity().findViewById(
 					R.id.kartuKatalog);
 
 			String jenis = m.getJenisMakanan();
@@ -133,7 +134,7 @@ public class KatalogFragment extends Fragment {
 				 layout.setBackgroundResource((R.drawable.selector_card_background_laukpauk));
 			} else { // minuman
 				 layout.setBackgroundResource((R.drawable.selector_card_background_minuman));
-			}
+			}*/
 
 			return rowView;
 		}
