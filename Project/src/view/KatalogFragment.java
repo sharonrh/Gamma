@@ -36,18 +36,18 @@ public class KatalogFragment extends Fragment {
 
 		final List<Makanan> values = kontrol.getListMakanan();
 
-		TextView pokok = (TextView) v.findViewById(R.id.makananPokokKatalog);
-		TextView lauk = (TextView) v.findViewById(R.id.laukpaukKatalog);
-		TextView sayur = (TextView) v.findViewById(R.id.sayurKatalog);
-		TextView buah = (TextView) v.findViewById(R.id.buahKatalog);
-		TextView minuman = (TextView) v.findViewById(R.id.minumanKatalog);
+		//TextView pokok = (TextView) v.findViewById(R.id.makananPokokKatalog);
+		//TextView lauk = (TextView) v.findViewById(R.id.laukpaukKatalog);
+		//TextView sayur = (TextView) v.findViewById(R.id.sayurKatalog);
+		//TextView buah = (TextView) v.findViewById(R.id.buahKatalog);
+		//TextView minuman = (TextView) v.findViewById(R.id.minumanKatalog);
 
 		int[] ctJenis = kontrol.getJenisCount();
-		pokok.setText("" + ctJenis[0]);
-		lauk.setText("" + ctJenis[1]);
-		sayur.setText("" + ctJenis[2]);
-		buah.setText("" + ctJenis[3]);
-		minuman.setText("" + ctJenis[4]);
+		//pokok.setText("" + ctJenis[0]);
+		//lauk.setText("" + ctJenis[1]);
+		//sayur.setText("" + ctJenis[2]);
+		//buah.setText("" + ctJenis[3]);
+		//minuman.setText("" + ctJenis[4]);
 
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), values);
@@ -122,17 +122,17 @@ public class KatalogFragment extends Fragment {
 
 			String jenis = m.getJenisMakanan();
 			if (jenis.equals("Pokok")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_makananpokok));
 			} else if (jenis.equals("Buah")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_buah));
 			} else if (jenis.equals("Sayuran")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_sayur));
 			} else if (jenis.equals("Snack")) {
-				// layout.setBackground();
+				//layout.setBackgroundDrawable((getResources().getDrawable(R.drawable.s)));
 			} else if (jenis.equals("Lauk")) {
-				// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_laukpauk));
 			} else { // minuman
-			// layout.setBackground();
+				 layout.setBackgroundResource((R.drawable.selector_card_background_minuman));
 			}
 
 			return rowView;
