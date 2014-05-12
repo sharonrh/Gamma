@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class HandlerAchievement extends DatabaseHandler {
 
@@ -31,7 +32,7 @@ public class HandlerAchievement extends DatabaseHandler {
         return sInstance;
     }
 
-    private HandlerAchievement(Context context) {
+    public HandlerAchievement(Context context) {
         super(context);
     }
 
@@ -74,17 +75,18 @@ public class HandlerAchievement extends DatabaseHandler {
     }
 
     // Getting All Achievement
-    public List<Achievement> getAllAchievement() {
-        List<Achievement> listAchievement = new ArrayList<Achievement>();
+    public ArrayList<Achievement> getAllAchievement() {
+        ArrayList<Achievement> listAchievement = new ArrayList<Achievement>();
         String selectQuery = "SELECT  * FROM " + tabelAchievement;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-
+        Log.i("Info", "Coba baca db");
         if (cursor.moveToFirst()) {
             do {
                 Achievement achievement = new Achievement();
                 achievement.setNama(cursor.getString(0));
+                Log.i("Nama achievement : ", ""+ achievement.getNama());
                 if (Integer.parseInt(cursor.getString(1)) == 1) {
                     achievement.setGet(true);
                 }

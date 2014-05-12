@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import model.Notifikasi;
@@ -12,6 +13,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 	// Database Version
@@ -74,7 +76,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		bacaFile(c, db);
 		
 		// baca data untuk achievement 
-		//initAchievement(c, db);
+		initAch(db);
 		
 	}
 
@@ -173,34 +175,58 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return cek;
 	}
 
-	private void initAchievement(Context context, SQLiteDatabase db) {
-		AssetManager am = context.getAssets();
-		InputStream is;
-		try {
-			is = am.open("achievement.csv");
+//	public void bacaAchievement(Context context, SQLiteDatabase db) {
+//        Log.i("", "Awal method.");
+//        AssetManager am = context.getAssets();
+//		InputStream is;
+//        Log.i("", "Mencoba baca file achievement.");
+//		try {
+//			is = am.open("achievement.csv");
+//            Log.i("", "Baca file achievement.");
+//			InputStreamReader isr = new InputStreamReader(is);
+//
+//			BufferedReader reader = new BufferedReader(isr);
+//			reader.readLine(); // baca header
+//			String line;
+//
+//			while ((line = reader.readLine()) != null) {
+//				String[] temp = line.split(",");
+//
+//				ContentValues values = new ContentValues();
+//				values.put("nama", temp[0]);
+//				values.put("terkunci", Integer.parseInt(temp[1]));
+//				values.put("deskripsi", temp[2]);
+//				values.put("progress", Double.parseDouble(temp[3]));
+//				values.put("pathLogo", temp[4]);
+//				db.insert("achievement", null, values);
+//                Log.i("", "Tambah entri achievement.");
+//			}
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//            Log.i("", "Gagal baca");
+//		}
+//	}
 
-			InputStreamReader isr = new InputStreamReader(is);
+    public void initAch(SQLiteDatabase db) {
+        ArrayList<String> nama = new ArrayList<String>();
+        ArrayList<String> deskripsi = new ArrayList<String>();
+        ArrayList<String> pathLogo = new ArrayList<String>();
 
-			BufferedReader reader = new BufferedReader(isr);
-			reader.readLine(); // baca header
-			String line;
+        nama.add("Starter"); nama.add("Halfway"); nama.add("Finisher"); nama.add("Bookworm");
+        deskripsi.add("Ini starter."); deskripsi.add("Ini halfway."); deskripsi.add("Ini finisher."); deskripsi.add("Ini bookworm.");
+        pathLogo.add("logo/starter.png"); pathLogo.add("logo/halfway.png"); pathLogo.add("logo/finisher.png"); pathLogo.add("logo/bookworm.png");
+        ContentValues content = new ContentValues();
+        for (int i = 0; i < 4; i++) {
+            content.put("nama", nama.get(i));
+            content.put("terkunci", 0);
+            content.put("deskripsi", deskripsi.get(i));
+            content.put("progress", 0);
+            content.put("pathLogo", pathLogo.get(i));
+            db.insert("achievement", null, content);
+        }
+    }
 
-			while ((line = reader.readLine()) != null) {
-				String[] temp = line.split(",");
-
-				ContentValues values = new ContentValues();
-				values.put("nama", temp[0]);
-				values.put("terkunci", Integer.parseInt(temp[1]));
-				values.put("deskripsi", temp[2]);
-				values.put("progress", Double.parseDouble(temp[3]));
-				values.put("pathLogo", temp[4]);
-				db.insert("achievement", null, values);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
     public void resetProgress (Context c, SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS laporan");
@@ -241,6 +267,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         tambahNotifikasiDefault(db);
 
-        //initAchievement(c, db); //re-populate achievement di database
+        initAch(db); //re-populate achievement di database
     }
 }

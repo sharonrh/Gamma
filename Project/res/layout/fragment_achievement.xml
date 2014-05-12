@@ -22,8 +22,7 @@
             android:layout_height="150dp"
             android:layout_column="0"
             android:layout_row="0"
-            android:scaleType="centerInside"
-            android:src="@drawable/starter" />
+            android:scaleType="centerInside"/>
 
         <ImageButton
             android:id="@+id/finisher"
@@ -31,8 +30,7 @@
             android:layout_height="150dp"
             android:layout_column="0"
             android:layout_row="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/finisher" />
+            android:scaleType="centerInside" />
 
         <ImageButton
             android:id="@+id/halfway"
@@ -40,8 +38,7 @@
             android:layout_height="150dp"
             android:layout_column="1"
             android:layout_row="0"
-            android:scaleType="centerInside"
-            android:src="@drawable/halfway" />
+            android:scaleType="centerInside" />
 
         <ImageButton
             android:id="@+id/bookworm"
@@ -49,8 +46,7 @@
             android:layout_height="150dp"
             android:layout_column="1"
             android:layout_row="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/bookworm" />
+            android:scaleType="centerInside" />
 
     </GridLayout>
 
