@@ -1,5 +1,6 @@
 package service;
 
+import view.MainActivity;
 import view.NotifikasiActivity;
 
 import com.example.gamma.R;
@@ -48,7 +49,7 @@ public class MyAlarm extends BroadcastReceiver
        Notification notification = new Notification(R.drawable.gamma_notif, notifTitle,
        System.currentTimeMillis());
        // The PendingIntent to launch our activity if the user selects this notification
-       PendingIntent contentIntent = PendingIntent.getActivity(context, id, new Intent(context, NotifikasiActivity.class), 0);
+       PendingIntent contentIntent = PendingIntent.getActivity(context, id, new Intent(context, MainActivity.class), 0);
        // Set the info for the views that show in the notification panel.
        notification.setLatestEventInfo(context, notifTitle, notifMessage, contentIntent);
        // Send the notification.

@@ -111,7 +111,7 @@ public class EditProfilActivity extends Activity {
 			Time b = new Time();
 			b.set(user.getStartTime());
 
-			durasiField.setText(a.getWeekNumber() - b.getWeekNumber());
+			durasiField.setText(""+(a.getWeekNumber() - b.getWeekNumber()));
 			gayaHidupSpinner.setSelection(user.getGayaHidup());
 			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1
 															// = pria, 2= wanita
@@ -342,7 +342,7 @@ public class EditProfilActivity extends Activity {
 		if (!nama
 				.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$"))
 			list.add("nama");
-		if (!umur.matches("^[1-9]{1,2}"))
+		if (!umur.matches("^[1-9][0-9]{1,2}"))
 			list.add("umur(");
 		if (!berat.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$"))
 			list.add("berat");
@@ -365,7 +365,7 @@ public class EditProfilActivity extends Activity {
 
 		return nama
 				.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$")
-				&& umur.matches("^[1-9]{1,2}")
+				&& umur.matches("^[1-9][0-9]{1,2}")
 				&& berat.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
 				&& tinggi.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
 				&& target.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
