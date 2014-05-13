@@ -4,16 +4,17 @@ public class Notifikasi {
 	private String nama;
 	private long waktu;
 	private String pesan;
-	private boolean isSelected = false;
+	private boolean isSelected;
 
 	
 
 	public Notifikasi() {}
 
-	public Notifikasi(String nama, long waktu, String pesan) {
+	public Notifikasi(String nama, long waktu, String pesan, boolean isSelected) {
 		this.nama = nama;
 		this.waktu = waktu;
 		this.pesan = pesan;
+		this.isSelected = isSelected;
 	}
 
 	public String getNama() {

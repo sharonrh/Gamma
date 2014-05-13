@@ -293,13 +293,14 @@ public final class R {
         public static final int list_laporan=0x7f030016;
         public static final int listfragment=0x7f030017;
         public static final int notifikasi_simplerow=0x7f030018;
-        public static final int popup_konfirmasi_reset=0x7f030019;
-        public static final int popup_konfirmasi_rss=0x7f03001a;
-        public static final int popup_tema_style=0x7f03001b;
-        public static final int sectioned_list_item=0x7f03001c;
-        public static final int setting_simplerow=0x7f03001d;
-        public static final int simplerow=0x7f03001e;
-        public static final int spinner_row=0x7f03001f;
+        public static final int popup_firstrun=0x7f030019;
+        public static final int popup_konfirmasi_reset=0x7f03001a;
+        public static final int popup_konfirmasi_rss=0x7f03001b;
+        public static final int popup_tema_style=0x7f03001c;
+        public static final int sectioned_list_item=0x7f03001d;
+        public static final int setting_simplerow=0x7f03001e;
+        public static final int simplerow=0x7f03001f;
+        public static final int spinner_row=0x7f030020;
     }
     public static final class menu {
         public static final int detail=0x7f090000;
@@ -328,6 +329,7 @@ public final class R {
         public static final int info_personal=0x7f060018;
         public static final int jenis_kelamin=0x7f060015;
         public static final int kg=0x7f06001d;
+        public static final int konfirmasi_firstrun=0x7f060030;
         public static final int konfirmasi_reset=0x7f06002e;
         public static final int konfirmasi_rss=0x7f060022;
         public static final int lama_diet=0x7f060014;

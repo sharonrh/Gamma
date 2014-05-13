@@ -14,7 +14,7 @@ public class NotifikasiController {
 	}
 
 	public boolean addNotifikasi(String nama, long waktu, String pesan) {
-		Notifikasi notifObj = new Notifikasi(nama, waktu, pesan);
+		Notifikasi notifObj = new Notifikasi(nama, waktu, pesan, false);
 		return db.tambahNotifikasi(notifObj);
 	}
 
@@ -22,6 +22,9 @@ public class NotifikasiController {
 		return db.getAllNotifikasi();
 	}
 	
+	public boolean updateNotifikasi(String namaNotif, long time, boolean selected){
+		return db.updateNotif(namaNotif, time, selected);
+	}
 	public boolean updateNotifikasi(String namaNotif, long time){
 		return db.updateNotif(namaNotif, time);
 	}

@@ -324,7 +324,7 @@ public class NotifikasiActivity extends Activity {
 		            	
 		                if (ischecked) {
 		                	myAlarm.startAlarm(getApplicationContext(), posisi, cal2.getTimeInMillis());
-		                	set.setSelected(true);
+		                	kontrol.updateNotifikasi(set.getNama(), cal2.getTimeInMillis(), true);
 		                    Toast.makeText(getApplicationContext(), "Switch on" + posisi,
 		                            Toast.LENGTH_LONG).show();
 		                    
@@ -353,16 +353,16 @@ public class NotifikasiActivity extends Activity {
 			
 			
 			
-			if(set.isSelected()){
-				sw.setChecked(true);
-			}
+			System.out.println(set.isSelected());
 
 			if (tv1 != null) {
+				
 				Date date = new Date(set.getWaktu());
 				SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 				String formatted = format.format(date);
 				tv1.setText(set.getNama());
 				tv2.setText(formatted + " WIB");
+				sw.setChecked(set.isSelected());
 			}
 
 			return convertView;

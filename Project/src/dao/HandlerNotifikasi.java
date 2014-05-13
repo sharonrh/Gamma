@@ -56,7 +56,7 @@ public class HandlerNotifikasi extends DatabaseHandler {
 		Notifikasi notifikasi = null;
 		if (cursor.moveToFirst()) {
 			notifikasi = new Notifikasi(cursor.getString(1), cursor.getLong(2),
-					cursor.getString(3));
+					cursor.getString(3), cursor.getInt(4) == 1 ? true : false);
 		}
 		cursor.close();
 		db.close();
@@ -99,11 +99,33 @@ public class HandlerNotifikasi extends DatabaseHandler {
 		db.close();
 	}
 
+	public boolean updateNotif(String namaNotif, long time, boolean selected) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues args = new ContentValues();
+		String str = "" + time;
+		args.put(waktu, str);
+		
+		if(selected){
+			args.put("selected", 1);
+		}
+		else {
+			args.put("selected", 0);
+		}
+		
+		boolean b = db.update(tabelNotifikasi, args, nama + "=" + "'"
+				+ namaNotif + "'", null) > 0;
+		db.close();
+
+		return b;
+	}
 	public boolean updateNotif(String namaNotif, long time) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues args = new ContentValues();
 		String str = "" + time;
 		args.put(waktu, str);
+		
+		
+		
 		boolean b = db.update(tabelNotifikasi, args, nama + "=" + "'"
 				+ namaNotif + "'", null) > 0;
 		db.close();
