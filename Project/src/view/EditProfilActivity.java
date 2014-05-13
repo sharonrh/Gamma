@@ -3,6 +3,7 @@ package view;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import model.Pengguna;
 import android.app.Activity;
@@ -52,8 +53,8 @@ public class EditProfilActivity extends Activity {
 	private ImageView fotoProfil;
 	private TextView penjelasan;
 	private ProfilController con;
-	private String str = "";
 	private String pesan = "Terjadi Kesalahan pada: ";
+	private String str = "";
 	private static Bitmap result;
 	private static Canvas canvas;
 	private static int color, roundPx;
@@ -103,8 +104,14 @@ public class EditProfilActivity extends Activity {
 			beratField.setText("" + user.getBerat());
 			targetField.setText("" + user.getTarget());
 			tinggiField.setText("" + user.getTinggi());
-			durasiField.setText("" + (user.getEndTime() - user.getStartTime())
-					/ 604800000);
+
+			Time a = new Time();
+			a.set(user.getEndTime());
+
+			Time b = new Time();
+			b.set(user.getStartTime());
+
+			durasiField.setText(a.getWeekNumber() - b.getWeekNumber());
 			gayaHidupSpinner.setSelection(user.getGayaHidup());
 			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1
 															// = pria, 2= wanita
@@ -200,14 +207,12 @@ public class EditProfilActivity extends Activity {
 				int genderSelected = genderSpinner.getSelectedItemPosition();
 				int gayaHidup = gayaHidupSpinner.getSelectedItemPosition();
 
-				System.out.println("gender" + genderSelected);
-				System.out.println("gaya" + gayaHidup);
-
 				if (genderSelected != 0 && nama.length() != 0
 						&& umur.length() != 0 && berat.length() != 0
 						&& tinggi.length() != 0 && target.length() != 0
 						&& durasi.length() != 0 && gayaHidup != 0) {
 
+					System.out.println("masi string" + durasi);
 					int dur = Integer.parseInt(durasi);
 					if (validasiInput(nama, umur, berat, target, tinggi, dur)) {
 
@@ -217,13 +222,14 @@ public class EditProfilActivity extends Activity {
 						Time t = new Time();
 						t.setToNow();
 						long l = t.toMillis(false);
+												
 						if (con.updateProfil(nama, Integer.parseInt(umur),
 								Double.parseDouble(berat),
 								Double.parseDouble(tinggi),
 								Double.parseDouble(target), gch, gayaHidup,
 								kacang.isChecked(), seafood.isChecked(),
-								vegetarian.isChecked(), str, l, l
-										+ (dur * 604800000))) {
+								vegetarian.isChecked(), str, l, l + dur
+										* 604800000)) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
@@ -327,22 +333,25 @@ public class EditProfilActivity extends Activity {
 	}
 
 	public boolean validasiInput(String nama, String umur, String berat,
-			String tinggi, String target, int durasi) {
+			String target, String tinggi, int durasi) {
 
 		ArrayList<String> list = new ArrayList<String>();
+		double t = Double.parseDouble(target);
+		double b = Double.parseDouble(berat);
+		System.out.println("durasi" + durasi);
 		if (!nama
 				.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$"))
 			list.add("nama");
-		if (!umur.matches("^[0-9]{1,3}"))
-			list.add("umur");
-		if (!berat.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+		if (!umur.matches("^[1-9]{1,2}"))
+			list.add("umur(");
+		if (!berat.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$"))
 			list.add("berat");
-		if (!tinggi.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+		if (!tinggi.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$"))
 			list.add("tinggi");
-		if (!target.matches("^[0-9]{1,3}(\\.[0-9][0-9]?)?$"))
+		if (!target.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$") || t <= b)
 			list.add("target");
-		if (durasi <= 0)
-			list.add("durasi");
+		if (durasi <= 0 || durasi > 52)
+			list.add("durasi (1-52)");
 
 		for (int ii = 0; ii < list.size(); ii++) {
 			pesan = pesan + list.get(ii);
@@ -359,8 +368,8 @@ public class EditProfilActivity extends Activity {
 				&& umur.matches("^[1-9]{1,2}")
 				&& berat.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
 				&& tinggi.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
-				&& target.matches("^[1-9][0-9]{1,3}(\\.[0-9][0-9]?)?$")
-				&& durasi > 0;
+				&& target.matches("^[1-9][0-9]{1,2}(\\.[0-9][0-9]?)?$")
+				&& t > b && durasi > 0;
 	}
 
 	public static Bitmap getRoundedRectBitmap(Bitmap bitmap, int pixels) {
