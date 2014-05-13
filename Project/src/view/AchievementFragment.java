@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import controller.AchievementController;
 import dao.HandlerAchievement;
 import model.Achievement;
 
@@ -36,11 +37,11 @@ public class AchievementFragment extends Fragment {
         ImageView bookworm = (ImageView) v.findViewById(R.id.bookworm);
 
         Context context = getActivity().getApplicationContext();
-        HandlerAchievement handlerAchievement = new HandlerAchievement(context);
-        final ArrayList<Achievement> allAchievement = handlerAchievement.getAllAchievement();
-        for (int i = 0; i < allAchievement.size(); i++) {
-            Log.i("Nama achievement = ", "" + allAchievement.get(i).getNama());
-        }
+        AchievementController achievementController = new AchievementController(context);
+        final ArrayList<Achievement> allAchievement = achievementController.getHandler().getAllAchievement();
+//        for (int i = 0; i < allAchievement.size(); i++) {
+//            Log.i("Nama achievement = ", "" + allAchievement.get(i).getNama());
+//        }
         Bitmap bm = null;
 
         // retrieve gambar
@@ -58,33 +59,36 @@ public class AchievementFragment extends Fragment {
         }
 
         //set listener
-
         starter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), allAchievement.get(0).getDeskripsi(), Toast.LENGTH_SHORT).show();
-                Log.i("", "Starter diklik");
+                CharSequence text = allAchievement.get(0).getNama() + " : " + allAchievement.get(0).getDeskripsi();
+                Toast.makeText(view.getContext(), text, Toast.LENGTH_SHORT).show();
+                //Log.i("", "Starter diklik");
             }
         });
         halfway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), allAchievement.get(1).getDeskripsi(), Toast.LENGTH_SHORT).show();
-                Log.i("", "Halfway diklik");
+                CharSequence text = allAchievement.get(1).getNama() + " : " + allAchievement.get(1).getDeskripsi();
+                Toast.makeText(view.getContext(), text, Toast.LENGTH_SHORT).show();
+                //Log.i("", "Halfway diklik");
             }
         });
         finisher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), allAchievement.get(2).getDeskripsi(), Toast.LENGTH_SHORT).show();
-                Log.i("", "Finisher diklik");
+                CharSequence text = allAchievement.get(2).getNama() + " : " + allAchievement.get(2).getDeskripsi();
+                Toast.makeText(view.getContext(), text, Toast.LENGTH_SHORT).show();
+                //Log.i("", "Finisher diklik");
             }
         });
         bookworm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), allAchievement.get(3).getDeskripsi(), Toast.LENGTH_SHORT).show();
-                Log.i("", "Bookworm diklik");
+                CharSequence text = allAchievement.get(3).getNama() + " : " + allAchievement.get(3).getDeskripsi();
+                Toast.makeText(view.getContext(), text, Toast.LENGTH_SHORT).show();
+                //Log.i("", "Bookworm diklik");
             }
         });
 

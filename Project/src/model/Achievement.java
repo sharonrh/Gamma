@@ -2,18 +2,19 @@ package model;
 
 public class Achievement {
 	private String nama;
-    private boolean terkunci;
 	private String deskripsi;
 	private int progress;
+    private int requirement;
 	private boolean isGet;
     private String pathLogo;
 	
-	public Achievement(String nama, boolean isGet, String deskripsi, int progress,
+	public Achievement(String nama, boolean isGet, String deskripsi, int progress, int requirement,
 			String pathLogo) {
 		super();
 		this.nama = nama;
 		this.deskripsi = deskripsi;
 		this.progress = progress;
+        this.requirement = requirement;
 		this.isGet = isGet;
         this.pathLogo = pathLogo;
 	}
@@ -41,8 +42,24 @@ public class Achievement {
 		return progress;
 	}
 
-	public void setProgress(int progress) {
-		this.progress = progress;
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+	public void addProgress() {
+		this.progress++;
+        if (this.progress >= this.requirement) {
+            this.setGet(true);
+            if (this.requirement == 10) {
+                this.setPathLogo("logo/bookworm.png");
+            } else if (this.requirement == 25) {
+                this.setPathLogo("logo/starter.png");
+            } else if (this.requirement == 50) {
+                this.setPathLogo("logo/halfway.png");
+            } else if (this.requirement == 100) {
+                this.setPathLogo("logo/finisher.png");
+            }
+        }
 	}
 
 	public boolean isGet() {
@@ -59,5 +76,13 @@ public class Achievement {
 
     public void setPathLogo(String pathLogo) {
         this.pathLogo = pathLogo;
+    }
+
+    public int getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(int requirement) {
+        this.requirement = requirement;
     }
 }

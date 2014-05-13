@@ -164,7 +164,7 @@ public class SettingFragment extends PreferenceFragment {
 						Context c = getActivity().getApplicationContext();
 						ResetController rc = new ResetController(c);
 						rc.reset(c);
-						Toast.makeText(c, R.string.sukses_reset, 2).show();
+						Toast.makeText(c, R.string.sukses_reset, Toast.LENGTH_SHORT).show();
 					}
 				});
 		alertDialog.show();

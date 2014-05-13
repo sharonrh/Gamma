@@ -47,16 +47,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, vegetarian INTEGER, foto TEXT, startTime REAL, endTime REAL);";
 		db.execSQL(buatTabelProfil);
 		// tabel achievement
-		String buatTabelAchievement = "CREATE TABLE achievement (nama TEXT PRIMARY KEY, terkunci INTEGER, deskripsi TEXT, progress REAL, pathLogo TEXT);";
+		String buatTabelAchievement = "CREATE TABLE achievement (nama TEXT PRIMARY KEY, terkunci INTEGER, deskripsi TEXT, progress INTEGER, requirement INTEGER, " +
+                "pathLogo TEXT);";
 		db.execSQL(buatTabelAchievement);
 
 		// isi tabel profil dengan data awal
 		ContentValues values = new ContentValues();
-		values.put("nama", "");
-		values.put("umur", 0);
-		values.put("berat", 0);
-		values.put("tinggi", 0);
-		values.put("target", 0);
+		values.put("nama", "Fajar Siddiq");
+		values.put("umur", 20);
+		values.put("berat", 55);
+		values.put("tinggi", 165);
+		values.put("target", 60);
 		values.put("gender", 0);
 		values.put("gayaHidup", 0);
 		values.put("kacang", 0);
@@ -68,7 +69,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// Inserting Row
 		db.insert("profil", null, values);
-		
+        Log.i("Input manual", "Done");
 		tambahNotifikasiDefault(db);
 		
 		
@@ -145,17 +146,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		calendar.set(Calendar.SECOND, 0);
 
 		Notifikasi sarapan = new Notifikasi("Sarapan",
-				calendar.getTimeInMillis(), "Saatnya sarapan!");
+				calendar.getTimeInMillis(), "Saatnya sarapan!", false);
 
 		calendar.set(Calendar.HOUR_OF_DAY, 12);
 		Notifikasi makanSiang = new Notifikasi("Makan Siang",
-				calendar.getTimeInMillis(), "Saatnya makan siang!");
+				calendar.getTimeInMillis(), "Saatnya makan siang!", false);
 
 		calendar.set(Calendar.HOUR_OF_DAY, 19);
-		Notifikasi makanMalam = new Notifikasi("Makan Malam", calendar.getTimeInMillis(), "Woi, Makan Malam!");
+		Notifikasi makanMalam = new Notifikasi("Makan Malam", calendar.getTimeInMillis(), "Woi, Makan Malam!", false);
 		
 		calendar.set(Calendar.HOUR_OF_DAY, 10);
-		Notifikasi snack = new Notifikasi("Snack", calendar.getTimeInMillis(), "Waktunya Kamu Makan Snack!");
+		Notifikasi snack = new Notifikasi("Snack", calendar.getTimeInMillis(), "Waktunya Kamu Makan Snack!", false);
 		
 		tambahNotifikasi(sarapan, db);
 		tambahNotifikasi(makanSiang, db);
@@ -212,16 +213,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ArrayList<String> nama = new ArrayList<String>();
         ArrayList<String> deskripsi = new ArrayList<String>();
         ArrayList<String> pathLogo = new ArrayList<String>();
+        int [] requirement = new int[4];
 
         nama.add("Starter"); nama.add("Halfway"); nama.add("Finisher"); nama.add("Bookworm");
-        deskripsi.add("Ini starter."); deskripsi.add("Ini halfway."); deskripsi.add("Ini finisher."); deskripsi.add("Ini bookworm.");
-        pathLogo.add("logo/starter.png"); pathLogo.add("logo/halfway.png"); pathLogo.add("logo/finisher.png"); pathLogo.add("logo/bookworm.png");
+        deskripsi.add("Mencapai 25% dari target diet.");
+        deskripsi.add("Mencapai 50% dari target diet.");
+        deskripsi.add("Mencapai 100% dari target diet.");
+        deskripsi.add("Membaca 10 artikel.");
+
+        // set logo
+        pathLogo.add("logo/locked-starter.png");
+        pathLogo.add("logo/locked-halfway.png");
+        pathLogo.add("logo/locked-finisher.png");
+        pathLogo.add("logo/locked-bookworm.png");
+
+        requirement[0] = 25;
+        requirement[1] = 50;
+        requirement[2] = 100;
+        requirement[3] = 10;
         ContentValues content = new ContentValues();
         for (int i = 0; i < 4; i++) {
             content.put("nama", nama.get(i));
             content.put("terkunci", 0);
             content.put("deskripsi", deskripsi.get(i));
             content.put("progress", 0);
+            content.put("requirement", requirement[i]);
             content.put("pathLogo", pathLogo.get(i));
             db.insert("achievement", null, content);
         }
@@ -232,7 +248,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS laporan");
         db.execSQL("DROP TABLE IF EXISTS notifikasi");
         db.execSQL("DROP TABLE IF EXISTS profil");
-        
+        db.execSQL("DROP TABLE IF EXISTS achievement");
 
         // buat database kembali
         // tabel laporan
@@ -245,6 +261,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String buatTabelProfil = "CREATE TABLE profil (id INTEGER PRIMARY KEY, nama TEXT, umur INTEGER, berat REAL, tinggi REAL, target REAL, gender INTEGER, "
                 + "gayaHidup INTEGER, kacang INTEGER, seafood INTEGER, vegetarian INTEGER, foto TEXT, startTime REAL, endTime REAL);";
         db.execSQL(buatTabelProfil);
+        // tabel achievement
+        String buatTabelAchievement = "CREATE TABLE achievement (nama TEXT PRIMARY KEY, terkunci INTEGER, deskripsi TEXT, progress INTEGER, requirement INTEGER, " +
+                "pathLogo TEXT);";
+        db.execSQL(buatTabelAchievement);
 
         // isi tabel profil dengan data awal
         ContentValues values = new ContentValues();

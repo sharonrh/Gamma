@@ -23,6 +23,7 @@ public class HandlerAchievement extends DatabaseHandler {
     private static final String deskripsi = "deskripsi";
     private static final String terkunci = "terkunci";
     private static final String progress = "progress";
+    private static final String requirement = "requirement";
     private static final String pathLogo = "pathLogo";
 
     public static HandlerAchievement getInstance(Context context) {
@@ -45,6 +46,7 @@ public class HandlerAchievement extends DatabaseHandler {
         values.put(terkunci, achievement.isGet());
         values.put(deskripsi, achievement.getDeskripsi());
         values.put(progress, achievement.getProgress());
+        values.put(requirement, achievement.getRequirement());
         values.put(pathLogo, achievement.getPathLogo());
 
         db.insert(tabelAchievement, null, values);
@@ -56,15 +58,15 @@ public class HandlerAchievement extends DatabaseHandler {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(tabelAchievement, new String[] { nama,
-                        terkunci, deskripsi, progress, pathLogo },
+                        terkunci, deskripsi, progress, requirement, pathLogo },
                 nama + "=?", new String[] { String.valueOf(nama) },
                 null, null, null, null);
 
         Achievement achievement = null;
         if (cursor.moveToFirst()) {
             achievement = new Achievement(cursor.getString(0),
-                    false, cursor.getString(2), cursor.getInt(3),
-                    cursor.getString(4));
+                    false, cursor.getString(2), cursor.getInt(3), cursor.getInt(4),
+                    cursor.getString(5));
             if (Integer.parseInt(cursor.getString(1)) == 1) {
                 achievement.setGet(true);
             }
@@ -92,7 +94,8 @@ public class HandlerAchievement extends DatabaseHandler {
                 }
                 achievement.setDeskripsi(cursor.getString(2));
                 achievement.setProgress(cursor.getInt(3));
-                achievement.setPathLogo(cursor.getString(4));
+                achievement.setRequirement(cursor.getInt(4));
+                achievement.setPathLogo(cursor.getString(5));
 
                 listAchievement.add(achievement);
             } while (cursor.moveToNext());
@@ -108,9 +111,6 @@ public class HandlerAchievement extends DatabaseHandler {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        if (achievement.getProgress() == 10) {
-            achievement.setGet(true);
-        }
         values.put(terkunci, achievement.isGet());
         values.put(progress, achievement.getProgress());
 
