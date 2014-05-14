@@ -54,12 +54,12 @@ public class HandlerAchievement extends DatabaseHandler {
     }
 
     // Getting single achievement
-    public Achievement getAchievement(String nama) {
+    public Achievement getAchievement(String namaAchievement) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(tabelAchievement, new String[] { nama,
                         terkunci, deskripsi, progress, requirement, pathLogo },
-                nama + "=?", new String[] { String.valueOf(nama) },
+                nama + "=?", new String[] { String.valueOf(namaAchievement) },
                 null, null, null, null);
 
         Achievement achievement = null;

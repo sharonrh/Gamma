@@ -9,6 +9,8 @@ import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import controller.AchievementController;
+import model.Achievement;
 import service.RSSParser;
 import service.RSSParser.Entry;
 import android.app.AlertDialog;
@@ -159,7 +161,7 @@ public class RSSFragment extends Fragment {
 
 		LayoutInflater inflater = getActivity().getLayoutInflater();
 
-		View v = inflater.inflate(R.layout.popup_konfirmasi_rss, null);
+		final View v = inflater.inflate(R.layout.popup_konfirmasi_rss, null);
 		alertDialog.setView(v);
 
 		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Batal",
@@ -171,7 +173,12 @@ public class RSSFragment extends Fragment {
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Lanjut",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                        // increment setiap baca artikel
+                        AchievementController ac = new AchievementController(v.getContext());
+                        Achievement achievement = ac.getHandler().getAchievement("Bookworm");
+                        achievement.addProgress();
+                        ac.getHandler().updateAchievement(achievement);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
 								Uri.parse(link));
 						startActivity(browserIntent);
 					}

@@ -1,53 +1,49 @@
 package model;
 
 public class Achievement {
-	private String nama;
-	private String deskripsi;
-	private int progress;
+    private String nama;
+    private String deskripsi;
+    private int progress;
     private int requirement;
-	private boolean isGet;
+    private boolean isGet;
     private String pathLogo;
-	
-	public Achievement(String nama, boolean isGet, String deskripsi, int progress, int requirement,
-			String pathLogo) {
-		super();
-		this.nama = nama;
-		this.deskripsi = deskripsi;
-		this.progress = progress;
+
+    public Achievement(String nama, boolean isGet, String deskripsi, int progress, int requirement,
+                       String pathLogo) {
+        super();
+        this.nama = nama;
+        this.deskripsi = deskripsi;
+        this.progress = progress;
         this.requirement = requirement;
-		this.isGet = isGet;
+        this.isGet = isGet;
         this.pathLogo = pathLogo;
-	}
+    }
 
     public Achievement() {
     }
 
     public String getNama() {
-		return nama;
-	}
+        return nama;
+    }
 
-	public void setNama(String nama) {
-		this.nama = nama;
-	}
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 
     public String getDeskripsi() {
-		return deskripsi;
-	}
+        return deskripsi;
+    }
 
-	public void setDeskripsi(String deskripsi) {
-		this.deskripsi = deskripsi;
-	}
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
 
-	public int getProgress() {
-		return progress;
-	}
+    public int getProgress() {
+        return progress;
+    }
 
     public void setProgress(int progress) {
         this.progress = progress;
-    }
-
-	public void addProgress() {
-		this.progress++;
         if (this.progress >= this.requirement) {
             this.setGet(true);
             if (this.requirement == 10) {
@@ -60,15 +56,23 @@ public class Achievement {
                 this.setPathLogo("logo/finisher.png");
             }
         }
-	}
+    }
 
-	public boolean isGet() {
-		return isGet;
-	}
+    public void addProgress() {
+        this.progress++;
+        if (this.requirement == 100) {
+            this.setPathLogo("logo/finisher.png");
+        }
+    }
 
-	public void setGet(boolean isGet) {
-		this.isGet = isGet;
-	}
+
+    public boolean isGet() {
+        return isGet;
+    }
+
+    public void setGet(boolean isGet) {
+        this.isGet = isGet;
+    }
 
     public String getPathLogo() {
         return pathLogo;

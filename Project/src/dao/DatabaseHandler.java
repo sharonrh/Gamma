@@ -222,15 +222,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         deskripsi.add("Membaca 10 artikel.");
 
         // set logo
-        pathLogo.add("logo/locked-starter.png");
-        pathLogo.add("logo/locked-halfway.png");
-        pathLogo.add("logo/locked-finisher.png");
-        pathLogo.add("logo/locked-bookworm.png");
+        pathLogo.add("logo/locked-starter.jpg");
+        pathLogo.add("logo/locked-halfway.jpg");
+        pathLogo.add("logo/locked-finisher.jpg");
+        pathLogo.add("logo/locked-bookworm.jpg");
 
         requirement[0] = 25;
         requirement[1] = 50;
         requirement[2] = 100;
-        requirement[3] = 10;
+        requirement[3] = 1;
         ContentValues content = new ContentValues();
         for (int i = 0; i < 4; i++) {
             content.put("nama", nama.get(i));
