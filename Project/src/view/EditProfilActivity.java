@@ -1,12 +1,16 @@
 package view;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import model.Pengguna;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -314,14 +318,15 @@ public class EditProfilActivity extends Activity {
 			String picturePath = cursor.getString(columnIndex);
 			cursor.close();
 
-			Bitmap b = BitmapFactory.decodeFile(picturePath);
+			Bitmap b = getDownsampledBitmap(selectedImage, 800, 800);
+			//Bitmap b = BitmapFactory.decodeFile(picturePath);
 			// fotoProfil.setImageBitmap(b);
 			Bitmap resized = Bitmap.createScaledBitmap(b, 100, 100, true);
 			Bitmap conv_bm = getRoundedRectBitmap(resized, 100);
 			fotoProfil.setImageBitmap(conv_bm);
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			b.compress(Bitmap.CompressFormat.JPEG, 75, baos);
+			b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
 			byte[] a = baos.toByteArray();
 			byte[] c = Base64.encode(a, Base64.DEFAULT);
@@ -400,6 +405,67 @@ public class EditProfilActivity extends Activity {
 		} catch (OutOfMemoryError o) {
 		}
 		return result;
+	}
+	
+	private Bitmap getDownsampledBitmap(Uri uri, int targetWidth, int targetHeight) {
+	    Bitmap bitmap = null;
+	    try {
+	        BitmapFactory.Options outDimens = getBitmapDimensions(uri);
+
+	        int sampleSize = calculateSampleSize(outDimens.outWidth, outDimens.outHeight, targetWidth, targetHeight);
+
+	        bitmap = downsampleBitmap(uri, sampleSize);
+
+	    } catch (Exception e) {
+	        //handle the exception(s)
+	    }
+
+	    return bitmap;
+	}
+
+	private BitmapFactory.Options getBitmapDimensions(Uri uri) throws FileNotFoundException, IOException {
+	    BitmapFactory.Options outDimens = new BitmapFactory.Options();
+	    outDimens.inJustDecodeBounds = true; // the decoder will return null (no bitmap)
+
+	    InputStream is= getContentResolver().openInputStream(uri);
+	    // if Options requested only the size will be returned
+	    BitmapFactory.decodeStream(is, null, outDimens);
+	    is.close();
+
+	    return outDimens;
+	}
+
+	private int calculateSampleSize(int width, int height, int targetWidth, int targetHeight) {
+	    int inSampleSize = 1;
+
+	    if (height > targetHeight || width > targetWidth) {
+
+	        // Calculate ratios of height and width to requested height and
+	        // width
+	        final int heightRatio = Math.round((float) height
+	                / (float) targetHeight);
+	        final int widthRatio = Math.round((float) width / (float) targetWidth);
+
+	        // Choose the smallest ratio as inSampleSize value, this will
+	        // guarantee
+	        // a final image with both dimensions larger than or equal to the
+	        // requested height and width.
+	        inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+	    }
+	    return inSampleSize;
+	}
+
+	private Bitmap downsampleBitmap(Uri uri, int sampleSize) throws FileNotFoundException, IOException {
+	    Bitmap resizedBitmap;
+	    BitmapFactory.Options outBitmap = new BitmapFactory.Options();
+	    outBitmap.inJustDecodeBounds = false; // the decoder will return a bitmap
+	    outBitmap.inSampleSize = sampleSize;
+
+	    InputStream is = getContentResolver().openInputStream(uri);
+	    resizedBitmap = BitmapFactory.decodeStream(is, null, outBitmap);
+	    is.close();
+
+	    return resizedBitmap;
 	}
 
 }
