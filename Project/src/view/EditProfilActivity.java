@@ -321,7 +321,7 @@ public class EditProfilActivity extends Activity {
 			fotoProfil.setImageBitmap(conv_bm);
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+			b.compress(Bitmap.CompressFormat.JPEG, 75, baos);
 
 			byte[] a = baos.toByteArray();
 			byte[] c = Base64.encode(a, Base64.DEFAULT);
