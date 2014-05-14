@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import model.Laporan;
+import model.Pengguna;
 import android.content.Context;
 import android.text.format.Time;
 import dao.HandlerLaporan;
@@ -10,16 +11,19 @@ import dao.HandlerLaporan;
 public class LaporanController {
 
 	private HandlerLaporan db;
+	private ProfilController kontrolProfil;
 	private int sisaHari = 0;
 
 	public LaporanController(Context c) {
 		db = HandlerLaporan.getInstance(c);
+		kontrolProfil = new ProfilController(c);
 	}
 
 	public boolean addLaporan(String berat, String tinggi) {
 		Time t = new Time();
 		t.setToNow();
 		long l = t.toMillis(false);
+		
 		return db.tambahLaporan(l, berat, tinggi);
 	}
 
