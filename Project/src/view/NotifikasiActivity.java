@@ -72,7 +72,7 @@ public class NotifikasiActivity extends Activity {
 		System.out.println(adapter.getItemViewType(2));
 		System.out.println(adapter.getItemViewType(1));
 		Notifikasi notif = adapter.getItem(0);
-		System.out.println(notif.getNama());
+		System.out.println("selected: " + notif.isSelected());
 
 		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -186,10 +186,6 @@ public class NotifikasiActivity extends Activity {
 						System.out.println(data);
 
 						lv.setAdapter(adapter);
-//						AlarmService myAlarm = new AlarmService();
-//						System.out.println(id);
-//					
-//						myAlarm.startAlarm(getApplicationContext(), id, l);
 						
 						recreate();
 					}
@@ -325,20 +321,21 @@ public class NotifikasiActivity extends Activity {
 		                if (ischecked) {
 		                	myAlarm.startAlarm(getApplicationContext(), posisi, cal2.getTimeInMillis());
 		                	kontrol.updateNotifikasi(set.getNama(), cal2.getTimeInMillis(), true);
-		                    Toast.makeText(getApplicationContext(), "Switch on" + posisi,
+		                    Toast.makeText(getApplicationContext(), "Switch on",
 		                            Toast.LENGTH_LONG).show();
 		                    
 		                    
 		                } else {
 		                	myAlarm.cancelAlarm();
-		                    Toast.makeText(getApplicationContext(), "Switch off" + posisi,
+		                	kontrol.updateNotifikasi(set.getNama(), cal2.getTimeInMillis(), false);
+		                    Toast.makeText(getApplicationContext(), "Switch off",
 		                            Toast.LENGTH_LONG).show();
 		                    
 		                }
 		            }
 		        });
 				
-				convertView.setTag(new ListNotifikasiViewHolder(tv2, tv1,sw));
+				convertView.setTag(new ListNotifikasiViewHolder(tv1, tv2,sw));
 
 			}
 			// Reuse existing row view

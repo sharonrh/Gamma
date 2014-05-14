@@ -80,6 +80,14 @@ public class HandlerNotifikasi extends DatabaseHandler {
 				notifikasi.setNama(cursor.getString(1));
 				notifikasi.setWaktu(cursor.getLong(2));
 				notifikasi.setPesan(cursor.getString(3));
+				if(cursor.getInt(4)==1){
+					notifikasi.setSelected(true);
+					System.out.println("get *true");
+				}
+				else {
+					notifikasi.setSelected(false);
+					System.out.println("get *false");
+				}
 
 				// Adding notifikasi to list
 				notifikasiList.add(notifikasi);
@@ -107,9 +115,11 @@ public class HandlerNotifikasi extends DatabaseHandler {
 		
 		if(selected){
 			args.put("selected", 1);
+			System.out.println("update true");
 		}
 		else {
 			args.put("selected", 0);
+			System.out.println("update false");
 		}
 		
 		boolean b = db.update(tabelNotifikasi, args, nama + "=" + "'"
