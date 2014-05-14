@@ -142,6 +142,20 @@ public class HandlerNotifikasi extends DatabaseHandler {
 
 		return b;
 	}
+	
+	public boolean updateNotif(String namaNotif, boolean selected) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues args = new ContentValues();
+		args.put("selected", selected);
+		
+		
+		
+		boolean b = db.update(tabelNotifikasi, args, nama + "=" + "'"
+				+ namaNotif + "'", null) > 0;
+		db.close();
+
+		return b;
+	}
 
 	// Getting notifikasis Count
 	public int getNotifikasiCount() {

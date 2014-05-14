@@ -151,7 +151,11 @@ public class NotifikasiActivity extends Activity {
 		// alertDialog.setIcon(R.drawable.ic_launcher);
 		
 		tp = (TimePicker) v.findViewById(R.id.timePicker1);
-		//tp.setIs24HourView(true);
+		tp.setIs24HourView(true);
+		
+		Time tn = new Time();
+		tn.setToNow();
+		tp.setCurrentHour(tn.hour);
 		System.out.println(tp.is24HourView());
 		
 		final Calendar cal = Calendar.getInstance();
@@ -170,7 +174,7 @@ public class NotifikasiActivity extends Activity {
 						t.setToNow();
 						System.out.println(t.hour);
 						System.out.println(t.minute);
-
+						
 						int jamSekarang = tp.getCurrentHour();
 						int menitSekarang = tp.getCurrentMinute();
 
@@ -321,15 +325,11 @@ public class NotifikasiActivity extends Activity {
 		                if (ischecked) {
 		                	myAlarm.startAlarm(getApplicationContext(), posisi, cal2.getTimeInMillis());
 		                	kontrol.updateNotifikasi(set.getNama(), cal2.getTimeInMillis(), true);
-		                    Toast.makeText(getApplicationContext(), "Switch on",
-		                            Toast.LENGTH_LONG).show();
 		                    
 		                    
 		                } else {
+		                	kontrol.updateNotifikasi(set.getNama(), false);
 		                	myAlarm.cancelAlarm();
-		                	kontrol.updateNotifikasi(set.getNama(), cal2.getTimeInMillis(), false);
-		                    Toast.makeText(getApplicationContext(), "Switch off",
-		                            Toast.LENGTH_LONG).show();
 		                    
 		                }
 		            }

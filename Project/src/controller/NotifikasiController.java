@@ -28,4 +28,7 @@ public class NotifikasiController {
 	public boolean updateNotifikasi(String namaNotif, long time){
 		return db.updateNotif(namaNotif, time);
 	}
+	public boolean updateNotifikasi(String namaNotif, boolean selected){
+		return db.updateNotif(namaNotif, selected);
+	}
 }
