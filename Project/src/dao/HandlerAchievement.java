@@ -111,9 +111,14 @@ public class HandlerAchievement extends DatabaseHandler {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(terkunci, achievement.isGet());
+        int isGet = 0;
+        if (achievement.isGet()) {
+            isGet = 1;
+            Log.i("Done", "Harusnya nilai isGet jadi 1");
+        }
+        values.put(terkunci, isGet);
         values.put(progress, achievement.getProgress());
-
+        values.put(pathLogo, achievement.getPathLogo());
         // updating row
         return db.update(tabelAchievement, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(achievement.getNama())});

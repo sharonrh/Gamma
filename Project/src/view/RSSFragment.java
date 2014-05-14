@@ -181,6 +181,9 @@ public class RSSFragment extends Fragment {
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW,
 								Uri.parse(link));
 						startActivity(browserIntent);
+                        if (achievement.isGet()) {
+                            Toast.makeText(v.getContext(), "Selamat! Anda telah mendapat achievement Bookworm!", Toast.LENGTH_LONG).show();
+                        }
 					}
 				});
 		alertDialog.show();

@@ -230,7 +230,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         requirement[0] = 25;
         requirement[1] = 50;
         requirement[2] = 100;
-        requirement[3] = 1;
+        requirement[3] = 2;
         ContentValues content = new ContentValues();
         for (int i = 0; i < 4; i++) {
             content.put("nama", nama.get(i));

@@ -1,5 +1,7 @@
 package model;
 
+import android.util.Log;
+
 public class Achievement {
     private String nama;
     private String deskripsi;
@@ -60,8 +62,10 @@ public class Achievement {
 
     public void addProgress() {
         this.progress++;
-        if (this.requirement == 100) {
-            this.setPathLogo("logo/finisher.png");
+        if (this.requirement == 2 && this.progress == this.requirement) {
+            this.isGet = true;
+            this.setPathLogo("logo/bookworm.png");
+            Log.i("Done", "Logo harusnya berubah");
         }
     }
 
