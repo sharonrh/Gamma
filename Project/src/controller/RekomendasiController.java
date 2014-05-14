@@ -18,7 +18,6 @@ public class RekomendasiController {
 
 	public RekomendasiController(Context c) {
 		db = HandlerMakanan.getInstance(c);
-
 	}
 
 	public List<Makanan> getRekomendasi(double kal) {

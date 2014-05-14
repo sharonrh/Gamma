@@ -34,7 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// tabel makanan
 		String buatTabelMakanan = "CREATE TABLE makanan (nama TEXT PRIMARY KEY, kalori INTEGER, protein REAL, karbohidrat REAL, "
 				+ "lemak REAL, natrium REAL, porsi INTEGER, bobot INTEGER, rating INTEGER, jenis TEXT, hewani INTEGER, "
-				+ "seafood INTEGER, kacang INTEGER, terakhirDipilih INTEGER, pathFoto TEXT);";
+				+ "seafood INTEGER, kacang INTEGER, terakhirDipilih INTEGER, pathFoto TEXT, waktuBaik INTEGER, kombinasi INTEGER);";
 		db.execSQL(buatTabelMakanan);
 		// tabel laporan
 		String buatTabelLaporan = "CREATE TABLE laporan (id INTEGER PRIMARY KEY AUTOINCREMENT, waktu INTEGER, berat REAL, tinggi REAL);";
@@ -128,7 +128,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				values.put("kacang", isKacang);
 				values.put("terakhirDipilih", Long.parseLong(temp[13]));
 				values.put("pathFoto", temp[14]);
-
+				values.put("waktuBaik", Integer.parseInt(temp[15]));
+				values.put("kombinasi", Integer.parseInt(temp[16]));
+				
 				db.insert("makanan", null, values);
 			}
 		} catch (IOException e) {

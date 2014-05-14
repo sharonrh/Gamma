@@ -33,6 +33,9 @@ public class HandlerMakanan extends DatabaseHandler {
 	private static final String kacang = "kacang";
 	private static final String terakhir = "terakhirDipilih";
 	private static final String pathFoto = "pathFoto";
+	private static final String waktu = "waktuBaik";
+	private static final String kombinasi = "kombinasi";
+
 	private final String[] arrJenis = { "Pokok", "Lauk", "Sayuran", "Buah",
 			"Minuman", "Snack" };
 
@@ -160,15 +163,13 @@ public class HandlerMakanan extends DatabaseHandler {
 		List<Makanan> makananList = new ArrayList<Makanan>();
 		// algo rekomendasi?
 		SQLiteDatabase db = this.getWritableDatabase();
-		// String selectQuery = "SELECT nama,kalori,porsi,bobot FROM "
-		// + tabelMakanan + " E";
-		// Cursor cursor = db.rawQuery(selectQuery, null);
+
+		// sarapan
 		Cursor cursor = db.query(true, tabelMakanan, new String[] {
-				namaMakanan, "sum(" + kalori + ")", bobot, jenis, terakhir }, jenis + " =?",
-				new String[] { arrJenis[0] }, jenis,
-				"sum(" + kalori + ")>1000", terakhir, "2");
+				namaMakanan, kalori, bobot, jenis, terakhir }, waktu
+				+ "=? AND " + kalori + " >?", new String[] { "1", "150" },
+				null, null, "random()", "2");
 
-		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
@@ -176,16 +177,16 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setKalori(cursor.getInt(1));
 				makanan.setBobot(cursor.getInt(2));
 				makananList.add(makanan);
+				System.out.println("--------------------" + makanan.getNama());
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
+		// snack
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + " =? OR ?",
-				new String[] { arrJenis[1], arrJenis[2] }, null, null,
-				terakhir, "4");
+				kalori, bobot, jenis, terakhir }, jenis + " =?",
+				new String[] { arrJenis[5] }, null, null, "random()", "1");
 
-		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
@@ -193,16 +194,18 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setKalori(cursor.getInt(1));
 				makanan.setBobot(cursor.getInt(2));
 				makananList.add(makanan);
+				System.out.println("--------------------" + makanan.getNama());
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
+		// makan siang (makanan pokok)
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + " =? OR ? OR ?",
-				new String[] { arrJenis[3], arrJenis[4], arrJenis[5] }, null,
-				null, terakhir, "3");
+				kalori, bobot, jenis, terakhir }, jenis + "=? AND " + kombinasi
+				+ "=? AND " + kalori + ">?",
+				new String[] { "Pokok", "2", "150" }, null, null, "random()",
+				"1");
 
-		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
@@ -210,10 +213,70 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setKalori(cursor.getInt(1));
 				makanan.setBobot(cursor.getInt(2));
 				makananList.add(makanan);
+				System.out.println(makanan.getNama());
+
 			} while (cursor.moveToNext());
 		}
-
 		cursor.close();
+
+		// makan siang (lauk + sayur)
+		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
+				kalori, bobot, jenis, terakhir }, jenis + " IN (? , ?) AND "
+				+ kalori + ">?", new String[] { "Sayuran", "Lauk", "150" },
+				null, null, "random()", "2");
+
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setBobot(cursor.getInt(2));
+				makananList.add(makanan);
+				System.out.println(makanan.getNama());
+
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		// makan malam (makanan pokok)
+		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
+				kalori, bobot, jenis, terakhir }, jenis + "=? AND " + kombinasi
+				+ "=? AND " + kalori + ">?",
+				new String[] { "Pokok", "2", "150" }, null, null, "random()",
+				"1");
+
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setBobot(cursor.getInt(2));
+				makananList.add(makanan);
+				System.out.println(makanan.getNama());
+
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		// makan malam (lauk + sayur)
+		cursor =db.query(true, tabelMakanan, new String[] { namaMakanan,
+				kalori, bobot, jenis, terakhir }, jenis + " IN (? , ?) AND "
+				+ kalori + ">?", new String[] { "Sayuran", "Lauk", "150" },
+				null, null, "random()", "2");
+
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setBobot(cursor.getInt(2));
+				makananList.add(makanan);
+				System.out.println(makanan.getNama());
+
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
 		db.close();
 		return makananList;
 	}
