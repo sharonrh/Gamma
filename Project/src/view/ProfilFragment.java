@@ -96,9 +96,8 @@ public class ProfilFragment extends Fragment {
 
 		String g = profil.getGender() == 'P' ? "Pria" : "Wanita";
 		gender.setText(g);
-		System.out.println(profil.getFoto());
+		System.out.println("foto"+profil.getFoto());
 		byte[] decodedString = Base64.decode(profil.getFoto(), Base64.DEFAULT);
-		System.out.println(decodedString);
 		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
 				decodedString.length);
 

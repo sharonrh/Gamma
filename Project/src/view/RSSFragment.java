@@ -120,7 +120,7 @@ public class RSSFragment extends Fragment {
 		@Override
 		protected void onPostExecute(List<Entry> rssFeed) {
 			dialog.dismiss();
-			if (rssFeed != null) {
+			if (rssFeed != null && getActivity()!=null) {
 				list.setAdapter(new RSSArrayAdapter(getActivity(), rssFeed));
 			}
 		}

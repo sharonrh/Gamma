@@ -49,7 +49,8 @@ public class KatalogFragment extends Fragment {
 		sayur.setText("" + ctJenis[2]);
 		buah.setText("" + ctJenis[3]);
 		minuman.setText("" + ctJenis[4]);
-
+		snack.setText("" + ctJenis[5]);
+		
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), values);
 		listview.setAdapter(adapter);

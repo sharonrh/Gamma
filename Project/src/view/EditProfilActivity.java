@@ -244,7 +244,6 @@ public class EditProfilActivity extends Activity {
 							Intent i = new Intent(getApplicationContext(),
 									MainActivity.class);
 							i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
 							i.putExtra("nomorFragment", "1");
 
 							startActivity(i);
