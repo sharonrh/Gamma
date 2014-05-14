@@ -111,7 +111,7 @@ public class EditProfilActivity extends Activity {
 			Time b = new Time();
 			b.set(user.getStartTime());
 
-			durasiField.setText(""+(a.getWeekNumber() - b.getWeekNumber()));
+			durasiField.setText(""+(user.getEndTime() - user.getStartTime()) / 604800000L);
 			gayaHidupSpinner.setSelection(user.getGayaHidup());
 			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1
 															// = pria, 2= wanita
@@ -221,15 +221,20 @@ public class EditProfilActivity extends Activity {
 
 						Time t = new Time();
 						t.setToNow();
-						long l = t.toMillis(false);
-												
+						long start = t.toMillis(false);
+						System.out.println("now = " +start);
+						long inter = dur * 7L * 24L * 60L * 60L * 1000L;
+						System.out.println("interval = " +inter);
+						long end = start + inter;
+						System.out.println("end = " +end);
+						
+						
 						if (con.updateProfil(nama, Integer.parseInt(umur),
 								Double.parseDouble(berat),
 								Double.parseDouble(tinggi),
 								Double.parseDouble(target), gch, gayaHidup,
 								kacang.isChecked(), seafood.isChecked(),
-								vegetarian.isChecked(), str, l, l + dur
-										* 604800000)) {
+								vegetarian.isChecked(), str, start, end)) {
 
 							Toast.makeText(getApplicationContext(),
 									"Profil sudah diperbaharui",
@@ -337,7 +342,7 @@ public class EditProfilActivity extends Activity {
 		ArrayList<String> list = new ArrayList<String>();
 		double t = Double.parseDouble(target);
 		double b = Double.parseDouble(berat);
-		System.out.println("durasi" + durasi);
+
 		if (!nama
 				.matches("^[[A-Za-z]+('[A-Za-z]+)*([. ][A-Za-z]*)*('){0,1}]{3,70}$"))
 			list.add("nama");

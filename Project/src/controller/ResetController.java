@@ -17,6 +17,6 @@ public class ResetController {
 	public void reset(Context c) {
 		SQLiteDatabase db = dbh.getWritableDatabase();
 		dbh.resetProgress(c, db);
-	}
-	
+		db.close();
+	}	
 }

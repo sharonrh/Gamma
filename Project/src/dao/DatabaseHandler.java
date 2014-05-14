@@ -53,11 +53,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// isi tabel profil dengan data awal
 		ContentValues values = new ContentValues();
-		values.put("nama", "Fajar Siddiq");
-		values.put("umur", 20);
-		values.put("berat", 55);
-		values.put("tinggi", 165);
-		values.put("target", 60);
+		values.put("nama", "");
+		values.put("umur", 0);
+		values.put("berat", 0);
+		values.put("tinggi", 0);
+		values.put("target", 0);
 		values.put("gender", 0);
 		values.put("gayaHidup", 0);
 		values.put("kacang", 0);
@@ -255,7 +255,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String buatTabelLaporan = "CREATE TABLE laporan (id INTEGER PRIMARY KEY AUTOINCREMENT, waktu INTEGER, berat REAL, tinggi REAL);";
         db.execSQL(buatTabelLaporan);
         // tabel notifikasi
-        String buatTabelNotifikasi = "CREATE TABLE notifikasi (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, waktu INTEGER, pesan TEXT);";
+        String buatTabelNotifikasi = "CREATE TABLE notifikasi (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, waktu INTEGER, pesan TEXT, selected INTEGER);";
         db.execSQL(buatTabelNotifikasi);
         // tabel profil
         String buatTabelProfil = "CREATE TABLE profil (id INTEGER PRIMARY KEY, nama TEXT, umur INTEGER, berat REAL, tinggi REAL, target REAL, gender INTEGER, "

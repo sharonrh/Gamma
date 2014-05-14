@@ -7,8 +7,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -165,6 +167,20 @@ public class SettingFragment extends PreferenceFragment {
 						ResetController rc = new ResetController(c);
 						rc.reset(c);
 						Toast.makeText(c, R.string.sukses_reset, Toast.LENGTH_SHORT).show();
+						
+						SharedPreferences prefs = getActivity().getSharedPreferences("com.example.gamma", getActivity().MODE_PRIVATE);
+						prefs.edit().putBoolean("firstrun", true).commit();
+						
+						new Handler().postDelayed(new Runnable() {
+
+							@Override
+							public void run() {
+								getActivity().finish();
+								Intent i = new Intent(getActivity().getApplicationContext(),
+										MainActivity.class);
+								startActivity(i);
+							}
+						}, 2000);											
 					}
 				});
 		alertDialog.show();

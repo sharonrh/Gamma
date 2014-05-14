@@ -100,7 +100,7 @@ public class StatistikFragment extends Fragment {
 		// value for font size
 		DisplayMetrics metrics = getActivity().getApplicationContext()
 				.getResources().getDisplayMetrics();
-		float val = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 18,
+		float val = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16,
 				metrics);
 
 		XYSeriesRenderer realizedRenderer = new XYSeriesRenderer();
@@ -131,7 +131,6 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.setLegendTextSize(val);
 		multiRenderer.setAxisTitleTextSize(val);
 		multiRenderer.setChartTitleTextSize(val);
-
 		// Note: The order of adding dataseries to dataset and renderers to
 		// multipleRenderer should be same
 		multiRenderer.addSeriesRenderer(realizedRenderer);
