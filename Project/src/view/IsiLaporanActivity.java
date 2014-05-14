@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import model.Laporan;
+import model.Pengguna;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.example.gamma.R;
 
 import controller.LaporanController;
+import controller.ProfilController;
 
 public class IsiLaporanActivity extends Activity {
 
@@ -75,8 +77,7 @@ public class IsiLaporanActivity extends Activity {
 			title.setText("Edit Laporan");
 		}
 		
-		if (laporanTerbaru != null) {
-			
+		if (laporanTerbaru != null) {	
 			lastBerat = laporanTerbaru.getBeratBadan();
 			lastTinggi = laporanTerbaru.getTinggiBadan();
 			
@@ -91,9 +92,13 @@ public class IsiLaporanActivity extends Activity {
 			tglLalu = cal.DAY_OF_YEAR;
 
 			beratLalu.setText(lastBerat + " kg");
-			tinggiLalu.setText(lastTinggi + " cm");
-			
-			
+			tinggiLalu.setText(lastTinggi + " cm");	
+		}
+		else {
+			ProfilController profil = new ProfilController(getApplicationContext());
+			Pengguna pengguna = profil.getProfil();
+			beratLalu.setText(pengguna.getBerat() + " kg");
+			tinggiLalu.setText(pengguna.getTinggi() + " cm");	
 		}
 
 		simpanBtn.setOnClickListener(new View.OnClickListener() {
