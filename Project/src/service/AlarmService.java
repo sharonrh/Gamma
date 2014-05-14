@@ -44,7 +44,7 @@ public class AlarmService {
         System.out.println("notifikasi jalan");
         am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         System.out.println("notifikasi jalan");
-        am.setRepeating(AlarmManager.RTC_WAKEUP, waktu, AlarmManager.INTERVAL_FIFTEEN_MINUTES, mAlarmSender);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, waktu, AlarmManager.INTERVAL_DAY, mAlarmSender);
        // am.set(AlarmManager.RTC_WAKEUP, waktu, mAlarmSender);
         System.out.println("notifikasi jalan");
         

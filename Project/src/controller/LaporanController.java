@@ -11,12 +11,10 @@ import dao.HandlerLaporan;
 public class LaporanController {
 
 	private HandlerLaporan db;
-	private ProfilController kontrolProfil;
 	private int sisaHari = 0;
 
 	public LaporanController(Context c) {
 		db = HandlerLaporan.getInstance(c);
-		kontrolProfil = new ProfilController(c);
 	}
 
 	public boolean addLaporan(String berat, String tinggi) {
