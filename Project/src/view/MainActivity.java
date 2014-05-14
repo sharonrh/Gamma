@@ -118,7 +118,7 @@ public class MainActivity extends Activity {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-		alertDialog.setTitle("Kredit");
+		alertDialog.setTitle("Selamat Datang!");
 		LayoutInflater inflater = getLayoutInflater();
 
 		// Inflate and set the layout for the dialog

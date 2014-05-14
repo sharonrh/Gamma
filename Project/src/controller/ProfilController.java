@@ -27,7 +27,7 @@ public class ProfilController {
 		return db.getProfil();
 	}
 
-	public double getKebutuhanKal() {
+	public int getKebutuhanKal() {
 		Pengguna p = getProfil();
 		double kal = 0;
 
@@ -56,6 +56,6 @@ public class ProfilController {
 			kal *= 1.2;
 			break;
 		}
-		return kal;
+		return (int) Math.ceil(kal);
 	}
 }

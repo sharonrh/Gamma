@@ -59,11 +59,12 @@ public class HandlerProfil extends DatabaseHandler {
 					cursor.getLong(13));
 
 			// retrieve data alergi
-			int h = Integer.parseInt(cursor.getString(8));
+			
+			int k = Integer.parseInt(cursor.getString(8));
 			int s = Integer.parseInt(cursor.getString(9));
-			int k = Integer.parseInt(cursor.getString(10));
-
-			profil.setVegetarian(h == 1);
+			int v = Integer.parseInt(cursor.getString(10));
+			
+			profil.setVegetarian(v == 1);
 			profil.setAlergiSeafood(s == 1);
 			profil.setAlergiKacang(k == 1);
 		}

@@ -67,11 +67,11 @@ public class DetailStatistikActivity extends Activity {
 							/ (p.getTarget() - p.getBerat()) * 100)
 					+ "%";
 			progress.setText(prog);
-			durasiReal.setText((l.getWaktu() - p.getStartTime()) / 604800000
-					+ " minggu");
-			durasiTarget.setText((p.getEndTime() - p.getStartTime())
-					/ 604800000 + " minggu");
+			durasiReal.setText((l.getWaktu() - p.getStartTime()) / 604800000L
+					+ " minggu");		
 		}
+		durasiTarget.setText((p.getEndTime() - p.getStartTime())
+					/ 604800000L + " minggu");
 	}
 
 	private String getBMIStatus(double bmi) {
