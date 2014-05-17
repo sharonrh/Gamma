@@ -54,6 +54,7 @@ public class MyAlarm extends BroadcastReceiver
        notification.setLatestEventInfo(context, notifTitle, notifMessage, contentIntent);
        // Send the notification.
        // We use a layout id because it is a unique number. We use it later to cancel.
+       notification.flags |= Notification.FLAG_AUTO_CANCEL;
        mNM.notify(id, notification);
 	   
 	   

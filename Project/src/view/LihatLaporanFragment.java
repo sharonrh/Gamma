@@ -56,10 +56,6 @@ public class LihatLaporanFragment extends Fragment {
 		
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(getActivity(), data);
 		listview.setAdapter(adapter);
-
-		//ubah tinggi listview katalog
-//		 LinearLayout.LayoutParams mParam = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, (adapter.getCount()*60));
-//	     listview.setLayoutParams(mParam);
 		
 	     listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -107,7 +103,7 @@ public class LihatLaporanFragment extends Fragment {
 				getActivity().startActivity(i);
 			}
 			else {
-				Toast.makeText(getActivity().getApplicationContext(),"Kamu baru bisa mengisi "+ kon.getSisaHari() + " lagi.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity().getApplicationContext(),"Kamu baru bisa mengisi "+ kon.getSisaHari() + " hari lagi.", Toast.LENGTH_SHORT).show();
 			}
 			
 			break;
@@ -172,9 +168,7 @@ public class LihatLaporanFragment extends Fragment {
 			viewHolder.tanggal.setText(itanggal);
 			viewHolder.berat.setText(iberat + " kg");
 			viewHolder.tinggi.setText(itinggi + " cm");
-			
-			
-		    
+			    
 		    return rowView;
 		  }
 		}
