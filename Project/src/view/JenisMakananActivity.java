@@ -74,7 +74,7 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_sayur);
 			jumlah.setText("" + ctJenis[2]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_sayur);
-			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Sayur"));
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Sayuran"));
 			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("buah")){

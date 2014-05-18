@@ -302,7 +302,7 @@ public class HandlerMakanan extends DatabaseHandler {
 
     public List<Makanan> getPerJenis(String jenis) {
         List<Makanan> makananList = new ArrayList<Makanan>();
-        String selectQuery = "SELECT  * FROM " + tabelMakanan + " WHERE JENIS = " + jenis;
+        String selectQuery = "SELECT  * FROM " + tabelMakanan + " WHERE JENIS = " + "'" + jenis + "'";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
