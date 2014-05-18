@@ -335,4 +335,45 @@ public class HandlerMakanan extends DatabaseHandler {
 		db.close();
 		return b;
 	}
+
+    public List<Makanan> getMakananPerJenis(String jenis) {
+        List<Makanan> makananList = new ArrayList<Makanan>();
+        String selectQuery = "SELECT  * FROM " + tabelMakanan + " WHERE JENIS = " + jenis;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Makanan makanan = new Makanan();
+                makanan.setNama(cursor.getString(0));
+                makanan.setKalori(cursor.getInt(1));
+                makanan.setProtein(cursor.getDouble(2));
+                makanan.setKarbohidrat(cursor.getDouble(3));
+                makanan.setLemak(cursor.getDouble(4));
+                makanan.setNatrium(cursor.getDouble(5));
+                makanan.setPorsi(cursor.getString(6));
+                makanan.setBobot(cursor.getInt(7));
+                makanan.setRating(cursor.getFloat(8));
+                makanan.setJenisMakanan(cursor.getString(9));
+
+                // retrieve data alegi
+                int h = Integer.parseInt(cursor.getString(10));
+                int s = Integer.parseInt(cursor.getString(11));
+                int k = Integer.parseInt(cursor.getString(12));
+
+                makanan.setHewani(h == 1);
+                makanan.setSeafood(s == 1);
+                makanan.setKacang(k == 1);
+                makanan.setTerakhirDipilih(cursor.getLong(13));
+                makanan.setPathFoto(cursor.getString(14));
+
+                makananList.add(makanan);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return makananList;
+    }
 }
