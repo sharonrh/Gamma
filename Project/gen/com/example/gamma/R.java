@@ -111,27 +111,28 @@ public final class R {
         public static final int no_button=0x7f02002b;
         public static final int notifikasi_list_selector=0x7f02002c;
         public static final int pengaturan=0x7f02002d;
-        public static final int profil=0x7f02002e;
-        public static final int rekomendasi=0x7f02002f;
-        public static final int selector_card_background=0x7f020030;
-        public static final int selector_card_background_buah=0x7f020031;
-        public static final int selector_card_background_laukpauk=0x7f020032;
-        public static final int selector_card_background_makananpokok=0x7f020033;
-        public static final int selector_card_background_minuman=0x7f020034;
-        public static final int selector_card_background_sayur=0x7f020035;
-        public static final int selector_card_background_snack=0x7f020036;
-        public static final int selengkapnya=0x7f020037;
-        public static final int setting_list_divider=0x7f020038;
-        public static final int spinner=0x7f020039;
-        public static final int spinner_background=0x7f02003a;
-        public static final int spinner_default_holo_light_am=0x7f02003b;
-        public static final int spinner_focused_holo_light_am=0x7f02003c;
-        public static final int spinner_normal_holo=0x7f02003d;
-        public static final int starter=0x7f02003e;
-        public static final int statistik=0x7f02003f;
-        public static final int style=0x7f020040;
-        public static final int tambah_foto=0x7f020041;
-        public static final int yes_button=0x7f020042;
+        public static final int plus_button=0x7f02002e;
+        public static final int profil=0x7f02002f;
+        public static final int rekomendasi=0x7f020030;
+        public static final int selector_card_background=0x7f020031;
+        public static final int selector_card_background_buah=0x7f020032;
+        public static final int selector_card_background_laukpauk=0x7f020033;
+        public static final int selector_card_background_makananpokok=0x7f020034;
+        public static final int selector_card_background_minuman=0x7f020035;
+        public static final int selector_card_background_sayur=0x7f020036;
+        public static final int selector_card_background_snack=0x7f020037;
+        public static final int selengkapnya=0x7f020038;
+        public static final int setting_list_divider=0x7f020039;
+        public static final int spinner=0x7f02003a;
+        public static final int spinner_background=0x7f02003b;
+        public static final int spinner_default_holo_light_am=0x7f02003c;
+        public static final int spinner_focused_holo_light_am=0x7f02003d;
+        public static final int spinner_normal_holo=0x7f02003e;
+        public static final int starter=0x7f02003f;
+        public static final int statistik=0x7f020040;
+        public static final int style=0x7f020041;
+        public static final int tambah_foto=0x7f020042;
+        public static final int yes_button=0x7f020043;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0a0089;
@@ -225,7 +226,7 @@ public final class R {
         public static final int namaJenis=0x7f0a003b;
         public static final int namaProfilTv=0x7f0a0060;
         public static final int pengembang=0x7f0a003e;
-        public static final int pensil=0x7f0a008d;
+        public static final int pensil=0x7f0a008e;
         public static final int pilihTema=0x7f0a006c;
         public static final int pilihTemaTV=0x7f0a0080;
         public static final int popup_element=0x7f0a007f;
@@ -254,6 +255,7 @@ public final class R {
         public static final int tableRow1=0x7f0a0081;
         public static final int tableRow9=0x7f0a0083;
         public static final int tahunProfilTv=0x7f0a0062;
+        public static final int tambah=0x7f0a008d;
         public static final int tanggalHariIni=0x7f0a0035;
         public static final int tanggalHariSebelumnya=0x7f0a0032;
         public static final int tanggalListLaporan=0x7f0a0077;
@@ -316,10 +318,11 @@ public final class R {
     public static final class menu {
         public static final int detail=0x7f090000;
         public static final int edit_profil=0x7f090001;
-        public static final int main=0x7f090002;
-        public static final int profil=0x7f090003;
-        public static final int rs=0x7f090004;
-        public static final int setting=0x7f090005;
+        public static final int laporan=0x7f090002;
+        public static final int main=0x7f090003;
+        public static final int profil=0x7f090004;
+        public static final int rs=0x7f090005;
+        public static final int setting=0x7f090006;
     }
     public static final class string {
         public static final int NS=0x7f060009;

@@ -83,7 +83,7 @@ public class LihatLaporanFragment extends Fragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
-		inflater.inflate(R.menu.profil, menu);
+		inflater.inflate(R.menu.laporan, menu);
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class LihatLaporanFragment extends Fragment {
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.pensil:
+		case R.id.tambah:
 			
 			if(kon.cekDurasiIsiLaporan()){
 				Intent i = new Intent(getActivity().getApplicationContext(),
