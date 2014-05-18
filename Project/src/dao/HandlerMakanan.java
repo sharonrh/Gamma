@@ -300,43 +300,7 @@ public class HandlerMakanan extends DatabaseHandler {
 		return makananList;
 	}
 
-	// Deleting single makanan
-	public void deleteMakanan(Makanan makanan) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete(tabelMakanan, KEY_ID + " = ?",
-				new String[] { String.valueOf(makanan.getNama()) });
-		db.close();
-	}
-
-	// Getting makanan Count
-	public int[] getJenisCount() {
-		int[] count = new int[arrJenis.length];
-
-		SQLiteDatabase db = this.getReadableDatabase();
-		for (int i = 0; i < arrJenis.length; i++) {
-			String countQuery = "SELECT  * FROM " + tabelMakanan + " WHERE "
-					+ jenis + " = '" + arrJenis[i] + "'";
-			Cursor cursor = db.rawQuery(countQuery, null);
-			count[i] = cursor.getCount();
-			cursor.close();
-		}
-		db.close();
-
-		return count;
-	}
-
-	public boolean updateRating(String nama, float rating) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		ContentValues values = new ContentValues();
-		values.put(this.rating, rating);
-
-		boolean b = db.update(tabelMakanan, values, KEY_ID + " = ?",
-				new String[] { String.valueOf(nama) }) > 0;
-		db.close();
-		return b;
-	}
-
-    public List<Makanan> getMakananPerJenis(String jenis) {
+    public List<Makanan> getPerJenis(String jenis) {
         List<Makanan> makananList = new ArrayList<Makanan>();
         String selectQuery = "SELECT  * FROM " + tabelMakanan + " WHERE JENIS = " + jenis;
 
@@ -376,4 +340,41 @@ public class HandlerMakanan extends DatabaseHandler {
         db.close();
         return makananList;
     }
+
+	// Deleting single makanan
+	public void deleteMakanan(Makanan makanan) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(tabelMakanan, KEY_ID + " = ?",
+				new String[] { String.valueOf(makanan.getNama()) });
+		db.close();
+	}
+
+	// Getting makanan Count
+	public int[] getJenisCount() {
+		int[] count = new int[arrJenis.length];
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		for (int i = 0; i < arrJenis.length; i++) {
+			String countQuery = "SELECT  * FROM " + tabelMakanan + " WHERE "
+					+ jenis + " = '" + arrJenis[i] + "'";
+			Cursor cursor = db.rawQuery(countQuery, null);
+			count[i] = cursor.getCount();
+			cursor.close();
+		}
+		db.close();
+
+		return count;
+	}
+
+	public boolean updateRating(String nama, float rating) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(this.rating, rating);
+
+		boolean b = db.update(tabelMakanan, values, KEY_ID + " = ?",
+				new String[] { String.valueOf(nama) }) > 0;
+		db.close();
+		return b;
+	}
+
 }

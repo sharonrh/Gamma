@@ -29,4 +29,8 @@ public class KatalogController {
 	public boolean updateRating(String nama, float rating) {
 		return db.updateRating(nama, rating);		
 	}
+
+    public List<Makanan> getMakananPerJenis(String jenis) {
+        return db.getPerJenis(jenis);
+    }
 }
