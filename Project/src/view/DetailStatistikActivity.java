@@ -1,5 +1,7 @@
 package view;
 
+import controller.AchievementController;
+import model.Achievement;
 import model.Laporan;
 import model.Pengguna;
 import android.app.Activity;
@@ -7,6 +9,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.gamma.R;
+
+import java.util.ArrayList;
 
 import controller.LaporanController;
 import controller.ProfilController;
@@ -19,6 +23,7 @@ public class DetailStatistikActivity extends Activity {
 
 	private ProfilController con;
 	private LaporanController laporanCon;
+    private AchievementController achievementController;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class DetailStatistikActivity extends Activity {
 
 		con = new ProfilController(getApplicationContext());
 		laporanCon = new LaporanController(getApplicationContext());
+        achievementController = new AchievementController(getApplicationContext());
 
 		beratAwal = (TextView) findViewById(R.id.beratAwalStatistik);
 		beratSekarang = (TextView) findViewById(R.id.beratSekarangStatistik);
@@ -72,6 +78,15 @@ public class DetailStatistikActivity extends Activity {
 		}
 		durasiTarget.setText((p.getEndTime() - p.getStartTime())
 					/ 604800000L + " minggu");
+        ArrayList<Achievement> achievements = achievementController.getHandler().getAllAchievement();
+        int jlhAch = 0;
+        for (int i = 0; i < achievements.size(); i++) {
+            if (achievements.get(i).isGet()) {
+                jlhAch++;
+            }
+        }
+        achieve.setText(jlhAch + "");
+        artikel.setText(achievements.get(3).getProgress() + "");
 	}
 
 	private String getBMIStatus(double bmi) {
