@@ -31,7 +31,7 @@ Pangsit,64,1.72,10.51,1.67,223,buah,51,0,Lauk,Y,N,N,0,gambar_makanan/pangsit.jpg
 Pepes Tahu,63,5.71,2.46,3.56,296,bungkus,50,0,Lauk,N,N,N,0,gambar_makanan/pepestahu.jpg,0,0
 Perkedel Jagung,91,1.87,9.45,5.4,117,buah,35,0,Lauk,N,N,N,0,gambar_makanan/perkedeljagung.jpg,0,0
 Perkedel Kentang,21,0.46,2.48,1.12,31,buah,15,0,Lauk,N,N,N,0,gambar_makanan/perkedelkentang.jpg,0,0
-Rendang,55,5.58,1.27,3.14,52,ons,28,0,Lauk,Y,N,N,0,gambar_makayay/rendang.jpg,0,0
+Rendang,55,5.58,1.27,3.14,52,ons,28,0,Lauk,Y,N,N,0,gambar_makanan/rendang.jpg,0,0
 Salmon Panggang,145,20.37,0.42,6.43,397,porsi,85,0,Lauk,Y,Y,N,0,gambar_makanan/salmonpanggang.jpg,0,0
 Sapi Panggang,227,22.02,0,14.72,184,porsi,85,0,Lauk,Y,N,N,0,gambar_makanan/sapipanggang.jpg,0,0
 Sate Ayam,101,8.79,2.19,6.67,160,porsi,45,0,Lauk,Y,N,N,0,gambar_makanan/sateayam.jpg,0,0
@@ -111,7 +111,7 @@ Agar-agar,74,1.46,17.03,0,90,porsi,120,0,Snack,N,Y,N,0,gambar_makanan/agar-agar.
 Biskuit Kelapa,100,1,16,4,0,porsi,22,0,Snack,N,N,N,0,gambar_makanan/biskuitkelapa.jpg,0,0
 BR Chocolate,170,3,17,10,60,sekop,71,0,Snack,N,N,N,0,gambar_makanan/brchocolate.jpg,3,0
 Brownies,129,1.62,21.26,4.68,50,potong,34,0,Snack,N,N,N,0,gambar_makanan/brownies.jpg,3,0
-Butter Cookies,160,2,20,8,0,porsi,30,0,Snack,Y,N,Y,0,gambar_makayay/buttercookies.jpg,0,0
+Butter Cookies,160,2,20,8,0,porsi,30,0,Snack,Y,N,Y,0,gambar_makanan/buttercookies.jpg,0,0
 Cheetos,100,1,11,6,100,bungkus,18,0,Snack,N,N,N,0,gambar_makanan/cheetos.jpg,3,0
 Chitato,100,1,12,5,120,porsi,19,0,Snack,N,N,N,0,gambar_makanan/chitato.jpg,3,0
 Donat Coklat,270,2.85,27.36,17.67,245,buah,57,0,Snack,N,N,N,0,gambar_makanan/donatcoklat.jpg,0,0
