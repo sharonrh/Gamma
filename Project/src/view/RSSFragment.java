@@ -64,7 +64,7 @@ public class RSSFragment extends Fragment {
 		if (isOnline()) {
 			new RssFeedTask().execute(
 					"http://www.health.com/health/diet-fitness/feed",
-					"http://www.situskesehatan.com/feed");
+					"http://detik.feedsportal.com/c/33613/f/656109/index.rss");
 		} else {
 			AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 					.create();
@@ -109,8 +109,8 @@ public class RSSFragment extends Fragment {
 				System.out.println(urls[0] + "," + urls[1]);
 				String feed = getRssFeed(urls[0]);
 				RSSParser parser = new RSSParser();
-				result = parser.parse(feed);
-				result.addAll(parser.parse(getRssFeed(urls[1])));
+				result = parser.parse(feed,0);
+				result.addAll(parser.parse(getRssFeed(urls[1]),1));
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

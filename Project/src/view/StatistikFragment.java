@@ -102,6 +102,7 @@ public class StatistikFragment extends Fragment {
 				.getResources().getDisplayMetrics();
 		float val = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16,
 				metrics);
+		float density = metrics.density;
 
 		XYSeriesRenderer realizedRenderer = new XYSeriesRenderer();
 		realizedRenderer.setColor(Color.rgb(127, 129, 250));
@@ -126,7 +127,7 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.setXTitle("Waktu (DD/MM)");
 		multiRenderer.setYTitle("Berat badan (kg)");
 		multiRenderer.setXRoundedLabels(false);
-		multiRenderer.setZoomButtonsVisible(true);
+		// multiRenderer.setZoomButtonsVisible(true);
 		multiRenderer.setLabelsTextSize(val);
 		multiRenderer.setLegendTextSize(val);
 		multiRenderer.setAxisTitleTextSize(val);
@@ -137,7 +138,9 @@ public class StatistikFragment extends Fragment {
 		multiRenderer.addSeriesRenderer(targetRenderer);
 		multiRenderer.setApplyBackgroundColor(true);
 		multiRenderer.setBackgroundColor(Color.BLACK);
-
+		multiRenderer.setMargins(new int[] { (int) (density * 35),
+				(int) (density * 25), (int) (density * 45),
+				(int) (density * 15) });
 		// multiRenderer.setMarginsColor(Color.argb(0x00, 0x01, 0x01, 0x01));
 		LinearLayout layout = (LinearLayout) getActivity().findViewById(
 				R.id.chart_layout);

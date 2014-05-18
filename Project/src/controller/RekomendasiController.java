@@ -12,9 +12,9 @@ public class RekomendasiController {
 	private List<Makanan> rekomen;
 
 	private final boolean[] count = { true, false, true, true, false, false,
-			true, false, false };
+			true, true, false, false };
 	private final String[] header = { "Sarapan", null, "Snack", "Makan siang",
-			null, null, "Makan Malam" };
+			null, null, "Snack", "Makan Malam" };
 
 	public RekomendasiController(Context c) {
 		db = HandlerMakanan.getInstance(c);

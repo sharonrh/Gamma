@@ -184,8 +184,9 @@ public class HandlerMakanan extends DatabaseHandler {
 
 		// snack
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + " =?",
-				new String[] { arrJenis[5] }, null, null, "random()", "1");
+				kalori, bobot, jenis, terakhir }, jenis + " =? AND " + kalori
+				+ " >?", new String[] { arrJenis[5], "150" }, null, null,
+				"random()", "1");
 
 		if (cursor.moveToFirst()) {
 			do {
@@ -238,6 +239,24 @@ public class HandlerMakanan extends DatabaseHandler {
 		}
 		cursor.close();
 
+		// snack
+		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
+				kalori, bobot, jenis, terakhir }, jenis + " =? AND " + kalori
+				+ " >?", new String[] { arrJenis[5], "150" }, null, null,
+				"random()", "1");
+
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setBobot(cursor.getInt(2));
+				makananList.add(makanan);
+				System.out.println("--------------------" + makanan.getNama());
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
 		// makan malam (makanan pokok)
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
 				kalori, bobot, jenis, terakhir }, jenis + "=? AND " + kombinasi
@@ -259,7 +278,7 @@ public class HandlerMakanan extends DatabaseHandler {
 		cursor.close();
 
 		// makan malam (lauk + sayur)
-		cursor =db.query(true, tabelMakanan, new String[] { namaMakanan,
+		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
 				kalori, bobot, jenis, terakhir }, jenis + " IN (? , ?) AND "
 				+ kalori + ">?", new String[] { "Sayuran", "Lauk", "150" },
 				null, null, "random()", "2");

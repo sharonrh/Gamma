@@ -11,16 +11,16 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public class RSSParser {
 
-	public List<Entry> parse(String rssFeed) throws XmlPullParserException,
+	public List<Entry> parse(String rssFeed, int mode) throws XmlPullParserException,
 			IOException {
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 		XmlPullParser xpp = factory.newPullParser();
 		xpp.setInput(new StringReader(rssFeed));
 		xpp.nextTag();
-		return readRss(xpp);
+		return readRss(xpp, mode);
 	}
 
-	private List<Entry> readRss(XmlPullParser parser)
+	private List<Entry> readRss(XmlPullParser parser, int mode)
 			throws XmlPullParserException, IOException {
 		List<Entry> items = new ArrayList<Entry>();
 		parser.require(XmlPullParser.START_TAG, null, "rss");
@@ -30,7 +30,7 @@ public class RSSParser {
 			}
 			String name = parser.getName();
 			if (name.equals("channel")) {
-				items.addAll(readChannel(parser));
+				items.addAll(readChannel(parser, mode));
 			} else {
 				skip(parser);
 			}
@@ -38,7 +38,7 @@ public class RSSParser {
 		return items;
 	}
 
-	private List<Entry> readChannel(XmlPullParser parser) throws IOException,
+	private List<Entry> readChannel(XmlPullParser parser, int mode) throws IOException,
 			XmlPullParserException {
 		List<Entry> items = new ArrayList<Entry>();
 		parser.require(XmlPullParser.START_TAG, null, "channel");
@@ -48,7 +48,7 @@ public class RSSParser {
 			}
 			String name = parser.getName();
 			if (name.equals("item")) {
-				items.add(readItem(parser));
+				items.add(readItem(parser, mode));
 			} else {
 				skip(parser);
 			}
@@ -56,7 +56,7 @@ public class RSSParser {
 		return items;
 	}
 
-	private Entry readItem(XmlPullParser parser) throws XmlPullParserException,
+	private Entry readItem(XmlPullParser parser, int mode) throws XmlPullParserException,
 			IOException {
 		String title = null;
 		String date = null;
@@ -75,7 +75,7 @@ public class RSSParser {
 			} else if (name.equals("link")) {
 				link = readLink(parser);
 			} else if (name.equals("description")) {
-				desc = readDesc(parser);
+				desc = readDesc(parser, mode);
 			} else {
 				skip(parser);
 			}
@@ -112,11 +112,14 @@ public class RSSParser {
 	}
 
 	// Processes summary tags in the feed.
-	private String readDesc(XmlPullParser parser) throws IOException,
+	private String readDesc(XmlPullParser parser, int mode) throws IOException,
 			XmlPullParserException {
 		parser.require(XmlPullParser.START_TAG, null, "description");
-		String desc = readText(parser);
+		String desc = readText(parser);		
 		parser.require(XmlPullParser.END_TAG, null, "description");
+		if (mode==1) {
+			return desc.substring(desc.indexOf(">")+1);
+		}
 		return desc;
 	}
 
