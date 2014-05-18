@@ -48,9 +48,7 @@ public class Achievement {
         this.progress = progress;
         if (this.progress >= this.requirement) {
             this.setGet(true);
-            if (this.requirement == 10) {
-                this.setPathLogo("logo/bookworm.png");
-            } else if (this.requirement == 25) {
+            if (this.requirement == 25) {
                 this.setPathLogo("logo/starter.png");
             } else if (this.requirement == 50) {
                 this.setPathLogo("logo/halfway.png");

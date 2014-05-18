@@ -176,12 +176,13 @@ public class RSSFragment extends Fragment {
                         // increment setiap baca artikel
                         AchievementController ac = new AchievementController(v.getContext());
                         Achievement achievement = ac.getHandler().getAchievement("Bookworm");
+                        boolean cek = achievement.isGet();
                         achievement.addProgress();
                         ac.getHandler().updateAchievement(achievement);
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW,
 								Uri.parse(link));
 						startActivity(browserIntent);
-                        if (achievement.isGet()) {
+                        if (achievement.isGet() == true && cek == false) {
                             Toast.makeText(v.getContext(), "Selamat! Anda telah mendapat achievement Bookworm!", Toast.LENGTH_LONG).show();
                         }
 					}
