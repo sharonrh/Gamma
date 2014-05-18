@@ -98,4 +98,5 @@
 	<string name="konfirmasi_reset">Apakah Anda yakin akan mereset progress Anda? Data profil, laporan, notifikasi, dan achievement Anda akan terhapus.</string>
 	<string name="sukses_reset">Reset progress berhasil. Silahkan isi kembali profil Anda.</string>
 	<string name="konfirmasi_firstrun">&quot;Selamat datang di Gain Mass Manager. Demi pengalaman pemakaian yang maksimal, Anda diharapkan untuk melengkapi profil pribadi terlebih dahulu.&quot;</string>
+	<string name="makanan_pokok">Makanan Pokok</string>
 </resources>

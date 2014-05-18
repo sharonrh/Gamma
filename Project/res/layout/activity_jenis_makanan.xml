@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/abu" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="10dp" >
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+
+        <ImageView
+            android:id="@+id/gambarJenis"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/layer_card_background_makananpokok"
+            android:padding="20dp"
+            android:src="@drawable/ikon_pokok" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/namaJenis"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/layer_card_background_makananpokok"
+                android:gravity="center"
+                android:text="Makanan Pokok"
+                android:textColor="@color/Clouds"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/jumlahJenis"
+                android:layout_width="150dp"
+                android:layout_height="65dp"
+                android:background="@drawable/layer_card_background_makananpokok"
+                android:gravity="center"
+                android:text="None"
+                android:textColor="@color/Clouds"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <ListView
+            android:id="@+id/listJenisMakanan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="4.90"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:listSelector="@android:color/transparent" >
+
+        </ListView>
+    
+    </LinearLayout>
+
+</RelativeLayout>

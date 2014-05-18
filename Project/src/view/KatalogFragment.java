@@ -35,6 +35,13 @@ public class KatalogFragment extends Fragment {
 				.getApplicationContext());
 
 		final List<Makanan> values = kontrol.getListMakanan();
+		
+		GridLayout jenisPokok = (GridLayout) v.findViewById(R.id.makananPokok); 
+		GridLayout jenisSayur = (GridLayout) v.findViewById(R.id.sayur);
+		GridLayout jenisBuah = (GridLayout) v.findViewById(R.id.buah);
+		GridLayout jenisMinum = (GridLayout) v.findViewById(R.id.minum);
+		GridLayout jenisSnack = (GridLayout) v.findViewById(R.id.snack);
+		GridLayout jenisLauk = (GridLayout) v.findViewById(R.id.laukPauk);
 
 		TextView pokok = (TextView) v.findViewById(R.id.makananPokokKatalog);
 		TextView lauk = (TextView) v.findViewById(R.id.laukpaukKatalog);
@@ -71,6 +78,89 @@ public class KatalogFragment extends Fragment {
 
 				intent.putExtra("nama", values.get(position).getNama());
 
+				startActivity(intent);
+			}
+		});
+		
+		jenisPokok.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity()
+						.getApplicationContext(), JenisMakananActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("jenis", "pokok");
+				startActivity(intent);
+			}
+		});
+		
+		
+		jenisLauk.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity()
+						.getApplicationContext(), JenisMakananActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("jenis", "lauk");
+				startActivity(intent);
+			}
+		});
+		
+		
+		jenisBuah.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity()
+						.getApplicationContext(), JenisMakananActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("jenis", "buah");
+				startActivity(intent);
+			}
+		});
+		
+		
+		jenisSayur.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity()
+						.getApplicationContext(), JenisMakananActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("jenis", "sayur");
+				startActivity(intent);
+			}
+		});
+		
+		
+		jenisMinum.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity()
+						.getApplicationContext(), JenisMakananActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("jenis", "minum");
+				startActivity(intent);
+			}
+		});
+		
+		
+		jenisSnack.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity()
+						.getApplicationContext(), JenisMakananActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("jenis", "snack");
 				startActivity(intent);
 			}
 		});

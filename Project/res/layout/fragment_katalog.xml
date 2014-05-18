@@ -200,7 +200,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:columnCount="1"
-            android:rowCount="2" >
+            android:rowCount="2"
+            android:layout_marginBottom="10dp" >
 
             <GridLayout
                 android:layout_width="wrap_content"
@@ -210,15 +211,16 @@
                 android:layout_marginBottom="10dp" >
 
                 <GridLayout
+                    android:id="@+id/makananPokok"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/layer_card_background_makananpokok"
+                    android:background="@drawable/selector_card_background_makananpokok"
                     android:columnCount="1"
-                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:paddingRight="3dp"
-                    android:paddingBottom="5dp" >
+                    android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView1"
@@ -242,16 +244,17 @@
                 </GridLayout>
 
                 <GridLayout
+                    android:id="@+id/sayur"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/layer_card_background_sayur"
+                    android:background="@drawable/selector_card_background_sayur"
                     android:columnCount="1"
-                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:paddingRight="3dp"
-                    android:paddingBottom="5dp" >
+                    android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView1"
@@ -274,11 +277,12 @@
                 </GridLayout>
 
                 <GridLayout
+                    android:id="@+id/buah"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginLeft="5dp"
-                    android:background="@drawable/layer_card_background_buah"
+                    android:background="@drawable/selector_card_background_buah"
                     android:columnCount="1"
                     android:paddingBottom="5dp"
                     android:paddingRight="3dp"
@@ -313,11 +317,12 @@
                 android:layout_row="1" >
 
                 <GridLayout
+                    android:id="@+id/laukPauk"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/layer_card_background_laukpauk"
+                    android:background="@drawable/selector_card_background_laukpauk"
                     android:columnCount="1"
                     android:paddingBottom="5dp"
                     android:paddingRight="3dp"
@@ -344,12 +349,13 @@
                 </GridLayout>
 
                 <GridLayout
+                    android:id="@+id/snack"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/layer_card_background_snack"
+                    android:background="@drawable/selector_card_background_snack"
                     android:columnCount="1"
                     android:paddingBottom="5dp"
                     android:paddingRight="3dp"
@@ -376,11 +382,12 @@
                 </GridLayout>
 
                 <GridLayout
+                    android:id="@+id/minum"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginLeft="5dp"
-                    android:background="@drawable/layer_card_background_minuman"
+                    android:background="@drawable/selector_card_background_minuman"
                     android:columnCount="1"
                     android:paddingBottom="5dp"
                     android:paddingRight="3dp"

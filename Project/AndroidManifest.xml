@@ -64,6 +64,11 @@
             android:icon="@drawable/pengaturan"
             android:label="@string/title_activity_kredit" >
         </activity>
+        <activity
+            android:name="view.JenisMakananActivity"
+            android:icon="@drawable/katalog"
+            android:label="@string/ui_tabname_katalog" >
+        </activity>
         
     </application>
 
