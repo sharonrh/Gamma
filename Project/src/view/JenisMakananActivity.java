@@ -39,6 +39,7 @@ public class JenisMakananActivity extends Activity {
 
 		final List<Makanan> values = kontrol.getListMakanan();
 		int[] ctJenis = kontrol.getJenisCount();
+		listJenis = (ListView) findViewById(R.id.listJenisMakanan);
 		
 		gambar = (ImageView) findViewById(R.id.gambarJenis);
 		jenis = (TextView) findViewById(R.id.namaJenis);
@@ -53,6 +54,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_makananpokok);
 			jumlah.setText("" + ctJenis[0]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_makananpokok);
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Pokok"));
+			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("lauk")){
 			gambar.setBackgroundResource(R.drawable.layer_card_background_laukpauk);
@@ -61,6 +64,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_laukpauk);
 			jumlah.setText("" + ctJenis[1]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_laukpauk);
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Lauk"));
+			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("sayur")){
 			gambar.setBackgroundResource(R.drawable.layer_card_background_sayur);
@@ -69,6 +74,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_sayur);
 			jumlah.setText("" + ctJenis[2]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_sayur);
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Sayur"));
+			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("buah")){
 			gambar.setBackgroundResource(R.drawable.layer_card_background_buah);
@@ -77,6 +84,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_buah);
 			jumlah.setText("" + ctJenis[3]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_buah);
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Buah"));
+			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("minum")){
 			gambar.setBackgroundResource(R.drawable.layer_card_background_minuman);
@@ -85,6 +94,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_minuman);
 			jumlah.setText("" + ctJenis[4]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_minuman);
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Minuman"));
+			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("snack")){
 			gambar.setBackgroundResource(R.drawable.layer_card_background_snack);
@@ -93,12 +104,11 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_snack);
 			jumlah.setText("" + ctJenis[5]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_snack);
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Snack"));
+			listJenis.setAdapter(adapter);
 		}
 		
-		listJenis = (ListView) findViewById(R.id.listJenisMakanan);
-		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
-				this, values);
-		listJenis.setAdapter(adapter);
+		
 		
 		listJenis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
