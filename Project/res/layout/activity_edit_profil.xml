@@ -206,7 +206,7 @@
                             android:paddingRight="40dp"
                             android:paddingTop="18dp"
                             android:text="Pilih salah satu jenis gaya hidup untuk melihat detailnya disini"
-                            android:textColor="@color/hijau_donker" />
+                            android:textColor="#FFFFFF" />
 
                         </LinearLayout>
                 </LinearLayout>
