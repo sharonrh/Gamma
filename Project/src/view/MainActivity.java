@@ -47,6 +47,7 @@ public class MainActivity extends Activity {
 	private int[] iconIds;
 	private boolean doubleBackToExitPressedOnce = false;
 	private ProfilController con;
+	private boolean cek = false;
 	SharedPreferences prefs = null;
 
 	/** Called when the activity is first created. */
@@ -151,6 +152,7 @@ public class MainActivity extends Activity {
 		super.onResume();
 
 		if (prefs.getBoolean("firstrun", true)) {
+			cek = true;
 			selectItem(1);
 			popUpWindow();
 		}
@@ -269,6 +271,11 @@ public class MainActivity extends Activity {
 
 	@Override
 	public void onBackPressed() {
+		if(cek){
+			cek=false;
+			finish();
+		}
+		
 		if (doubleBackToExitPressedOnce) {
 			super.onBackPressed();
 			return;

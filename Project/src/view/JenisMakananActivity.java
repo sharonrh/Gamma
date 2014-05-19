@@ -29,7 +29,7 @@ public class JenisMakananActivity extends Activity {
 	private TextView jenis, jumlah;
 	private ListView listJenis;
 	private Bundle extras;
-	
+	private List<Makanan> values;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,7 +37,6 @@ public class JenisMakananActivity extends Activity {
 		
 		KatalogController kontrol = new KatalogController(getApplicationContext());
 
-		final List<Makanan> values = kontrol.getListMakanan();
 		int[] ctJenis = kontrol.getJenisCount();
 		listJenis = (ListView) findViewById(R.id.listJenisMakanan);
 		
@@ -54,7 +53,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_makananpokok);
 			jumlah.setText("" + ctJenis[0]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_makananpokok);
-			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Pokok"));
+			values = kontrol.getMakananPerJenis("Pokok");
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, values);
 			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("lauk")){
@@ -64,7 +64,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_laukpauk);
 			jumlah.setText("" + ctJenis[1]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_laukpauk);
-			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Lauk"));
+			values = kontrol.getMakananPerJenis("Lauk");
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, values);
 			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("sayur")){
@@ -74,7 +75,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_sayur);
 			jumlah.setText("" + ctJenis[2]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_sayur);
-			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Sayuran"));
+			values = kontrol.getMakananPerJenis("Sayuran");
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, values);
 			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("buah")){
@@ -84,7 +86,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_buah);
 			jumlah.setText("" + ctJenis[3]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_buah);
-			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Buah"));
+			values = kontrol.getMakananPerJenis("Buah");
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, values);
 			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("minum")){
@@ -94,7 +97,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_minuman);
 			jumlah.setText("" + ctJenis[4]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_minuman);
-			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Minuman"));
+			values = kontrol.getMakananPerJenis("Minuman");
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, values);
 			listJenis.setAdapter(adapter);
 		}
 		else if(mystring.equalsIgnoreCase("snack")){
@@ -104,7 +108,8 @@ public class JenisMakananActivity extends Activity {
 			jenis.setBackgroundResource(R.drawable.layer_card_background_snack);
 			jumlah.setText("" + ctJenis[5]);
 			jumlah.setBackgroundResource(R.drawable.layer_card_background_snack);
-			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, kontrol.getMakananPerJenis("Snack"));
+			values = kontrol.getMakananPerJenis("Snack");
+			MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(this, values);
 			listJenis.setAdapter(adapter);
 		}
 		
