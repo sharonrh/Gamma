@@ -91,11 +91,14 @@ public class LaporanController {
 	public int getDurasiHari(){
 		
 		Laporan laporanTerakhir = getLaporanTerbaru();
-		Laporan laporanPertama = getLaporanPertama();
+		
+		//ambil waktu start
+		Pengguna pengguna = profilController.getProfil();
+		
 		System.out.println(laporanTerakhir);
-		if(laporanTerakhir != null || laporanPertama != null){
+		if(laporanTerakhir != null || pengguna != null){
 			Long end = laporanTerakhir.getWaktu();
-			Long begin = laporanPertama.getWaktu();
+			Long begin = pengguna.getStartTime();
 			
 			Long diff = end - begin;
 			long seconds = diff / 1000;

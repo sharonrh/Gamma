@@ -30,3 +30,4 @@ proguard-project.txt
 .idea/
 project.properties
 Project/gen/
+Project/project.properties
