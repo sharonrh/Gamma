@@ -108,7 +108,7 @@ public class JenisMakananActivity extends Activity {
 			listJenis.setAdapter(adapter);
 		}
 		
-		
+		gambar.setPadding(20, 20, 20, 20);
 		
 		listJenis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
