@@ -138,6 +138,8 @@ public class MainActivity extends Activity {
 				startActivity(i);
 			}
 		});
+		
+		alertDialog.setCancelable(false);
 		alertDialog.show();
 	}
 
@@ -273,10 +275,9 @@ public class MainActivity extends Activity {
 	public void onBackPressed() {
 		if(cek){
 			cek=false;
-			finish();
+			System.exit(1);
 		}
-		
-		if (doubleBackToExitPressedOnce) {
+		else if (doubleBackToExitPressedOnce) {
 			super.onBackPressed();
 			return;
 		}

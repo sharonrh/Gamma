@@ -148,7 +148,7 @@ public class LihatLaporanFragment extends Fragment {
 		      rowView.setTag(viewHolder);
 		    }
 		    else {
-		    // fill data
+		    	// fill data
 			    viewHolder = (ViewHolder) rowView.getTag();
 		    }
 		    
