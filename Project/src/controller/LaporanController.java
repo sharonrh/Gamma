@@ -96,7 +96,7 @@ public class LaporanController {
 		Pengguna pengguna = profilController.getProfil();
 		
 		System.out.println(laporanTerakhir);
-		if(laporanTerakhir != null || pengguna != null){
+		if(laporanTerakhir != null && pengguna != null){
 			Long end = laporanTerakhir.getWaktu();
 			Long begin = pengguna.getStartTime();
 			
