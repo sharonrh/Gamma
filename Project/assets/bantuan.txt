@@ -1,0 +1,16 @@
+Bantuan Gain Mass Manager
+
+1. Setelah Mengisi Profil
+Setelah mengisi profil, Anda dapat menjelajahi aplikasi untuk merasakan manfaatnya. Secara default, Anda akan dibawa ke halaman Rekomendasi. Jika Anda baru pertama kali menggunakan aplikasi ini, silahkan cek Bantuan untuk mendapatkan petunjuk lebih lanjut mengenai aplikasi ini.
+2. Penjelasan Menu
+Aplikasi ini memiliki 8 menu utama : Rekomendasi, Profil, Statistik, Laporan, Katalog, Artikel, Achievement, dan Pengaturan. Rekomendasi berisi daftar makanan yang disarankan untuk dikonsumsi (selebihnya silahkan merujuk ke bagian "Mengenai Rekomendasi"). Profil digunakan untuk melihat atau mengedit profil Anda. Tidak ada satu pun data Anda yang dikirimkan keluar perangkat ini. Statistik berisi graf perbandingan progress diet Anda, antara perkiraan aplikasi dan kenyataan. Data nyata didapat dari laporan yang Anda isi pada menu Laporan. Laporan dapat diisi per 7 hari sekali, dan Anda dapat mengedit laporan yang terakhir Anda buat. Katalog berisi seluruh data makanan yang ada pada aplikasi. Anda dapat memberi rating pada makanan yang tersedia. Artikel berisi daftar artikel kesehatan yang dapat Anda baca. Artikel didapat dari situs luar, sehingga Anda perlu koneksi internet dan web browser untuk membaca artikel. Achievement berisi milestone Anda selama menggunakan aplikasi ini. Pengaturan berisi Notifikasi untuk mengingatkan Anda kapan harus makan, Reset Progress untuk menghapus progress dan data yang disimpan di aplikasi ini, beserta submenu lainnya.
+3. Mengenai Rekomendasi
+Rekomendasi dibuat berdasarkan data pribadi Anda : jumlah asupan kalori per hari. Ini didapat dari hasil kalkulasi internal pada aplikasi. Aplikasi akan menyediakan daftar makanan yang jumlah kalorinya sekitar jumlah asupan kalori harian Anda. Besar kalori harian dapat naik bila berat badan Anda menjauhi target, dan sebaliknya.
+4. Pertambahan Ideal
+Aplikasi ini peduli dengan kesehatan Anda. Itu artinya ada batasan yang harus Anda perhatikan ketika merencanakan diet menambah berat badan dengan aplikasi ini, agar kenaikan berat Anda terjaga. Kami membatasi kenaikan hingga 1 kg per minggu.
+5. Koneksi Internet
+Aplikasi ini dapat digunakan secara offline. Data Anda dan makanan, seluruhnya tersimpan di perangkat Anda. Anda hanya perlu koneksi internet ketika mengakses menu Artikel.
+6. Mengenai Notifikasi
+Aplikasi ini dilengkapi notifikasi yang berguna untuk mengingatkan Anda kapan harus makan. Dalam keadaan awal, notifikasi diset mati. Anda dapat mengaktifkannya melalui submenu Notifikasi pada menu Pengaturan. Anda juga dapat mengatur waktunya masing-masing. Harap diketahui, jika perangkat Anda dalam keadaan mati atau mengalami restart, Anda perlu menjalankan aplikasi ini kembali agar notifikasi kembali aktif. Notifikasi hanya akan tampil di status bar, tanpa efek suara. 
+7. Informasi Lebih Lanjut
+Jika ada hal yang ingin diketahui lebih lanjut mengenai aplikasi ini, Anda dapat mengacu ke user manual Gain Mass Manager.
