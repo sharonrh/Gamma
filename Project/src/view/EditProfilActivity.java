@@ -401,7 +401,6 @@ public class EditProfilActivity extends Activity {
 			paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 			canvas.drawBitmap(bitmap, rect, rect, paint);
 		} catch (NullPointerException e) {
-			// return bitmap;
 		} catch (OutOfMemoryError o) {
 		}
 		return result;
@@ -440,15 +439,13 @@ public class EditProfilActivity extends Activity {
 
 	    if (height > targetHeight || width > targetWidth) {
 
-	        // Calculate ratios of height and width to requested height and
-	        // width
+	        // Calculate ratios of height and width to requested height and width
 	        final int heightRatio = Math.round((float) height
 	                / (float) targetHeight);
 	        final int widthRatio = Math.round((float) width / (float) targetWidth);
 
 	        // Choose the smallest ratio as inSampleSize value, this will
-	        // guarantee
-	        // a final image with both dimensions larger than or equal to the
+	        // guarantee a final image with both dimensions larger than or equal to the
 	        // requested height and width.
 	        inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
 	    }
@@ -467,5 +464,4 @@ public class EditProfilActivity extends Activity {
 
 	    return resizedBitmap;
 	}
-
 }

@@ -35,7 +35,7 @@ public class ProfilController {
 			kal = 66 + 13.7 * p.getBerat() + 5 * p.getTinggi() - 6.8
 					* p.getUmur();
 		} else {
-			kal = 65.5 + 9.6 * p.getBerat() + 1.8 * p.getTinggi() - 4.7
+			kal = 655 + 9.6 * p.getBerat() + 1.8 * p.getTinggi() - 4.7
 					* p.getUmur();
 		}
 

@@ -4,12 +4,17 @@ import java.util.List;
 
 import model.Makanan;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.format.Time;
 import dao.HandlerMakanan;
+import dao.HandlerRekomendasi;
 
 public class RekomendasiController {
 
-	private HandlerMakanan db;
+	private HandlerRekomendasi dbRekomen;
+	private HandlerMakanan dbMakanan;
 	private List<Makanan> rekomen;
+	private SharedPreferences prefs;
 
 	private final boolean[] count = { true, false, true, true, false, false,
 			true, true, false, false };
@@ -17,11 +22,29 @@ public class RekomendasiController {
 			null, null, "Snack", "Makan Malam" };
 
 	public RekomendasiController(Context c) {
-		db = HandlerMakanan.getInstance(c);
+		dbRekomen = HandlerRekomendasi.getInstance(c);
+		dbMakanan = HandlerMakanan.getInstance(c);
+
+		prefs = c.getSharedPreferences("com.example.gamma", c.MODE_PRIVATE);
 	}
 
 	public List<Makanan> getRekomendasi(double kal) {
-		rekomen = db.getRekomendasi(kal);
+		Time now = new Time();
+		now.setToNow();
+
+		Time rekTime = new Time();
+		rekTime.set(prefs.getLong("rekTime", 0));
+
+		// jika beda tanggal
+		if (rekTime.year != now.year || rekTime.yearDay != now.yearDay) {
+			rekomen = dbMakanan.getRekomendasi(kal);
+			dbRekomen.setRekomendasi(rekomen);
+			rekTime.setToNow();
+			prefs.edit().putLong("rekTime", rekTime.toMillis(true)).commit();
+		} else {
+			rekomen = dbRekomen.getRekomendasi();
+		}
+
 		return rekomen;
 	}
 
