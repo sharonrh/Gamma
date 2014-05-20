@@ -12,7 +12,7 @@ Cara Menghitung Kalori yang Dibutuhkan :
 	(i) 	Jika (a) = pria, maka :
 			BMR = 66 + ( 13.7 x (c) ) + ( 5 x (d) ) - ( 6.8 x (b) )
 	(ii) 	Jika (a) = wanita, maka :
-			BMR = 65.5 + ( 9.6 x (c) ) + ( 1.8 x (d) ) - ( 4.7 x (b) )
+			BMR = 655 + ( 9.6 x (c) ) + ( 1.8 x (d) ) - ( 4.7 x (b) )
 3. Kalikan BMR dengan isian gaya hidup, sehingga didapat kalori :
 	(i)  	Jika pilihannya 1 : ringan, kalikan dengan 1.2
 	(ii) 	Jika pilihannya 2 : sedang, kalikan dengan 1.375

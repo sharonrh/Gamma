@@ -166,7 +166,7 @@ public class HandlerMakanan extends DatabaseHandler {
 
 		// sarapan
 		Cursor cursor = db.query(true, tabelMakanan, new String[] {
-				namaMakanan, kalori, bobot, jenis, terakhir }, waktu
+				namaMakanan, kalori, porsi, bobot, jenis, terakhir }, waktu
 				+ "=? AND " + kalori + " >?", new String[] { "1", "150" },
 				null, null, "random()", "2");
 
@@ -175,46 +175,45 @@ public class HandlerMakanan extends DatabaseHandler {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setBobot(cursor.getInt(2));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-				System.out.println("--------------------" + makanan.getNama());
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
 		// snack
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + " =? AND " + kalori
-				+ " >?", new String[] { arrJenis[5], "150" }, null, null,
-				"random()", "1");
+				kalori, porsi, bobot, jenis, terakhir }, jenis + " =? AND "
+				+ kalori + " >?", new String[] { arrJenis[5], "150" }, null,
+				null, "random()", "1");
 
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setBobot(cursor.getInt(2));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-				System.out.println("--------------------" + makanan.getNama());
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
 		// makan siang (makanan pokok)
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + "=? AND " + kombinasi
-				+ "=? AND " + kalori + ">?",
-				new String[] { "Pokok", "2", "150" }, null, null, "random()",
-				"1");
+				kalori, porsi, bobot, jenis, terakhir }, jenis + "=? AND "
+				+ kombinasi + "=? AND " + kalori + ">?", new String[] {
+				"Pokok", "2", "150" }, null, null, "random()", "1");
 
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setBobot(cursor.getInt(2));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-				System.out.println(makanan.getNama());
 
 			} while (cursor.moveToNext());
 		}
@@ -222,56 +221,54 @@ public class HandlerMakanan extends DatabaseHandler {
 
 		// makan siang (lauk + sayur)
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + " IN (? , ?) AND "
-				+ kalori + ">?", new String[] { "Sayuran", "Lauk", "150" },
-				null, null, "random()", "2");
+				kalori, porsi, bobot, jenis, terakhir }, jenis
+				+ " IN (? , ?) AND " + kalori + ">?", new String[] { "Sayuran",
+				"Lauk", "150" }, null, null, "random()", "2");
 
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setBobot(cursor.getInt(2));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-				System.out.println(makanan.getNama());
-
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
 		// snack
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + " =? AND " + kalori
-				+ " >?", new String[] { arrJenis[5], "150" }, null, null,
-				"random()", "1");
+				kalori, porsi, bobot, jenis, terakhir }, jenis + " =? AND "
+				+ kalori + " >?", new String[] { arrJenis[5], "150" }, null,
+				null, "random()", "1");
 
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setBobot(cursor.getInt(2));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-				System.out.println("--------------------" + makanan.getNama());
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
 		// makan malam (makanan pokok)
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + "=? AND " + kombinasi
-				+ "=? AND " + kalori + ">?",
-				new String[] { "Pokok", "2", "150" }, null, null, "random()",
-				"1");
+				kalori, porsi, bobot, jenis, terakhir }, jenis + "=? AND "
+				+ kombinasi + "=? AND " + kalori + ">?", new String[] {
+				"Pokok", "2", "150" }, null, null, "random()", "1");
 
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setBobot(cursor.getInt(2));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-				System.out.println(makanan.getNama());
 
 			} while (cursor.moveToNext());
 		}
@@ -279,19 +276,18 @@ public class HandlerMakanan extends DatabaseHandler {
 
 		// makan malam (lauk + sayur)
 		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, bobot, jenis, terakhir }, jenis + " IN (? , ?) AND "
-				+ kalori + ">?", new String[] { "Sayuran", "Lauk", "150" },
-				null, null, "random()", "2");
+				kalori, porsi, bobot, jenis, terakhir }, jenis
+				+ " IN (? , ?) AND " + kalori + ">?", new String[] { "Sayuran",
+				"Lauk", "150" }, null, null, "random()", "2");
 
 		if (cursor.moveToFirst()) {
 			do {
 				Makanan makanan = new Makanan();
 				makanan.setNama(cursor.getString(0));
 				makanan.setKalori(cursor.getInt(1));
-				makanan.setBobot(cursor.getInt(2));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-				System.out.println(makanan.getNama());
-
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
@@ -300,46 +296,47 @@ public class HandlerMakanan extends DatabaseHandler {
 		return makananList;
 	}
 
-    public List<Makanan> getPerJenis(String jenis) {
-        List<Makanan> makananList = new ArrayList<Makanan>();
-        String selectQuery = "SELECT  * FROM " + tabelMakanan + " WHERE JENIS = " + "'" + jenis + "'";
+	public List<Makanan> getPerJenis(String jenis) {
+		List<Makanan> makananList = new ArrayList<Makanan>();
+		String selectQuery = "SELECT  * FROM " + tabelMakanan
+				+ " WHERE JENIS = " + "'" + jenis + "'";
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if (cursor.moveToFirst()) {
-            do {
-                Makanan makanan = new Makanan();
-                makanan.setNama(cursor.getString(0));
-                makanan.setKalori(cursor.getInt(1));
-                makanan.setProtein(cursor.getDouble(2));
-                makanan.setKarbohidrat(cursor.getDouble(3));
-                makanan.setLemak(cursor.getDouble(4));
-                makanan.setNatrium(cursor.getDouble(5));
-                makanan.setPorsi(cursor.getString(6));
-                makanan.setBobot(cursor.getInt(7));
-                makanan.setRating(cursor.getFloat(8));
-                makanan.setJenisMakanan(cursor.getString(9));
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setProtein(cursor.getDouble(2));
+				makanan.setKarbohidrat(cursor.getDouble(3));
+				makanan.setLemak(cursor.getDouble(4));
+				makanan.setNatrium(cursor.getDouble(5));
+				makanan.setPorsi(cursor.getString(6));
+				makanan.setBobot(cursor.getInt(7));
+				makanan.setRating(cursor.getFloat(8));
+				makanan.setJenisMakanan(cursor.getString(9));
 
-                // retrieve data alegi
-                int h = Integer.parseInt(cursor.getString(10));
-                int s = Integer.parseInt(cursor.getString(11));
-                int k = Integer.parseInt(cursor.getString(12));
+				// retrieve data alegi
+				int h = Integer.parseInt(cursor.getString(10));
+				int s = Integer.parseInt(cursor.getString(11));
+				int k = Integer.parseInt(cursor.getString(12));
 
-                makanan.setHewani(h == 1);
-                makanan.setSeafood(s == 1);
-                makanan.setKacang(k == 1);
-                makanan.setTerakhirDipilih(cursor.getLong(13));
-                makanan.setPathFoto(cursor.getString(14));
+				makanan.setHewani(h == 1);
+				makanan.setSeafood(s == 1);
+				makanan.setKacang(k == 1);
+				makanan.setTerakhirDipilih(cursor.getLong(13));
+				makanan.setPathFoto(cursor.getString(14));
 
-                makananList.add(makanan);
-            } while (cursor.moveToNext());
-        }
+				makananList.add(makanan);
+			} while (cursor.moveToNext());
+		}
 
-        cursor.close();
-        db.close();
-        return makananList;
-    }
+		cursor.close();
+		db.close();
+		return makananList;
+	}
 
 	// Deleting single makanan
 	public void deleteMakanan(Makanan makanan) {
@@ -376,5 +373,4 @@ public class HandlerMakanan extends DatabaseHandler {
 		db.close();
 		return b;
 	}
-
 }

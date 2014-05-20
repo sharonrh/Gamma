@@ -75,9 +75,7 @@ public class KatalogFragment extends Fragment {
 				Intent intent = new Intent(getActivity()
 						.getApplicationContext(), DetailMakananActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
 				intent.putExtra("nama", values.get(position).getNama());
-
 				startActivity(intent);
 			}
 		});

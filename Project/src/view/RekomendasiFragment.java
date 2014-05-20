@@ -5,6 +5,7 @@ import java.util.List;
 import model.Makanan;
 import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,8 @@ import controller.RekomendasiController;
 
 public class RekomendasiFragment extends ListFragment {
 
+	List<Makanan> listMakanan;
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -27,18 +30,22 @@ public class RekomendasiFragment extends ListFragment {
 		RekomendasiController con = new RekomendasiController(getActivity()
 				.getApplicationContext());
 		ProfilController conProfil = new ProfilController(getActivity()
-				.getApplicationContext()); 
-		
-		List<Makanan> listMakanan = con.getRekomendasi(conProfil.getKebutuhanKal());
+				.getApplicationContext());
+
+		listMakanan = con.getRekomendasi(conProfil.getKebutuhanKal());
 
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), listMakanan, con.getCount(), con.getHeader());
 		setListAdapter(adapter);
-
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
+		Intent intent = new Intent(getActivity().getApplicationContext(),
+				DetailMakananActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra("nama", listMakanan.get(position).getNama());
+		startActivity(intent);
 	}
 }
 
@@ -56,7 +63,7 @@ class MyPerformanceArrayAdapter extends ArrayAdapter<Makanan> {
 
 	public MyPerformanceArrayAdapter(Activity context, List<Makanan> names,
 			boolean[] ct, String[] headers) {
-		super(context, R.layout.sectioned_list_item, names);
+		super(context, R.layout.list_rekomendasi, names);
 		this.context = context;
 		this.rekList = names;
 		this.count = ct;
@@ -69,7 +76,7 @@ class MyPerformanceArrayAdapter extends ArrayAdapter<Makanan> {
 		// reuse views
 		if (rowView == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
-			rowView = inflater.inflate(R.layout.sectioned_list_item, null);
+			rowView = inflater.inflate(R.layout.list_rekomendasi, null);
 			// configure view holder
 			ViewHolder viewHolder = new ViewHolder();
 			viewHolder.section = (TextView) rowView
@@ -83,8 +90,9 @@ class MyPerformanceArrayAdapter extends ArrayAdapter<Makanan> {
 		ViewHolder holder = (ViewHolder) rowView.getTag();
 
 		Makanan m = rekList.get(position);
-		holder.text.setText(m.getNama() + " (" + m.getBobot() + " mg)");
-		holder.subtitle.setText("" + m.getKalori() + " kkal");
+		holder.text.setText("1 " + m.getPorsi() + " "
+				+ m.getNama().toLowerCase() + " (" + m.getBobot() + " gram)");
+		holder.subtitle.setText("" + m.getKalori() + " kal");
 
 		if (count[position]) {
 			holder.section.setText(headers[position]);

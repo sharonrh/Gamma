@@ -109,12 +109,6 @@ public class EditProfilActivity extends Activity {
 			targetField.setText("" + user.getTarget());
 			tinggiField.setText("" + user.getTinggi());
 
-			Time a = new Time();
-			a.set(user.getEndTime());
-
-			Time b = new Time();
-			b.set(user.getStartTime());
-
 			durasiField.setText(""+(user.getEndTime() - user.getStartTime()) / 604800000L);
 			gayaHidupSpinner.setSelection(user.getGayaHidup());
 			int gender = user.getGender() == 'W' ? 2 : 1; // 0 = pilih gender, 1

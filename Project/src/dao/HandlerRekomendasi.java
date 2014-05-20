@@ -21,7 +21,7 @@ public class HandlerRekomendasi extends DatabaseHandler {
 	private static final String kalori = "kalori";
 	private static final String porsi = "porsi";
 	private static final String bobot = "bobot";
-	
+
 	public static HandlerRekomendasi getInstance(Context context) {
 		if (sInstance == null) {
 			sInstance = new HandlerRekomendasi(context);
@@ -56,11 +56,11 @@ public class HandlerRekomendasi extends DatabaseHandler {
 		db.close();
 		return makananList;
 	}
-	
+
 	public void setRekomendasi(List<Makanan> makanan) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values;
-		
+
 		for (Makanan m : makanan) {
 			values = new ContentValues();
 			values.put(namaMakanan, m.getNama());

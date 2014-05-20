@@ -5,20 +5,17 @@ import java.io.InputStream;
 
 import model.Makanan;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -84,19 +81,21 @@ public class DetailMakananActivity extends Activity {
 			kacang.setText(stat);
 			stat = m.isSeafood() ? "Ya" : "Tidak";
 			seafood.setText(stat);
-
+			rating.setRating(m.getRating());
+			
 			rate.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					con.updateRating(mystring, rating.getRating());
 					finish();
+					Toast.makeText(getApplicationContext(),
+							"Rating sudah disimpan",
+							Toast.LENGTH_LONG).show();
 					Intent i = new Intent(getApplicationContext(),
 							MainActivity.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
 					i.putExtra("nomorFragment", "4");
-
 					startActivity(i);
 				}
 			});

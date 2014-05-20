@@ -32,7 +32,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// tabel makanan
 		String buatTabelMakanan = "CREATE TABLE makanan (nama TEXT PRIMARY KEY, kalori INTEGER, protein REAL, karbohidrat REAL, "
-				+ "lemak REAL, natrium REAL, porsi INTEGER, bobot INTEGER, rating INTEGER, jenis TEXT, hewani INTEGER, "
+				+ "lemak REAL, natrium REAL, porsi TEXT, bobot INTEGER, rating INTEGER, jenis TEXT, hewani INTEGER, "
 				+ "seafood INTEGER, kacang INTEGER, terakhirDipilih INTEGER, pathFoto TEXT, waktuBaik INTEGER, kombinasi INTEGER);";
 		db.execSQL(buatTabelMakanan);
 		// tabel laporan
@@ -238,6 +238,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String buatTabelAchievement = "CREATE TABLE achievement (nama TEXT PRIMARY KEY, terkunci INTEGER, deskripsi TEXT, progress INTEGER, requirement INTEGER, "
 				+ "pathLogo TEXT);";
 		db.execSQL(buatTabelAchievement);
+		// tabel rekomendasi
+		String buatTabelRekomendasi = "CREATE TABLE rekomendasi (nama TEXT PRIMARY KEY, kalori INTEGER, porsi INTEGER, bobot INTEGER);";
+		db.execSQL(buatTabelRekomendasi);
 
 		// isi tabel profil dengan data awal
 		ContentValues values = new ContentValues();
