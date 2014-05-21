@@ -49,6 +49,7 @@ public class SettingFragment extends PreferenceFragment {
 		set.add(new Setting("Reset Progress", "Atur Notifikasi"));
 		set.add(new Setting("Tentang", "Info Mengenai Pengembang"));
 		set.add(new Setting("Kredit", "Atur Notifikasi"));
+		set.add(new Setting("Bantuan", ""));
 
 		lv = (ListView) v.findViewById(R.id.listView1);
 		adapter = new SettingArrayAdapter(getActivity(), set);

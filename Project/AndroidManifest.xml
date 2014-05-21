@@ -69,6 +69,11 @@
             android:icon="@drawable/katalog"
             android:label="@string/ui_tabname_katalog" >
         </activity>
+        <activity
+            android:name="view.BantuanActivity"
+            android:icon="@drawable/pengaturan"
+            android:label="@string/bantuan" >
+        </activity>
         
     </application>
 
