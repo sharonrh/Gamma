@@ -11,12 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-        
+
         <TextView
-            android:id="@+id/textBantuan"
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gambar makanan didapat dari situs pencari gambar Google. Hak cipta gambar dimiliki oleh pemiliknya masing-masing." />
+            android:text="Aplikasi ini dapat digunakan secara offline. Data Anda dan makanan, seluruhnya tersimpan di perangkat Anda. Anda hanya perlu koneksi internet ketika mengakses menu Artikel." />
+
     </LinearLayout>
+    
 
 </ScrollView>

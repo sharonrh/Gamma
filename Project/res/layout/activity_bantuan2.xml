@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        
+        <TextView
+            android:id="@+id/textBantuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aplikasi ini memiliki 8 menu utama : Rekomendasi, Profil, Statistik, Laporan, Katalog, Artikel, Achievement, dan Pengaturan. Rekomendasi berisi daftar makanan yang disarankan untuk dikonsumsi (selebihnya silahkan merujuk ke bagian 'Mengenai Rekomendasi'). Profil digunakan untuk melihat atau mengedit profil Anda. Tidak ada satu pun data Anda yang dikirimkan keluar perangkat ini. Statistik berisi graf perbandingan progress diet Anda, antara perkiraan aplikasi dan kenyataan. Data nyata didapat dari laporan yang Anda isi pada menu Laporan. Laporan dapat diisi per 7 hari sekali, dan Anda dapat mengedit laporan yang terakhir Anda buat. Katalog berisi seluruh data makanan yang ada pada aplikasi. Anda dapat memberi rating pada makanan yang tersedia. Artikel berisi daftar artikel kesehatan yang dapat Anda baca. Artikel didapat dari situs luar, sehingga Anda perlu koneksi internet dan web browser untuk membaca artikel. Achievement berisi milestone Anda selama menggunakan aplikasi ini. Pengaturan berisi Notifikasi untuk mengingatkan Anda kapan harus makan, Reset Progress untuk menghapus progress dan data yang disimpan di aplikasi ini, beserta submenu lainnya." />
+    </LinearLayout>
+    
+
+</ScrollView>

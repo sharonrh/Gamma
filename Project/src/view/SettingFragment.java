@@ -73,6 +73,8 @@ public class SettingFragment extends PreferenceFragment {
 					tentangPopupWindow();
 				else if (position == 3)
 					kreditPopupWindow();
+				else if (position == 4)
+					kontrol.gantiHalaman(4);
 
 			}
 		});

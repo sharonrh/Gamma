@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 public class BantuanActivity extends Activity {
 	
+	TextView text;
 	ListView lv;
 	SettingArrayAdapter adapter;
 	
@@ -48,19 +49,19 @@ public class BantuanActivity extends Activity {
 					int position, long id) {
 
 				if (position == 0)
-					bantuanPopupWindow(parent.getItemAtPosition(0).toString(), "");
+					bantuanPopupWindow(parent.getItemAtPosition(0).toString(), R.layout.activity_bantuan1);
 				else if (position == 1)
-					bantuanPopupWindow(parent.getItemAtPosition(1).toString(), "");
+					bantuanPopupWindow(parent.getItemAtPosition(1).toString(), R.layout.activity_bantuan2);
 				else if (position == 2)
-					bantuanPopupWindow(parent.getItemAtPosition(2).toString(), "");
+					bantuanPopupWindow(parent.getItemAtPosition(2).toString(), R.layout.activity_bantuan3);
 				else if (position == 3)
-					bantuanPopupWindow(parent.getItemAtPosition(3).toString(), "");
+					bantuanPopupWindow(parent.getItemAtPosition(3).toString(), R.layout.activity_bantuan4);
 				else if (position == 4)
-					bantuanPopupWindow(parent.getItemAtPosition(4).toString(), "");
+					bantuanPopupWindow(parent.getItemAtPosition(4).toString(), R.layout.activity_bantuan5);
 				else if (position == 5)
-					bantuanPopupWindow(parent.getItemAtPosition(5).toString(), "");
+					bantuanPopupWindow(parent.getItemAtPosition(5).toString(), R.layout.activity_bantuan6);
 				else if (position == 6)
-					bantuanPopupWindow(parent.getItemAtPosition(6).toString(), "");
+					bantuanPopupWindow(parent.getItemAtPosition(6).toString(), R.layout.activity_bantuan7);
 			}
 		});
 	}
@@ -103,7 +104,7 @@ public class BantuanActivity extends Activity {
 		}
 	}
 	
-	public void bantuanPopupWindow(String title, String isi) {
+	public void bantuanPopupWindow(String title, int Iluminati) {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(this)
 				.create();
@@ -113,8 +114,8 @@ public class BantuanActivity extends Activity {
 
 		// Inflate and set the layout for the dialog
 		// Pass null as the parent view because its going in the dialog layout
-		alertDialog.setView(inflater.inflate(R.layout.activity_tentang, null));
-
+		alertDialog.setView(inflater.inflate(Iluminati, null));
+		
 		// Setting Icon to Dialog
 		// alertDialog.setIcon(R.drawable.ic_launcher);
 
