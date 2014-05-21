@@ -89,7 +89,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS notifikasi");
 		db.execSQL("DROP TABLE IF EXISTS profil");
 		db.execSQL("DROP TABLE IF EXISTS achievement");
-		// Create tables again
+        db.execSQL("DROP TABLE IF EXISTS rekomendasi");
+        // Create tables again
 		onCreate(db);
 	}
 
@@ -222,8 +223,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS notifikasi");
 		db.execSQL("DROP TABLE IF EXISTS profil");
 		db.execSQL("DROP TABLE IF EXISTS achievement");
+        db.execSQL("DROP TABLE IF EXISTS rekomendasi");
 
-		// buat database kembali
+        // buat database kembali
 		// tabel laporan
 		String buatTabelLaporan = "CREATE TABLE laporan (id INTEGER PRIMARY KEY AUTOINCREMENT, waktu INTEGER, berat REAL, tinggi REAL);";
 		db.execSQL(buatTabelLaporan);
