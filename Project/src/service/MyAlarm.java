@@ -37,6 +37,9 @@ public class MyAlarm extends BroadcastReceiver
 	   else if (id==3){
 		   notifTitle = "Waktunya Snack!";
 	   }
+	   else if (id==4){
+		   notifTitle = "Waktunya Snack!";
+	   }
 	   else {
 		   
 	   }

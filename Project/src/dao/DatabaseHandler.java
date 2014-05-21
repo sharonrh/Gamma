@@ -159,13 +159,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				calendar.getTimeInMillis(), "Woi, Makan Malam!", false);
 
 		calendar.set(Calendar.HOUR_OF_DAY, 10);
-		Notifikasi snack = new Notifikasi("Snack", calendar.getTimeInMillis(),
-				"Waktunya Kamu Makan Snack!", false);
-
+		Notifikasi snack1 = new Notifikasi("Snack 1", calendar.getTimeInMillis(), "Waktunya Kamu Makan Snack!", false);
+		
+		calendar.set(Calendar.HOUR_OF_DAY, 15);
+		Notifikasi snack2 = new Notifikasi("Snack 2", calendar.getTimeInMillis(), "Waktunya Kamu Makan Snack!", false);
+		
 		tambahNotifikasi(sarapan, db);
 		tambahNotifikasi(makanSiang, db);
 		tambahNotifikasi(makanMalam, db);
-		tambahNotifikasi(snack, db);
+		tambahNotifikasi(snack1, db);
+		tambahNotifikasi(snack2, db);
 	}
 
 	public boolean tambahNotifikasi(Notifikasi notifikasi, SQLiteDatabase db) {

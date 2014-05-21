@@ -80,7 +80,6 @@ public class NotifikasiActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 				// TODO Auto-generated method stub
-				++id;
 				System.out.println("id"+id);
 				showAlert(position);
 //				lv.setAdapter(adapter);
@@ -88,22 +87,22 @@ public class NotifikasiActivity extends Activity {
 
 			}
 		});
-
-		int ii = 0;
-		while (!data.isEmpty() && ii < data.size()) {
-			long l = data.get(ii).getWaktu();
-			ii++;
-			Date date = new Date(l);
-			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-			String formatted = format.format(date);
-			String[] str = formatted.split(":");
-
-			int jam = Integer.parseInt(str[0]);
-			int menit = Integer.parseInt(str[1]);
-			// startAlarm(jam, menit);
-		}
-
-		System.out.println("123" + data);
+//
+//		int ii = 0;
+//		while (!data.isEmpty() && ii < data.size()) {
+//			long l = data.get(ii).getWaktu();
+//			ii++;
+//			Date date = new Date(l);
+//			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+//			String formatted = format.format(date);
+//			String[] str = formatted.split(":");
+//
+//			int jam = Integer.parseInt(str[0]);
+//			int menit = Integer.parseInt(str[1]);
+//			// startAlarm(jam, menit);
+//		}
+//
+//		System.out.println("123" + data);
 
 	}
 
@@ -132,10 +131,15 @@ public class NotifikasiActivity extends Activity {
 			id = 2;
 		}
 		else if (position == 3) {
-				title = "Atur Waktu Snack";
-				nama = "Snack";
+				title = "Atur Waktu Snack 1";
+				nama = "Snack 1";
 				id = 3;
 		}
+		else if (position == 4) {
+			title = "Atur Waktu Snack 2";
+			nama = "Snack 2";
+			id = 4;
+	}
 
 		alertDialog.setTitle(title);
 
