@@ -28,16 +28,17 @@ public class RekomendasiController {
 		prefs = c.getSharedPreferences("com.example.gamma", c.MODE_PRIVATE);
 	}
 
-	public List<Makanan> getRekomendasi(double kal) {
+	public List<Makanan> getRekomendasi(double kal, boolean v, boolean s,
+			boolean k) {
 		Time now = new Time();
 		now.setToNow();
 
 		Time rekTime = new Time();
 		rekTime.set(prefs.getLong("rekTime", 0));
 
-		// jika beda tanggal
+//		 jika beda tanggal
 		if (rekTime.year != now.year || rekTime.yearDay != now.yearDay) {
-			rekomen = dbMakanan.getRekomendasi(kal);
+			rekomen = dbMakanan.getRekomendasi(kal, v, s, k);
 			dbRekomen.setRekomendasi(rekomen);
 			rekTime.setToNow();
 			prefs.edit().putLong("rekTime", rekTime.toMillis(true)).commit();

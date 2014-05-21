@@ -3,6 +3,7 @@ package view;
 import java.util.List;
 
 import model.Makanan;
+import model.Pengguna;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Intent;
@@ -21,7 +22,7 @@ import controller.RekomendasiController;
 
 public class RekomendasiFragment extends ListFragment {
 
-	List<Makanan> listMakanan;
+	private List<Makanan> listMakanan;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -31,8 +32,10 @@ public class RekomendasiFragment extends ListFragment {
 				.getApplicationContext());
 		ProfilController conProfil = new ProfilController(getActivity()
 				.getApplicationContext());
-
-		listMakanan = con.getRekomendasi(conProfil.getKebutuhanKal());
+		Pengguna u = conProfil.getProfil();
+		
+		listMakanan = con.getRekomendasi(conProfil.getKebutuhanKal(),
+				u.isVegetarian(), u.isAlergiSeafood(), u.isAlergiKacang());
 
 		MyPerformanceArrayAdapter adapter = new MyPerformanceArrayAdapter(
 				getActivity(), listMakanan, con.getCount(), con.getHeader());

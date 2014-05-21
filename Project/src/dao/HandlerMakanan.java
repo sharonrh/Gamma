@@ -36,8 +36,8 @@ public class HandlerMakanan extends DatabaseHandler {
 	private static final String waktu = "waktuBaik";
 	private static final String kombinasi = "kombinasi";
 
-	private final String[] arrJenis = { "Pokok", "Lauk", "Sayuran", "Buah",
-			"Minuman", "Snack" };
+	private final String[] arrJenis = { "'Pokok'", "'Lauk'", "'Sayuran'", "'Buah'",
+			"'Minuman'", "'Snack'" };
 
 	public static HandlerMakanan getInstance(Context context) {
 		if (sInstance == null) {
@@ -159,16 +159,29 @@ public class HandlerMakanan extends DatabaseHandler {
 		return makananList;
 	}
 
-	public List<Makanan> getRekomendasi(double kal) {
+	public List<Makanan> getRekomendasi(double kal, boolean v, boolean s,
+			boolean k) {
 		List<Makanan> makananList = new ArrayList<Makanan>();
-		// algo rekomendasi?
 		SQLiteDatabase db = this.getWritableDatabase();
 
-		// sarapan
-		Cursor cursor = db.query(true, tabelMakanan, new String[] {
-				namaMakanan, kalori, porsi, bobot, jenis, terakhir }, waktu
-				+ "=? AND " + kalori + " >?", new String[] { "1", "150" },
-				null, null, "random()", "2");
+		// ----------------- sarapan --------------------
+		String cols = String.format("%s,%s,%s,%s,%s,%s", namaMakanan, kalori,
+				porsi, bobot, jenis, terakhir);
+		String alergi = "";
+
+		if (v)
+			alergi += " AND " + hewani + "='0'";
+		if (s)
+			alergi += " AND " + seafood + "='0'";
+		if (k)
+			alergi += " AND " + kacang + "='0'";
+
+		String query = "SELECT DISTINCT " + cols + " FROM " + tabelMakanan
+				+ " WHERE " + waktu + " ='1' AND " + kalori + " >0" + alergi
+				+ " ORDER BY random() LIMIT 2";
+
+		System.out.println(query);
+		Cursor cursor = db.rawQuery(query, null);
 
 		if (cursor.moveToFirst()) {
 			do {
@@ -178,15 +191,17 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setPorsi(cursor.getString(2));
 				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
+				System.out.println("sarapan : " + makanan.getNama());
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
-		// snack
-		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, porsi, bobot, jenis, terakhir }, jenis + " =? AND "
-				+ kalori + " >?", new String[] { arrJenis[5], "150" }, null,
-				null, "random()", "1");
+		// ----------------- snack --------------------
+		query = "SELECT DISTINCT " + cols + " FROM " + tabelMakanan + " WHERE "
+				+ jenis + " =" + arrJenis[5] + " AND " + kalori + " >0"
+				+ alergi + " ORDER BY random() LIMIT 1";
+
+		cursor = db.rawQuery(query, null);
 
 		if (cursor.moveToFirst()) {
 			do {
@@ -196,89 +211,19 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setPorsi(cursor.getString(2));
 				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
-			} while (cursor.moveToNext());
-		}
-		cursor.close();
-
-		// makan siang (makanan pokok)
-		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, porsi, bobot, jenis, terakhir }, jenis + "=? AND "
-				+ kombinasi + "=? AND " + kalori + ">?", new String[] {
-				"Pokok", "2", "150" }, null, null, "random()", "1");
-
-		if (cursor.moveToFirst()) {
-			do {
-				Makanan makanan = new Makanan();
-				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(cursor.getInt(1));
-				makanan.setPorsi(cursor.getString(2));
-				makanan.setBobot(cursor.getInt(3));
-				makananList.add(makanan);
-
-			} while (cursor.moveToNext());
-		}
-		cursor.close();
-
-		// makan siang (lauk + sayur)
-		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, porsi, bobot, jenis, terakhir }, jenis
-				+ " IN (? , ?) AND " + kalori + ">?", new String[] { "Sayuran",
-				"Lauk", "150" }, null, null, "random()", "2");
-
-		if (cursor.moveToFirst()) {
-			do {
-				Makanan makanan = new Makanan();
-				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(cursor.getInt(1));
-				makanan.setPorsi(cursor.getString(2));
-				makanan.setBobot(cursor.getInt(3));
-				makananList.add(makanan);
-			} while (cursor.moveToNext());
-		}
-		cursor.close();
-
-		// snack
-		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, porsi, bobot, jenis, terakhir }, jenis + " =? AND "
-				+ kalori + " >?", new String[] { arrJenis[5], "150" }, null,
-				null, "random()", "1");
-
-		if (cursor.moveToFirst()) {
-			do {
-				Makanan makanan = new Makanan();
-				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(cursor.getInt(1));
-				makanan.setPorsi(cursor.getString(2));
-				makanan.setBobot(cursor.getInt(3));
-				makananList.add(makanan);
-			} while (cursor.moveToNext());
-		}
-		cursor.close();
-
-		// makan malam (makanan pokok)
-		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, porsi, bobot, jenis, terakhir }, jenis + "=? AND "
-				+ kombinasi + "=? AND " + kalori + ">?", new String[] {
-				"Pokok", "2", "150" }, null, null, "random()", "1");
-
-		if (cursor.moveToFirst()) {
-			do {
-				Makanan makanan = new Makanan();
-				makanan.setNama(cursor.getString(0));
-				makanan.setKalori(cursor.getInt(1));
-				makanan.setPorsi(cursor.getString(2));
-				makanan.setBobot(cursor.getInt(3));
-				makananList.add(makanan);
+				System.out.println("snack pagi : " + makanan.getNama());
 
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
-		// makan malam (lauk + sayur)
-		cursor = db.query(true, tabelMakanan, new String[] { namaMakanan,
-				kalori, porsi, bobot, jenis, terakhir }, jenis
-				+ " IN (? , ?) AND " + kalori + ">?", new String[] { "Sayuran",
-				"Lauk", "150" }, null, null, "random()", "2");
+		// ----------------- makan siang (makanan pokok) --------------------
+		query = "SELECT DISTINCT " + cols + " FROM " + tabelMakanan + " WHERE "
+				+ jenis + " =" + arrJenis[0] + " AND " + kombinasi + "='2'"
+				+ " AND " + kalori + " >0" + alergi
+				+ " ORDER BY random() LIMIT 1";
+
+		cursor = db.rawQuery(query, null);
 
 		if (cursor.moveToFirst()) {
 			do {
@@ -288,6 +233,90 @@ public class HandlerMakanan extends DatabaseHandler {
 				makanan.setPorsi(cursor.getString(2));
 				makanan.setBobot(cursor.getInt(3));
 				makananList.add(makanan);
+				System.out.println("makan siang : " + makanan.getNama());
+
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		// ----------------- makan siang (lauk + sayur) --------------------
+		query = "SELECT DISTINCT " + cols + " FROM " + tabelMakanan + " WHERE "
+				+ jenis + " IN (" + arrJenis[1] + "," + arrJenis[2] + ") AND "
+				+ kalori + " >0" + alergi + " ORDER BY random() LIMIT 2";
+
+		cursor = db.rawQuery(query, null);
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
+				makananList.add(makanan);
+				System.out.println("makan siang : " + makanan.getNama());
+
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		// ----------------- snack --------------------
+		query = "SELECT DISTINCT " + cols + " FROM " + tabelMakanan + " WHERE "
+				+ jenis + " =" + arrJenis[5] + " AND " + kalori + " >0"
+				+ alergi + " ORDER BY random() LIMIT 1";
+
+		cursor = db.rawQuery(query, null);
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
+				makananList.add(makanan);
+				System.out.println("snack sore : " + makanan.getNama());
+
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		// ----------------- makan malam (makanan pokok) --------------------
+		query = "SELECT DISTINCT " + cols + " FROM " + tabelMakanan + " WHERE "
+				+ jenis + " IN (" + arrJenis[1] + "," + arrJenis[2] + ") AND "
+				+ kalori + " >0" + alergi + " ORDER BY random() LIMIT 1";
+
+		cursor = db.rawQuery(query, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
+				makananList.add(makanan);
+				System.out.println("makan malam : " + makanan.getNama());
+
+			} while (cursor.moveToNext());
+		}
+		cursor.close();
+
+		// ----------------- makan malam (lauk + sayur) --------------------
+		query = "SELECT DISTINCT " + cols + " FROM " + tabelMakanan + " WHERE "
+				+ jenis + " IN (" + arrJenis[1] + "," + arrJenis[2] + ") AND "
+				+ kalori + " >0" + alergi + " ORDER BY random() LIMIT 2";
+
+		cursor = db.rawQuery(query, null);
+
+		if (cursor.moveToFirst()) {
+			do {
+				Makanan makanan = new Makanan();
+				makanan.setNama(cursor.getString(0));
+				makanan.setKalori(cursor.getInt(1));
+				makanan.setPorsi(cursor.getString(2));
+				makanan.setBobot(cursor.getInt(3));
+				makananList.add(makanan);
+				System.out.println("makan malam : " + makanan.getNama());
+
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
@@ -353,7 +382,7 @@ public class HandlerMakanan extends DatabaseHandler {
 		SQLiteDatabase db = this.getReadableDatabase();
 		for (int i = 0; i < arrJenis.length; i++) {
 			String countQuery = "SELECT  * FROM " + tabelMakanan + " WHERE "
-					+ jenis + " = '" + arrJenis[i] + "'";
+					+ jenis + " = " + arrJenis[i];
 			Cursor cursor = db.rawQuery(countQuery, null);
 			count[i] = cursor.getCount();
 			cursor.close();
