@@ -58,7 +58,7 @@ public class ProfilController {
 		}
 		// tambah dengan kebutuhan kg / minggu * 1000
 		kal += (p.getTarget() - p.getBerat())
-				/ (p.getEndTime() - p.getStartTime()) / 604800L;
+				/ ((p.getEndTime() - p.getStartTime()) / 604800000L) * 1000;
 		return (int) Math.ceil(kal);
 	}
 }

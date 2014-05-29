@@ -15,14 +15,13 @@ public class Makanan {
     private boolean isHewani;
     private boolean isSeafood;
     private boolean isKacang;
-    private long terakhirDipilih;
     private String pathFoto;
 
     public Makanan() {
     }
 
     public Makanan(String nama, int kalori, double protein, double karbohidrat, double lemak, double natrium, String porsi, int bobot, float rating,
-                   String jenisMakanan, boolean isHewani, boolean isSeafood, boolean isKacang, long terakhirDipilih, String pathFoto) {
+                   String jenisMakanan, boolean isHewani, boolean isSeafood, boolean isKacang, String pathFoto) {
         this.nama = nama;
         this.kalori = kalori;
         this.protein = protein;
@@ -36,7 +35,6 @@ public class Makanan {
         this.isHewani = isHewani;
         this.isSeafood = isSeafood;
         this.isKacang = isKacang;
-        this.terakhirDipilih = terakhirDipilih;
         this.pathFoto = pathFoto;
     }
 
@@ -142,14 +140,6 @@ public class Makanan {
 
     public void setKacang(boolean isKacang) {
         this.isKacang = isKacang;
-    }
-
-    public long getTerakhirDipilih() {
-        return terakhirDipilih;
-    }
-
-    public void setTerakhirDipilih(long terakhirDipilih) {
-        this.terakhirDipilih = terakhirDipilih;
     }
 
     public String getPathFoto() {

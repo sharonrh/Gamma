@@ -33,7 +33,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// tabel makanan
 		String buatTabelMakanan = "CREATE TABLE makanan (nama TEXT PRIMARY KEY, kalori INTEGER, protein REAL, karbohidrat REAL, "
 				+ "lemak REAL, natrium REAL, porsi TEXT, bobot INTEGER, rating INTEGER, jenis TEXT, hewani INTEGER, "
-				+ "seafood INTEGER, kacang INTEGER, terakhirDipilih INTEGER, pathFoto TEXT, waktuBaik INTEGER, kombinasi INTEGER);";
+				+ "seafood INTEGER, kacang INTEGER, pathFoto TEXT, waktuBaik INTEGER, kombinasi INTEGER);";
 		db.execSQL(buatTabelMakanan);
 		// tabel laporan
 		String buatTabelLaporan = "CREATE TABLE laporan (id INTEGER PRIMARY KEY AUTOINCREMENT, waktu INTEGER, berat REAL, tinggi REAL);";
@@ -74,10 +74,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		tambahNotifikasiDefault(db);
 
 		// baca data makanan
-		bacaFile(c, db);
+		bacaMakanan(c, db);
 
 		// baca data untuk achievement
 		initAch(db);
+		
+		bacaMatriks(c, db);
 
 	}
 
@@ -94,7 +96,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	private void bacaFile(Context context, SQLiteDatabase db) {
+	private void bacaMakanan(Context context, SQLiteDatabase db) {
 		AssetManager am = context.getAssets();
 		InputStream is;
 		try {
@@ -127,12 +129,50 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				values.put("hewani", isHewani);
 				values.put("seafood", isSeafood);
 				values.put("kacang", isKacang);
-				values.put("terakhirDipilih", Long.parseLong(temp[13]));
-				values.put("pathFoto", temp[14]);
-				values.put("waktuBaik", Integer.parseInt(temp[15]));
-				values.put("kombinasi", Integer.parseInt(temp[16]));
+				values.put("pathFoto", temp[13]);
+				values.put("waktuBaik", Integer.parseInt(temp[14]));
+				values.put("kombinasi", Integer.parseInt(temp[15]));
 
 				db.insert("makanan", null, values);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void bacaMatriks(Context context, SQLiteDatabase db) {
+		AssetManager am = context.getAssets();
+		InputStream is;
+		
+		try {
+			is = am.open("pokok-lauk.csv");
+
+			InputStreamReader isr = new InputStreamReader(is);
+
+			BufferedReader reader = new BufferedReader(isr);
+			String line = reader.readLine(); // baca header
+			String[] header = line.split(",");
+			String buatTabelMatriks = "CREATE TABLE matriks (";
+			
+			for (int i=0;i<header.length;i++) {
+				if (i!=0) {
+					buatTabelMatriks += ", ";
+				}
+				buatTabelMatriks += "'"+header[i]+"' TEXT";
+			}
+			buatTabelMatriks += ");";
+			db.execSQL(buatTabelMatriks); 
+				
+			while ((line = reader.readLine()) != null) {
+				String[] temp = line.split(",");
+
+				ContentValues values = new ContentValues();
+				for (int i=0;i<header.length;i++) {
+					values.put("'"+header[i]+"'", temp[i]);
+				}
+
+				db.insert("matriks", null, values);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

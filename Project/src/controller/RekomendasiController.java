@@ -16,10 +16,10 @@ public class RekomendasiController {
 	private List<Makanan> rekomen;
 	private SharedPreferences prefs;
 
-	private final boolean[] count = { true, false, true, true, false, false,
+	private final boolean[] count = { true, false, true, true, false, false, false,
 			true, true, false, false };
 	private final String[] header = { "Sarapan", null, "Snack", "Makan siang",
-			null, null, "Snack", "Makan Malam" };
+			null, null, null, "Snack", "Makan Malam" };
 
 	public RekomendasiController(Context c) {
 		dbRekomen = HandlerRekomendasi.getInstance(c);
@@ -37,14 +37,14 @@ public class RekomendasiController {
 		rekTime.set(prefs.getLong("rekTime", 0));
 
 //		 jika beda tanggal
-		if (rekTime.year != now.year || rekTime.yearDay != now.yearDay) {
+//		if (rekTime.year != now.year || rekTime.yearDay != now.yearDay) {
 			rekomen = dbMakanan.getRekomendasi(kal, v, s, k);
-			dbRekomen.setRekomendasi(rekomen);
-			rekTime.setToNow();
-			prefs.edit().putLong("rekTime", rekTime.toMillis(true)).commit();
-		} else {
-			rekomen = dbRekomen.getRekomendasi();
-		}
+//			dbRekomen.setRekomendasi(rekomen);
+//			rekTime.setToNow();
+//			prefs.edit().putLong("rekTime", rekTime.toMillis(true)).commit();
+//		} else {
+//			rekomen = dbRekomen.getRekomendasi();
+//		}
 
 		return rekomen;
 	}
