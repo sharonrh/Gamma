@@ -33,7 +33,7 @@ public class BantuanActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_setting);
 		
-		String item [] = {"Setelah Mengisi Profil", "Penjelasan Fitur", "Mengenai Rekomendasi", "Navigasi di Aplikasi",
+		String item [] = {"Setelah Mengisi Profil", "Penjelasan Fitur", "Mengenai Rekomendasi", "Pertambahan Ideal",
 						  "Koneksi Internet", "Mengenai Notifikasi", "Informasi Lebih Lanjut"};
 		
 		lv = (ListView) findViewById(R.id.listView1);

@@ -37,14 +37,14 @@ public class RekomendasiController {
 		rekTime.set(prefs.getLong("rekTime", 0));
 
 //		 jika beda tanggal
-//		if (rekTime.year != now.year || rekTime.yearDay != now.yearDay) {
+		if (rekTime.year != now.year || rekTime.yearDay != now.yearDay) {
 			rekomen = dbMakanan.getRekomendasi(kal, v, s, k);
-//			dbRekomen.setRekomendasi(rekomen);
-//			rekTime.setToNow();
-//			prefs.edit().putLong("rekTime", rekTime.toMillis(true)).commit();
-//		} else {
-//			rekomen = dbRekomen.getRekomendasi();
-//		}
+			dbRekomen.setRekomendasi(rekomen);
+			rekTime.setToNow();
+			prefs.edit().putLong("rekTime", rekTime.toMillis(true)).commit();
+	} else {
+			rekomen = dbRekomen.getRekomendasi();
+		}
 
 		return rekomen;
 	}
