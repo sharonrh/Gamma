@@ -8,8 +8,10 @@ import model.Laporan;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -43,6 +45,10 @@ public class LihatLaporanFragment extends Fragment {
 		konteks = getActivity().getApplicationContext();
 		
 		kon = new LaporanController(konteks);
+		
+		if(kon.selesai()){
+			showPopupSelesai();
+		}
 		
 		View v = inflater.inflate(R.layout.fragment_lihatlaporan, container,
 				false);
@@ -172,4 +178,31 @@ public class LihatLaporanFragment extends Fragment {
 		    return rowView;
 		  }
 		}
+	
+	public void showPopupSelesai(){
+
+
+		AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+				.create();
+
+		alertDialog.setTitle("Selesai!");
+		LayoutInflater inflater = getActivity().getLayoutInflater();
+
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		alertDialog.setView(inflater.inflate(R.layout.activity_selesai, null));
+
+		// Setting Icon to Dialog
+		// alertDialog.setIcon(R.drawable.ic_launcher);
+
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		alertDialog.show();
+
+	
+	}
+	
 }

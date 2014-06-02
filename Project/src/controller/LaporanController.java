@@ -75,6 +75,23 @@ public class LaporanController {
             Toast.makeText(context, "Selamat! Anda telah mendapat achievement Finisher!", Toast.LENGTH_SHORT).show();
         }
     }
+    
+    public boolean selesai(){
+    	
+    	Pengguna p = profilController.getProfil();
+    	Laporan l = getLaporanTerbaru();
+    	
+    	if(p!=null && l!=null){
+    		double beratTarget = p.getTarget();
+        	double lastBerat =  l.getBeratBadan();
+        	
+        	return (lastBerat >= beratTarget) || (p.getEndTime() <= l.getWaktu());
+    	}
+    	else {
+    		return false;
+    	}	
+    }
+    
 
 	public List<Laporan> getListLaporan() {
 		return db.getAllLaporan();

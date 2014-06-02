@@ -39,6 +39,8 @@ public class IsiLaporanActivity extends Activity {
 	private double lastTinggi = 0;
 	private int tglLalu = 1;
 	private int selisihHari = 0;
+	private ProfilController profil;
+	private Pengguna pengguna;
 	private LaporanController kontrol;
 
 	@Override
@@ -46,7 +48,10 @@ public class IsiLaporanActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_isilaporan);
 		kontrol = new LaporanController(getApplicationContext());
-
+		profil = new ProfilController(getApplicationContext());
+		pengguna = profil.getProfil();
+		
+		
 		beratField = (EditText) findViewById(R.id.beratIsiLaporan);
 		tinggiField = (EditText) findViewById(R.id.tinggiIsiLaporan);
 		tglHariLalu = (TextView) findViewById(R.id.tanggalHariSebelumnya);
@@ -95,10 +100,13 @@ public class IsiLaporanActivity extends Activity {
 			tinggiLalu.setText(lastTinggi + " cm");	
 		}
 		else {
-			ProfilController profil = new ProfilController(getApplicationContext());
-			Pengguna pengguna = profil.getProfil();
+			
+			
 			beratLalu.setText(pengguna.getBerat() + " kg");
-			tinggiLalu.setText(pengguna.getTinggi() + " cm");	
+			tinggiLalu.setText(pengguna.getTinggi() + " cm");
+			
+			lastBerat = pengguna.getBerat();
+			lastTinggi = pengguna.getTinggi();
 		}
 
 		simpanBtn.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +132,9 @@ public class IsiLaporanActivity extends Activity {
 							.show();
 					beratLalu.setText(berat + " kg");
 					tinggiLalu.setText(tinggi + " cm");
+					
+					pengguna.setBerat(Double.parseDouble(berat));
+					pengguna.setTinggi(Double.parseDouble(tinggi));
 					
 					finish();
 					Intent i = new Intent(getApplicationContext(),
