@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gamma.R;
 
@@ -123,11 +124,19 @@ public class ProfilFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.pensil:
-			Intent i = new Intent(getActivity().getApplicationContext(),
-					EditProfilActivity.class);
-			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(i);
-			break;
+			
+			
+			if(profil == null){
+				Intent i = new Intent(getActivity().getApplicationContext(),
+						EditProfilActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(i);
+				break;
+			}
+			else {
+				Toast.makeText(getActivity().getApplicationContext(), "Kamu tidak bisa mengubah profil, Gunakan Reset Progress untuk mengubah.", Toast.LENGTH_SHORT).show();
+			}
+			
 		default:
 			break;
 		}
